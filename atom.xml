@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Henry</title>
+  
+  <subtitle>奔走在自己的热爱里</subtitle>
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2020-11-11T05:43:01.512Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>Henry</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Note for “The Python Tutorial”</title>
+    <link href="http://example.com/2020/11/11/Note-for-%E2%80%9CThe-Python-Tutorial%E2%80%9D/"/>
+    <id>http://example.com/2020/11/11/Note-for-%E2%80%9CThe-Python-Tutorial%E2%80%9D/</id>
+    <published>2020-11-11T05:42:43.000Z</published>
+    <updated>2020-11-11T05:43:01.512Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="The-Python-Tutorial"><a href="#The-Python-Tutorial" class="headerlink" title="The Python Tutorial"></a>The Python Tutorial</h1><blockquote><p><a href="https://docs.python.org/3/tutorial/index.html">https://docs.python.org/3/tutorial/index.html</a></p></blockquote><p>Python很简单，很强大。高级数据结构，高效的面向对象编程，优雅的语法elegant syntax，动态类型dynamic typing，解释性本质interpreted nature。</p><p>Python的解释器interpreter和标准库都能以源代码或二进制形式source or binary form获取，还有很多第三方库。</p><p>Python的解释器可以使用C（或者任何C调用的语言other languages callable from C）编写的函数和数据结构轻松地扩展。</p><p>本教程介绍Python最引人注目noteworthy的特性，展现这种语言的flavor and style。</p><h2 id="1-Whetting-Your-Appetite"><a href="#1-Whetting-Your-Appetite" class="headerlink" title="1. Whetting Your Appetite"></a>1. Whetting Your Appetite</h2><p>开胃菜</p><p>为什么用Python？想做一些自动化操作，There’s some task you’d like to automate. 一个专业的软件开发流程，write/compile/test/re-compile cycle，可能感到冗长乏味tedious。</p><p>Unix shell script脚本适合移动文件、操作数据，不适合GUI或游戏；C/C++/Java开发时间长。Python更好。</p><p>Python比脚本语言提供更多结构，比C提供更多错误检查。作为<em>高等级语言</em>，具有高级数据结构，比如灵活的array和dictionary。</p><p>Python允许把程序分成模块进行复用，附带大量的标准模块。</p><p>Python是一种解释性语言，因此不需要编译compilation和链接linking。</p><p>Python程序紧凑、可读性强，因为：高级数据结构，在单句中实现复杂的操作；语句分组是通过缩进indentation实现的，而不是大括号；不需要变量声明。</p><p>Python是可扩展的，用C编写的模块可以链接进去。</p><p>Python的名字来源于BBC节目《Monty Python’s Flying Circus》飞行马戏团，和爬行动物无关。</p><p>下一章解释使用解释器的原理。其余部分通过示例介绍各种功能，从简单表达式、数据结构到异常、自定义的类等概念。</p><h2 id="2-Using-the-Python-Interpreter"><a href="#2-Using-the-Python-Interpreter" class="headerlink" title="2. Using the Python Interpreter"></a>2. Using the Python Interpreter</h2><blockquote><p><a href="https://docs.python.org/3/tutorial/interpreter.html">https://docs.python.org/3/tutorial/interpreter.html</a></p></blockquote><h4 id="2-1-Invoking-the-Interpreter"><a href="#2-1-Invoking-the-Interpreter" class="headerlink" title="2.1. Invoking the Interpreter"></a>2.1. Invoking the Interpreter</h4><p>Python解释器interpreter安装在 <code>/usr/local/bin/python3.9</code>，把<code>/usr/local/bin</code>放在搜索路径下，就能在命令行调出Python。</p><p>在主提示符prompt后输入一个文件结尾字符（Unix是Ctrl-D，Win是Ctrl-Z），可以让解释器以零状态退出。也可以用quit()命令。</p><p>在支持GNU Readline库的系统上，解释器的行编辑特性包括交互式编辑、历史替换和代码补全。（就是方向键可以查看历史命令、Tab可以自动补全的功能）<a href="https://www.bookstack.cn/read/bash-tutorial/docs-readline.md">Bash 行操作</a>、<a href="https://www.cnblogs.com/bamanzi/archive/2013/04/15/clink-windows-cmd-readline.html">clink: 让Windows Cmd拥有readline能力</a></p><p>解释器的操作有点像Unix shell，当使用tty设备（就是串口设备，显示器键盘等）时，它读取命令并交互式执行；当以文件作为标准输入调用时，它将读取并执行文件中的脚本。</p><p>启动解释器的另一种方式是<code>python -c command [arg] ...</code>，建议用单引号把命令括起来。</p><p>其它命令行选项看这里 <a href="https://docs.python.org/3/using/cmdline.html#using-on-general">Command line and environment</a>.</p><h5 id="2-1-1-Argument-Passing"><a href="#2-1-1-Argument-Passing" class="headerlink" title="2.1.1 Argument Passing"></a>2.1.1 Argument Passing</h5><p>解释器得到命令后，脚本名和参数会转换成字符串列表，分配给sys模块的argv变量。除了-c、-m，其他参数传递给模块使用。</p><p>argc是argument count的缩写，argv是argument vector的缩写。</p><h5 id="2-1-2-Interactive-Mode"><a href="#2-1-2-Interactive-Mode" class="headerlink" title="2.1.2. Interactive Mode"></a>2.1.2. Interactive Mode</h5><p>交互模式下有主提示符(primary prompt)&gt;&gt;&gt;，对于多行命令有次提示符(secondary prompt)…。</p><p>写<code>if</code>或者<code>def</code>的时候会自动变成次提示符的。</p><h4 id="2-2-The-Interpreter-and-Its-Environment"><a href="#2-2-The-Interpreter-and-Its-Environment" class="headerlink" title="2.2. The Interpreter and Its Environment"></a>2.2. The Interpreter and Its Environment</h4><h5 id="2-2-1-Source-Code-Encoding"><a href="#2-2-1-Source-Code-Encoding" class="headerlink" title="2.2.1. Source Code Encoding"></a>2.2.1. Source Code Encoding</h5><p>默认情况下，Python源文件被视为采用UTF-8编码。</p><p>ASCII包含英文、数字、符号，1个字节；Unicode包含多国语言，通常2个字节，内存中一般用这个处理；UTF-8变长编码，用于传输。<a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017075323632896">字符串和编码 廖雪峰的官方网站</a></p><p>要声明默认编码以外的其他编码，应在文件的第一行添加一个特殊的注释行。 语法如下：<code># -*- coding: encoding -*-</code></p><p>一个例外就是为了告诉Linux/OS X系统这是一个Python可执行程序（Windows系统会忽略这个注释），第一行应该写<code>#!/usr/bin/env python3</code></p><h2 id="3-An-Informal-Introduction-to-Python"><a href="#3-An-Informal-Introduction-to-Python" class="headerlink" title="3. An Informal Introduction to Python"></a>3. An Informal Introduction to Python</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;The-Python-Tutorial&quot;&gt;&lt;a href=&quot;#The-Python-Tutorial&quot; class=&quot;headerlink&quot; title=&quot;The Python Tutorial&quot;&gt;&lt;/a&gt;The Python Tutorial&lt;/h1&gt;&lt;bloc</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://example.com/2020/11/11/hello-world/"/>
+    <id>http://example.com/2020/11/11/hello-world/</id>
+    <published>2020-11-11T05:31:44.931Z</published>
+    <updated>2020-11-11T05:31:44.931Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
