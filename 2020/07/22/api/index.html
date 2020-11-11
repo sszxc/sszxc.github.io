@@ -1,0 +1,417 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>关于API的基础知识 - Henry</title>
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="author" content="Henry">
+<meta name="description" content="
+前两天需要完成一个扫描件转成Excel的操作，试了各种OCR软件效果都不理想，后来尝试了百度的文字识别API，5...">
+<meta name="keywords" content="">
+
+    <meta charset="utf-8">
+    <meta name="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="renderer" content="webkit">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/journal.css?86386817">
+
+<script src="/js/loadCSS.js"></script>
+<script>
+    loadCSS("https://fonts.googleapis.com/css?family=Lora|Montserrat|Fira+Mono|Material+Icons");
+    (function (d) {
+        var config = {
+                kitId: 'dwg1tuc',
+                scriptTimeout: 3000,
+                async: true
+            },
+            h = d.documentElement, t = setTimeout(function () {
+                h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+            }, config.scriptTimeout), tk = d.createElement("script"), f = false,
+            s = d.getElementsByTagName("script")[0], a;
+        h.className += " wf-loading";
+        tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+        tk.async = true;
+        tk.onload = tk.onreadystatechange = function () {
+            a = this.readyState;
+            if (f || a && a != "complete" && a != "loaded") return;
+            f = true;
+            clearTimeout(t);
+            try {
+                Typekit.load(config)
+            } catch (e) {
+            }
+        };
+        s.parentNode.insertBefore(tk, s)
+    })(document);
+</script>
+<noscript>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Lora|Montserrat|Anonymous+Pro:400|Material+Icons"/>
+</noscript>
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Henry" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+<body>
+<div id="top"></div>
+<div id="app">
+<div class="single-column-drawer-container" ref="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            <a class="a-block drawer-menu-item false" href="http://example.com">
+                首页
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/archives">
+                归档
+            </a>
+            
+
+            
+            
+            <a class="a-block drawer-menu-item false" href="/about/index.html">
+                About
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
+                Gallery
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/privacy-policy/index.html">
+                隐私政策
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/archives/index.html">
+                Archives
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/sample-page/index.html">
+                示例页面
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/projects/index.html">
+                Projects
+            </a>
+            
+
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav ref="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div ref="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a ref="navTitle" class="navbar-brand" href="/">
+            Henry
+        </a>
+    </div>
+</nav>
+<div class="single-column-header-container" ref="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="/">
+        <div class="single-column-header-title">Henry</div>
+        <div class="single-column-header-subtitle"></div>
+    </a>
+</div>
+<div ref="sideContainer" class="side-container">
+    <a class="a-block nav-head false" href="/">
+        <div class="nav-title">
+            Henry.
+        </div>
+        <div class="nav-subtitle">
+            奔走在自己的热爱里
+        </div>
+    </a>
+
+    <div class="nav-link-list">
+        
+        <a class="a-block no-tint nav-link-item false" href="/archives">
+            归档
+        </a>
+        
+
+        
+        
+        <a class="a-block nav-link-item false" href="/about/index.html">
+            About
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/gallery/index.html">
+            Gallery
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/privacy-policy/index.html">
+            隐私政策
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/archives/index.html">
+            Archives
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/sample-page/index.html">
+            示例页面
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/projects/index.html">
+            Projects
+        </a>
+        
+
+        
+    </div>
+
+    
+    <div class="nav-footer">
+        Proudly published with Hexo<br>
+        
+        Theme <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> by <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a><br>
+        
+        &copy; 2020 <a href="http://example.com">Henry</a>
+    </div>
+</div>
+<div ref="extraContainer" class="extra-container">
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+
+        
+    </div>
+</div>
+
+
+
+<div ref="streamContainer" class="stream-container">
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            <div class="post-head-wrapper-text-only"
+                 style="background-image: url('')">
+                <div class="post-title">
+                    关于API的基础知识
+                    <div class="post-meta">
+                        <time datetime="2020-07-22T03:18:30.000Z" itemprop="datePublished">
+                            2020-07-22 11:18
+                        </time>&nbsp;
+                        
+                        
+                        <i class="material-icons" style="">folder</i>
+                        
+                        <a href='/categories/uncategorized/'>uncategorized</a>
+                        
+                        
+    
+                        
+                    </div>
+                </div>
+            </div>
+    
+            <div class="post-body-wrapper">
+                <div class="post-body">
+                    <blockquote>
+<p><em>前两天需要完成一个扫描件转成Excel的操作，试了各种OCR软件效果都不理想，后来尝试了百度的文字识别API，5分钟搞定。看来广告说得对：“学会用Python，比别人早下班2小时。”</em> 🤷‍♂️</p>
+</blockquote>
+<p>白嫖了好多次百度的API，但是对各种基础知识都还一知半解，只会对着Demo改改。那么现在就从原理出发，花点时间查漏补缺一下吧。</p>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><blockquote>
+<p>API（Application Programming Interface，应用程序接口）是一些预先定义的函数，或指软件系统不同组成部分衔接的约定。用来提供应用程序与开发人员基于某软件或硬件得以访问的一组例程，而又无需访问源码，或理解内部工作机制的细节。——百度百科</p>
+</blockquote>
+<p>所以API就是指把某些功能封装好，方便其他人调用。而调用的人可以很方便地使用这些功能，并且可以不需要知道这些功能的具体实现过程。 [caption align=”aligncenter” width=892]<img src="https://img-blog.csdnimg.cn/20200411114547716.png"> 调用API流程CSDN1[/caption] 按照百度智能云的文档2，百度的API分为管控型API（云产品创建、查看、启动停止、扩缩容、释放停止，类似于控制台）和功能型API（百度语音、人脸识别、文字识别）。 插播一个SDK与API之间的关系：</p>
+<blockquote>
+<p>你可以把SDK想象成一个虚拟的程序包，在这个程序包中有一份做好的软件功能，这份程序包几乎是全封闭的，只有一个小小接口可以联通外界，这个接口就是API。 比如—— 有一杯密封饮料，它的名字叫做“SDK”。 饮料上插着吸管，吸管的名字叫“API”。 <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/21691705/answer/770586138">SDK和API的区别？ - 简道云的回答 - 知乎</a></p>
+</blockquote>
+<p>那么说回来，作为用户学习API调用的话，其实只需要关注两个部分，即上图中的“请求数据”和“处理并显示”部分，其他内容只管交给开发人员即可。</p>
+<h2 id="HTTP请求"><a href="#HTTP请求" class="headerlink" title="HTTP请求"></a>HTTP请求</h2><p>HTTP的请求与响应，可以称为是API请求数据的载体。 按照定义来说，HTTP就是在网络上传输HTML的协议，用于浏览器和服务器的通信。根据 HTTP 标准，HTTP 请求可以使用多种请求方法，其中GET和POST是最常见的HTTP方法。 [caption align=”aligncenter” width=1486]<img src="https://s1.ax1x.com/2020/07/22/U7hqC4.png"> HTTP请求[/caption] 对于调用API这个场景，分别解释一下HTTP请求的几个部分：</p>
+<ul>
+<li><p>  请求方法（POST、PUT等），协议和域名（参考API文档）</p>
+</li>
+<li><p>  URL路径（其中的变量参考API文档中的请求参数），QueryString查询字符串（以<code>？</code>开始，用<code>&amp;</code>连接多个查询字符串），请求头域（一般放鉴权、当前时间等，可能会写在文档的公共请求头里）</p>
+</li>
+<li><p>  鉴权（用AK/SK生成的Authorization认证字符串，可以参考百度的教程3，原理了解即可，后续有现成Demo可以抄） [caption align=”aligncenter” width=1678]<img src="https://s1.ax1x.com/2020/07/22/U7Ifvd.jpg"> 鉴权机制[/caption]</p>
+</li>
+<li><p>  Body（JSON格式，最关键的部分，例如需要识别的图片、需要翻译的文本，参考API文档修改）</p>
+</li>
+</ul>
+<h2 id="获取API"><a href="#获取API" class="headerlink" title="获取API"></a>获取API</h2><p>以百度AI开放平台为例，在官网找到想要使用的API，注册、申请，在管理界面获取后文鉴权需要用到的API_KEY/SECRET_KEY，然后就可以打开官方文档开始编写了。 [caption align=”aligncenter” width=1662]<img src="https://s1.ax1x.com/2020/07/22/UHE8N6.jpg"> 百度AI平台提供的服务[/caption]</p>
+<h2 id="Python实现"><a href="#Python实现" class="headerlink" title="Python实现"></a>Python实现</h2><p>以文字识别为例，百度给出了一个很详细的<a target="_blank" rel="noopener" href="https://ai.baidu.com/ai-doc/OCR/dk3iqnq51">QuickStart</a>，对照着修改即可，这里简单过一下主函数流程。 首先导入一些模块</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> sys
+<span class="token keyword">import</span> json
+<span class="token keyword">import</span> base64
+
+<span class="token comment" spellcheck="true"># 保证兼容python2以及python3</span>
+IS_PY3 <span class="token operator">=</span> sys<span class="token punctuation">.</span>version_info<span class="token punctuation">.</span>major <span class="token operator">==</span> <span class="token number">3</span>
+<span class="token keyword">if</span> IS_PY3<span class="token punctuation">:</span>
+    <span class="token keyword">from</span> urllib<span class="token punctuation">.</span>request <span class="token keyword">import</span> urlopen
+    <span class="token keyword">from</span> urllib<span class="token punctuation">.</span>request <span class="token keyword">import</span> Request
+    <span class="token keyword">from</span> urllib<span class="token punctuation">.</span>error <span class="token keyword">import</span> URLError
+    <span class="token keyword">from</span> urllib<span class="token punctuation">.</span>parse <span class="token keyword">import</span> urlencode
+    <span class="token keyword">from</span> urllib<span class="token punctuation">.</span>parse <span class="token keyword">import</span> quote_plus
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">import</span> urllib2
+    <span class="token keyword">from</span> urllib <span class="token keyword">import</span> quote_plus
+    <span class="token keyword">from</span> urllib2 <span class="token keyword">import</span> urlopen
+    <span class="token keyword">from</span> urllib2 <span class="token keyword">import</span> Request
+    <span class="token keyword">from</span> urllib2 <span class="token keyword">import</span> URLError
+    <span class="token keyword">from</span> urllib <span class="token keyword">import</span> urlencode
+
+<span class="token comment" spellcheck="true"># 防止https证书校验不正确</span>
+ssl<span class="token punctuation">.</span>_create_default_https_context <span class="token operator">=</span> ssl<span class="token punctuation">.</span>_create_unverified_context</code></pre>
+<p>然后是一些关键字符串，这里需要根据之前获取的AK/SK、不同API的URL进行修改，示例中填充的是一个文字识别的例程。</p>
+<pre class=" language-python"><code class="language-python">API_KEY <span class="token operator">=</span> <span class="token string">'GmhC18eVP1Fo1ECX911dtOzw'</span>
+SECRET_KEY <span class="token operator">=</span> <span class="token string">'PQ2ukO4Aec2PTsgQU9UkiEKYciavlZk8'</span>
+OCR_URL <span class="token operator">=</span> <span class="token string">"https://aip.baidubce.com/rest/2.0/ocr/v1/accurate_basic"</span>
+TOKEN_URL <span class="token operator">=</span> <span class="token string">'https://aip.baidubce.com/oauth/2.0/token'</span></code></pre>
+<p>鉴权流程，后续使用的时候照抄即可。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fetch_token</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    获取token
+    """</span>
+    params <span class="token operator">=</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;'grant_type': 'client_credentials',</span>
+              <span class="token string">'client_id'</span><span class="token punctuation">:</span> API_KEY<span class="token punctuation">,</span>
+              <span class="token string">'client_secret'</span><span class="token punctuation">:</span> SECRET_KEY<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
+    post_data <span class="token operator">=</span> urlencode<span class="token punctuation">(</span>params<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>IS_PY3<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        post_data <span class="token operator">=</span> post_data<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+    req <span class="token operator">=</span> Request<span class="token punctuation">(</span>TOKEN_URL<span class="token punctuation">,</span> post_data<span class="token punctuation">)</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        f <span class="token operator">=</span> urlopen<span class="token punctuation">(</span>req<span class="token punctuation">,</span> timeout<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">)</span>
+        result_str <span class="token operator">=</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">except</span> URLError <span class="token keyword">as</span> err<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>IS_PY3<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        result_str <span class="token operator">=</span> result_str<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    result <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>result_str<span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">'access_token'</span> <span class="token keyword">in</span> result<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">and</span> <span class="token string">'scope'</span> <span class="token keyword">in</span> result<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token operator">not</span> <span class="token string">'brain_all_scope'</span> <span class="token keyword">in</span> result<span class="token punctuation">[</span><span class="token string">'scope'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'please ensure has check the  ability'</span><span class="token punctuation">)</span>
+            exit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> result<span class="token punctuation">[</span><span class="token string">'access_token'</span><span class="token punctuation">]</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'please overwrite the correct API_KEY and SECRET_KEY'</span><span class="token punctuation">)</span>
+        exit<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>用二进制方式读取需要识别的文件，加入HTTP请求内容。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">read_file</span><span class="token punctuation">(</span>image_path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    读取文件
+    """</span>
+    f <span class="token operator">=</span> None
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        f <span class="token operator">=</span> open<span class="token punctuation">(</span>image_path<span class="token punctuation">,</span> <span class="token string">'rb'</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">except</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'read image file fail'</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> None
+    <span class="token keyword">finally</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> f<span class="token punctuation">:</span>
+            f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>HTTP请求，这里用的是Python的urllib库中的Request函数，据说更方便的方案是使用requests4，一个Python第三方库，处理URL资源特别方便。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">request</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    调用远程服务
+    """</span>
+    req <span class="token operator">=</span> Request<span class="token punctuation">(</span>url<span class="token punctuation">,</span> data<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    has_error <span class="token operator">=</span> <span class="token boolean">False</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        f <span class="token operator">=</span> urlopen<span class="token punctuation">(</span>req<span class="token punctuation">)</span>
+        result_str <span class="token operator">=</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>IS_PY3<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            result_str <span class="token operator">=</span> result_str<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> result_str
+    <span class="token keyword">except</span>  URLError <span class="token keyword">as</span> err<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span></code></pre>
+<p>主函数，鉴权、打包、请求、解析。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+
+    <span class="token comment" spellcheck="true"># 获取access token</span>
+    token <span class="token operator">=</span> fetch_token<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 拼接通用文字识别高精度url</span>
+    image_url <span class="token operator">=</span> OCR_URL <span class="token operator">+</span> <span class="token string">"?access_token="</span> <span class="token operator">+</span> token
+
+    text <span class="token operator">=</span> <span class="token string">""</span>
+
+    <span class="token comment" spellcheck="true"># 读取书籍页面图片</span>
+    file_content <span class="token operator">=</span> read_file<span class="token punctuation">(</span><span class="token string">'./test.jpg'</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 调用文字识别服务</span>
+    result <span class="token operator">=</span> request<span class="token punctuation">(</span>image_url<span class="token punctuation">,</span> urlencode<span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;'image': base64.b64encode(file_content)&amp;#125;))</span>
+
+    <span class="token comment" spellcheck="true"># 解析返回结果</span>
+    result_json <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> words_result <span class="token keyword">in</span> result_json<span class="token punctuation">[</span><span class="token string">"words_result"</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        text <span class="token operator">=</span> text <span class="token operator">+</span> words_result<span class="token punctuation">[</span><span class="token string">"words"</span><span class="token punctuation">]</span>
+
+    <span class="token comment" spellcheck="true"># 打印文字</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span></code></pre>
+<p>百度AI开放平台有各种功能型API可以免费调用，玩得开心。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li> <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41590495/article/details/105449114">API是什么呢？CSDN</a></li>
+<li> <a target="_blank" rel="noopener" href="https://cloud.baidu.com/doc/APIGUIDE/s/Hk1myw1a8">初见百度智能云API（视频科普）</a></li>
+<li> <a target="_blank" rel="noopener" href="https://cloud.baidu.com/doc/Reference/s/Njwvz1wot">鉴权认证机制</a></li>
+<li> <a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1016959663602400/1183249464292448">requests - 廖雪峰的官方网站</a></li>
+</ol>
+
+                </div>
+            </div>
+    
+            <nav class="post-pagination">
+    
+    <a class="newer-posts" href="/2020/08/16/%E8%B5%A4%E5%AD%90%E4%B9%8B%E5%BF%83-%E5%B1%B1%E5%B7%9D%E5%8F%AF%E9%89%B4/">
+        上一篇<br>赤子之心 山川可鉴
+    </a>
+    
+    <span class="page-number"></span>
+    
+    <a class="older-posts" href="/2020/06/21/cs294-112/">
+        下一篇<br>CS294-112 深度强化学习笔记（持续更新）
+    </a>
+    
+</nav>
+
+    
+            
+
+
+        </div>
+    </div>
+    <div class="single-column-footer">
+    Proudly published with Hexo<br>
+    
+    Theme <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> by <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a><br>
+    
+    &copy; 2020 <a href="http://example.com">Henry</a>
+</div>
+</div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"
+        integrity="sha256-EGs9T1xMHdvM1geM8jPpoo8EZ1V1VRsmcJz8OByENLA=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+        integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"
+        integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
+        integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
+<script src="/js/journal.js?32597069"></script>
+
+
+
+</body>
+</html>

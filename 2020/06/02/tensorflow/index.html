@@ -1,0 +1,337 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>记一次TensorFlow版本升级 - Henry</title>
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="author" content="Henry">
+<meta name="description" content="
+一杯茶一包烟，一个环境配一天
+
+某天上网冲浪的时候，看到一种说法TensorFlow1.14对新版本的兼容性会更...">
+<meta name="keywords" content="">
+
+    <meta charset="utf-8">
+    <meta name="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="renderer" content="webkit">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/journal.css?29488404">
+
+<script src="/js/loadCSS.js"></script>
+<script>
+    loadCSS("https://fonts.googleapis.com/css?family=Lora|Montserrat|Fira+Mono|Material+Icons");
+    (function (d) {
+        var config = {
+                kitId: 'dwg1tuc',
+                scriptTimeout: 3000,
+                async: true
+            },
+            h = d.documentElement, t = setTimeout(function () {
+                h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+            }, config.scriptTimeout), tk = d.createElement("script"), f = false,
+            s = d.getElementsByTagName("script")[0], a;
+        h.className += " wf-loading";
+        tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+        tk.async = true;
+        tk.onload = tk.onreadystatechange = function () {
+            a = this.readyState;
+            if (f || a && a != "complete" && a != "loaded") return;
+            f = true;
+            clearTimeout(t);
+            try {
+                Typekit.load(config)
+            } catch (e) {
+            }
+        };
+        s.parentNode.insertBefore(tk, s)
+    })(document);
+</script>
+<noscript>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Lora|Montserrat|Anonymous+Pro:400|Material+Icons"/>
+</noscript>
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Henry" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+<body>
+<div id="top"></div>
+<div id="app">
+<div class="single-column-drawer-container" ref="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            <a class="a-block drawer-menu-item false" href="http://example.com">
+                首页
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/archives">
+                归档
+            </a>
+            
+
+            
+            
+            <a class="a-block drawer-menu-item false" href="/about/index.html">
+                About
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
+                Gallery
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/privacy-policy/index.html">
+                隐私政策
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/archives/index.html">
+                Archives
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/sample-page/index.html">
+                示例页面
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/projects/index.html">
+                Projects
+            </a>
+            
+
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav ref="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div ref="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a ref="navTitle" class="navbar-brand" href="/">
+            Henry
+        </a>
+    </div>
+</nav>
+<div class="single-column-header-container" ref="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="/">
+        <div class="single-column-header-title">Henry</div>
+        <div class="single-column-header-subtitle"></div>
+    </a>
+</div>
+<div ref="sideContainer" class="side-container">
+    <a class="a-block nav-head false" href="/">
+        <div class="nav-title">
+            Henry.
+        </div>
+        <div class="nav-subtitle">
+            奔走在自己的热爱里
+        </div>
+    </a>
+
+    <div class="nav-link-list">
+        
+        <a class="a-block no-tint nav-link-item false" href="/archives">
+            归档
+        </a>
+        
+
+        
+        
+        <a class="a-block nav-link-item false" href="/about/index.html">
+            About
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/gallery/index.html">
+            Gallery
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/privacy-policy/index.html">
+            隐私政策
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/archives/index.html">
+            Archives
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/sample-page/index.html">
+            示例页面
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/projects/index.html">
+            Projects
+        </a>
+        
+
+        
+    </div>
+
+    
+    <div class="nav-footer">
+        Proudly published with Hexo<br>
+        
+        Theme <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> by <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a><br>
+        
+        &copy; 2020 <a href="http://example.com">Henry</a>
+    </div>
+</div>
+<div ref="extraContainer" class="extra-container">
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+
+        
+    </div>
+</div>
+
+
+
+<div ref="streamContainer" class="stream-container">
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            <div class="post-head-wrapper-text-only"
+                 style="background-image: url('')">
+                <div class="post-title">
+                    记一次TensorFlow版本升级
+                    <div class="post-meta">
+                        <time datetime="2020-06-02T07:40:20.000Z" itemprop="datePublished">
+                            2020-06-02 15:40
+                        </time>&nbsp;
+                        
+                        
+                        <i class="material-icons" style="">folder</i>
+                        
+                        <a href='/categories/uncategorized/'>uncategorized</a>
+                        
+                        
+    
+                        
+                        
+                        <i class="material-icons" style="">label</i>
+                        
+                        <a href='/tags/Python/'>Python</a>, 
+                        
+                        <a href='/tags/深度学习/'>深度学习</a>, 
+                        
+                        <a href='/tags/TensorFlow/'>TensorFlow</a>, 
+                        
+                        <a href='/tags/Anaconda/'>Anaconda</a>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+    
+            <div class="post-body-wrapper">
+                <div class="post-body">
+                    <blockquote>
+<p>一杯茶一包烟，一个环境配一天</p>
+</blockquote>
+<p>某天上网冲浪的时候，看到一种说法TensorFlow1.14对新版本的兼容性会更好，于是在大作业之前手贱升级了一下，结果发现再也不能调用GPU运算了，接着就有了这篇踩坑记录。 原环境：</p>
+<blockquote>
+<ul>
+<li>  Win10 1909</li>
+<li>  Anaconda 3</li>
+<li>  Python 3.6.8</li>
+<li>  TensorFlow 1.12</li>
+<li>  CUDA 10.1</li>
+</ul>
+</blockquote>
+<p>本文涉及到TensorFlow的指定版本升级、CUDA的卸载重装与cuDNN的重装。</p>
+<hr>
+<h2 id="TensorFlow"><a href="#TensorFlow" class="headerlink" title="TensorFlow"></a>TensorFlow</h2><p>首先升级TensorFlow，启动Anaconda，激活相应环境，启动命令行，使用<code>pip install tensorflow==1.14.0</code>或<code>pip install tensorflow-gpu==1.14.0</code>命令安装指定版本TensorFlow。 最早配置的服务器是清华源，而当天不知道什么原因下载非常不稳定，于是尝试换成中科大源，但是仍然下载失败。 <code>pip install --channel https://mirrors.ustc.edu.cn/anaconda/pkgs/main/ tensorflow-gpu==1.14.0</code> 神秘的是，吃了晚饭回来网络就恢复正常了。 下载之后出现提示，“Could not install packages due to an EnvironmentError: [WinError 5] 拒绝访问”，谷歌后解决方案如下。</p>
+<blockquote>
+<p><em>解决方法： C:\Users\xxx&gt; 中的xxx不是管理员，或者说就是权限不够；在conda在的路径里，……\Anaconda3右击属性-&gt;安全-&gt;user选中现在的用户，修改权限至所有权限；重新打开命令行，即可。</em></p>
+</blockquote>
+<p>来自：<a target="_blank" rel="noopener" href="http://www.zzkook.com/content/anaconda-zai-win10xia-zhuang-shi-yong-wen-ti-jie-jue-ban-fa-hui-zong-duo-tu">http://www.zzkook.com/content/anaconda-zai-win10xia-zhuang-shi-yong-wen-ti-jie-jue-ban-fa-hui-zong-duo-tu</a> 安装完之后记得使用<code>conda info</code>命令检查一下版本，同时升级的时候需要注意CPU和GPU版本之间的顺序。之前有次安装失败没注意看终端，结果装完了CUDA发现TensorFlow版本还没跟上。 如果使用CPU版本的话应该就到此顺利结束了，但是为了使用GPU加速，任务还没完。加载环境后可以使用如下代码测试是否能调用GPU，这一次很可惜不能。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> tensorflow<span class="token punctuation">.</span>python<span class="token punctuation">.</span>client <span class="token keyword">import</span> device_lib
+<span class="token keyword">print</span><span class="token punctuation">(</span>device_lib<span class="token punctuation">.</span>list_local_devices<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<hr>
+<h2 id="CUDA"><a href="#CUDA" class="headerlink" title="CUDA"></a>CUDA</h2><p>根据TensorFlow官方给出的“经过测试的构建配置”，可以看到TensorFlow1.14对应的推荐CUDA版本是10.0，和当前版本不符，显然为了稳定运行还需要降级CUDA。 <img src="https://s1.ax1x.com/2020/06/02/ttNNIe.jpg" alt="ttNNIe.jpg"> 来自：<a target="_blank" rel="noopener" href="https://www.tensorflow.org/install/source#tested_build_configurations">https://www.tensorflow.org/install/source#tested_build_configurations</a> 首先是CUDA卸载，参考下面这篇博客，在控制面板中卸载含有相关关键词的程序。</p>
+<blockquote>
+<p><em>CUDA的卸载：控制面板-卸载程序（不要用360等杀毒软件，找不到对应程序的），按照安装时间排序，最上面这几个带版本号的，就是刚才安装的CUDA了，挨个卸载即可</em></p>
+</blockquote>
+<p>来自：<a target="_blank" rel="noopener" href="https://blog.csdn.net/XunCiy/article/details/89070315">https://blog.csdn.net/XunCiy/article/details/89070315</a> 然后是安装包的重新下载，在英伟达官网的<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-toolkit-archive">归档</a>里能找到历史版本的CUDA。这里推荐使用离线版而不是在线版，借助IDM等下载工具能有效提高效率。 <img src="https://s1.ax1x.com/2020/06/02/ttU1YQ.jpg" alt="ttU1YQ.jpg"></p>
+<hr>
+<h2 id="cuDNN"><a href="#cuDNN" class="headerlink" title="cuDNN"></a>cuDNN</h2><p>下一步是cuDNN，在<a target="_blank" rel="noopener" href="https://developer.nvidia.com/rdp/cudnn-download">官网</a>下载，对照上文，下载指定版本后解压、覆盖、检查环境变量，参考教程如下。</p>
+<blockquote>
+<p><em>下载完，解压cudnn,会出现四个文件，如下：[图片] 在cuda安装完后，系统自动在C盘的Program Files文件中创建了NVIDIA GPUComputing Toolkit文件夹，你可以找到如下路径：[图片] 你可以发现在这个v9.0目录下也有类似cudnn中的文件夹。将cudnn的bin,include,lib中的内容 拷贝到v9.0的bin,include,lib对应目录下，提示替换的话点击OK。完成，最好重启一下电脑。OK。</em></p>
+</blockquote>
+<p>来自：<a target="_blank" rel="noopener" href="https://blog.csdn.net/c20081052/article/details/86683446">https://blog.csdn.net/c20081052/article/details/86683446</a> 这时候运行之前的代码，发现已经可以检测到GPU，但是跑之前的网络仍然报错，提示版本不匹配。 <code>Loaded runtime CuDNN library: 7.3.1 but source was compiled with: 7.4.1.</code> 查资料后发现，很多博客都建议回退旧版本，这当然不能接受。最终找到了下面这一篇，看来这是使用Anaconda造成的问题，主环境中的cuDNN版本修改并没有顾及到虚拟环境，于是按照指南顺利解决。</p>
+<blockquote>
+<p><em>也许你和我一样使用的是Anaconda，那么，请打开你的Anaconda安装路径（比如：我的路径是F:\Anaconda\anaconda\pkgs），你会发现这有个[图片] 好的，我们找到了这个玩意，也许Anaconda直接是使用这里的CUDNN，而不是在C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0这个地方的CUDNN（这只是猜测）。 为此，我们尝试一下直接更新这个pkgs，在这个网站下载(<a target="_blank" rel="noopener" href="https://anaconda.org/anaconda/cudnn/files?sort=basename&amp;sort%5C_order=desc)%E9%80%89%E6%8B%A9%E5%90%88%E9%80%82%E7%89%88%E6%9C%AC%E7%9A%84CUDNN%EF%BC%88%E4%B8%80%E5%AE%9A%E8%A6%81%E6%B3%A8%E6%84%8F%E6%98%AF%E5%90%88%E9%80%82%E7%9A%84%E7%89%88%E6%9C%AC%EF%BC%89%EF%BC%8C%E7%84%B6%E5%90%8E%E6%8A%8A%E5%88%9A%E4%B8%8B%E8%BD%BD%E7%9A%84%E6%96%87%E4%BB%B6%E8%A7%A3%E5%8E%8B%E5%BE%97%E5%88%B0%EF%BC%9A%5C%5B%E5%9B%BE%E7%89%87%5C%5D">https://anaconda.org/anaconda/cudnn/files?sort=basename&amp;sort\_order=desc)选择合适版本的CUDNN（一定要注意是合适的版本），然后把刚下载的文件解压得到：\[图片\]</a> 将里面Library的东西复制覆盖到F:\Anaconda\anaconda\pkgs\ cudnn-7.1.4-cuda9.0_0\Library的东西（也许你的Anaconda路径不同，需要自己找一下）路径，再试一下。</em></p>
+</blockquote>
+<p>来自：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Tilamy/article/details/88616201">https://blog.csdn.net/Tilamy/article/details/88616201</a></p>
+<hr>
+<p>至此，终于全部完成，新环境：</p>
+<blockquote>
+<ul>
+<li>  Win10 1909</li>
+<li>  Anaconda 3</li>
+<li>  Python 3.6.8</li>
+<li>  TensorFlow 1.14</li>
+<li>  CUDA 10.0</li>
+</ul>
+</blockquote>
+
+                </div>
+            </div>
+    
+            <nav class="post-pagination">
+    
+    <a class="newer-posts" href="/2020/06/08/latex/">
+        上一篇<br>LaTeX入门笔记
+    </a>
+    
+    <span class="page-number"></span>
+    
+    <a class="older-posts" href="/2020/05/17/hog-svm/">
+        下一篇<br>基于HOG描述子+SVM分类器的目标检测
+    </a>
+    
+</nav>
+
+    
+            
+
+
+        </div>
+    </div>
+    <div class="single-column-footer">
+    Proudly published with Hexo<br>
+    
+    Theme <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> by <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a><br>
+    
+    &copy; 2020 <a href="http://example.com">Henry</a>
+</div>
+</div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"
+        integrity="sha256-EGs9T1xMHdvM1geM8jPpoo8EZ1V1VRsmcJz8OByENLA=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+        integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"
+        integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
+        integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
+<script src="/js/journal.js?65292003"></script>
+
+
+
+</body>
+</html>

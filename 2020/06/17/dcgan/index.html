@@ -1,0 +1,341 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>从CNN到GAN的初尝试 - Henry</title>
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="author" content="Henry">
+<meta name="description" content="
+使用TensorFlow在MNIST数据集上实现一个生成式对抗网络。
+
+开头先推荐一些教程及资料： 【推荐👍】...">
+<meta name="keywords" content="">
+
+    <meta charset="utf-8">
+    <meta name="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="renderer" content="webkit">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/journal.css?73213379">
+
+<script src="/js/loadCSS.js"></script>
+<script>
+    loadCSS("https://fonts.googleapis.com/css?family=Lora|Montserrat|Fira+Mono|Material+Icons");
+    (function (d) {
+        var config = {
+                kitId: 'dwg1tuc',
+                scriptTimeout: 3000,
+                async: true
+            },
+            h = d.documentElement, t = setTimeout(function () {
+                h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+            }, config.scriptTimeout), tk = d.createElement("script"), f = false,
+            s = d.getElementsByTagName("script")[0], a;
+        h.className += " wf-loading";
+        tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+        tk.async = true;
+        tk.onload = tk.onreadystatechange = function () {
+            a = this.readyState;
+            if (f || a && a != "complete" && a != "loaded") return;
+            f = true;
+            clearTimeout(t);
+            try {
+                Typekit.load(config)
+            } catch (e) {
+            }
+        };
+        s.parentNode.insertBefore(tk, s)
+    })(document);
+</script>
+<noscript>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Lora|Montserrat|Anonymous+Pro:400|Material+Icons"/>
+</noscript>
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Henry" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+<body>
+<div id="top"></div>
+<div id="app">
+<div class="single-column-drawer-container" ref="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            <a class="a-block drawer-menu-item false" href="http://example.com">
+                首页
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/archives">
+                归档
+            </a>
+            
+
+            
+            
+            <a class="a-block drawer-menu-item false" href="/about/index.html">
+                About
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
+                Gallery
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/privacy-policy/index.html">
+                隐私政策
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/archives/index.html">
+                Archives
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/sample-page/index.html">
+                示例页面
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/projects/index.html">
+                Projects
+            </a>
+            
+
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav ref="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div ref="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a ref="navTitle" class="navbar-brand" href="/">
+            Henry
+        </a>
+    </div>
+</nav>
+<div class="single-column-header-container" ref="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="/">
+        <div class="single-column-header-title">Henry</div>
+        <div class="single-column-header-subtitle"></div>
+    </a>
+</div>
+<div ref="sideContainer" class="side-container">
+    <a class="a-block nav-head false" href="/">
+        <div class="nav-title">
+            Henry.
+        </div>
+        <div class="nav-subtitle">
+            奔走在自己的热爱里
+        </div>
+    </a>
+
+    <div class="nav-link-list">
+        
+        <a class="a-block no-tint nav-link-item false" href="/archives">
+            归档
+        </a>
+        
+
+        
+        
+        <a class="a-block nav-link-item false" href="/about/index.html">
+            About
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/gallery/index.html">
+            Gallery
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/privacy-policy/index.html">
+            隐私政策
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/archives/index.html">
+            Archives
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/sample-page/index.html">
+            示例页面
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/projects/index.html">
+            Projects
+        </a>
+        
+
+        
+    </div>
+
+    
+    <div class="nav-footer">
+        Proudly published with Hexo<br>
+        
+        Theme <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> by <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a><br>
+        
+        &copy; 2020 <a href="http://example.com">Henry</a>
+    </div>
+</div>
+<div ref="extraContainer" class="extra-container">
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+
+        
+    </div>
+</div>
+
+
+
+<div ref="streamContainer" class="stream-container">
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            <div class="post-head-wrapper-text-only"
+                 style="background-image: url('')">
+                <div class="post-title">
+                    从CNN到GAN的初尝试
+                    <div class="post-meta">
+                        <time datetime="2020-06-17T03:02:50.000Z" itemprop="datePublished">
+                            2020-06-17 11:02
+                        </time>&nbsp;
+                        
+                        
+                        <i class="material-icons" style="">folder</i>
+                        
+                        <a href='/categories/uncategorized/'>uncategorized</a>
+                        
+                        
+    
+                        
+                        
+                        <i class="material-icons" style="">label</i>
+                        
+                        <a href='/tags/Python/'>Python</a>, 
+                        
+                        <a href='/tags/深度学习/'>深度学习</a>, 
+                        
+                        <a href='/tags/GAN/'>GAN</a>, 
+                        
+                        <a href='/tags/MNIST/'>MNIST</a>, 
+                        
+                        <a href='/tags/TensorFlow/'>TensorFlow</a>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+    
+            <div class="post-body-wrapper">
+                <div class="post-body">
+                    <blockquote>
+<p><em>使用TensorFlow在MNIST数据集上实现一个生成式对抗网络。</em></p>
+</blockquote>
+<p>开头先推荐一些教程及资料： 【推荐👍】GAN入门教程 从0开始，手把手教你学会最火的神经网络 <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1078628">https://cloud.tencent.com/developer/article/1078628</a> 【莫烦】生成对抗网络 <a target="_blank" rel="noopener" href="https://morvanzhou.github.io/tutorials/machine-learning/ML-intro/2-6-GAN/">https://morvanzhou.github.io/tutorials/machine-learning/ML-intro/2-6-GAN/</a> 【官方】深度卷积生成对抗网络 TensorFlow Core <a target="_blank" rel="noopener" href="https://www.tensorflow.org/tutorials/generative/dcgan?hl=zh-cn">https://www.tensorflow.org/tutorials/generative/dcgan?hl=zh-cn</a></p>
+<hr>
+<h1 id="CNN"><a href="#CNN" class="headerlink" title="CNN"></a>CNN</h1><p>CNN最早可以追溯到1968年Hubel和Wiesel的论文，这篇论文讲述猫和猴的视觉皮层含有对视野的小区域单独反应的神经元，如果眼睛没有移动，则视觉刺激影响单个神经元的视觉空间区域被称为其感受野（Receptive Field），这为CNN的局部感知奠定了一个基础。然后是1980年，神经感知机(neocognitron)的提出，标志了第一个初始的卷积神经网络的诞生，也是感受野概念在人工神经网络领域的首次应用，神经认知机将一个视觉模式分解成许多子模式（特征），然后进入分层递阶式相连的特征平面进行处理。 CNN由输入和输出层以及多个隐藏层组成，隐藏层可分为卷积层，池化层、RELU层和全连接层等。</p>
+<h3 id="输入层"><a href="#输入层" class="headerlink" title="输入层"></a>输入层</h3><p>CNN的输入一般是二维向量，可以有第三维高度，例如RGB图像有三个通道。</p>
+<h3 id="卷积层"><a href="#卷积层" class="headerlink" title="卷积层"></a>卷积层</h3><p>卷积层是CNN的核心，层的参数由一组可学习的卷积核组成。在前馈期间，每个滤波器对输入进行卷积，计算滤波器和输入之间的点积，并产生该滤波器的二维激活图，提取更高层次的特征。 为了理解卷积，可以联想到在信号与系统中，输入对一个系统的响应是等于输入信号e(x)与系统函数h(x)进行卷积，h(x)可以看作一个滤波器，它会对输入信号进行筛选，选择和它类似的信号；类似的，在数字图像处理中，可以使用sobel算子提取图像边缘特征，这是因为sobel算子与图像边缘的结构相似，所以进行卷积之后就能提取出来。不同的是，CNN中的卷积核参数未知，即特定模式未知，是需要学习的参数。 值得一提的是，在下文的GAN中，还出现一种逆卷积，其输入比输出更小，看起来信息量变多了，实际上信息是从卷积核中来的。举例来说，特征向量描述了一张图中哪里有眼睛，而对应就有一个卷积核告诉网络眼睛怎么画出来。 <strong>卷积是特征的提取，反卷积就是特征的恢复</strong>，因此也可以理解成一种逆运算。 关于具体的计算方法，可以找一些Gif理解一下。</p>
+<h3 id="池化层"><a href="#池化层" class="headerlink" title="池化层"></a>池化层</h3><p>池化层又称下采样，它的作用是<strong>减小数据处理量同时保留有用信息</strong>。例如，将图像分割成2×2的小块，每块中只保留最大值（有的情况会保留平均值），保持原有的平面结构不变，得到的结果就只有输入的1/4大小，这样的做法有点像模糊图像，而之所以保留最大值，是因为我们希望获得的信息是和特定卷积核相似的特征，即能卷积出一个远高于平均值的输入，因此舍弃一些较小值对特征的识别并没有太大影响。</p>
+<h3 id="Relu层"><a href="#Relu层" class="headerlink" title="Relu层"></a>Relu层</h3><p>Relu被称为修正线性单元，是神经元激活函数中最常用的一种。所谓激活函数，就是非线性函数，因为仅用权重、偏差这样的线性函数是没法表示非线性系统的，所以在输出之前往往要加入一个非线性层。</p>
+<h3 id="全连接层"><a href="#全连接层" class="headerlink" title="全连接层"></a>全连接层</h3><p>全连接层就是一个常规的线性关系，包括系数矩阵、偏置向量。</p>
+<h3 id="输出层"><a href="#输出层" class="headerlink" title="输出层"></a>输出层</h3><p>对于多分类问题，输出层就是对结果的预测值，一般会加一个softmax层，用来将结果在0-1上归一化。 对于本次用到的GAN，输出层就变成了一个图像，也就是一个三维矩阵。</p>
+<h2 id="CNN特点"><a href="#CNN特点" class="headerlink" title="CNN特点"></a>CNN特点</h2><p>查阅资料，CNN相比与传统的神经网络的不同之处主要有三点，分别是局部感知、权重共享和多卷积核。</p>
+<h3 id="局部感知"><a href="#局部感知" class="headerlink" title="局部感知"></a>局部感知</h3><p>局部感知就是上文说到的感受野，在每个卷积过程中，卷积核所覆盖的像素只是一小部分，是一个局部的特征，即局部感知。所以CNN实现了一个从局部到整体的过程，而传统的神经网络是整体全连接的模式。</p>
+<h3 id="权重共享"><a href="#权重共享" class="headerlink" title="权重共享"></a>权重共享</h3><p>所谓权重共享，其实来自于卷积核的使用，关注核心特征，忽略那些有可能被优化到0的、没有信息量的特征，换来了更少的参数。换句话说，使用同一个卷积核在输入图像的各个位置进行卷积，相比于在各个位置使用不同的全连接参数，可以减少很多参数量。</p>
+<h3 id="多卷积核"><a href="#多卷积核" class="headerlink" title="多卷积核"></a>多卷积核</h3><p>一种卷积核代表的是一种特征，为获得更多不同的特征集合，卷积层会有多个卷积核，生成不同的特征。在卷积的输出处就可以发现，每个卷积核生成了一个独立的通道。当然，即使多卷积核的参数也比实现同样效果的全连接层的参数少。</p>
+<hr>
+<h1 id="GAN"><a href="#GAN" class="headerlink" title="GAN"></a>GAN</h1><p>生成对抗网络（GAN）于2014年首次提出，其最大的特点就是提出了一种让两个深度网络对抗训练的方法。生成器（Generator）将噪声作为输入并生成样本，判别器（Discriminator）从生成器和训练数据接收样本。判别器的目的是区分生成器数据和真实数据。一开始，Generator将产生一个完全看起来像随机噪声的样本。但是随着时间的流逝，Generator将学会产生更多逼真的样本。同时，鉴别器还将学习更好地区分生成的数据与真实数据。</p>
+<h3 id="判别器"><a href="#判别器" class="headerlink" title="判别器"></a>判别器</h3><p>判别器的输入是图像（包括真实的和创造的），输出是一个标量数字，该标量数字描述输入图像的真实度。</p>
+<h3 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h3><p>生成器的输入是一个向量，输出是一张图片。按照个人的理解，在训练完毕后，理想情况下每一维的输入都会代表图像中的一个高层语义特征，例如图像中某位置有一个圆、某位置有棱角。</p>
+<h3 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h3><p>GAN有两个损失函数，<strong>一个使生成器创造更逼真的图片，另一个使鉴别器更好地分辨真实图像</strong>。因此判别器的Loss包括真实图像计算得到的Dx与1作差、生成图像计算得到的Dg与0作差。 判别器最后没有加入激活函数，这是因为鉴别器如果把生成的图片全都打成0，完全没有梯度可以下降，GAN就不能训练下去了，这种被称为饱和。 GAN的训练很难使一对模型的G和D同时收敛。优化算法通常是个可靠的“下山”过程。GAN要求双方在博弈的过程中达到均衡。每个模型在更新的过程中（比如生成器）成功的“下山”，但同样的更新可能会造成博弈的另一个模型（比如判别器）“上山”。甚至有时候博弈双方虽然最终达到了均衡，但双方在不断地抵消对方的进步，却并没有使双方同时达到一个总体更优的地方。</p>
+<hr>
+<h1 id="TensorFlow"><a href="#TensorFlow" class="headerlink" title="TensorFlow"></a>TensorFlow</h1><p>软件平台： Win10 1909、Anaconda 3、Python 3.6.8、TensorFlow 1.14、CUDA 10.0 Coding的时候，推荐查看官方的API手册： <a target="_blank" rel="noopener" href="https://www.tensorflow.org/versions/r1.15/api_docs/python/tf">https://www.tensorflow.org/versions/r1.15/api_docs/python/tf</a> 使用TensorFlow搭建网络的过程中，有几个关键函数及相应参数。</p>
+<pre class=" language-python"><code class="language-python">tf<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>conv2d<span class="token punctuation">(</span>
+    input<span class="token punctuation">,</span>
+    filter<span class="token operator">=</span>None<span class="token punctuation">,</span>
+    strides<span class="token operator">=</span>None<span class="token punctuation">,</span>
+    padding<span class="token operator">=</span>None<span class="token punctuation">,</span>
+    use_cudnn_on_gpu<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+    data_format<span class="token operator">=</span><span class="token string">'NHWC'</span><span class="token punctuation">,</span>
+    dilations<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    name<span class="token operator">=</span>None<span class="token punctuation">,</span>
+    filters<span class="token operator">=</span>None
+<span class="token punctuation">)</span></code></pre>
+<p>第一个参数input是输入的图像，要求一个四维张量[batch, height, width, channels]；第二个参数filter是卷积核，要求一个四维张量[k_h, k_w, in, out]，分别是卷积核的高和宽、卷积需要作用的通道数、输出的通道数（即卷积核的个数）；第三个参数strides是卷积核移动的步长[1, s_h, s_w, 1]，分别是高度方向和宽度方向；第四个参数padding，“SAME”补零，“VALID”不补零。</p>
+<pre class=" language-python"><code class="language-python">tf<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>max_pool<span class="token punctuation">(</span>
+    value<span class="token punctuation">,</span>
+    ksize<span class="token punctuation">,</span>
+    strides<span class="token punctuation">,</span>
+    padding<span class="token punctuation">,</span>
+    data_format<span class="token operator">=</span><span class="token string">'NHWC'</span><span class="token punctuation">,</span>
+    name<span class="token operator">=</span>None<span class="token punctuation">,</span>
+    input<span class="token operator">=</span>None
+<span class="token punctuation">)</span></code></pre>
+<p>第一个参数value是输入的图像，一般就是上一层feature map[batch, height, width, channels]；第二个参数ksize是池化窗口的大小，取一个四维向量，一般是[1, height, width, 1]，因为我们不想在batch和channels上做池化，所以这两个维度设为了1；第三个参数strides和卷积类似，窗口在每一个维度上滑动的步长，一般也是[1, s_h, s_w, 1]；第四个参数padding：和卷积类似，可以取“VALID” 或者“SAME”。</p>
+<h3 id="语法习惯"><a href="#语法习惯" class="headerlink" title="语法习惯"></a>语法习惯</h3><p>使用TensorFlow编程时，为了使代码简洁高效，也有一些技巧习惯，学习后总结如下： 节点op，指基本计算，包括常量定义。会话Session，调用Sess.run(关注的op)，会进行所有和op相关的运算，获取结果。sess.run后面可以跟多个张量，同时输出。 矩阵变量名大写，例如权重W，向量变量名小写，例如偏置b。 Session对象在使用完后需要关闭以释放资源. 除了显式调用close外, 也可以使用 “with” 代码块来自动完成关闭动作。 placeholder的第一维一般设置为None，这样可以在session运行的时候再确定，由此表示可以变化的batch大小。 Variable是可更改的，而Tensor是不可更改的。所以Variable用于存储网络中的权重矩阵等变量，而Tensor更多的是中间结果等。 如果已经存在的变量没有设置为共享变量，TensorFlow运行到第二个拥有相同名字的变量的时候，就会报错。为了解决这个问题，TensorFlow 提出了 tf.variable_scope 函数：它的主要作用是，在一个作用域 scope 内共享一些变量，简单来说就是给变量名前再加了个变量空间名。此时需要用到tf.get_variable()而不是tf.Variable()。 使用Tensorboard可以在训练过程中监视Loss曲线、图像输出，使用FileWriter创建一个writer，将需要关注的变量添加到日志，在浏览器对应端口打开即可。</p>
+<h3 id="训练-1"><a href="#训练-1" class="headerlink" title="训练"></a>训练</h3><p>最终设计的网络结构如下（图片使用<a target="_blank" rel="noopener" href="https://cbovar.github.io/ConvNetDraw/">ConvNetDraw工具</a>生成）： [caption align=”aligncenter” width=680]<img src="https://s1.ax1x.com/2020/06/17/NAhrXn.jpg"> 判别器[/caption] [caption align=”aligncenter” width=680]<img src="https://s1.ax1x.com/2020/06/17/NAhD6s.jpg"> 生成器[/caption] 使用Tensorboard跟踪Loss曲线，如下。 [caption align=”aligncenter” width=680]<img src="https://s1.ax1x.com/2020/06/17/NAoYvQ.jpg"> Discriminator Loss for Real Imgaes[/caption] [caption align=”aligncenter” width=680]<img src="https://s1.ax1x.com/2020/06/17/NAoUDs.jpg"> Discriminator Loss for Fake Imgaes[/caption] [caption align=”aligncenter” width=680]<img src="https://s1.ax1x.com/2020/06/17/NAoNuj.jpg"> Generator Loss[/caption] 这时候可以发现，GAN的Loss一直没有收敛。其实不难理解，生成器和判别器的目的相反，也就是说生成器网络和判别器网络互为对抗，Loss不可能一直降低。如果生成器Loss下降快，很有可能是判别器太弱，导致生成器轻易地骗过判别器。若判别器Loss下降快，则说明生成器生成的图像不够逼真，才使得判别器轻易判别。 100000轮后，随机产生一批特征值作为生成器输入，使用网络生成的最终结果如下：</p>
+<p><img src="https://s1.ax1x.com/2020/06/17/NAT0Ld.jpg"></p>
+<p>😒差强人意，笔画挺连贯的，但是很难分辨出数字了。多次调整超参数（包括学习率、卷积核数等），效果提升也不太明显。</p>
+<h3 id="开源DCGAN"><a href="#开源DCGAN" class="headerlink" title="开源DCGAN"></a>开源DCGAN</h3><p>由于自己构建的网络效果一般，在此基础上，尝试使用开源的<a target="_blank" rel="noopener" href="https://github.com/carpedm20/DCGAN-tensorflow" title="DCGAN代码">DCGAN代码</a>进行学习测试。DCGAN所提出的模型架构大致如下： 1、生成器和判别器均不采用池化层，而采用（带步长的）的卷积层；其中判别器采用普通卷积（Conv2D），而生成器采用反卷积（DeConv2D）； 2、在生成器和判别器上均使用Batch Normalization； 3、在生成器除输出层外的所有层上使用RelU激活函数，而输出层使用Tanh激活函数； 4、在判别器的所有层上使用LeakyReLU激活函数； 5、卷积层之后不使用全连接层； 6、判别器的最后一个卷积层之后也不用Global Pooling，而是直接Flatten。 由于网络环境问题，作者提供的MNIST和celebA数据集链接都不能正常访问。于是使用MNIST官网的数据集，解压之后修改对应文件名，使用作者推荐参数尝试训练。 训练约5000轮之后生成的数字如下，考虑到MNIST数据集的字体很飘逸（难看），个人认为这样的效果已经相当理想了。</p>
+<p><img src="https://s1.ax1x.com/2020/06/17/NA5zwt.png"></p>
+
+                </div>
+            </div>
+    
+            <nav class="post-pagination">
+    
+    <a class="newer-posts" href="/2020/06/17/poke-gan/">
+        上一篇<br>训练一个独一无二的Pokémon
+    </a>
+    
+    <span class="page-number"></span>
+    
+    <a class="older-posts" href="/2020/06/08/latex/">
+        下一篇<br>LaTeX入门笔记
+    </a>
+    
+</nav>
+
+    
+            
+
+
+        </div>
+    </div>
+    <div class="single-column-footer">
+    Proudly published with Hexo<br>
+    
+    Theme <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> by <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a><br>
+    
+    &copy; 2020 <a href="http://example.com">Henry</a>
+</div>
+</div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"
+        integrity="sha256-EGs9T1xMHdvM1geM8jPpoo8EZ1V1VRsmcJz8OByENLA=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+        integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"
+        integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
+        integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
+<script src="/js/journal.js?76046948"></script>
+
+
+
+</body>
+</html>
