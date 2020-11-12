@@ -11,7 +11,10 @@
 <meta name="description" content="
 水文，简单记录一下最近复习《信号与系统》的时候用MATLAB设计语音滤波器的过程。
 
-首先利用自带的录音机录下一...">
+首先利用自带的录音机录下一段语音信号，运用MATLAB对语音进行频域分析。
+rec_sound(3,44100,&#39;voice_rec&#39;) %时间 采样率 文件名
+
+[x1,fs]=audioread(&#39;vo...">
 <meta name="keywords" content="">
 
     <meta charset="utf-8">
@@ -21,7 +24,7 @@
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?63277567">
+<link rel="stylesheet" href="/css/journal.css?63826976">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -80,6 +83,10 @@
                 About
             </a>
             
+            <a class="a-block drawer-menu-item false" href="/archives/index.html">
+                Archives
+            </a>
+            
             <a class="a-block drawer-menu-item false" href="/gallery/index.html">
                 Gallery
             </a>
@@ -88,16 +95,12 @@
                 隐私政策
             </a>
             
-            <a class="a-block drawer-menu-item false" href="/archives/index.html">
-                Archives
+            <a class="a-block drawer-menu-item false" href="/projects/index.html">
+                Projects
             </a>
             
             <a class="a-block drawer-menu-item false" href="/sample-page/index.html">
                 示例页面
-            </a>
-            
-            <a class="a-block drawer-menu-item false" href="/projects/index.html">
-                Projects
             </a>
             
 
@@ -151,6 +154,10 @@
             About
         </a>
         
+        <a class="a-block nav-link-item false" href="/archives/index.html">
+            Archives
+        </a>
+        
         <a class="a-block nav-link-item false" href="/gallery/index.html">
             Gallery
         </a>
@@ -159,16 +166,12 @@
             隐私政策
         </a>
         
-        <a class="a-block nav-link-item false" href="/archives/index.html">
-            Archives
+        <a class="a-block nav-link-item false" href="/projects/index.html">
+            Projects
         </a>
         
         <a class="a-block nav-link-item false" href="/sample-page/index.html">
             示例页面
-        </a>
-        
-        <a class="a-block nav-link-item false" href="/projects/index.html">
-            Projects
         </a>
         
 
@@ -340,6 +343,9 @@ Rs<span class="token operator">=</span><span class="token number">15</span><span
     
             
 
+<div id="lv-container" data-id="city" data-uid="MTAyMC81MTk1OS8yODQ0MA==">
+</div>
+
 
         </div>
     </div>
@@ -363,8 +369,24 @@ Rs<span class="token operator">=</span><span class="token number">15</span><span
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?63790004"></script>
+<script src="/js/journal.js?62142890"></script>
 
+
+<script type="text/javascript">
+    (function (d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+
+        if (typeof LivereTower === 'function') {
+            return;
+        }
+
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+</script>
 
 
 </body>

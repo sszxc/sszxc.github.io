@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-11-11T16:10:41.891Z</updated>
+  <updated>2020-11-12T02:52:01.168Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://example.com/2020/11/11/%E4%BB%8EWordPress%E5%88%B0Hexo/"/>
     <id>http://example.com/2020/11/11/%E4%BB%8EWordPress%E5%88%B0Hexo/</id>
     <published>2020-11-11T15:45:18.000Z</published>
-    <updated>2020-11-11T16:10:41.891Z</updated>
+    <updated>2020-11-12T02:52:01.168Z</updated>
     
-    <content type="html"><![CDATA[<p>用 WordPress 写博客已经很长时间，虽然写的东西不多，从最开始的托管空间开始到迁移至阿里的 ECS 上，这个博客已经存在了四五年了。也从最开始感叹 WordPress 功能强大到现在抱怨种种问题，例如 Markdown 支持不完善、由于主机上传带宽很小后台管理打开很慢等等。越用越感觉 WordPress 似乎不适合我，操作过于繁琐。一句话就是「不够 Geek」。</p><ul><li>缺乏版本控制</li><li>完整备份比较麻烦（尤其是图片）</li></ul><p>其实最开始搭建博客时也考虑过 Hexo，当初认为 Hexo 过于简陋而使用了 WordPress。现在来看 Hexo 才是最适合我的。</p><ul><li>Markdown 编写文章配合上 Typora 不要太爽</li><li>静态页面没有后台管理</li><li>每个细节可高度定制化</li><li>快速部署到任何地方</li></ul><p>Wordpress 作为一个动态程序，其稳定性和维护的成本是大于 Hexo 这类静态文章生成器的，安全性也是要大大降低的。</p><p>虽然 Wordpress 和 Hexo 都是比较优秀的 CMS 系统，所以在此不讨论他们孰优孰劣的问题。他们之间的区别是显而易见的： Wordpress 是一个相对较重的 CMS 平台，所有的数据保存在 MySQL 数据库中，需要在一个支持 PHP 的环境中运行；Hexo 所有的数据都保存在文件中，通过预编译输出为静态文件，可以托管于任何一个静态文件服务器（基于 Nginx、Apache、IIS 等）中。</p><h1 id="迁移"><a href="#迁移" class="headerlink" title="迁移"></a>迁移</h1><p>参考 <a href="https://hexo.io/zh-cn/docs/migration">https://hexo.io/zh-cn/docs/migration</a></p><h1 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h1><p>如下是经常使用的命令<br>1    hexo new “postName” #新建文章<br>2    hexo new page “pageName” #新建页面<br>3    hexo generate #生成静态页面至public目录<br>4    hexo server #开启预览访问端口（默认端口4000，’ctrl + c’关闭server）<br>5    hexo deploy #将.deploy目录部署到GitHub<br>6    hexo clean #清除database和public文件夹</p><p>官方文档<br><a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p>]]></content>
+    <content type="html"><![CDATA[<p>用 WordPress 写博客已经很长时间，虽然写的东西不多，从最开始的托管空间开始到迁移至阿里的 ECS 上，这个博客已经存在了四五年了。也从最开始感叹 WordPress 功能强大到现在抱怨种种问题，例如 Markdown 支持不完善、由于主机上传带宽很小后台管理打开很慢等等。越用越感觉 WordPress 似乎不适合我，操作过于繁琐。一句话就是「不够 Geek」。</p><ul><li>缺乏版本控制</li><li>完整备份比较麻烦（尤其是图片）</li></ul><p>其实最开始搭建博客时也考虑过 Hexo，当初认为 Hexo 过于简陋而使用了 WordPress。现在来看 Hexo 才是最适合我的。</p><ul><li>Markdown 编写文章配合上 Typora 不要太爽</li><li>静态页面没有后台管理</li><li>每个细节可高度定制化</li><li>快速部署到任何地方</li></ul><p>Wordpress 作为一个动态程序，其稳定性和维护的成本是大于 Hexo 这类静态文章生成器的，安全性也是要大大降低的。</p><p>虽然 Wordpress 和 Hexo 都是比较优秀的 CMS 系统，所以在此不讨论他们孰优孰劣的问题。他们之间的区别是显而易见的： Wordpress 是一个相对较重的 CMS 平台，所有的数据保存在 MySQL 数据库中，需要在一个支持 PHP 的环境中运行；Hexo 所有的数据都保存在文件中，通过预编译输出为静态文件，可以托管于任何一个静态文件服务器（基于 Nginx、Apache、IIS 等）中。</p><h1 id="向WordPress告别"><a href="#向WordPress告别" class="headerlink" title="向WordPress告别"></a>向WordPress告别</h1><p>使用的插件</p><p>一些经验</p><h1 id="博客迁移"><a href="#博客迁移" class="headerlink" title="博客迁移"></a>博客迁移</h1><p>参考 <a href="https://hexo.io/zh-cn/docs/migration">https://hexo.io/zh-cn/docs/migration</a></p><h1 id="初识Hexo"><a href="#初识Hexo" class="headerlink" title="初识Hexo"></a>初识Hexo</h1><p>如下是经常使用的命令<br>1    hexo new “postName” #新建文章<br>2    hexo new page “pageName” #新建页面<br>3    hexo generate #生成静态页面至public目录<br>4    hexo server #开启预览访问端口（默认端口4000，’ctrl + c’关闭server）<br>5    hexo deploy #将.deploy目录部署到GitHub<br>6    hexo clean #清除database和public文件夹</p><p>官方文档<br><a href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p><h1 id="正在使用的Hexo插件"><a href="#正在使用的Hexo插件" class="headerlink" title="正在使用的Hexo插件"></a>正在使用的Hexo插件</h1>]]></content>
     
     
       
@@ -471,9 +471,9 @@
     <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="语音" scheme="http://example.com/tags/%E8%AF%AD%E9%9F%B3/"/>
-    
     <category term="Python" scheme="http://example.com/tags/Python/"/>
+    
+    <category term="语音" scheme="http://example.com/tags/%E8%AF%AD%E9%9F%B3/"/>
     
     <category term="ROS" scheme="http://example.com/tags/ROS/"/>
     
