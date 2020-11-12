@@ -471,9 +471,9 @@
     <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="Python" scheme="http://example.com/tags/Python/"/>
-    
     <category term="语音" scheme="http://example.com/tags/%E8%AF%AD%E9%9F%B3/"/>
+    
+    <category term="Python" scheme="http://example.com/tags/Python/"/>
     
     <category term="ROS" scheme="http://example.com/tags/ROS/"/>
     
