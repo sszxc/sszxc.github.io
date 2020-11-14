@@ -139,9 +139,9 @@
     
     <category term="MATLAB" scheme="http://example.com/tags/MATLAB/"/>
     
-    <category term="强化学习" scheme="http://example.com/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="深度学习" scheme="http://example.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="强化学习" scheme="http://example.com/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -237,9 +237,9 @@
     
     <category term="机器人" scheme="http://example.com/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
     
-    <category term="强化学习" scheme="http://example.com/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="深度学习" scheme="http://example.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="强化学习" scheme="http://example.com/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -269,11 +269,11 @@
     
     <category term="Python" scheme="http://example.com/tags/Python/"/>
     
-    <category term="深度学习" scheme="http://example.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="GAN" scheme="http://example.com/tags/GAN/"/>
     
     <category term="TensorFlow" scheme="http://example.com/tags/TensorFlow/"/>
+    
+    <category term="深度学习" scheme="http://example.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
     <category term="Pokémon" scheme="http://example.com/tags/Pokemon/"/>
     
@@ -304,13 +304,13 @@
     
     <category term="Python" scheme="http://example.com/tags/Python/"/>
     
-    <category term="深度学习" scheme="http://example.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="GAN" scheme="http://example.com/tags/GAN/"/>
     
     <category term="MNIST" scheme="http://example.com/tags/MNIST/"/>
     
     <category term="TensorFlow" scheme="http://example.com/tags/TensorFlow/"/>
+    
+    <category term="深度学习" scheme="http://example.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -366,9 +366,9 @@
     
     <category term="Python" scheme="http://example.com/tags/Python/"/>
     
-    <category term="深度学习" scheme="http://example.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="TensorFlow" scheme="http://example.com/tags/TensorFlow/"/>
+    
+    <category term="深度学习" scheme="http://example.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
     <category term="Anaconda" scheme="http://example.com/tags/Anaconda/"/>
     
