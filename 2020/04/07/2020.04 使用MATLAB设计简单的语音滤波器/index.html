@@ -4,17 +4,17 @@
 <html lang="zh-CN" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 
 <head>
-    <title>使用MATLAB设计简单的语音滤波器 - Henry</title>
+    <title>使用 MATLAB 设计简单的语音滤波器 - Henry</title>
 <meta charset="utf-8">
 <meta name="X-UA-Compatible" content="IE=edge">
 <meta name="author" content="Henry">
 <meta name="description" content="
-水文，简单记录一下最近复习《信号与系统》的时候用MATLAB设计语音滤波器的过程。
+水文，简单记录一下最近复习《信号与系统》的时候用 MATLAB 设计语音滤波器的过程。
 
-首先利用自带的录音机录下一段语音信号，运用MATLAB对语音进行频域分析。
+首先利用自带的录音机录下一段语音信号，运用 MATLAB 对语音进行频域分析。
 rec_sound(3,44100,&#39;voice_rec&#39;) %时间 采样率 文件名
 
-[x1,fs]=audioread(&#39;vo...">
+[x1,fs]=audioread...">
 <meta name="keywords" content="">
 
     <meta charset="utf-8">
@@ -24,7 +24,7 @@ rec_sound(3,44100,&#39;voice_rec&#39;) %时间 采样率 文件名
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?91426457">
+<link rel="stylesheet" href="/css/journal.css?19642038">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -75,20 +75,20 @@ rec_sound(3,44100,&#39;voice_rec&#39;) %时间 采样率 文件名
 
             
             
-            <a class="a-block drawer-menu-item false" href="/about/index.html">
-                About
-            </a>
-            
             <a class="a-block drawer-menu-item false" href="/archives/index.html">
                 Archives
             </a>
             
-            <a class="a-block drawer-menu-item false" href="/projects/index.html">
-                Projects
-            </a>
-            
             <a class="a-block drawer-menu-item false" href="/gallery/index.html">
                 Gallery
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/about/index.html">
+                About
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/projects/index.html">
+                Projects
             </a>
             
 
@@ -134,20 +134,20 @@ rec_sound(3,44100,&#39;voice_rec&#39;) %时间 采样率 文件名
 
         
         
-        <a class="a-block nav-link-item false" href="/about/index.html">
-            About
-        </a>
-        
         <a class="a-block nav-link-item false" href="/archives/index.html">
             Archives
         </a>
         
-        <a class="a-block nav-link-item false" href="/projects/index.html">
-            Projects
-        </a>
-        
         <a class="a-block nav-link-item false" href="/gallery/index.html">
             Gallery
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/about/index.html">
+            About
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/projects/index.html">
+            Projects
         </a>
         
 
@@ -183,7 +183,7 @@ rec_sound(3,44100,&#39;voice_rec&#39;) %时间 采样率 文件名
             <div class="post-head-wrapper-text-only"
                  style="background-image: url('')">
                 <div class="post-title">
-                    使用MATLAB设计简单的语音滤波器
+                    使用 MATLAB 设计简单的语音滤波器
                     <div class="post-meta">
                         <time datetime="2020-04-07T11:41:20.000Z" itemprop="datePublished">
                             2020-04-07 19:41
@@ -202,9 +202,9 @@ rec_sound(3,44100,&#39;voice_rec&#39;) %时间 采样率 文件名
                         
                         <a href='/tags/MATLAB/'>MATLAB</a>, 
                         
-                        <a href='/tags/滤波器/'>滤波器</a>, 
+                        <a href='/tags/语音/'>语音</a>, 
                         
-                        <a href='/tags/语音/'>语音</a>
+                        <a href='/tags/滤波器/'>滤波器</a>
                         
                         
 
@@ -235,14 +235,14 @@ rec_sound(3,44100,&#39;voice_rec&#39;) %时间 采样率 文件名
             <div class="post-body-wrapper">
                 <div class="post-body">
                     <blockquote>
-<p>水文，简单记录一下最近复习《信号与系统》的时候用MATLAB设计语音滤波器的过程。</p>
+<p>水文，简单记录一下最近复习《信号与系统》的时候用 MATLAB 设计语音滤波器的过程。</p>
 </blockquote>
-<p>首先利用自带的录音机录下一段语音信号，运用MATLAB对语音进行频域分析。</p>
+<p>首先利用自带的录音机录下一段语音信号，运用 MATLAB 对语音进行频域分析。</p>
 <pre class=" language-matlab"><code class="language-matlab"><span class="token function">rec_sound</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">44100</span><span class="token punctuation">,</span><span class="token string">'voice_rec'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">%时间 采样率 文件名</span>
 
 <span class="token punctuation">[</span>x1<span class="token punctuation">,</span>fs<span class="token punctuation">]</span><span class="token operator">=</span><span class="token function">audioread</span><span class="token punctuation">(</span><span class="token string">'voice_rec.wav'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">%读取语音信号的数据</span>
 <span class="token comment" spellcheck="true">% sound(x1,fs); %播放语音信号</span>
-y1<span class="token operator">=</span><span class="token function">fft</span><span class="token punctuation">(</span>x1<span class="token punctuation">,</span><span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">%对信号做1024点FFT变换</span>
+y1<span class="token operator">=</span><span class="token function">fft</span><span class="token punctuation">(</span>x1<span class="token punctuation">,</span><span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">%对信号做 1024 点 FFT 变换</span>
 f<span class="token operator">=</span>fs<span class="token operator">*</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token operator">:</span><span class="token number">511</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">1024</span><span class="token punctuation">;</span>
 <span class="token function">figure</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">plot</span><span class="token punctuation">(</span>x1<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">%做原始语音信号的时域图形</span>
@@ -251,17 +251,17 @@ f<span class="token operator">=</span>fs<span class="token operator">*</span><sp
 <span class="token function">title</span><span class="token punctuation">(</span><span class="token string">'频率响应图'</span><span class="token punctuation">)</span>
 <span class="token function">figure</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">subplot</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">plot</span><span class="token punctuation">(</span><span class="token function">abs</span><span class="token punctuation">(</span><span class="token function">y1</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">:</span><span class="token number">512</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">%做原始语音信号的FFT频谱图</span>
-<span class="token function">title</span><span class="token punctuation">(</span><span class="token string">'原始语音信号FFT频谱'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">plot</span><span class="token punctuation">(</span><span class="token function">abs</span><span class="token punctuation">(</span><span class="token function">y1</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">:</span><span class="token number">512</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">%做原始语音信号的 FFT 频谱图</span>
+<span class="token function">title</span><span class="token punctuation">(</span><span class="token string">'原始语音信号 FFT 频谱'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">subplot</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">plot</span><span class="token punctuation">(</span>f<span class="token punctuation">,</span><span class="token function">abs</span><span class="token punctuation">(</span><span class="token function">y1</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">:</span><span class="token number">512</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">title</span><span class="token punctuation">(</span><span class="token string">'原始语音信号频谱'</span><span class="token punctuation">)</span>
 <span class="token function">xlabel</span><span class="token punctuation">(</span><span class="token string">'Hz'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">ylabel</span><span class="token punctuation">(</span><span class="token string">'fuzhi'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>之后利用ellipord函数设计IIR带通滤波器，所取的具体性能指标如下，其中最关键的参数就是通带阻带的截止频率。<strong>需要注意的是</strong>，滤波器的性能一定是有理论上限的，需要根据不同的采样率等进行调整，提高采样率的时候适当放松性能要求，否则会出现异常。</p>
+<p>之后利用 ellipord 函数设计 IIR 带通滤波器，所取的具体性能指标如下，其中最关键的参数就是通带阻带的截止频率。<strong>需要注意的是</strong>，滤波器的性能一定是有理论上限的，需要根据不同的采样率等进行调整，提高采样率的时候适当放松性能要求，否则会出现异常。</p>
 <pre class=" language-matlab"><code class="language-matlab">Fp1<span class="token operator">=</span><span class="token number">1000</span><span class="token punctuation">;</span> Fp2<span class="token operator">=</span><span class="token number">2000</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">%通带截止频率上下限</span>
 Fs1<span class="token operator">=</span><span class="token number">800</span><span class="token punctuation">;</span> Fs2<span class="token operator">=</span><span class="token number">2200</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">%阻带截止频率上下限</span>
 Ft<span class="token operator">=</span><span class="token number">44100</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">%采样率</span>
-As<span class="token operator">=</span><span class="token number">30</span><span class="token punctuation">;</span> Ap<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">%通带边衰减DB值和阻带边衰减DB值</span>
+As<span class="token operator">=</span><span class="token number">30</span><span class="token punctuation">;</span> Ap<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">%通带边衰减 DB 值和阻带边衰减 DB 值</span>
 wp<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token operator">*</span><span class="token keyword">pi</span><span class="token operator">*</span>Fp1<span class="token operator">/</span>Ft<span class="token punctuation">,</span><span class="token number">2</span><span class="token operator">*</span><span class="token keyword">pi</span><span class="token operator">*</span>Fp2<span class="token operator">/</span>Ft<span class="token punctuation">]</span><span class="token punctuation">;</span>
 ws<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token operator">*</span><span class="token keyword">pi</span><span class="token operator">*</span>Fs1<span class="token operator">/</span>Ft<span class="token punctuation">,</span><span class="token number">2</span><span class="token operator">*</span><span class="token keyword">pi</span><span class="token operator">*</span>Fs2<span class="token operator">/</span>Ft<span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token punctuation">[</span>n<span class="token punctuation">,</span>wn<span class="token punctuation">]</span><span class="token operator">=</span><span class="token function">ellipord</span><span class="token punctuation">(</span>wp<span class="token punctuation">,</span>ws<span class="token punctuation">,</span>Ap<span class="token punctuation">,</span>As<span class="token punctuation">,</span><span class="token string">'s'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -269,11 +269,15 @@ ws<span class="token operator">=</span><span class="token punctuation">[</span><
 <span class="token punctuation">[</span>B<span class="token punctuation">,</span>A<span class="token punctuation">]</span><span class="token operator">=</span><span class="token function">bilinear</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span>a<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">[</span>h<span class="token punctuation">,</span>w<span class="token punctuation">]</span><span class="token operator">=</span><span class="token function">freqz</span><span class="token punctuation">(</span>B<span class="token punctuation">,</span>A<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">plot</span><span class="token punctuation">(</span>w<span class="token operator">*</span>Ft<span class="token operator">/</span><span class="token keyword">pi</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token function">abs</span><span class="token punctuation">(</span>h<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">title</span><span class="token punctuation">(</span><span class="token string">'IIR带通滤波器'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">title</span><span class="token punctuation">(</span><span class="token string">'IIR 带通滤波器'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">xlabel</span><span class="token punctuation">(</span><span class="token string">'频率'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">ylabel</span><span class="token punctuation">(</span><span class="token string">'幅度'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 grid on<span class="token punctuation">;</span></code></pre>
-<p><img src="https://s1.ax1x.com/2020/05/08/YuivZR.png"></p>
+<center>
+<img src="https://s1.ax1x.com/2020/05/08/YuivZR.png"/>
+</center>
+<br>
+
 <p>将滤波器应用到语音信号后的效果如下。可以看到只有对应频率带内的信号得到了保留，阻带的信号都被大幅度衰减，实际听起来的声音少了很多高频的信号，非常沉闷。</p>
 <pre class=" language-matlab"><code class="language-matlab"><span class="token comment" spellcheck="true">% 滤波效果</span>
 <span class="token punctuation">[</span>x1<span class="token punctuation">,</span>fs<span class="token punctuation">]</span><span class="token operator">=</span><span class="token function">audioread</span><span class="token punctuation">(</span><span class="token string">'voice_rec.wav'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -304,8 +308,16 @@ F1<span class="token operator">=</span><span class="token function">plot</span><
 <span class="token function">xlabel</span><span class="token punctuation">(</span><span class="token string">'Hz'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">ylabel</span><span class="token punctuation">(</span><span class="token string">'幅值'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">axis</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span> <span class="token number">10000</span> <span class="token number">0</span> <span class="token number">0.3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p><img src="https://s1.ax1x.com/2020/05/08/Yuixd1.png"></p>
-<p><img src="https://s1.ax1x.com/2020/05/08/YuiXL9.png"></p>
+<center>
+<img src="https://s1.ax1x.com/2020/05/08/Yuixd1.png"/>
+</center>
+<br>
+
+<center>
+<img src="https://s1.ax1x.com/2020/05/08/YuiXL9.png"/>
+</center>
+<br>
+
 <p>还可以给原始的语音信号加上一个高频余弦噪声，之后再使用滤波器进行滤波，这样可以看到很明显的效果。</p>
 <pre class=" language-matlab"><code class="language-matlab"><span class="token punctuation">[</span>x1<span class="token punctuation">,</span>fs<span class="token punctuation">]</span><span class="token operator">=</span><span class="token function">audioread</span><span class="token punctuation">(</span><span class="token string">'voice_zxc.wav'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 t<span class="token operator">=</span><span class="token number">0</span><span class="token operator">:</span><span class="token number">1</span><span class="token operator">/</span>fs<span class="token operator">:</span><span class="token punctuation">(</span><span class="token function">size</span><span class="token punctuation">(</span>x1<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">/</span>fs<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">% 时间轴</span>
@@ -316,7 +328,7 @@ wp<span class="token operator">=</span><span class="token number">0.25</span><sp
 ws<span class="token operator">=</span><span class="token number">0.3</span><span class="token operator">*</span><span class="token keyword">pi</span><span class="token punctuation">;</span>
 Rp<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
 Rs<span class="token operator">=</span><span class="token number">15</span><span class="token punctuation">;</span></code></pre>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
 <li> <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44372699/article/details/91512660">Matlab：语音信号处理与滤波</a></li>
 </ol>
 
@@ -325,14 +337,14 @@ Rs<span class="token operator">=</span><span class="token number">15</span><span
     
             <nav class="post-pagination">
     
-    <a class="newer-posts" href="/2020/04/23/turtytalk/">
-        上一篇<br>在ROS下使用百度UNIT实现语音交互
+    <a class="newer-posts" href="/2020/04/23/2020.04%20%E5%9C%A8ROS%E4%B8%8B%E4%BD%BF%E7%94%A8%E7%99%BE%E5%BA%A6UNIT%E5%AE%9E%E7%8E%B0%E8%AF%AD%E9%9F%B3%E4%BA%A4%E4%BA%92/">
+        上一篇<br>在 ROS 下使用百度 UNIT 实现语音交互
     </a>
     
     <span class="page-number"></span>
     
     <a class="older-posts" href="/2020/03/23/2020.03%20%E4%BD%BF%E7%94%A8MATLAB%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B7%A5%E5%85%B7%E7%AE%B1%E8%BF%9B%E8%A1%8C%E6%B0%B4%E5%88%80%E8%BF%90%E5%8A%A8%E5%AD%A6%E4%BB%BF%E7%9C%9F/">
-        下一篇<br>使用MATLAB机器人工具箱进行水刀运动学仿真
+        下一篇<br>使用 MATLAB 机器人工具箱进行水刀运动学仿真
     </a>
     
 </nav>
@@ -366,7 +378,7 @@ Rs<span class="token operator">=</span><span class="token number">15</span><span
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?94302671"></script>
+<script src="/js/journal.js?52393407"></script>
 
 
 <script type="text/javascript">
