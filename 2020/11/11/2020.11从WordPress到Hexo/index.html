@@ -4,12 +4,14 @@
 <html lang="zh-CN" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 
 <head>
-    <title>Wordpress 建站日志 - Henry</title>
+    <title>从 WordPress 到 Hexo - Henry</title>
 <meta charset="utf-8">
 <meta name="X-UA-Compatible" content="IE=edge">
 <meta name="author" content="Henry">
-<meta name="description" content="关于“搭建博客”，网上给出了很多种方式，例如 GitHub+Hexo、Wordpress 之类的建站工具、从头搭网站等。初来乍到，选择了其中相对比较简单的建站方式，前期还是希望以内容为主，之后有兴趣了再研究研究服务器、数据库、前端之类的知识吧。
-建站，首先是 VPS ，这次选择的是 Vultr...">
+<meta name="description" content="
+所以爱会消失对不对
+
+用 WordPress 写博客已经很长时间，虽然写的东西不多，从最开始的托管空间开始到迁移至阿里的 ECS 上，这个博客已经存在了四五年了。也从最开始感叹 WordPress 功能强大到现在抱怨种种问题，例如 Markdown 支持不完善、由于主机上传带宽很小后台管理打...">
 <meta name="keywords" content="">
 
     <meta charset="utf-8">
@@ -19,7 +21,7 @@
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?94525237">
+<link rel="stylesheet" href="/css/journal.css?177653">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -70,16 +72,16 @@
 
             
             
+            <a class="a-block drawer-menu-item false" href="/about/index.html">
+                About
+            </a>
+            
             <a class="a-block drawer-menu-item false" href="/archives/index.html">
                 Archives
             </a>
             
             <a class="a-block drawer-menu-item false" href="/gallery/index.html">
                 Gallery
-            </a>
-            
-            <a class="a-block drawer-menu-item false" href="/about/index.html">
-                About
             </a>
             
             <a class="a-block drawer-menu-item false" href="/projects/index.html">
@@ -129,16 +131,16 @@
 
         
         
+        <a class="a-block nav-link-item false" href="/about/index.html">
+            About
+        </a>
+        
         <a class="a-block nav-link-item false" href="/archives/index.html">
             Archives
         </a>
         
         <a class="a-block nav-link-item false" href="/gallery/index.html">
             Gallery
-        </a>
-        
-        <a class="a-block nav-link-item false" href="/about/index.html">
-            About
         </a>
         
         <a class="a-block nav-link-item false" href="/projects/index.html">
@@ -178,17 +180,11 @@
             <div class="post-head-wrapper-text-only"
                  style="background-image: url('')">
                 <div class="post-title">
-                    Wordpress 建站日志
+                    从 WordPress 到 Hexo
                     <div class="post-meta">
-                        <time datetime="2020-01-10T07:48:39.000Z" itemprop="datePublished">
-                            2020-01-10 15:48
+                        <time datetime="2020-11-11T15:45:18.000Z" itemprop="datePublished">
+                            2020-11-11 23:45
                         </time>&nbsp;
-                        
-                        
-                        <i class="material-icons" style="">folder</i>
-                        
-                        <a href='/categories/uncategorized/'>uncategorized</a>
-                        
                         
     
                         
@@ -225,48 +221,52 @@
     
             <div class="post-body-wrapper">
                 <div class="post-body">
-                    <p>关于“搭建博客”，网上给出了很多种方式，例如 GitHub+Hexo、Wordpress 之类的建站工具、从头搭网站等。初来乍到，选择了其中相对比较简单的建站方式，前期还是希望以内容为主，之后有兴趣了再研究研究服务器、数据库、前端之类的知识吧。</p>
-<p>建站，首先是 <strong>VPS</strong> ，这次选择的是 Vultr 上的主机，按时间计费，可以随时销毁，后台管理也很方便；另一个原因是考虑到某些政策，国外服务器可以偷懒略过一些后续步骤。我配置在洛杉矶机房，单核 1G 内存，25GB SSD，1TB 带宽，月租 \$5，支持支付宝付款。注册的时候会提示 \$50 优惠，实际上这 \$50 的有效期只有一个月，我也是直到过期了才发现。</p>
-<center>
-<img src="https://s1.ax1x.com/2020/05/17/Yg87Je.jpg" width="100%"/>
-Vultr 服务器类型选择
-</center>
-
-<p>在提示服务器类型的时候可以直接选择 Application 下的 WordPress，即所谓一键 Wordpress，非常方便。官方教程在此：<a target="_blank" rel="noopener" href="https://www.vultr.com/docs/one-click-wordpress">One-Click WordPress</a>.<br>这种方式安装的 WordPress 部署在 Ubuntu Server LTS 操作系统上，之后可以使用 Vultr 控制面板上提供的用户名和密码，借助 Xshell 等工具 SSH 登录到系统。更多详细的信息可以参考上述的官方指南。</p>
-<p>而如果上述操作都顺利的话，此时已经可以使用 IP 地址登录到 WordPress 管理界面了，但是为了方便记忆和分享，我们还需要一个简短个性的域名。</p>
-<p>关于购买<strong>域名</strong>，一开始看了 Godaddy ，但是发现在他家的续费价格非常高，“.com”域名续费一年 102 元，加上隐私保护 60 元/年，同时还不支持优惠码，这个价格比友商高出一大半了，果断转移。</p>
-<p>Namesilo 是 ICANNrenzh 认证的国际著名域名注册商之一，价格相对比较便宜，除了一个 1 美元优惠码，基本没有什么大幅度促销活动，续费价格和首年购买价格一致，没有套路，同样支持支付宝付款。唯一的缺点可能是网页风格有些跟不上时代了哈哈。注册的勾选“keep my information private”，提供永久免费隐私保护。</p>
-<blockquote>
-<p><em>隐私保护能够防止别人通过 WHOIS 查询获取域名所有者的个人注册信息。</em></p>
+                    <blockquote>
+<p>所以爱会消失对不对</p>
 </blockquote>
-<center>
-<img src="https://s1.ax1x.com/2020/05/17/Yg8TiD.jpg" width="100%"/>
-namesilo 域名购买
-</center>
-
-<p>域名的选择则是我常用昵称的首字母“sszxc”，后缀“.net”。后缀亦或称为顶级域名，其实不影响功能，仅外观和本身含义不同，某些域名后缀可能会被国内网站备案限制。因此后缀除了个性化的需求，最主要的就是影响价格了，网上也有很多推荐，主要看个人喜好了。</p>
-<p>接下来是比较关键的一步，<strong>域名解析</strong>。在 Namesilo 中编辑域名的 DNS，选择指向 VPS 的 IP 地址，TTL 设置为默认 3600，即 Time-To-Live，意思是域名解析记录在 DNS 服务器中的存留时间。等待几分钟，或者 CMD 输入<code>ipconfig/flushdns</code>刷新一下本地 DNS，应该就能使用域名访问之前建立的 WordPress 了。</p>
-<center>
-<img src="https://s1.ax1x.com/2020/05/17/Yg8IIO.jpg" width="100%"/>
-namesilo 域名解析
-</center>
-
-<p>最后，为了用上 HTTPS，我们还需要添加 <strong>SSL 服务器证书</strong>，这里 Vultr 推荐的颁发商是 Let’s Encrypt，提供 3 个月的免费证书，因此需要每 3 个月续一次。使用 root 登录到 WordPress 后，安装 Certbot 进行自动执行证书获取过程，然后修改 Nginx 配置强制使用 SSL 。这部分的官方教程在此：<a target="_blank" rel="noopener" href="https://www.vultr.com/docs/install-lets-encrypt-ssl-on-one-click-wordpress-app">Install Let’s Encrypt SSL on One-Click WordPress App</a>. </p>
-<p>至此，我的个人博客就建立完成了，关于 WordPress 系统的使用就不再赘述，希望接下来能享受写博客的过程吧！</p>
+<p>用 WordPress 写博客已经很长时间，虽然写的东西不多，从最开始的托管空间开始到迁移至阿里的 ECS 上，这个博客已经存在了四五年了。也从最开始感叹 WordPress 功能强大到现在抱怨种种问题，例如 Markdown 支持不完善、由于主机上传带宽很小后台管理打开很慢等等。越用越感觉 WordPress 似乎不适合我，操作过于繁琐。一句话就是「不够 Geek」。</p>
+<ul>
+<li>缺乏版本控制</li>
+<li>完整备份比较麻烦（尤其是图片）</li>
+</ul>
+<p>其实最开始搭建博客时也考虑过 Hexo，当初认为 Hexo 过于简陋而使用了 WordPress。现在来看 Hexo 才是最适合我的。</p>
+<ul>
+<li>Markdown 编写文章配合上 Typora 不要太爽</li>
+<li>静态页面没有后台管理</li>
+<li>每个细节可高度定制化</li>
+<li>快速部署到任何地方</li>
+</ul>
+<p>Wordpress 作为一个动态程序，其稳定性和维护的成本是大于 Hexo 这类静态文章生成器的，安全性也是要大大降低的。</p>
+<p>虽然 Wordpress 和 Hexo 都是比较优秀的 CMS 系统，所以在此不讨论他们孰优孰劣的问题。他们之间的区别是显而易见的： Wordpress 是一个相对较重的 CMS 平台，所有的数据保存在 MySQL 数据库中，需要在一个支持 PHP 的环境中运行；Hexo 所有的数据都保存在文件中，通过预编译输出为静态文件，可以托管于任何一个静态文件服务器（基于 Nginx、Apache、IIS 等）中。</p>
+<h1 id="向WordPress告别"><a href="#向WordPress告别" class="headerlink" title="向WordPress告别"></a>向WordPress告别</h1><h2 id="在使用的插件"><a href="#在使用的插件" class="headerlink" title="在使用的插件"></a>在使用的插件</h2><h2 id="一些经验"><a href="#一些经验" class="headerlink" title="一些经验"></a>一些经验</h2><h2 id="保存快照"><a href="#保存快照" class="headerlink" title="保存快照"></a>保存快照</h2><p>即便把数据都导出了，对这个网站还留有一丝怀念</p>
+<p>找到了一个不错的工具，能把整个网站爬下来，包括源码内的css、静态文件之类的。<a target="_blank" rel="noopener" href="https://github.com/Threezh1/SiteCopy">SiteCopy</a>，很优雅，感谢作者。</p>
+<p>安装依赖的时候注意functools已经集成在Python3里面了，报错可以直接忽略。</p>
+<h1 id="博客迁移"><a href="#博客迁移" class="headerlink" title="博客迁移"></a>博客迁移</h1><p>参考 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/migration">https://hexo.io/zh-cn/docs/migration</a></p>
+<h1 id="初识Hexo"><a href="#初识Hexo" class="headerlink" title="初识Hexo"></a>初识Hexo</h1><p>如下是经常使用的命令<br>1    hexo new “postName” #新建文章<br>2    hexo new page “pageName” #新建页面<br>3    hexo generate #生成静态页面至public目录<br>4    hexo server #开启预览访问端口（默认端口4000，’ctrl + c’关闭server）<br>5    hexo deploy #将.deploy目录部署到GitHub<br>6    hexo clean #清除database和public文件夹</p>
+<p>非常棒的文档！！！<br><a target="_blank" rel="noopener" href="https://github.com/EasyHexo/Easy-Hexo">轻松使用 Hexo 建站</a></p>
+<p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">官方文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://liuyib.github.io/2019/08/20/develop-hexo-theme-from-0-to-1/">从 0 到 1 开发 Hexo 主题杂谈</a></p>
+<h1 id="正在使用的Hexo插件"><a href="#正在使用的Hexo插件" class="headerlink" title="正在使用的Hexo插件"></a>正在使用的Hexo插件</h1><h2 id="自动刷新"><a href="#自动刷新" class="headerlink" title="自动刷新"></a>自动刷新</h2><p>找了个插件<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-browsersync">hexo-browsersync</a>插件，能让浏览器实时响应文件更改（包括文章、主题修改），这样<code>hexo s</code>在本地写的时候连VS Code的MD预览窗口都不用开了，所见即所得，之后<code>hexo d</code>传上云端，非常快乐。</p>
+<h2 id="中英文空格"><a href="#中英文空格" class="headerlink" title="中英文空格"></a>中英文空格</h2><blockquote>
+<p>如果你跟我一样，每次看到网页上的中文字和英文、数字、符号挤在一块，就会坐立难安，忍不住想在它们之间加个空格。这个外挂（支援 Chrome 和 Firefox）正是你在网路世界走跳所需要的东西，它会自动替你在网页中所有的中文字和半形的英文、数字、符号之间插入空白。汉学家称这个空白字元为「盘古之白」，因为它劈开了全形字和半形字之间的混沌。另有研究显示，打字的时候不喜欢在中文和英文之间加空格的人，感情路都走得很辛苦，有七成的比例会在 34 岁的时候跟自己不爱的人结婚，而其余三成的人最后只能把遗产留给自己的猫。毕竟爱情跟书写都需要适时地留白。与大家共勉之。<br><a target="_blank" rel="noopener" href="https://github.com/vinta/pangu.js">https://github.com/vinta/pangu.js</a></p>
+</blockquote>
+<p>在WordPress上使用的是</p>
+<p>在Hexo上尝试了”hexo-pangu-spacing”、”hexo-filter-auto-spacing”两个插件，在我这里好像兼容性都一般。</p>
+<p>最后的解决方案是使用VS Code上的Pangu-Markdown插件，也很方便。</p>
+<h2 id="LaTeX"><a href="#LaTeX" class="headerlink" title="LaTeX"></a>LaTeX</h2><p>因为Markdown和LaTeX的语法是有冲突的，在WordPress中使用的MD插件能较好地兼容LaTeX语法，但在我使用的主题上没有适配这个功能。<br>更换渲染工具、修复转义问题啥的，本已做好大战三百回合的准备，没想到五分钟就搞定了。非常感谢这篇博客：<a target="_blank" rel="noopener" href="https://xiangfa.org/2020/09/let-hexo-support-latex-formulas/">让 Hexo 支持 LaTeX 公式</a>。</p>
+<p>注意想要打“$”符号的时候，前面要加个“\\”防止转义。</p>
+<h2 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h2><p><a target="_blank" rel="noopener" href="https://github.com/ele828/hexo-prism-plugin">https://github.com/ele828/hexo-prism-plugin</a></p>
+<h2 id="评论"><a href="#评论" class="headerlink" title="评论"></a>评论</h2><p>关于Hexo上的评论系统，网友们也给了很对横评，这次选择的是<a target="_blank" rel="noopener" href="https://www.livere.com/">来必力</a>，墙内可访问，而且有后台可以管理。不支持匿名，不过这也减少了一些垃圾评论。另一个缺点是不支持评论导入和导出，所以就只好告别原来WordPress上的评论啦。有互动固然是一件好事，但是没有也不是那么的糟糕或者不可忍受。</p>
 
                 </div>
             </div>
     
             <nav class="post-pagination">
     
-    <a class="newer-posts" href="/2020/01/13/2020.01%20%E6%88%91%E7%9A%84%E6%99%BA%E8%83%BD%E8%BD%A6%E4%B9%8B%E8%B7%AF/">
-        上一篇<br>我的智能车之路
-    </a>
-    
     <span class="page-number"></span>
     
-    <a class="older-posts" href="/2019/11/28/2019.11%20Hello%20World%EF%BC%81/">
-        下一篇<br>Hello World！
+    <a class="older-posts" href="/2020/10/29/apriltag/">
+        下一篇<br>AprilTag视觉定位系统
     </a>
     
 </nav>
@@ -300,7 +300,7 @@ namesilo 域名解析
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?83656624"></script>
+<script src="/js/journal.js?67598385"></script>
 
 
 <script type="text/javascript">
