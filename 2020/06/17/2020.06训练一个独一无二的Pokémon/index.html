@@ -4,19 +4,15 @@
 <html lang="zh-CN" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 
 <head>
-    <title>记一次TensorFlow版本升级 - Henry</title>
+    <title>训练一个独一无二的 Pokémon - Henry</title>
 <meta charset="utf-8">
 <meta name="X-UA-Compatible" content="IE=edge">
 <meta name="author" content="Henry">
 <meta name="description" content="
-一杯茶一包烟，一个环境配一天
+炼丹师初体验
 
-某天上网冲浪的时候，看到一种说法TensorFlow1.14对新版本的兼容性会更好，于是在大作业之前手贱升级了一下，结果发现再也不能调用GPU运算了，接着就有了这篇踩坑记录。 原环境：
-
-
-  Win10 1909
-  Anaconda 3
-  Python ...">
+续 上一篇文章，第一次尝试 GAN 后，有了一些奇思妙想。
+数据集翻找了不少本地版图鉴、爱好者论坛，最后使用的数据主要来自官方的网页版图鉴 The official Pokémon Website in China，直接用爬虫爬了从关都到阿罗拉地区的 807 图鉴所有形态图片...">
 <meta name="keywords" content="">
 
     <meta charset="utf-8">
@@ -26,7 +22,7 @@
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?34656715">
+<link rel="stylesheet" href="/css/journal.css?53525522">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -85,12 +81,12 @@
                 Gallery
             </a>
             
-            <a class="a-block drawer-menu-item false" href="/archives/index.html">
-                Archives
-            </a>
-            
             <a class="a-block drawer-menu-item false" href="/projects/index.html">
                 Projects
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/archives/index.html">
+                Archives
             </a>
             
 
@@ -144,12 +140,12 @@
             Gallery
         </a>
         
-        <a class="a-block nav-link-item false" href="/archives/index.html">
-            Archives
-        </a>
-        
         <a class="a-block nav-link-item false" href="/projects/index.html">
             Projects
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/archives/index.html">
+            Archives
         </a>
         
 
@@ -185,16 +181,16 @@
             <div class="post-head-wrapper-text-only"
                  style="background-image: url('')">
                 <div class="post-title">
-                    记一次TensorFlow版本升级
+                    训练一个独一无二的 Pokémon
                     <div class="post-meta">
-                        <time datetime="2020-06-02T07:40:20.000Z" itemprop="datePublished">
-                            2020-06-02 15:40
+                        <time datetime="2020-06-17T03:26:15.000Z" itemprop="datePublished">
+                            2020-06-17 11:26
                         </time>&nbsp;
                         
                         
                         <i class="material-icons" style="">folder</i>
                         
-                        <a href='/categories/uncategorized/'>uncategorized</a>
+                        <a href='/categories/技术/'>技术</a>
                         
                         
     
@@ -204,11 +200,13 @@
                         
                         <a href='/tags/Python/'>Python</a>, 
                         
-                        <a href='/tags/深度学习/'>深度学习</a>, 
+                        <a href='/tags/GAN/'>GAN</a>, 
                         
                         <a href='/tags/TensorFlow/'>TensorFlow</a>, 
                         
-                        <a href='/tags/Anaconda/'>Anaconda</a>
+                        <a href='/tags/深度学习/'>深度学习</a>, 
+                        
+                        <a href='/tags/Pokemon/'>Pokémon</a>
                         
                         
 
@@ -239,68 +237,45 @@
             <div class="post-body-wrapper">
                 <div class="post-body">
                     <blockquote>
-<p>一杯茶一包烟，一个环境配一天</p>
+<p><em>炼丹师初体验</em></p>
 </blockquote>
-<p>某天上网冲浪的时候，看到一种说法TensorFlow1.14对新版本的兼容性会更好，于是在大作业之前手贱升级了一下，结果发现再也不能调用GPU运算了，接着就有了这篇踩坑记录。 原环境：</p>
-<blockquote>
-<ul>
-<li>  Win10 1909</li>
-<li>  Anaconda 3</li>
-<li>  Python 3.6.8</li>
-<li>  TensorFlow 1.12</li>
-<li>  CUDA 10.1</li>
-</ul>
-</blockquote>
-<p>本文涉及到TensorFlow的指定版本升级、CUDA的卸载重装与cuDNN的重装。</p>
-<hr>
-<h2 id="TensorFlow"><a href="#TensorFlow" class="headerlink" title="TensorFlow"></a>TensorFlow</h2><p>首先升级TensorFlow，启动Anaconda，激活相应环境，启动命令行，使用<code>pip install tensorflow==1.14.0</code>或<code>pip install tensorflow-gpu==1.14.0</code>命令安装指定版本TensorFlow。 最早配置的服务器是清华源，而当天不知道什么原因下载非常不稳定，于是尝试换成中科大源，但是仍然下载失败。 <code>pip install --channel https://mirrors.ustc.edu.cn/anaconda/pkgs/main/ tensorflow-gpu==1.14.0</code> 神秘的是，吃了晚饭回来网络就恢复正常了。 下载之后出现提示，“Could not install packages due to an EnvironmentError: [WinError 5] 拒绝访问”，谷歌后解决方案如下。</p>
-<blockquote>
-<p><em>解决方法： C:\Users\xxx&gt; 中的xxx不是管理员，或者说就是权限不够；在conda在的路径里，……\Anaconda3右击属性-&gt;安全-&gt;user选中现在的用户，修改权限至所有权限；重新打开命令行，即可。</em></p>
-</blockquote>
-<p>来自：<a target="_blank" rel="noopener" href="http://www.zzkook.com/content/anaconda-zai-win10xia-zhuang-shi-yong-wen-ti-jie-jue-ban-fa-hui-zong-duo-tu">http://www.zzkook.com/content/anaconda-zai-win10xia-zhuang-shi-yong-wen-ti-jie-jue-ban-fa-hui-zong-duo-tu</a> 安装完之后记得使用<code>conda info</code>命令检查一下版本，同时升级的时候需要注意CPU和GPU版本之间的顺序。之前有次安装失败没注意看终端，结果装完了CUDA发现TensorFlow版本还没跟上。 如果使用CPU版本的话应该就到此顺利结束了，但是为了使用GPU加速，任务还没完。加载环境后可以使用如下代码测试是否能调用GPU，这一次很可惜不能。</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> tensorflow<span class="token punctuation">.</span>python<span class="token punctuation">.</span>client <span class="token keyword">import</span> device_lib
-<span class="token keyword">print</span><span class="token punctuation">(</span>device_lib<span class="token punctuation">.</span>list_local_devices<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
-<hr>
-<h2 id="CUDA"><a href="#CUDA" class="headerlink" title="CUDA"></a>CUDA</h2><p>根据TensorFlow官方给出的“经过测试的构建配置”，可以看到TensorFlow1.14对应的推荐CUDA版本是10.0，和当前版本不符，显然为了稳定运行还需要降级CUDA。 <img src="https://s1.ax1x.com/2020/06/02/ttNNIe.jpg" alt="ttNNIe.jpg"> 来自：<a target="_blank" rel="noopener" href="https://www.tensorflow.org/install/source#tested_build_configurations">https://www.tensorflow.org/install/source#tested_build_configurations</a> 首先是CUDA卸载，参考下面这篇博客，在控制面板中卸载含有相关关键词的程序。</p>
-<blockquote>
-<p><em>CUDA的卸载：控制面板-卸载程序（不要用360等杀毒软件，找不到对应程序的），按照安装时间排序，最上面这几个带版本号的，就是刚才安装的CUDA了，挨个卸载即可</em></p>
-</blockquote>
-<p>来自：<a target="_blank" rel="noopener" href="https://blog.csdn.net/XunCiy/article/details/89070315">https://blog.csdn.net/XunCiy/article/details/89070315</a> 然后是安装包的重新下载，在英伟达官网的<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-toolkit-archive">归档</a>里能找到历史版本的CUDA。这里推荐使用离线版而不是在线版，借助IDM等下载工具能有效提高效率。 <img src="https://s1.ax1x.com/2020/06/02/ttU1YQ.jpg" alt="ttU1YQ.jpg"></p>
-<hr>
-<h2 id="cuDNN"><a href="#cuDNN" class="headerlink" title="cuDNN"></a>cuDNN</h2><p>下一步是cuDNN，在<a target="_blank" rel="noopener" href="https://developer.nvidia.com/rdp/cudnn-download">官网</a>下载，对照上文，下载指定版本后解压、覆盖、检查环境变量，参考教程如下。</p>
-<blockquote>
-<p><em>下载完，解压cudnn,会出现四个文件，如下：[图片] 在cuda安装完后，系统自动在C盘的Program Files文件中创建了NVIDIA GPUComputing Toolkit文件夹，你可以找到如下路径：[图片] 你可以发现在这个v9.0目录下也有类似cudnn中的文件夹。将cudnn的bin,include,lib中的内容 拷贝到v9.0的bin,include,lib对应目录下，提示替换的话点击OK。完成，最好重启一下电脑。OK。</em></p>
-</blockquote>
-<p>来自：<a target="_blank" rel="noopener" href="https://blog.csdn.net/c20081052/article/details/86683446">https://blog.csdn.net/c20081052/article/details/86683446</a> 这时候运行之前的代码，发现已经可以检测到GPU，但是跑之前的网络仍然报错，提示版本不匹配。 <code>Loaded runtime CuDNN library: 7.3.1 but source was compiled with: 7.4.1.</code> 查资料后发现，很多博客都建议回退旧版本，这当然不能接受。最终找到了下面这一篇，看来这是使用Anaconda造成的问题，主环境中的cuDNN版本修改并没有顾及到虚拟环境，于是按照指南顺利解决。</p>
-<blockquote>
-<p><em>也许你和我一样使用的是Anaconda，那么，请打开你的Anaconda安装路径（比如：我的路径是F:\Anaconda\anaconda\pkgs），你会发现这有个[图片] 好的，我们找到了这个玩意，也许Anaconda直接是使用这里的CUDNN，而不是在C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0这个地方的CUDNN（这只是猜测）。 为此，我们尝试一下直接更新这个pkgs，在这个网站下载(<a target="_blank" rel="noopener" href="https://anaconda.org/anaconda/cudnn/files?sort=basename&amp;sort%5C_order=desc)%E9%80%89%E6%8B%A9%E5%90%88%E9%80%82%E7%89%88%E6%9C%AC%E7%9A%84CUDNN%EF%BC%88%E4%B8%80%E5%AE%9A%E8%A6%81%E6%B3%A8%E6%84%8F%E6%98%AF%E5%90%88%E9%80%82%E7%9A%84%E7%89%88%E6%9C%AC%EF%BC%89%EF%BC%8C%E7%84%B6%E5%90%8E%E6%8A%8A%E5%88%9A%E4%B8%8B%E8%BD%BD%E7%9A%84%E6%96%87%E4%BB%B6%E8%A7%A3%E5%8E%8B%E5%BE%97%E5%88%B0%EF%BC%9A%5C%5B%E5%9B%BE%E7%89%87%5C%5D">https://anaconda.org/anaconda/cudnn/files?sort=basename&amp;sort\_order=desc)选择合适版本的CUDNN（一定要注意是合适的版本），然后把刚下载的文件解压得到：\[图片\]</a> 将里面Library的东西复制覆盖到F:\Anaconda\anaconda\pkgs\ cudnn-7.1.4-cuda9.0_0\Library的东西（也许你的Anaconda路径不同，需要自己找一下）路径，再试一下。</em></p>
-</blockquote>
-<p>来自：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Tilamy/article/details/88616201">https://blog.csdn.net/Tilamy/article/details/88616201</a></p>
-<hr>
-<p>至此，终于全部完成，新环境：</p>
-<blockquote>
-<ul>
-<li>  Win10 1909</li>
-<li>  Anaconda 3</li>
-<li>  Python 3.6.8</li>
-<li>  TensorFlow 1.14</li>
-<li>  CUDA 10.0</li>
-</ul>
-</blockquote>
+<p>续 <a target="_blank" rel="noopener" href="https://sszxc.net/2020/06/dcgan/">上一篇文章</a>，第一次尝试 GAN 后，有了一些奇思妙想。</p>
+<h1 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h1><p>翻找了不少本地版图鉴、爱好者论坛，最后使用的数据主要来自官方的网页版图鉴 <a target="_blank" rel="noopener" href="https://cn.portal-pokemon.com/play/pokedex">The official Pokémon Website in China</a>，直接用爬虫爬了从关都到阿罗拉地区的 807 图鉴所有形态图片。抽样显示如下：</p>
+<p><img src="https://s1.ax1x.com/2020/06/17/NEdEBd.jpg"></p>
+<p>预处理主要涉及分辨率处理（64×64）、数据增广（左右反转、顺逆时针旋转 5°）。 在 TensorFlow 中设置数据集主要参考了这篇博客的代码：TensorFlow2.0（10）：加载自定义图片数据集到 Dataset <a target="_blank" rel="noopener" href="https://www.cnblogs.com/chenhuabin/p/11863889.html">https://www.cnblogs.com/chenhuabin/p/11863889.html</a></p>
+<h1 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h1><p>使用和 <a target="_blank" rel="noopener" href="https://sszxc.net/2020/06/dcgan/">上一篇文章</a> 相似的网络结构进行训练，参数基本不变，仅修改了输入输出的通道数，训练时网络的 Loss 曲线如下所示。 [caption align=”aligncenter” width=680]<img src="https://s1.ax1x.com/2020/06/17/NEBwgf.jpg"> Discriminator Loss for Fake Imgaes[/caption] [caption align=”aligncenter” width=680]<img src="https://s1.ax1x.com/2020/06/17/NEBd8P.jpg"> Discriminator Loss for Real Imgaes[/caption] [caption align=”aligncenter” width=680]<img src="https://s1.ax1x.com/2020/06/17/NEB0v8.jpg"> Generator Loss[/caption] 迭代起来的输出是这样的，比较恐怖，轮廓有一些创新，但细节全损。</p>
+<p><img src="https://s1.ax1x.com/2020/06/17/NE6rAe.jpg"></p>
+<p>放在 MistGPU 服务器（广告费结一下）上训练，吃了个饭回来 100k 轮了，输出一些成果如下。</p>
+<p><img src="https://s1.ax1x.com/2020/06/17/NEBaCt.jpg"></p>
+<p>👎完蛋。 接着开始玄学调参，但很可惜的是基本没有什么大的改观。 分析了一下，这次失败有以下几个原因：首先，和人脸、手写数字的二维特征相比，Pokémon 相当于是三维特征的投影，且特征更多更复杂，简单的网络结构可能很难学会；其次，网络分辨率太小太小，应对单个数字可能还行，Pokémon 可能就直接糊了；此外，这次的数据集明显偏小，可能会存在过拟合现象；另一种想法是为了抑制噪声，可能需要增加多尺度下的判别器，或许可以学会对颜色平滑度做出限制。</p>
+<h1 id="DCGAN"><a href="#DCGAN" class="headerlink" title="DCGAN"></a>DCGAN</h1><p>微调了一下网络结构，效果也一般，于是借用了一下 <a target="_blank" rel="noopener" href="https://github.com/carpedm20/DCGAN-tensorflow">开源的 DCGAN</a> 跑跑。 最开始使用默认参数进行训练，很恐怖，在 400 轮左右就开始全屏马赛克，调出 Loss 曲线看了一下。 [caption align=”aligncenter” width=680]<img src="https://s1.ax1x.com/2020/06/17/NEINIP.jpg"> Discriminator Loss for Fake Imgaes[/caption] [caption align=”aligncenter” width=680]<img src="https://s1.ax1x.com/2020/06/17/NEIYVI.jpg"> Discriminator Loss for Real Imgaes[/caption] [caption align=”aligncenter” width=680]<img src="https://s1.ax1x.com/2020/06/17/NEItat.jpg"> Generator Loss[/caption] 查阅资料后，了解到这是一种梯度消失的情况。当判别器非常准确时，其损失很快收敛到 0，从而无法提供可靠的路径使生成器的梯度继续更新，造成生成器梯度消失。GAN 的训练因为一开始随机噪声分布，与真实数据分布相差距离太远，两个分布之间几乎没有任何重叠的部分，这时候判别器能够很快的学习把真实数据和生成的假数据区分开，达到判别器的最优，造成生成器的梯度无法继续更新甚至梯度消失。 相似的，还有一种异常叫做模式崩溃：对于不同的输入生成相似的样本，最坏的情况仅生成一种样本，判别器的学习会拒绝这些相似甚至相同的单一样本。在实际应用中，完全的模式崩溃很少，局部的模式崩溃很常见。局部模式崩溃是指生成器使不同的图片包含相同的颜色或者纹理主题，或者不同的图片包含同一只狗的不同部分。 于是进行针对性调参，尽量让判别器学得慢一点，而生成器多迭代几次，最后超参数设置如下：</p>
+<p>Hyperparameter</p>
+<p>value</p>
+<p>image siza</p>
+<p>64×64</p>
+<p>batch size</p>
+<p>64</p>
+<p>Adam learning rate</p>
+<p>0.0002</p>
+<p>Adam momentum</p>
+<p>0.5</p>
+<p>最后效果就差不多了😎，给一组随机输入，生成器的输出如下所示。</p>
+<p><img src="https://s1.ax1x.com/2020/06/17/NE7SUI.jpg"></p>
+<p>效果提升非常明显，噪点减少，轮廓清晰。当然这个结果也还存在一定缺陷，仔细观察可以发现，结果局限于几种特定的模式，甚至有出现和原数据完全一样的图片（尾立🎯），这可能是数据量不足造成的过拟合吧。</p>
 
                 </div>
             </div>
     
             <nav class="post-pagination">
     
-    <a class="newer-posts" href="/2020/06/08/latex/">
-        上一篇<br>LaTeX入门笔记
+    <a class="newer-posts" href="/2020/06/21/cs294-112/">
+        上一篇<br>CS294-112 深度强化学习笔记（持续更新）
     </a>
     
     <span class="page-number"></span>
     
-    <a class="older-posts" href="/2020/05/17/hog-svm/">
-        下一篇<br>基于HOG描述子+SVM分类器的目标检测
+    <a class="older-posts" href="/2020/06/17/2020.06%E4%BB%8ECNN%E5%88%B0GAN%E7%9A%84%E5%88%9D%E5%B0%9D%E8%AF%95/">
+        下一篇<br>从 CNN 到 GAN 的初尝试
     </a>
     
 </nav>
@@ -334,7 +309,7 @@
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?3814075"></script>
+<script src="/js/journal.js?6719655"></script>
 
 
 <script type="text/javascript">
