@@ -1,0 +1,440 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>使用 Webots 进行超市机器人仿真 - Henry</title>
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="author" content="Henry">
+<meta name="description" content="
+    
+
+
+
+
+机器人模型设计本学期的《机器人软件工程》课程实验在 Webots 仿真平台上进行，仿真环境如图所示，机器人的任务是根据需要抓取货仓中摆放的货物，填补到四面货架的合适位置上。
+
+
+
+仿真环境
+
+
+针对这一任务，我和 贝塔 设计了一款超市机器人“Super_Transbot”。...">
+<meta name="keywords" content="">
+
+    <meta charset="utf-8">
+    <meta name="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="renderer" content="webkit">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/journal.css?94066960">
+
+<script src="/js/loadCSS.js"></script>
+<script>
+    loadCSS("https://fonts.googleapis.com/css?family=Lora|Montserrat|Fira+Mono|Material+Icons");
+    (function (d) {
+        var config = {
+                kitId: 'dwg1tuc',
+                scriptTimeout: 3000,
+                async: true
+            },
+            h = d.documentElement, t = setTimeout(function () {
+                h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+            }, config.scriptTimeout), tk = d.createElement("script"), f = false,
+            s = d.getElementsByTagName("script")[0], a;
+        h.className += " wf-loading";
+        tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+        tk.async = true;
+        tk.onload = tk.onreadystatechange = function () {
+            a = this.readyState;
+            if (f || a && a != "complete" && a != "loaded") return;
+            f = true;
+            clearTimeout(t);
+            try {
+                Typekit.load(config)
+            } catch (e) {
+            }
+        };
+        s.parentNode.insertBefore(tk, s)
+    })(document);
+</script>
+<noscript>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Lora|Montserrat|Anonymous+Pro:400|Material+Icons"/>
+</noscript>
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Henry" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+<body>
+<div id="top"></div>
+<div id="app">
+<div class="single-column-drawer-container" ref="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            <a class="a-block drawer-menu-item false" href="http://example.com">
+                首页
+            </a>
+            
+
+            
+            
+            <a class="a-block drawer-menu-item false" href="/archives/index.html">
+                Archives
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/about/index.html">
+                About
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/projects/index.html">
+                Projects
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
+                Gallery
+            </a>
+            
+
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav ref="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div ref="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a ref="navTitle" class="navbar-brand" href="/">
+            Henry
+        </a>
+    </div>
+</nav>
+<div class="single-column-header-container" ref="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="/">
+        <div class="single-column-header-title">Henry</div>
+        <div class="single-column-header-subtitle"></div>
+    </a>
+</div>
+<div ref="sideContainer" class="side-container">
+    <a class="a-block nav-head false" href="/">
+        <div class="nav-title">
+            Henry.
+        </div>
+        <div class="nav-subtitle">
+            奔走在自己的热爱里
+        </div>
+    </a>
+
+    <div class="nav-link-list">
+        
+
+        
+        
+        <a class="a-block nav-link-item false" href="/archives/index.html">
+            Archives
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/about/index.html">
+            About
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/projects/index.html">
+            Projects
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/gallery/index.html">
+            Gallery
+        </a>
+        
+
+        
+    </div>
+
+    
+    <div class="nav-footer">
+        Proudly published with Hexo<br>
+        
+        Theme <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> by <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a><br>
+        
+        &copy; 2020 <a href="http://example.com">Henry</a>
+    </div>
+</div>
+<div ref="extraContainer" class="extra-container">
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+
+        
+    </div>
+</div>
+
+
+
+<div ref="streamContainer" class="stream-container">
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            <div class="post-head-wrapper"
+                 style="background-image: url('https://s1.ax1x.com/2020/05/15/Yyrzz8.jpg')">
+                <div class="post-title">
+                    使用 Webots 进行超市机器人仿真
+                    <div class="post-meta">
+                        <time datetime="2020-04-23T06:36:52.000Z" itemprop="datePublished">
+                            2020-04-23 14:36
+                        </time>&nbsp;
+                        
+                        
+                        <i class="material-icons" style="">folder</i>
+                        
+                        <a href='/categories/技术/'>技术</a>
+                        
+                        
+    
+                        
+                        
+                        <i class="material-icons" style="">label</i>
+                        
+                        <a href='/tags/机器人/'>机器人</a>, 
+                        
+                        <a href='/tags/仿真/'>仿真</a>, 
+                        
+                        <a href='/tags/C/'>C</a>, 
+                        
+                        <a href='/tags/Webots/'>Webots</a>, 
+                        
+                        <a href='/tags/图像处理/'>图像处理</a>
+                        
+                        
+
+                        
+                        
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+                        
+                    </div>
+                </div>
+            </div>
+    
+            <div class="post-body-wrapper">
+                <div class="post-body">
+                    <div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
+    <iframe src="//player.bilibili.com/player.html?aid=412949643&bvid=BV1GV411d7QG&cid=183293328&page=1"  scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+</div>
+
+<br>
+
+<h1 id="机器人模型设计"><a href="#机器人模型设计" class="headerlink" title="机器人模型设计"></a>机器人模型设计</h1><p>本学期的《机器人软件工程》课程实验在 Webots 仿真平台上进行，仿真环境如图所示，机器人的任务是根据需要抓取货仓中摆放的货物，填补到四面货架的合适位置上。</p>
+<center>
+<img src="https://s1.ax1x.com/2020/05/17/Y2ZJE9.jpg" width="80%"/>
+<br>
+仿真环境
+</center>
+
+<p>针对这一任务，我和 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/beta-1999/" title="贝塔">贝塔</a> 设计了一款超市机器人“Super_Transbot”。</p>
+<p>四个麦克纳姆轮组成的全向运动底盘，保证了机器人在狭小空间内的移动性能，内置了 GPS 以及电子罗盘模块实现自主定位。</p>
+<p>机器人前后分别设置一颗摄像头，用于识别货架上、货舱内的货物，并返回相应的类型和位置信息。</p>
+<p>模仿叉车外形，前部设置了一个二自由度的机械臂，末端抓手设置了一对力传感器，实现对不同大小的货物的抓取功能，并能将货物提升到任意高度，对应题目中的双层货架要求。</p>
+<center>
+<img src="https://s1.ax1x.com/2020/05/17/Y2ZU9x.jpg" width="100%"/>
+<br>
+机器人模型
+</center>
+
+<h1 id="机器人模型搭建"><a href="#机器人模型搭建" class="headerlink" title="机器人模型搭建"></a>机器人模型搭建</h1><p>为了在 Webots 仿真平台中高效地搭建出机器人，我们充分遵照软件工程复用思想，将例程中“KUKA youBot”的麦克纳姆轮打包成 PROTO，从而实现麦轮节点的复用。四个麦轮直径 0.10m，通过 HingeJoint 安装在车身主体结构上。</p>
+<p>车身整体尺寸为 0.59m×0.40m×0.64m（长宽高），搭建车身时采用模块化设计，主要分为车身、机械臂两部分。车身主要由 Transform、Shape 嵌套而成，主要利用到的几何体包括 Cylinder、Box 等；机械臂主要是在 Pioneer3 所配置的机械臂的基础上进行适当改造，包括尺寸、电机扭矩及直线电机伸展长度等，同时在机械臂的抓手增加了一对力传感器，以实现对物品抓取力度的精准控制。</p>
+<p>机器人配置的摄像头分辨率为 256*128，视角 1.8，配备 Webots 自带的 Recognition API，一定程度上减少了物品识别的难度，使仿真专注于整体软件功能的开发，体现了离线编程的优势。</p>
+<p>为了实现更精确的物理仿真，我们还对机械臂抓手、麦轮的摩擦力参数进行了设置，以保证机器人能够在当前环境保持正常的运动；此外，还设置了合适的车身重量，以保证车辆的运动性能更加优越、抓取稳定性更好。</p>
+<h1 id="机器人控制器设计"><a href="#机器人控制器设计" class="headerlink" title="机器人控制器设计"></a>机器人控制器设计</h1><p>为了实现流畅的取货补货功能，机器人控制器采用了状态机的思想，初始化完毕后进入 switch 状态机切换，其中 main_state 共九个状态：</p>
+<!--raw 用来防止大括号转义-->
+<pre class=" language-c"><code class="language-c"><span class="token keyword">switch</span> <span class="token punctuation">(</span><span class="token operator">*</span>main_state<span class="token punctuation">)</span>  
+<span class="token punctuation">{</span>
+   <span class="token keyword">case</span> Init_Pose
+   <span class="token keyword">case</span> Recognize_Empty
+   <span class="token keyword">case</span> Arround_Moving
+   <span class="token keyword">case</span> Grab_Item
+   <span class="token keyword">case</span> Back_Moving
+   <span class="token keyword">case</span> TurnBack_To_LoadItem
+   <span class="token keyword">case</span> Item_Loading
+   <span class="token keyword">case</span> RunTo_NextShelf
+   <span class="token keyword">default</span>
+<span class="token punctuation">}</span> </code></pre>
+<ul>
+<li><p>Init_Pose 为初始默认进入工作区状态，到达上图橙色点位后跳转到 Recognize_Empty，对货架进行识别。</p>
+</li>
+<li><p>Recognize_Empty 为识别空货架状态，这个状态主要调用了识别货架的函数，识别完成后将货架上的货物状态更新到数组，若有缺货则进行补货判断，计算出需要的货物名称以及需要放置的位置，然后跳转到 Arround_Moving 寻找货品；若没有缺货则跳转到 RunTo_NextShelf 状态，前往下一个货架进行检测。</p>
+</li>
+<li><p>Arround_Moving 为环游巡检状态，运动过程中一直保持之前暂存的货物名称，以对货仓进行实时检测判断，直到找到了合适可抓取的货物，跳转至 Grab_Item。</p>
+</li>
+<li><p>Grab_Item 为抓取仓库货物状态，根据暂存的货物名称行进到指定货物的抓取位置，控制机械臂进行抓取，提升后跳转至 Back_Moving 返程。</p>
+</li>
+<li><p>Back_Moving 为回程存货环游状态，机器人会携带着需要的货物返回之前的货架，此时需要进行路径规划选择一条最短路线，到达货架前后跳转至 TurnBack_To_LoadItem。</p>
+</li>
+<li><p>TurnBack_To_LoadItem 为转身面向货架状态，紧接着跳转至 Item_Loading 状态。</p>
+</li>
+<li><p>Item_Loading 为上货状态，根据货物需要放置的位置计算出机器人的目标位置，之后完成上货操作，跳转至 Init_Pose。</p>
+</li>
+<li><p>RunTo_NextShelf 为前往下一货架状态，根据存储的坐标进行路径规划，当到达下一货架定点时，跳转至 Recognize_Empty。</p>
+</li>
+<li><p>default 为错误报警状态。</p>
+</li>
+</ul>
+<p>利用上述九个状态构成的状态机，能够较地完成对机器人装卸货物的任务要求，各状态内部操作的封装也使得我们的控制器看起来更加简洁干练。</p>
+<h1 id="控制器关键函数"><a href="#控制器关键函数" class="headerlink" title="控制器关键函数"></a>控制器关键函数</h1><ol>
+<li><p><strong>基本运动封装</strong></p>
+<blockquote>
+<p>void lift(double position);</p>
+</blockquote>
+<p> 给定高度，使机械臂上升直线电机运动到指定位置。</p>
+<blockquote>
+<p>void moveFingers(double position);</p>
+</blockquote>
+<p> 给定宽度，使机械臂手中左右两个直线电机运动到指定位置。</p>
+<blockquote>
+<p>bool Moveto_CertainPoint(double fin_posture[], double reach_precision);</p>
+</blockquote>
+<p> 给定位姿 fin_posture，包括 x、z 坐标与姿态角 angle；给定位控精度 reach_precision；内嵌函数 caculate_tmp_target()，给定目标位姿 double fin_posture[]，根据当前位姿与目标位置，进行位姿的线性插值，差值结果保存在 tmp_posture[] 中作为下一临时目标位姿。 为了解决罗盘值在 2π与 0 之间跳转时出现的机器人原地旋转一圈的冗余运动，因此在姿态角的线性差值前引入逻辑判断：if (fabs(fin_posture[2] - compass_angle) &gt; PI) 以达到向旋转角度更小的方向作旋转运动。</p>
+</li>
+<li><p><strong>识别空货架</strong></p>
+<blockquote>
+<p>bool Find_Empty(WbDeviceTag camera)</p>
+</blockquote>
+<p> 选定车体后侧摄像头，调用 API 识别货物，根据货架大小拟合公式，计算货架上货物的位置更新存入数组。具体来说，每格货架的宽度为 0.25，给机器人设置的定点位于货架水平方向中间，因此可以由检测到的货物与摄像头的相对位置，来判断货物位于哪一列货架。为高矮两种货架高度设置不同的阈值后，也可以根据纵向的相对位置来判断货物位于哪一层。</p>
+ <center>
+ <img src="https://s1.ax1x.com/2020/05/17/Y2Zt41.jpg" width="100%"/>
+ <br>
+ 货架识别示意图
+ </center>
+</li>
+<li><p><strong>寻找货物</strong></p>
+<blockquote>
+<p>bool Find_Goods(WbDeviceTag camera,char *good_name,int *item_grasped_id);</p>
+</blockquote>
+<p> 选定车体前侧摄像头，给定物品名 good_name，货物 ID 号 item_grasped_id，通过调用 API 识别并判断视野中货物信息（包括 ID、尺寸等），返回是否找到待存放货物的 bool 类型变量。考虑到机械臂的抓取能力，寻找的过程中滤除了距离机器人过远的货物，只考虑当前面对的货仓区域。</p>
+ <center>
+ <img src="https://s1.ax1x.com/2020/05/17/Y2ZYNR.jpg" width="90%"/>
+ <br>
+ 货物识别示意图
+ </center>
+</li>
+<li><p><strong>对准并抓取</strong></p>
+<blockquote>
+<p>bool Aim_and_Grasp(int *grasp_state, WbDeviceTag camera, int objectID);</p>
+</blockquote>
+<p> 选定车体前侧摄像头，传入给定的货物 ID 号来锁定摄像头目标。将抓取货物分为“调整位置、抓、举”三个步骤。首先针对不同货物的大小计算一个最合适的抓取位置，然后根据摄像头返回的物体大小粗略地计算手抓的位置，此时激活力传感器，不断收紧抓手直到力传感器达到阈值，表示已经抓紧物体，最后抬升物体达到指定高度，完成抓取功能。</p>
+</li>
+<li><p><strong>返回货架</strong></p>
+<blockquote>
+<p>TurnBack_To_LoadItem</p>
+</blockquote>
+<p> 这部分算法直接包含在状态机内，根据货物的目标位置，计算机器人水平方向相应的偏移距离，给定一个固定的前后偏移，将上货路径分为两步，由此确定机器人的行驶路径。</p>
+</li>
+</ol>
+<h1 id="机器人软件开发与质量管理"><a href="#机器人软件开发与质量管理" class="headerlink" title="机器人软件开发与质量管理"></a>机器人软件开发与质量管理</h1><p>最后呼应一下课程名《机器人软件工程》，总结一下我们在开发过程中学习到的一些思路：</p>
+<ol>
+<li><p> 模块化与抽象化技术 在整个超市机器人补货的复杂任务的前提下，将其拆分为“查货架”、“寻货”、“取货”、“回库”及“上货”五个易解决的小任务，实现了任务的模块化；对于每个独立的任务，只考虑该任务本身所需要的入参出参，忽略其细节（比如如何实现、如何计算等），实现了任务的抽象化。</p>
+</li>
+<li><p> 信息隐藏及局部化技术 对于获取机器人位置、方向角以及商品名的获取等类似只读操作，将其封装成功能函数，只返回需要读取的内容，而不能对其源头进行改动，实现了一定程度上的信息隐藏；而对于主状态的跳转，将其约束在状态机函数中，只能在此处进行更改，而不允许在子函数中发生改变，体现了主状态的局部化。</p>
+</li>
+<li><p> 复用技术 在超市机器人的模型设计中，大量使用 USE 操作，实现各节点属性的复用；同时，将麦克纳姆轮的模型封装成 PROTO 节点，使其能够为机器人底盘搭建起到重复使用效果。利用这些复用技术一定程度上减少了超市机器人模型搭建的工作量。</p>
+</li>
+<li><p> 版本控制 为了实现项目良好的管理，我们采用了 GitHub 仓库进行版本控制，每次工作时进行拉取、合并、提交等必须的流程，同时附以简短的提交日志便于对方了解提交内容。除此之外，每完成一个功能之后，利用腾讯会议及 QQ 屏幕共享等软件交流讨论，同时对接下来的工作进行适当的调整和分配，明确各自的任务，并督促对方及时完成。</p>
+</li>
+</ol>
+<p>本次项目已经托管在 <a target="_blank" rel="noopener" href="https://github.com/sszxc/Super_Transbot" title="GitHub 平台">GitHub 平台</a>。</p>
+
+                </div>
+            </div>
+    
+            <nav class="post-pagination">
+    
+    <a class="newer-posts" href="/2020.05%E5%9F%BA%E4%BA%8EHOG%E6%8F%8F%E8%BF%B0%E5%AD%90+SVM%E5%88%86%E7%B1%BB%E5%99%A8%E7%9A%84%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">
+        上一篇<br>基于 HOG 描述子+SVM 分类器的目标检测
+    </a>
+    
+    <span class="page-number"></span>
+    
+    <a class="older-posts" href="/2020.04%E5%9C%A8ROS%E4%B8%8B%E4%BD%BF%E7%94%A8%E7%99%BE%E5%BA%A6UNIT%E5%AE%9E%E7%8E%B0%E8%AF%AD%E9%9F%B3%E4%BA%A4%E4%BA%92/">
+        下一篇<br>在 ROS 下使用百度 UNIT 实现语音交互
+    </a>
+    
+</nav>
+
+    
+            
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC81MTk1OS8yODQ0MA==">
+</div>
+
+
+        </div>
+    </div>
+    <div class="single-column-footer">
+    Proudly published with Hexo<br>
+    
+    Theme <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> by <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a><br>
+    
+    &copy; 2020 <a href="http://example.com">Henry</a>
+</div>
+</div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"
+        integrity="sha256-EGs9T1xMHdvM1geM8jPpoo8EZ1V1VRsmcJz8OByENLA=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+        integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"
+        integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
+        integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
+<script src="/js/journal.js?94105510"></script>
+
+
+<script type="text/javascript">
+    (function (d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+
+        if (typeof LivereTower === 'function') {
+            return;
+        }
+
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+</script>
+
+
+</body>
+</html>
