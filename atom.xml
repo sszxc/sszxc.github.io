@@ -245,9 +245,9 @@
     
     <category term="GAN" scheme="http://example.com/tags/GAN/"/>
     
-    <category term="TensorFlow" scheme="http://example.com/tags/TensorFlow/"/>
-    
     <category term="Pokémon" scheme="http://example.com/tags/Pokemon/"/>
+    
+    <category term="TensorFlow" scheme="http://example.com/tags/TensorFlow/"/>
     
   </entry>
   
@@ -281,9 +281,9 @@
     
     <category term="GAN" scheme="http://example.com/tags/GAN/"/>
     
-    <category term="MNIST" scheme="http://example.com/tags/MNIST/"/>
-    
     <category term="TensorFlow" scheme="http://example.com/tags/TensorFlow/"/>
+    
+    <category term="MNIST" scheme="http://example.com/tags/MNIST/"/>
     
   </entry>
   
@@ -427,11 +427,11 @@
     <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="语音" scheme="http://example.com/tags/%E8%AF%AD%E9%9F%B3/"/>
-    
     <category term="Python" scheme="http://example.com/tags/Python/"/>
     
     <category term="ROS" scheme="http://example.com/tags/ROS/"/>
+    
+    <category term="语音" scheme="http://example.com/tags/%E8%AF%AD%E9%9F%B3/"/>
     
   </entry>
   
@@ -461,9 +461,9 @@
     
     <category term="MATLAB" scheme="http://example.com/tags/MATLAB/"/>
     
-    <category term="滤波器" scheme="http://example.com/tags/%E6%BB%A4%E6%B3%A2%E5%99%A8/"/>
-    
     <category term="语音" scheme="http://example.com/tags/%E8%AF%AD%E9%9F%B3/"/>
+    
+    <category term="滤波器" scheme="http://example.com/tags/%E6%BB%A4%E6%B3%A2%E5%99%A8/"/>
     
   </entry>
   
