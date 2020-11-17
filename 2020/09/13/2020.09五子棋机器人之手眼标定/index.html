@@ -18,7 +18,7 @@
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?9381349">
+<link rel="stylesheet" href="/css/journal.css?24301619">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -69,10 +69,6 @@
 
             
             
-            <a class="a-block drawer-menu-item false" href="/archives/index.html">
-                Archives
-            </a>
-            
             <a class="a-block drawer-menu-item false" href="/about/index.html">
                 About
             </a>
@@ -83,6 +79,10 @@
             
             <a class="a-block drawer-menu-item false" href="/projects/index.html">
                 Projects
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/archives/index.html">
+                Archives
             </a>
             
 
@@ -128,10 +128,6 @@
 
         
         
-        <a class="a-block nav-link-item false" href="/archives/index.html">
-            Archives
-        </a>
-        
         <a class="a-block nav-link-item false" href="/about/index.html">
             About
         </a>
@@ -142,6 +138,10 @@
         
         <a class="a-block nav-link-item false" href="/projects/index.html">
             Projects
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/archives/index.html">
+            Archives
         </a>
         
 
@@ -279,13 +279,13 @@ document.getElementById("spkj").style.height=document.getElementById("spkj").scr
 <p>$$ \operatorname{Tch}=\left[\begin{array}{cccc}-0.0060 &amp; -1.0427 &amp; -0.0237 &amp; 16.1604 \\1.0158 &amp; 0.0121 &amp; 0.0144 &amp; -44.7796 \\0.0010 &amp; -0.0240 &amp; 1.0558 &amp; 68.6513 \\0 &amp; 0 &amp; 0 &amp; 1.0000\end{array}\right] $$</p>
 <p>观察可以发现，相机与末端的 z 轴近似重合，符合两者都竖直向下的事实；而在 xyz 轴上的偏移量约为 1.6cm、-4.5cm、6.9cm，使用尺子测量核对，发现存在一定的误差。推测是由于图像样本数量太少，导致标定误差较大，后期或许可以增加样本数量，使用最小二乘来求矩阵最优解。</p>
 <p>观察公式$ _b^wT=_g^wT _c^gT _b^cT $，由于三组样本没有改变标定板在机器人坐标系下的位置，所以理想情况下的 Tch 应该能保证对任意一组样本，等式右侧都相等。但实际代入后，发现误差非常大：</p>
-<p>$$ \mathrm{H}<em>{-} 1 * \operatorname{Tch} * \mathrm{C}</em>{-} 1=\left[\begin{array}{cccc}-0.0029 &amp; -1.0375 &amp; 0.0124 &amp; 455.0323 \\-1.0156 &amp; -0.0123 &amp; -0.0094 &amp; 10.1779 \\0.0237 &amp; -0.0120 &amp; -1.0505 &amp; -31.8727 \\0 &amp; 0 &amp; 0 &amp; 1.0000\end{array}\right] $$</p>
-<p>$$ \mathrm{H}<em>{-} 2 * \mathrm{Tch} * \mathrm{C}</em>{-} 2=\left[\begin{array}{cccc}-0.1560 &amp; -0.9143 &amp; 0.4673 &amp; 373.8901 \\-0.8401 &amp; -0.1548 &amp; -0.5499 &amp; 141.1848 \\0.5644 &amp; -0.4673 &amp; -0.7517 &amp; -82.9623 \\0 &amp; 0 &amp; 0 &amp; 1.0000\end{array}\right] $$</p>
+<p>$$ H_1\cdot Tch\cdot C_1=\left[\begin{matrix}-0.0029&amp;-1.0375&amp;0.0124&amp;455.0323\\-1.0156&amp;-0.0123&amp;-0.0094&amp;10.1779\\0.0237&amp;-0.0120&amp;-1.0505&amp;-31.8727\\0&amp;0&amp;0&amp;1.0000\\\end{matrix}\right] $$</p>
+<p>$$ H_2\cdot Tch\cdot C_2=\left[\begin{matrix}-0.1560&amp;-0.9143&amp;0.4673&amp;373.8901\\-0.8401&amp;-0.1548&amp;-0.5499&amp;141.1848\\0.5644&amp;-0.4673&amp;-0.7517&amp;-82.9623\\0&amp;0&amp;0&amp;1.0000\\\end{matrix}\right] $$</p>
 <p>这种验证方法本身没有问题，与其他组别的同学讨论后发现这样的结果并非偶然。</p>
 <h2 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h2><p>根据目标在图像像素坐标系中的坐标$ \left[\begin{array}{l}u \\v \end{array}\right] $, 将 u，v，Z<sub>c</sub>（测量所得）以及内参矩阵代入，可得目标在相机坐标系中的坐标：</p>
 <p>$$ \left[\begin{array}{l}X_{c} \\Y_{c} \\Z_{c}\end{array}\right]=\left[\begin{array}{ccc}f_{x} &amp; 0 &amp; u_{0} \\0 &amp; f_{y} &amp; v_{0} \\0 &amp; 0 &amp; 1\end{array}\right]^{-1} Z_{c}\left[\begin{array}{c}u \\v \\1\end{array}\right] $$</p>
 <p>而目标在世界坐标系下的坐标就是：</p>
-<p>$$ \left[\begin{array}{c}X_{w} \\Y_{w} \\Z_{w} \\1\end{array}\right]={}<em>{g}^{w}{\mathrm{T}}</em>{c}^{g}{\mathrm{T}}\left[\begin{array}{c}X_{c} \\Y_{c} \\Z_{c} \\1\end{array}\right] $$</p>
+<p>$$ \begin{bmatrix}X_w \\Y_w \\Z_w \\1\end{bmatrix}={_g^w}T\cdot {_c^g}T\cdot \begin{bmatrix}X_c \\Y_c \\Z_c \\1\end{bmatrix} $$</p>
 <p>接着对于实际场景进行验证。参考“定位”相关的理论知识，手工测量 Zc，注意其符号需要和手眼标定得到的 Tz 相符；获取到图片后可以使用图像处理软件获取目标棋子的像素坐标，此时要注意图片的原点位置以及正方向，如果不清楚可以选择一个特殊位置点进行测试；然后代入公式一步步进行验算，必要的时候可以代入理想情况下的解（例如旋转矩阵换成单位阵）进行理解、比较。</p>
 <center>
 <img src="https://s1.ax1x.com/2020/09/14/wDr9Re.png" width="80%"/>
@@ -354,7 +354,7 @@ document.getElementById("spkj").style.height=document.getElementById("spkj").scr
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?64391700"></script>
+<script src="/js/journal.js?9853484"></script>
 
 
 <script type="text/javascript">
