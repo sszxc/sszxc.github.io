@@ -19,7 +19,7 @@
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?17431000">
+<link rel="stylesheet" href="/css/journal.css?31233856">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -70,20 +70,20 @@
 
             
             
-            <a class="a-block drawer-menu-item false" href="/about/index.html">
-                About
-            </a>
-            
             <a class="a-block drawer-menu-item false" href="/archives/index.html">
                 Archives
             </a>
             
-            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
-                Gallery
-            </a>
-            
             <a class="a-block drawer-menu-item false" href="/projects/index.html">
                 Projects
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/about/index.html">
+                About
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
+                Gallery
             </a>
             
 
@@ -129,20 +129,20 @@
 
         
         
-        <a class="a-block nav-link-item false" href="/about/index.html">
-            About
-        </a>
-        
         <a class="a-block nav-link-item false" href="/archives/index.html">
             Archives
         </a>
         
-        <a class="a-block nav-link-item false" href="/gallery/index.html">
-            Gallery
-        </a>
-        
         <a class="a-block nav-link-item false" href="/projects/index.html">
             Projects
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/about/index.html">
+            About
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/gallery/index.html">
+            Gallery
         </a>
         
 
@@ -223,14 +223,14 @@
 <p>第一次接触 AprilTag 是去年智能车室内对弈组的时候了，那时候使用的摄像头硬件是 OpenMV，官方库里就集成了 AprilTag 的识别，在已知相机内参的情况下，单个 AprilTag 就能实现三维空间内的位姿定位。</p>
 <p>虽然和 QR 码很像，但 AprilTag 视觉基准码有完全不同的目标和应用场景。使用 QR 码时，通常需要将摄像头与标签对齐，然后以相当高的分辨率拍摄它，获得数百个字节，比如一个网址；相比之下，视觉基准码只承载很小的信息（也许是 12 位），但即使它的分辨率非常低、光线不均匀或隐藏在图像的角落里，也能被自动检测和定位。</p>
 <p>官网：<a target="_blank" rel="noopener" href="https://april.eecs.umich.edu/software/apriltag.html">https://april.eecs.umich.edu/software/apriltag.html</a></p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>AprilTag 团队主要的论文有两篇：</p>
+<h2><span id="原理">原理</span><a href="#原理" class="header-anchor">#</a></h2><p>AprilTag 团队主要的论文有两篇：</p>
 <ul>
 <li>ICRA 2011 - AprilTag: A robust and flexible visual fiducial system</li>
 <li>IROS 2016 - AprilTag 2: Efficient and robust fiducial detection</li>
 </ul>
 <p>下文从检测器、编码系统两部分过一下原理（其实就是翻译原文）。</p>
 <p>使用自然出现的特征一直是机器感知的重点，但人造特征在一些实验中也扮演了很重要的角色，可以简化一些并不关注自然特征的系统。论文设计了一种使用二维码的视觉基准系统，可以从单张图像中实现六个自由度上的定位。这一系统融合了之前的直线检测、数字编码技术，对遮挡、扭曲、镜头失真有更好的效果。</p>
-<h3 id="检测器"><a href="#检测器" class="headerlink" title="检测器"></a>检测器</h3><p>检测器设计为很低的假阴率，所以就有一个很高的假阳率。（真假表示识别正确与否，阴阳表示识别的结果是真或假，这里就是尽量不漏掉可能的矩形）编码系统会补偿这一过高的假阳率。</p>
+<h3><span id="检测器">检测器</span><a href="#检测器" class="header-anchor">#</a></h3><p>检测器设计为很低的假阴率，所以就有一个很高的假阳率。（真假表示识别正确与否，阴阳表示识别的结果是真或假，这里就是尽量不漏掉可能的矩形）编码系统会补偿这一过高的假阳率。</p>
 <ul>
 <li><p><strong>直线检测</strong></p>
 <blockquote>
@@ -261,7 +261,7 @@
 <p>  该模型有 4 个参数，用最小二乘回归很容易计算。我们建立了两个这样的模型，分别给黑白两色。解码数据时使用的阈值就是黑白模型预测强度值的平均值。</p>
 </li>
 </ul>
-<h3 id="编码系统"><a href="#编码系统" class="headerlink" title="编码系统"></a>编码系统</h3><blockquote>
+<h3><span id="编码系统">编码系统</span><a href="#编码系统" class="header-anchor">#</a></h3><blockquote>
 <p>命名规则→考虑四个旋转方向的唯一性→去除具有混淆性的码→考察码的矩形覆盖复杂度</p>
 </blockquote>
 <p>一旦数据从正方形中解码出来，就要靠编码系统来检查其有效性。编码系统的目标是：最大化可识别码的数量；最大化可检测到或纠正的比特位错误；最小化假阳性/标签间混淆率；最小化每个标签的总比特数（因此缩小标签的大小）。</p>
@@ -272,7 +272,7 @@
 <p>一些码字，尽管满足汉明距离限制，却是糟糕的选择。例如，由所有零组成的码字将生成一个看起来像单个黑色方块的标记。这种简单的几何图形经常出现在自然场景中，导致假阳误报。我们没有手动识别有问题的码，而是通过拒绝简单几何模式的候选码来修改 lexicode 生成算法。我们的度量是基于生成标签的 2D 图案所需的矩形数。例如，一个全黑的码只需要一个矩形，而黑-白-黑条纹需要两个矩形（一个大的黑色矩形加上第二个较小的白色矩形）。我们的假设是，复杂度高的标签模式（需要重构许多矩形）在自然界中出现的频率较低，从而导致假阳性率较低，本文后面的实验结果也支持了我们的假设。</p>
 <p>利用这个思想，我们再次修改 lexicode 生成算法，以拒绝过于简单的候选码。我们使用一种简单的贪婪方法来近似估计标签码所需的矩形数量，这种方法反复考虑所有可能的矩形，并添加能够最大程度减少误差的矩形。由于标记通常非常小，所以这种计算不是瓶颈。复杂度小于阈值（在我们的实验中通常为 10) 的标签将被拒绝。</p>
 <center>
-<img src="https://s1.ax1x.com/2020/10/29/BJHgRx.jpg" width="90%"/>
+<img src="https://s1.ax1x.com/2020/10/29/BJHgRx.jpg" width="90%">
 <br>
 定制的几片 PVC 材料的 AprilTag
 </center>
@@ -281,21 +281,21 @@
 <p>原文中的实验结果分析这里略去。</p>
 <p>第二代整体思路不变，主要是在原有检测器的基础上进行了改进，不再花时间关注部分遮挡的标签（因为即使检测出来大概率也无法解码），修改了算法，降低了误报率，提高了检测率，减少了检测所需的计算时间。同时还开发了适用于 iOS 设备的 APP，可在 App Store 上免费下载。</p>
 <center>
-<img src="https://s1.ax1x.com/2020/10/31/BUHgyt.jpg" width="40%"/>
+<img src="https://s1.ax1x.com/2020/10/31/BUHgyt.jpg" width="40%">
 <br>
 AprilTag APP 界面
 </center>
 <br>
 
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>这次主要参考了 <a target="_blank" rel="noopener" href="https://github.com/BlackJocker1995">rain 同学</a> 的代码 <a target="_blank" rel="noopener" href="https://github.com/BlackJocker1995/Apriltag_python">Apriltag_python</a>，他在 Python 上复现了 AprilTag 系统，并作为他的毕业设计。具体使用的算法和论文中有一些差距，但最终效果也很不错。</p>
-<h2 id="用于机器人标定"><a href="#用于机器人标定" class="headerlink" title="用于机器人标定"></a>用于机器人标定</h2><p>受到 <a target="_blank" rel="noopener" href="https://sites.google.com/view/keypose/home">KeyPose: Multi-View 3D Labeling and Keypoint Estimation for Transparent Objects</a> 启发，想把 AprilTag 应用到机器人手眼标定上。</p>
+<h2><span id="代码">代码</span><a href="#代码" class="header-anchor">#</a></h2><p>这次主要参考了 <a target="_blank" rel="noopener" href="https://github.com/BlackJocker1995">rain 同学</a> 的代码 <a target="_blank" rel="noopener" href="https://github.com/BlackJocker1995/Apriltag_python">Apriltag_python</a>，他在 Python 上复现了 AprilTag 系统，并作为他的毕业设计。具体使用的算法和论文中有一些差距，但最终效果也很不错。</p>
+<h2><span id="用于机器人标定">用于机器人标定</span><a href="#用于机器人标定" class="header-anchor">#</a></h2><p>受到 <a target="_blank" rel="noopener" href="https://sites.google.com/view/keypose/home">KeyPose: Multi-View 3D Labeling and Keypoint Estimation for Transparent Objects</a> 启发，想把 AprilTag 应用到机器人手眼标定上。</p>
 <p>下面引用一段 YouTube 视频，或者可以查看微信推送：[谷歌提出位姿估计新算法 KeyPose, 基于立体视觉有效估计透明物体的 3D 位姿 (<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/0Nc2s4OFw8Jr-lELbGywbQ">https://mp.weixin.qq.com/s/0Nc2s4OFw8Jr-lELbGywbQ</a>)</p>
-<video src="https://www.youtube.com/embed/DBY4gycGzXM?start=26" type='video/mp4' controls='controls'  width='100%' height='100%'>
+<video src="https://www.youtube.com/embed/DBY4gycGzXM?start=26" type="video/mp4" controls="controls" width="100%" height="100%">
 </video>
 
 <p>在图中可以看到，研究人员使用了 AprilTags 来精确地追踪相机在拍摄过程中的位姿。人们只需要手工标注每一段视频中很少一部分图像中的 2D 关键点，就可以基于多视图几何从视频中的所有帧里抽取出 3D 关键点的信息，以百倍的量级提升了数据集的构建效率。</p>
 <center>
-<img src="https://s1.ax1x.com/2020/10/29/BJIfER.jpg" width="80%"/>
+<img src="https://s1.ax1x.com/2020/10/29/BJIfER.jpg" width="80%">
 <br>
 基于机械臂的自动化图像序列采集装置
 </center>
@@ -306,7 +306,7 @@ AprilTag APP 界面
 <p>假定相机垂直于待抓取平面（可以利用深度图进行辅助安装），那么相机坐标系与机器人坐标系的 z 轴就已经平行，将剩下的 xy 平面的变换定义为一次仿射变换，因此需要三组对应的坐标点对进行计算。</p>
 <p>所以设计的操作方式为：在待抓取平面上设置三个 AprilTag（位置随意），然后利用机器人的拖动示教功能，移动机器人工具手末端依次触碰每个 AprilTag 的中心，上位机分别记录下三次机器人坐标。之后开启相机（位置随意）进行 AprilTag 的识别与定位，利用得到的这三个坐标对进行仿射变换，就能实时进行坐标系配准。</p>
 <center>
-<img src="https://s1.ax1x.com/2020/10/29/BJF3zF.jpg" width="70%"/>
+<img src="https://s1.ax1x.com/2020/10/29/BJF3zF.jpg" width="70%">
 <br>
 AprilTag 标定效果
 </center>
@@ -361,7 +361,7 @@ AprilTag 标定效果
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?88509866"></script>
+<script src="/js/journal.js?3713322"></script>
 
 
 <script type="text/javascript">

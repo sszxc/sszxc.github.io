@@ -18,7 +18,7 @@
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?3947589">
+<link rel="stylesheet" href="/css/journal.css?108974">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -69,20 +69,20 @@
 
             
             
-            <a class="a-block drawer-menu-item false" href="/about/index.html">
-                About
-            </a>
-            
             <a class="a-block drawer-menu-item false" href="/archives/index.html">
                 Archives
             </a>
             
-            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
-                Gallery
-            </a>
-            
             <a class="a-block drawer-menu-item false" href="/projects/index.html">
                 Projects
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/about/index.html">
+                About
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
+                Gallery
             </a>
             
 
@@ -128,20 +128,20 @@
 
         
         
-        <a class="a-block nav-link-item false" href="/about/index.html">
-            About
-        </a>
-        
         <a class="a-block nav-link-item false" href="/archives/index.html">
             Archives
         </a>
         
-        <a class="a-block nav-link-item false" href="/gallery/index.html">
-            Gallery
-        </a>
-        
         <a class="a-block nav-link-item false" href="/projects/index.html">
             Projects
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/about/index.html">
+            About
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/gallery/index.html">
+            Gallery
         </a>
         
 
@@ -228,7 +228,7 @@
                 <div class="post-body">
                     <p>随着移动机器人、无人驾驶的发展，行业对 SLAM 技术的需求逐渐提高；另一方面，传感器技术的发展以及算法的进步使得 SLAM 技术也进入了从算法到产品转化的阶段。因为经常关注科技新闻，我还记得前几年扫地机器人盛行的时候，大量的产品采用的还是随机覆盖法，即检测到障碍就改变前进方向，可想而知其清扫效率往往不尽如人意，而这时某些厂商拿出了 SLAM 建图导航等功能作为一大卖点，在我看来这也是实现其智能化的关键一步。</p>
 <center>
-<img src="https://s1.ax1x.com/2020/05/17/YgJFhD.jpg" width="80%"/>
+<img src="https://s1.ax1x.com/2020/05/17/YgJFhD.jpg" width="80%">
 <br>
 扫地机器人路径规划
 </center>
@@ -239,14 +239,14 @@
 </blockquote>
 <p>智能移动机器人的三个关键问题是“我是谁？”、“我要去哪？”、“我该怎么去？”。要实现导航，就需要采用合适的模型对周围的环境进行描述，根据环境中可观测的特征对自身进行定位。定位本质上可以定义为一个估计问题，通过传感器观测的存在不同程度的噪声的数据来估计位置；也可以定义为一个优化问题，通过多种观测数据之间的约束关系对位置进行优化。当然，噪声越低的传感器能够获得更好的定位精度，但需要在价格和精度上寻求平衡，目前常见的传感器有：激光雷达、深度摄像头、双目摄像头、IMU（惯导单元）等等。 建图实际上是在定位的基础上，将观测数据进行融合、把新的特征加入已有的世界模型中的过程。其难点在于需要实时跟踪地图的变化，_回环并减小不确定性_。</p>
 <center>
-<img src="https://s1.ax1x.com/2020/05/17/YgJA9e.jpg" width="80%"/>
+<img src="https://s1.ax1x.com/2020/05/17/YgJA9e.jpg" width="80%">
 <br>
 移动机器人控制模型
 </center>
 
 <p>ORB-SLAM 是一个基于特征点的实时单目摄像头 SLAM 系统，用我自己的一句话概括其原理就是，<strong>利用前后两帧图像中多组不变的特征点，计算相机坐标在两帧之间的相对运动，同时实现定位和建图。</strong>支持宽基线的闭环检测和重定位，包括全自动初始化。该系统主要包含以下模块：跟踪（Tracking）、建图（Mapping）、重定位（Relocalization）、闭环检测（Loop closing）。<a target="_blank" rel="noopener" href="http://webdiis.unizar.es/~raulmur/orbslam/" title="项目主页">项目主页</a>，<a target="_blank" rel="noopener" href="https://github.com/raulmur/ORB_SLAM2" title="GitHub 地址">GitHub 地址</a>，<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1610.06475" title="论文地址">论文地址</a>。</p>
 <p>在本学期的《机器人技术基础》研讨课中，我和队友选择了这一种算法作为我们的入门教材，希望借此对 SLAM 系统有一个基本的认识。</p>
-<h1 id="前序知识"><a href="#前序知识" class="headerlink" title="前序知识"></a>前序知识</h1><ol>
+<h1><span id="前序知识">前序知识</span><a href="#前序知识" class="header-anchor">#</a></h1><ol>
 <li><p>ORB 特征</p>
 <p>ORB_SLAM2 中使用 2011 年首次发布的 ORB 算子进行特征点的提取与描述，ORB 算法原理主要来自于文章 <a target="_blank" rel="noopener" href="https://128.84.21.199/abs/1610.06475" title="ORB: an efficient alternative to SIFT or SURF">ORB: an efficient alternative to SIFT or SURF</a>。</p>
 <p>在现实生活中，我们从不同的距离、方向、角度或者不同的光照条件下观察一个物体时，物体的大小、形状、明暗都会有所不同，但我们的大脑依然可以判断它是同一件物体。为了让计算机也掌握这种特征，理想的特征描述子应该具备这些性质，即在大小、方向、明暗不同的图像中，同一特征点应具有足够相似的描述子，称之为描述子的可复现性（鲁棒性）。使用 BRIEF 算法得到的描述子并不具备以上这些性质，而 ORB 算法将基于 FAST 关键点的技术和基于 BRIEF 描述符的技术相结合，因此称为 ORB（Oriented FAST and Rotated BRIEF），主要解决 BRIEF 描述子不具备旋转不变性的问题。虽然没有解决尺度一致性问题，但在 OpenCV 的 ORB 实现中采用了图像金字塔来改善这方面的性能。</p>
@@ -262,8 +262,8 @@
 </li>
 </ol>
 <p>边学边写，发现还有太多理论知识没有涉及到，以后有机会一定，读者有兴趣可以翻阅《视觉 SLAM 十四讲》。</p>
-<h1 id="ORB-SLAM-基本流程"><a href="#ORB-SLAM-基本流程" class="headerlink" title="ORB-SLAM 基本流程"></a>ORB-SLAM 基本流程</h1><center>
-<img src="https://s1.ax1x.com/2020/05/17/YgJE1H.jpg"/>
+<h1><span id="orb-slam-基本流程">ORB-SLAM 基本流程</span><a href="#orb-slam-基本流程" class="header-anchor">#</a></h1><center>
+<img src="https://s1.ax1x.com/2020/05/17/YgJE1H.jpg">
 <br>
 ORB-SLAM 基本流程
 </center>
@@ -280,7 +280,7 @@ ORB-SLAM 基本流程
 <p>这一部分主要分为两个过程，分别是闭环探测和闭环校正。闭环检测先使用 WOB 进行探测，然后通过 Sim3 算法计算相似变换。闭环校正，主要是闭环融合和 Essential Graph 的图优化。</p>
 </li>
 </ol>
-<h1 id="代码复现"><a href="#代码复现" class="headerlink" title="代码复现"></a>代码复现</h1><p>为了对算法有个更直观的认识，我们尝试复现了一下其代码。传感器使用的是单个 RGB 摄像头（偷懒未经标定），直接运行在笔记本上，无 CUDA 加速。基本环境：</p>
+<h1><span id="代码复现">代码复现</span><a href="#代码复现" class="header-anchor">#</a></h1><p>为了对算法有个更直观的认识，我们尝试复现了一下其代码。传感器使用的是单个 RGB 摄像头（偷懒未经标定），直接运行在笔记本上，无 CUDA 加速。基本环境：</p>
 <ul>
 <li>XPS15 9560 Ubuntu 18.4.03 i7-7700HQ 16.0 GB RAM</li>
 <li>USB 免驱摄像头 720P 30 帧 焦距 2.15mm/视角 120 度</li>
@@ -296,14 +296,14 @@ gnome-terminal -x <span class="token function">bash</span> -c <span class="token
 gnome-terminal -x <span class="token function">bash</span> -c <span class="token string">"source /home/henry/SLAM/usb_cam/build/devel/setup.bash;roslaunch usb_cam usb_cam-test.launch;"</span>
 gnome-terminal -x <span class="token function">bash</span> -c <span class="token string">"rosrun ORB_SLAM2 Mono /home/henry/SLAM/ORB_SLAM2/Vocabulary/ORBvoc.txt  /home/henry/SLAM/ORB_SLAM2/Examples/ROS/ORB_SLAM2/my.yaml"</span></code></pre>
 <center>
-<img src="https://s1.ax1x.com/2020/10/14/0IQtFU.jpg" width="100%"/>
+<img src="https://s1.ax1x.com/2020/10/14/0IQtFU.jpg" width="100%">
 <br>
 ORB-SLAM 界面
 </center>
 
 <p>最终效果可以查看 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av83263774">演示视频</a>，视频为直接录屏，右上角为原始图像，右下角为 ORB 特征点，左侧为关键帧与建图结果。后期经过调速处理，分为 2P，分别是教学楼走廊以及环教学楼的两个场景，均体现了回环检测的功能。由于均为手持拍摄，原始素材可能有一定的抖动。</p>
 <div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
-    <iframe src="//player.bilibili.com/player.html?aid=83263774&page=1"  scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+    <iframe src="//player.bilibili.com/player.html?aid=83263774&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
 </div>
 
 <br>
@@ -356,7 +356,7 @@ ORB-SLAM 界面
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?50593555"></script>
+<script src="/js/journal.js?7260077"></script>
 
 
 <script type="text/javascript">

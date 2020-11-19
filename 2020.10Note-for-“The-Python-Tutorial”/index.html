@@ -18,7 +18,7 @@
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?25080318">
+<link rel="stylesheet" href="/css/journal.css?72575201">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -69,20 +69,20 @@
 
             
             
-            <a class="a-block drawer-menu-item false" href="/about/index.html">
-                About
-            </a>
-            
             <a class="a-block drawer-menu-item false" href="/archives/index.html">
                 Archives
             </a>
             
-            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
-                Gallery
-            </a>
-            
             <a class="a-block drawer-menu-item false" href="/projects/index.html">
                 Projects
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/about/index.html">
+                About
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
+                Gallery
             </a>
             
 
@@ -128,20 +128,20 @@
 
         
         
-        <a class="a-block nav-link-item false" href="/about/index.html">
-            About
-        </a>
-        
         <a class="a-block nav-link-item false" href="/archives/index.html">
             Archives
         </a>
         
-        <a class="a-block nav-link-item false" href="/gallery/index.html">
-            Gallery
-        </a>
-        
         <a class="a-block nav-link-item false" href="/projects/index.html">
             Projects
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/about/index.html">
+            About
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/gallery/index.html">
+            Gallery
         </a>
         
 
@@ -220,7 +220,34 @@
     
             <div class="post-body-wrapper">
                 <div class="post-body">
-                    <blockquote>
+                    <!-- toc -->
+
+<ul>
+<li><a href="#1-whetting-your-appetite">1. Whetting Your Appetite</a></li>
+<li><a href="#2-using-the-python-interpreter">2. Using the Python Interpreter</a><ul>
+<li><a href="#21-invoking-the-interpreter">2.1. Invoking the Interpreter</a><ul>
+<li><a href="#211-argument-passing">2.1.1 Argument Passing</a></li>
+<li><a href="#212-interactive-mode">2.1.2. Interactive Mode</a></li>
+</ul>
+</li>
+<li><a href="#22-the-interpreter-and-its-environment">2.2. The Interpreter and Its Environment</a><ul>
+<li><a href="#221-source-code-encoding">2.2.1. Source Code Encoding</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#3-an-informal-introduction-to-python">3. An Informal Introduction to Python</a><ul>
+<li><a href="#31-using-python-as-a-calculator">3.1. Using Python as a Calculator</a><ul>
+<li><a href="#311-numbers">3.1.1. Numbers</a></li>
+<li><a href="#312-strings">3.1.2. Strings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<blockquote>
 <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/tutorial/index.html">https://docs.python.org/3/tutorial/index.html</a><br>摘抄 + 翻译</p>
 </blockquote>
 <p>Python 很简单，很强大。高级数据结构，高效的面向对象编程，优雅的语法 elegant syntax，动态类型 dynamic typing，解释性本质 interpreted nature。</p>
@@ -228,7 +255,7 @@
 <p>Python 的解释器可以使用 C（或者任何 C 调用的语言 other languages callable from C）编写的函数和数据结构轻松地扩展。</p>
 <p>本教程介绍 Python 最引人注目 noteworthy 的特性，展现这种语言的 flavor and style。</p>
 <hr>
-<h1 id="1-Whetting-Your-Appetite"><a href="#1-Whetting-Your-Appetite" class="headerlink" title="1. Whetting Your Appetite"></a>1. Whetting Your Appetite</h1><blockquote>
+<h1><span id="1-whetting-your-appetite">1. Whetting Your Appetite</span><a href="#1-whetting-your-appetite" class="header-anchor">#</a></h1><blockquote>
 <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/tutorial/appetite.html">https://docs.python.org/3/tutorial/appetite.html</a></p>
 </blockquote>
 <p>开胃菜</p>
@@ -242,36 +269,73 @@
 <p>Python 的名字来源于 BBC 节目《Monty Python’s Flying Circus》飞行马戏团，和爬行动物无关。</p>
 <p>下一章解释使用解释器的原理。其余部分通过示例介绍各种功能，从简单表达式、数据结构到异常、自定义的类等概念。</p>
 <hr>
-<h1 id="2-Using-the-Python-Interpreter"><a href="#2-Using-the-Python-Interpreter" class="headerlink" title="2. Using the Python Interpreter"></a>2. Using the Python Interpreter</h1><blockquote>
+<h1><span id="2-using-the-python-interpreter">2. Using the Python Interpreter</span><a href="#2-using-the-python-interpreter" class="header-anchor">#</a></h1><blockquote>
 <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/tutorial/interpreter.html">https://docs.python.org/3/tutorial/interpreter.html</a></p>
 </blockquote>
-<h2 id="2-1-Invoking-the-Interpreter"><a href="#2-1-Invoking-the-Interpreter" class="headerlink" title="2.1. Invoking the Interpreter"></a>2.1. Invoking the Interpreter</h2><p>Python 解释器 interpreter 安装在 <code>/usr/local/bin/python3.9</code>，把<code>/usr/local/bin</code>放在搜索路径下，就能在命令行调出 Python。</p>
+<h2><span id="21-invoking-the-interpreter">2.1. Invoking the Interpreter</span><a href="#21-invoking-the-interpreter" class="header-anchor">#</a></h2><p>Python 解释器 interpreter 安装在 <code>/usr/local/bin/python3.9</code>，把<code>/usr/local/bin</code>放在搜索路径下，就能在命令行调出 Python。</p>
 <p>在主提示符 prompt 后输入一个文件结尾字符（Unix 是 Ctrl-D，Win 是 Ctrl-Z），可以让解释器以零状态退出。也可以用 quit() 命令。</p>
 <p>在支持 GNU Readline 库的系统上，解释器的行编辑特性包括交互式编辑、历史替换和代码补全。（就是方向键可以查看历史命令、Tab 可以自动补全的功能）<a target="_blank" rel="noopener" href="https://www.bookstack.cn/read/bash-tutorial/docs-readline.md">Bash 行操作</a>、<a target="_blank" rel="noopener" href="https://www.cnblogs.com/bamanzi/archive/2013/04/15/clink-windows-cmd-readline.html">clink: 让 Windows Cmd 拥有 readline 能力</a></p>
 <p>解释器的操作有点像 Unix shell，当使用 tty 设备（就是串口设备，显示器键盘等）时，它读取命令并交互式执行；当以文件作为标准输入调用时，它将读取并执行文件中的脚本。</p>
 <p>启动解释器的另一种方式是<code>python -c command [arg] ...</code>，建议用单引号把命令括起来。</p>
 <p>其它命令行选项看这里 <a target="_blank" rel="noopener" href="https://docs.python.org/3/using/cmdline.html#using-on-general">Command line and environment</a>.</p>
-<h3 id="2-1-1-Argument-Passing"><a href="#2-1-1-Argument-Passing" class="headerlink" title="2.1.1 Argument Passing"></a>2.1.1 Argument Passing</h3><p>解释器得到命令后，脚本名和参数会转换成字符串列表，分配给 sys 模块的 argv 变量。除了-c、-m，其他参数传递给模块使用。</p>
+<h3><span id="211-argument-passing">2.1.1 Argument Passing</span><a href="#211-argument-passing" class="header-anchor">#</a></h3><p>解释器得到命令后，脚本名和参数会转换成字符串列表，分配给 sys 模块的 argv 变量。除了-c、-m，其他参数传递给模块使用。</p>
 <p>argc 是 argument count 的缩写，argv 是 argument vector 的缩写。</p>
-<h3 id="2-1-2-Interactive-Mode"><a href="#2-1-2-Interactive-Mode" class="headerlink" title="2.1.2. Interactive Mode"></a>2.1.2. Interactive Mode</h3><p>交互模式下有主提示符 (primary prompt)<code>&gt;&gt;&gt;</code>，对于多行命令有次提示符 (secondary prompt)<code>...</code>。</p>
+<h3><span id="212-interactive-mode">2.1.2. Interactive Mode</span><a href="#212-interactive-mode" class="header-anchor">#</a></h3><p>交互模式下有主提示符 (primary prompt)<code>&gt;&gt;&gt;</code>，对于多行命令有次提示符 (secondary prompt)<code>...</code>。</p>
 <p>写<code>if</code>或者<code>def</code>的时候会自动变成次提示符的。</p>
-<h2 id="2-2-The-Interpreter-and-Its-Environment"><a href="#2-2-The-Interpreter-and-Its-Environment" class="headerlink" title="2.2. The Interpreter and Its Environment"></a>2.2. The Interpreter and Its Environment</h2><h3 id="2-2-1-Source-Code-Encoding"><a href="#2-2-1-Source-Code-Encoding" class="headerlink" title="2.2.1. Source Code Encoding"></a>2.2.1. Source Code Encoding</h3><p>默认情况下，Python 源文件被视为采用 UTF-8 编码。</p>
+<h2><span id="22-the-interpreter-and-its-environment">2.2. The Interpreter and Its Environment</span><a href="#22-the-interpreter-and-its-environment" class="header-anchor">#</a></h2><h3><span id="221-source-code-encoding">2.2.1. Source Code Encoding</span><a href="#221-source-code-encoding" class="header-anchor">#</a></h3><p>默认情况下，Python 源文件被视为采用 UTF-8 编码。</p>
 <p>ASCII 包含英文、数字、符号，1 个字节；Unicode 包含多国语言，通常 2 个字节，内存中一般用这个处理；UTF-8 变长编码，用于传输。<a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017075323632896">字符串和编码 廖雪峰的官方网站</a></p>
 <p>要声明默认编码以外的其他编码，应在文件的第一行添加一个特殊的注释行。 语法如下：<code># -*- coding: encoding -*-</code></p>
 <p>一个例外就是为了告诉 Linux/OS X 系统这是一个 Python 可执行程序（Windows 系统会忽略这个注释），第一行应该写<code>#!/usr/bin/env python3</code></p>
-<h1 id="3-An-Informal-Introduction-to-Python"><a href="#3-An-Informal-Introduction-to-Python" class="headerlink" title="3. An Informal Introduction to Python"></a>3. An Informal Introduction to Python</h1><blockquote>
+<h1><span id="3-an-informal-introduction-to-python">3. An Informal Introduction to Python</span><a href="#3-an-informal-introduction-to-python" class="header-anchor">#</a></h1><blockquote>
 <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/tutorial/introduction.html">https://docs.python.org/3/tutorial/introduction.html</a></p>
 </blockquote>
 <p>非正式介绍</p>
 <p>Python 中的注释以井号字符＃开头，并延伸到物理行的末尾。</p>
-<h2 id="3-1-Using-Python-as-a-Calculator"><a href="#3-1-Using-Python-as-a-Calculator" class="headerlink" title="3.1. Using Python as a Calculator"></a>3.1. Using Python as a Calculator</h2><h3 id="3-1-1-Numbers"><a href="#3-1-1-Numbers" class="headerlink" title="3.1.1. Numbers"></a>3.1.1. Numbers</h3><p>整型 int，浮点数 float。同时使用会自动转换成 float。</p>
+<h2><span id="31-using-python-as-a-calculator">3.1. Using Python as a Calculator</span><a href="#31-using-python-as-a-calculator" class="header-anchor">#</a></h2><h3><span id="311-numbers">3.1.1. Numbers</span><a href="#311-numbers" class="header-anchor">#</a></h3><p>整型 int，浮点数 float。同时使用会自动转换成 float。</p>
 <p>除法<code>/</code>始终返回浮点数，<code>//</code>可以向下取整 (discards the fractional part)，<code>%</code>计算余数 (returns the remainder of the division)。</p>
 <p>结果 * 除数 + 余数 (result * divisor + remainder)</p>
 <p>用<code>**</code>计算幂，如<code>2 ** 7</code>表示 2 的 7 次方 (2 to the power of 7)。</p>
 <p>等号<code>=</code>用来把数值分配 (assign) 给变量。</p>
 <p>在交互模式下，最后一个打印的表达式会赋值给变量<code>_</code>，就像是计算器里的”Ans”。要注意的是这个变量应该被用户视为只读的，不要显式地给它赋值 (explicitly assign a value to it)，你会创建一个同名的独立局部变量，用它的神奇行为掩盖内置变量。</p>
 <p>除了 int 和 float 外，Python 还支持其他类型的数字，例如小数和分数。Python 还具有对复数的内置支持，并使用<code>j</code>或<code>J</code>后缀指示虚部（例如<code>3+5j</code>）。</p>
-<h3 id="3-1-2-Strings"><a href="#3-1-2-Strings" class="headerlink" title="3.1.2. Strings"></a>3.1.2. Strings</h3><p>除了数字，Python还可以操作字符串，字符串可以用几种方式表示。它们可以用单引号<code>&#39;…&#39;</code>或双引号<code>&quot;…&quot;</code>括起来，<code>\</code>可以用来转义引号(escape quotes)。</p>
+<h3><span id="312-strings">3.1.2. Strings</span><a href="#312-strings" class="header-anchor">#</a></h3><p>除了数字，Python 还可以操作字符串，字符串可以用几种方式表示。它们可以用单引号<code>&#39;…&#39;</code>或双引号<code>&quot;…&quot;</code>括起来，<code>\</code>可以用来转义引号 (escape quotes)。</p>
+<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token string">'doesn\'t'</span>  <span class="token comment" spellcheck="true"># use \' to escape the single quote...</span>
+<span class="token string">"doesn't"</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token string">"doesn't"</span>  <span class="token comment" spellcheck="true"># ...or use double quotes instead</span>
+<span class="token string">"doesn't"</span></code></pre>
+<p>在交互式解释器中，输出的字符串外面有引号，特殊字符不会转义；<code>print</code>函数略去前后引号，同时转义。</p>
+<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> s  <span class="token comment" spellcheck="true"># without print(), \n is included in the output</span>
+<span class="token string">'First line.\nSecond line.'</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># with print(), \n produces a new line</span>
+First line<span class="token punctuation">.</span>
+Second line<span class="token punctuation">.</span></code></pre>
+<p>如果不想把以<code>\</code>为前缀的字符解释为特殊字符，可以在第一个引号前加<code>r</code>来使用原始字符 (raw strings)。</p>
+<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'C:\some\name'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># here \n means newline!</span>
+C<span class="token punctuation">:</span>\some
+ame
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token string">'C:\some\name'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># note the r before the quote</span>
+C<span class="token punctuation">:</span>\some\name</code></pre>
+<p>字符串可以跨越多行，一种方法是使用三重引号 <code>&quot;&quot;&quot;...&quot;&quot;&quot;</code>or<code>&#39;&#39;&#39;...&#39;&#39;&#39;</code>，行尾会自动加进字符串，如果不想换行可以在行尾加<code>\</code>。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token triple-quoted-string string">"""\
+Hello \
+World
+"""</span><span class="token punctuation">)</span></code></pre>
+<p>字符串可以用<code>+</code>连接在一起，可以用<code>*</code>重复。彼此相邻的多个字符串会自动连接在一起，但这个特性对变量或表达式无效，要用<code>+</code>。</p>
+<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> text <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">'Put several strings within parentheses '</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>         <span class="token string">'to have them joined together.'</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> text
+<span class="token string">'Put several strings within parentheses to have them joined together.'</span></code></pre>
+<p>字符串可以被索引（用方括号），第一位是 index 0，字符类型都是统一的，每个字符占一位。（index的复数是indices）<br>索引如果是负数，就从字符串的右边开始计数（因为-0就是0，从右边的话是-1开始）。</p>
+<p>除了索引，字符串还支持切片（slicing）：索引获取单个字符，切片获取子字符串。<br>切片总是包括开始，不包括结尾，因此<code>s[:i] + s[i:]</code>就是<code>s</code>。<br>切片有默认值，省略（omit）的第一个索引值默认为0，第二个索引值默认为总长。</p>
+<p>记住切片如何工作的一种方法是将索引看作字符之间的指针。</p>
+<pre><code> +---+---+---+---+---+---+
+ | P | y | t | h | o | n |
+ +---+---+---+---+---+---+
+ 0   1   2   3   4   5   6
+-6  -5  -4  -3  -2  -1</code></pre>
+<p>超出长度的索引会报错，但在切片里会返回空。</p>
+<p>Python的字符串不能被更改（immutable），给字符串指定位置赋值（assignment）会报错。</p>
+<p>内置函数<code>len()</code>可以返回字符串的长度。</p>
 <hr>
 <pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#!/usr/bin/env python3</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Hello, World!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
@@ -322,7 +386,7 @@
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?3914698"></script>
+<script src="/js/journal.js?18570524"></script>
 
 
 <script type="text/javascript">

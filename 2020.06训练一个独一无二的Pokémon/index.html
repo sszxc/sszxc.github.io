@@ -12,7 +12,7 @@
 炼丹师初体验
 
 续 上一篇文章，第一次尝试 GAN 后，有了一些奇思妙想。
-数据集翻找了不少本地版图鉴、爱好者论坛，最后使用的数据主要来自官方的网页版图鉴 The official Pokémon Website in China，直接用爬虫爬了从关都到阿罗拉地区的 807 图鉴所有形态图片...">
+数据集#翻找了不少本地版图鉴、爱好者论坛，最后使用的数据主要来自官方的网页版图鉴 The official Pokémon Website in China，直接用爬虫爬了从关都到阿罗拉地区的 807 图鉴所有形态图...">
 <meta name="keywords" content="">
 
     <meta charset="utf-8">
@@ -22,7 +22,7 @@
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?3425909">
+<link rel="stylesheet" href="/css/journal.css?31167638">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -73,20 +73,20 @@
 
             
             
-            <a class="a-block drawer-menu-item false" href="/about/index.html">
-                About
-            </a>
-            
             <a class="a-block drawer-menu-item false" href="/archives/index.html">
                 Archives
             </a>
             
-            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
-                Gallery
-            </a>
-            
             <a class="a-block drawer-menu-item false" href="/projects/index.html">
                 Projects
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/about/index.html">
+                About
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
+                Gallery
             </a>
             
 
@@ -132,20 +132,20 @@
 
         
         
-        <a class="a-block nav-link-item false" href="/about/index.html">
-            About
-        </a>
-        
         <a class="a-block nav-link-item false" href="/archives/index.html">
             Archives
         </a>
         
-        <a class="a-block nav-link-item false" href="/gallery/index.html">
-            Gallery
-        </a>
-        
         <a class="a-block nav-link-item false" href="/projects/index.html">
             Projects
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/about/index.html">
+            About
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/gallery/index.html">
+            Gallery
         </a>
         
 
@@ -240,28 +240,28 @@
 <p><em>炼丹师初体验</em></p>
 </blockquote>
 <p>续 <a target="_blank" rel="noopener" href="https://sszxc.net/2020/06/dcgan/">上一篇文章</a>，第一次尝试 GAN 后，有了一些奇思妙想。</p>
-<h1 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h1><p>翻找了不少本地版图鉴、爱好者论坛，最后使用的数据主要来自官方的网页版图鉴 <a target="_blank" rel="noopener" href="https://cn.portal-pokemon.com/play/pokedex">The official Pokémon Website in China</a>，直接用爬虫爬了从关都到阿罗拉地区的 807 图鉴所有形态图片。抽样显示如下：</p>
+<h1><span id="数据集">数据集</span><a href="#数据集" class="header-anchor">#</a></h1><p>翻找了不少本地版图鉴、爱好者论坛，最后使用的数据主要来自官方的网页版图鉴 <a target="_blank" rel="noopener" href="https://cn.portal-pokemon.com/play/pokedex">The official Pokémon Website in China</a>，直接用爬虫爬了从关都到阿罗拉地区的 807 图鉴所有形态图片。抽样显示如下：</p>
 <center>
-<img src="https://s1.ax1x.com/2020/06/17/NEdEBd.jpg" width="100%"/>
+<img src="https://s1.ax1x.com/2020/06/17/NEdEBd.jpg" width="100%">
 </center>
 <br>
 
 <p>预处理主要涉及分辨率处理（64×64）、数据增广（左右反转、顺逆时针旋转 5°）。 在 TensorFlow 中设置数据集主要参考了这篇博客的代码：TensorFlow2.0（10）：加载自定义图片数据集到 Dataset <a target="_blank" rel="noopener" href="https://www.cnblogs.com/chenhuabin/p/11863889.html">https://www.cnblogs.com/chenhuabin/p/11863889.html</a></p>
-<h1 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h1><p>使用和 <a target="_blank" rel="noopener" href="https://sszxc.net/2020/06/dcgan/">上一篇文章</a> 相似的网络结构进行训练，参数基本不变，仅修改了输入输出的通道数，训练时网络的 Loss 曲线如下所示。</p>
+<h1><span id="神经网络">神经网络</span><a href="#神经网络" class="header-anchor">#</a></h1><p>使用和 <a target="_blank" rel="noopener" href="https://sszxc.net/2020/06/dcgan/">上一篇文章</a> 相似的网络结构进行训练，参数基本不变，仅修改了输入输出的通道数，训练时网络的 Loss 曲线如下所示。</p>
 <center>
-<img src="https://s1.ax1x.com/2020/06/17/NEBwgf.jpg" width="90%"/>
+<img src="https://s1.ax1x.com/2020/06/17/NEBwgf.jpg" width="90%">
 <br>
 Discriminator Loss for Fake Imgaes
 </center>
 <br>
 <center>
-<img src="https://s1.ax1x.com/2020/06/17/NEBd8P.jpg" width="90%"/>
+<img src="https://s1.ax1x.com/2020/06/17/NEBd8P.jpg" width="90%">
 <br>
 Discriminator Loss for Real Imgaes
 </center>
 <br>
 <center>
-<img src="https://s1.ax1x.com/2020/06/17/NEB0v8.jpg" width="90%"/>
+<img src="https://s1.ax1x.com/2020/06/17/NEB0v8.jpg" width="90%">
 <br>
 Generator Loss
 </center>
@@ -269,35 +269,35 @@ Generator Loss
 
 <p>迭代起来的输出是这样的，比较恐怖，轮廓有一些创新，但细节全损。</p>
 <center>
-<img src="https://s1.ax1x.com/2020/06/17/NE6rAe.jpg" width="90%"/>
+<img src="https://s1.ax1x.com/2020/06/17/NE6rAe.jpg" width="90%">
 </center>
 <br>
 
 <p>放在 MistGPU 服务器（广告费结一下）上训练，吃了个饭回来 100k 轮了，输出一些成果如下。</p>
 <center>
-<img src="https://s1.ax1x.com/2020/06/17/NEBaCt.jpg" width="60%"/>
+<img src="https://s1.ax1x.com/2020/06/17/NEBaCt.jpg" width="60%">
 </center>
 <br>
 
 <p>👎完蛋。</p>
 <p>接着开始玄学调参，但很可惜的是基本没有什么大的改观。</p>
 <p>分析了一下，这次失败有以下几个原因：首先，和人脸、手写数字的二维特征相比，Pokémon 相当于是三维特征的投影，且特征更多更复杂，简单的网络结构可能很难学会；其次，网络分辨率太小太小，应对单个数字可能还行，Pokémon 可能就直接糊了；此外，这次的数据集明显偏小，可能会存在过拟合现象；另一种想法是为了抑制噪声，可能需要增加多尺度下的判别器，或许可以学会对颜色平滑度做出限制。</p>
-<h1 id="DCGAN"><a href="#DCGAN" class="headerlink" title="DCGAN"></a>DCGAN</h1><p>微调了一下网络结构，效果也一般，于是借用了一下 <a target="_blank" rel="noopener" href="https://github.com/carpedm20/DCGAN-tensorflow">开源的 DCGAN</a> 跑跑。</p>
+<h1><span id="dcgan">DCGAN</span><a href="#dcgan" class="header-anchor">#</a></h1><p>微调了一下网络结构，效果也一般，于是借用了一下 <a target="_blank" rel="noopener" href="https://github.com/carpedm20/DCGAN-tensorflow">开源的 DCGAN</a> 跑跑。</p>
 <p>最开始使用默认参数进行训练，很恐怖，在 400 轮左右就开始全屏马赛克，调出 Loss 曲线看了一下。</p>
 <center>
-<img src="https://s1.ax1x.com/2020/06/17/NEINIP.jpg" width="90%"/>
+<img src="https://s1.ax1x.com/2020/06/17/NEINIP.jpg" width="90%">
 <br>
 Discriminator Loss for Fake Imgaes
 </center>
 <br>
 <center>
-<img src="https://s1.ax1x.com/2020/06/17/NEIYVI.jpg" width="90%"/>
+<img src="https://s1.ax1x.com/2020/06/17/NEIYVI.jpg" width="90%">
 <br>
 Discriminator Loss for Real Imgaes
 </center>
 <br>
 <center>
-<img src="https://s1.ax1x.com/2020/06/17/NEItat.jpg" width="90%"/>
+<img src="https://s1.ax1x.com/2020/06/17/NEItat.jpg" width="90%">
 <br>
 Generator Loss
 </center>
@@ -332,7 +332,7 @@ Generator Loss
 
 <p>最后效果就差不多了😎，给一组随机输入，生成器的输出如下所示。</p>
 <center>
-<img src="https://s1.ax1x.com/2020/06/17/NE7SUI.jpg" width="90%"/>
+<img src="https://s1.ax1x.com/2020/06/17/NE7SUI.jpg" width="90%">
 </center>
 <br>
 
@@ -384,7 +384,7 @@ Generator Loss
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?5776947"></script>
+<script src="/js/journal.js?24935926"></script>
 
 
 <script type="text/javascript">

@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="X-UA-Compatible" content="IE=edge">
 <meta name="author" content="Henry">
-<meta name="description" content="D-H 变换机器人运动学，主要关心的是机械臂中各个关节变量（转动副中的转动角度或移动副中的移动距离）与机械臂末端位姿的关系。具体来说，正运动学就是已知关节变量，求末端位姿；逆运动学是已知末端位姿，求关节变量。为了用数学的方法描述机械臂，通常使用的一种坐标表示方法为 D-H(Denavit-Ha...">
+<meta name="description" content="D-H 变换#机器人运动学，主要关心的是机械臂中各个关节变量（转动副中的转动角度或移动副中的移动距离）与机械臂末端位姿的关系。具体来说，正运动学就是已知关节变量，求末端位姿；逆运动学是已知末端位姿，求关节变量。为了用数学的方法描述机械臂，通常使用的一种坐标表示方法为 D-H(Denavit-H...">
 <meta name="keywords" content="">
 
     <meta charset="utf-8">
@@ -18,7 +18,7 @@
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?6731501">
+<link rel="stylesheet" href="/css/journal.css?33363515">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -69,20 +69,20 @@
 
             
             
-            <a class="a-block drawer-menu-item false" href="/about/index.html">
-                About
-            </a>
-            
             <a class="a-block drawer-menu-item false" href="/archives/index.html">
                 Archives
             </a>
             
-            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
-                Gallery
-            </a>
-            
             <a class="a-block drawer-menu-item false" href="/projects/index.html">
                 Projects
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/about/index.html">
+                About
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
+                Gallery
             </a>
             
 
@@ -128,20 +128,20 @@
 
         
         
-        <a class="a-block nav-link-item false" href="/about/index.html">
-            About
-        </a>
-        
         <a class="a-block nav-link-item false" href="/archives/index.html">
             Archives
         </a>
         
-        <a class="a-block nav-link-item false" href="/gallery/index.html">
-            Gallery
-        </a>
-        
         <a class="a-block nav-link-item false" href="/projects/index.html">
             Projects
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/about/index.html">
+            About
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/gallery/index.html">
+            Gallery
         </a>
         
 
@@ -228,11 +228,11 @@
     
             <div class="post-body-wrapper">
                 <div class="post-body">
-                    <h1 id="D-H-变换"><a href="#D-H-变换" class="headerlink" title="D-H 变换"></a>D-H 变换</h1><p><strong>机器人运动学</strong>，主要关心的是机械臂中各个<strong>关节变量</strong>（转动副中的转动角度或移动副中的移动距离）与机械臂<strong>末端位姿</strong>的关系。具体来说，<strong>正运动学</strong>就是已知关节变量，求末端位姿；<strong>逆运动学</strong>是已知末端位姿，求关节变量。为了用数学的方法描述机械臂，通常使用的一种坐标表示方法为 D-H(Denavit-Hartenberg) 变换，也是本文的一个重要前序知识，详细的定义和公式可以参考教材 1 或其他博客资料，这里不再赘述。</p>
+                    <h1><span id="d-h-变换">D-H 变换</span><a href="#d-h-变换" class="header-anchor">#</a></h1><p><strong>机器人运动学</strong>，主要关心的是机械臂中各个<strong>关节变量</strong>（转动副中的转动角度或移动副中的移动距离）与机械臂<strong>末端位姿</strong>的关系。具体来说，<strong>正运动学</strong>就是已知关节变量，求末端位姿；<strong>逆运动学</strong>是已知末端位姿，求关节变量。为了用数学的方法描述机械臂，通常使用的一种坐标表示方法为 D-H(Denavit-Hartenberg) 变换，也是本文的一个重要前序知识，详细的定义和公式可以参考教材 1 或其他博客资料，这里不再赘述。</p>
 <p>关于 D-H 参数（标准型），分享一段复习时总结的理解：<strong>D-H 参数的目的是把自由度所在的 Z 轴串起来，主要的方法是定义一个 X 轴，从而在 Z 轴之间建立合适的变换关系。</strong>相应的，设置四个参数来组成一套变换：θ表示 X 绕上一个 Z 轴的旋转，d 表示上一个 Z 轴上的偏移量，a 表示 X 轴上的偏移量，α表示 Z 绕 X 轴的旋转。</p>
-<h1 id="Robotics-Toolbox"><a href="#Robotics-Toolbox" class="headerlink" title="Robotics Toolbox"></a>Robotics Toolbox</h1><p>本次仿真主要基于 MATLAB 的 Robotics Toolbox 工具箱 2，其在机器人建模、轨迹规划、控制、可视化方面使用非常方便。这里分享一个最近在 Bilibili 大学上看到的比较优秀的教程：<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv3775509" title="手把手教你 MATLAB 机器人工具箱">手把手教你 MATLAB 机器人工具箱</a>。</p>
+<h1><span id="robotics-toolbox">Robotics Toolbox</span><a href="#robotics-toolbox" class="header-anchor">#</a></h1><p>本次仿真主要基于 MATLAB 的 Robotics Toolbox 工具箱 2，其在机器人建模、轨迹规划、控制、可视化方面使用非常方便。这里分享一个最近在 Bilibili 大学上看到的比较优秀的教程：<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv3775509" title="手把手教你 MATLAB 机器人工具箱">手把手教你 MATLAB 机器人工具箱</a>。</p>
 <p>下面简单介绍一下一些常用的命令。</p>
-<h2 id="机器人模型建立"><a href="#机器人模型建立" class="headerlink" title="机器人模型建立"></a>机器人模型建立</h2><p>机器人模型的构建，主要是通过上文提到的 D-H 表示法创建单个杆件，并将杆件进行连接得到机器人对象。默认采用的是‘standard’标准型 D-H 参数，如果选择改进型需要在后面加上‘modified’。</p>
+<h2><span id="机器人模型建立">机器人模型建立</span><a href="#机器人模型建立" class="header-anchor">#</a></h2><p>机器人模型的构建，主要是通过上文提到的 D-H 表示法创建单个杆件，并将杆件进行连接得到机器人对象。默认采用的是‘standard’标准型 D-H 参数，如果选择改进型需要在后面加上‘modified’。</p>
 <pre class=" language-matlab"><code class="language-matlab">L1 <span class="token operator">=</span> <span class="token function">Link</span><span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'alpha'</span><span class="token punctuation">,</span> <span class="token keyword">pi</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 L2 <span class="token operator">=</span> <span class="token function">Link</span><span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token string">'alpha'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span><span class="token string">'offset'</span><span class="token punctuation">,</span><span class="token keyword">pi</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 L3 <span class="token operator">=</span> <span class="token function">Link</span><span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'alpha'</span><span class="token punctuation">,</span> <span class="token keyword">pi</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token string">'offset'</span><span class="token punctuation">,</span><span class="token keyword">pi</span><span class="token operator">/</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -244,7 +244,7 @@ theta<span class="token operator">=</span><span class="token punctuation">[</spa
 robot<span class="token punctuation">.</span><span class="token function">plot</span><span class="token punctuation">(</span>theta<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">%显示机器人的图像</span></code></pre>
 <p>其中，Link 命令的参数除了四个基本的 D-H 参数，还可以包含 offset 关节变量偏移量、qlim 关节变量范围、m 质量、r 质心、I 惯性张量、B 粘性摩擦、Tc 静摩擦、G 减速比、Jm 转子惯量等参数，为更精细的设计仿真提供了很大的方便。</p>
 <center>
-<img src="https://s1.ax1x.com/2020/05/16/YyyW36.png"/>
+<img src="https://s1.ax1x.com/2020/05/16/YyyW36.png">
 <br>
 机器人模型建立
 </center>
@@ -261,7 +261,7 @@ robot<span class="token punctuation">.</span><span class="token function">displa
 theta<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0</span> <span class="token number">0</span> <span class="token number">0</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> 
 robot<span class="token punctuation">.</span><span class="token function">teach</span><span class="token punctuation">(</span>theta<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">%显示机器人的图像</span></code></pre>
 <center>
-<img src="https://s1.ax1x.com/2020/05/17/Y2V8Yt.png"/>
+<img src="https://s1.ax1x.com/2020/05/17/Y2V8Yt.png">
 <br>
 球坐标机器人示教
 </center>
@@ -269,13 +269,13 @@ robot<span class="token punctuation">.</span><span class="token function">teach<
 
 <p>PUMA560 作为一个经典的模型，已经被工具箱作为标准机器人收录，可以使用如下命令直接调出：<code>mdl_puma560</code>，同样使用<code>teach</code>进行示教效果如下。</p>
 <center>
-<img src="https://s1.ax1x.com/2020/05/17/Y2V3FI.png"/>
+<img src="https://s1.ax1x.com/2020/05/17/Y2V3FI.png">
 <br>
 PUMA560 示教
 </center>
 <br>
 
-<h2 id="正逆运动学求解"><a href="#正逆运动学求解" class="headerlink" title="正逆运动学求解"></a>正逆运动学求解</h2><p>工具箱提供了正逆运动学求解的函数：正解<code>fkine</code>，逆解<code>ikine</code>。 以 PUMA560 为例，可以用以下代码进行正运动学求解。</p>
+<h2><span id="正逆运动学求解">正逆运动学求解</span><a href="#正逆运动学求解" class="header-anchor">#</a></h2><p>工具箱提供了正逆运动学求解的函数：正解<code>fkine</code>，逆解<code>ikine</code>。 以 PUMA560 为例，可以用以下代码进行正运动学求解。</p>
 <pre class=" language-matlab"><code class="language-matlab">target<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">%target=[0,pi/3,-pi/3,0,pi/4,0];</span>
 <span class="token function">fkine</span><span class="token punctuation">(</span>p560<span class="token punctuation">,</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -285,20 +285,20 @@ p560<span class="token punctuation">.</span><span class="token function">plot</s
 p1<span class="token operator">=</span>p560<span class="token punctuation">.</span><span class="token function">fkine</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span>
 q1<span class="token operator">=</span>p560<span class="token punctuation">.</span><span class="token function">ikine</span><span class="token punctuation">(</span>p1<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>不出意外，逆解结果应该和输入的关节变量相等。当出现多解时，意味着机器人可以以多种方式实现这一动作。特别的，当机械臂关节数为 6，腕部三个旋转关节的轴相交于一点，或者满足其他一些特殊构型时 3，可以使用<code>ikine6s</code>函数求封闭解，此时可以由一个或者多个字符来控制运动学位型：左手或者右手 ‘l’，‘r’ ，肘部在上或者肘部在下 ‘u’，‘d’ ，手腕翻转或不翻转 ‘f’，‘n’。</p>
-<h1 id="基本轨迹规划"><a href="#基本轨迹规划" class="headerlink" title="基本轨迹规划"></a>基本轨迹规划</h1><p>有了正逆运动学，我们就可以指定任意点，让机器人对进行运动学逆解运算，再将分量分解到各关节，驱动末端达到指定位置。这是一种简单的点位运动（PTP），在此基础上我们更希望其实现指定轨迹的运动，即连续运动（CP）。由于在逆解的计算中解析解一般较为困难，一般都是以数值解近似，所以 CP 运动一般是以 PTP 运动为基础，通过在相邻两点之间采用满足精度要求的直线或圆弧轨迹进行插补，来实现轨迹的连续化。</p>
+<h1><span id="基本轨迹规划">基本轨迹规划</span><a href="#基本轨迹规划" class="header-anchor">#</a></h1><p>有了正逆运动学，我们就可以指定任意点，让机器人对进行运动学逆解运算，再将分量分解到各关节，驱动末端达到指定位置。这是一种简单的点位运动（PTP），在此基础上我们更希望其实现指定轨迹的运动，即连续运动（CP）。由于在逆解的计算中解析解一般较为困难，一般都是以数值解近似，所以 CP 运动一般是以 PTP 运动为基础，通过在相邻两点之间采用满足精度要求的直线或圆弧轨迹进行插补，来实现轨迹的连续化。</p>
 <p>这里展示一个“5-3-5”次多项式插补得到的轨迹规划，分别展示了 PUMA560 的三个关节的位置、速度、加速度，可以看到多项式插补的情况下加速度连续，也就意味着不会造成力的突变。</p>
 <center>
-<img src="https://s1.ax1x.com/2020/04/23/JU2JnH.gif"/>
+<img src="https://s1.ax1x.com/2020/04/23/JU2JnH.gif">
 <br>
 535 多项式轨迹规划
 </center>
 <br>
 
-<h1 id="水刀运动学模型"><a href="#水刀运动学模型" class="headerlink" title="水刀运动学模型"></a>水刀运动学模型</h1><p>接下来将以水刀为例，综合展示一下 MATLAB 机器人工具箱的功能。</p>
+<h1><span id="水刀运动学模型">水刀运动学模型</span><a href="#水刀运动学模型" class="header-anchor">#</a></h1><p>接下来将以水刀为例，综合展示一下 MATLAB 机器人工具箱的功能。</p>
 <p>水射流切割技术作为一种高新技术，是切割领域的一次革命。水射流切割有着其他切割技术无法比拟的优势：加工能力强，无需打孔，可以在任意点切割，进行任意复杂形状的加工，机构简单，应用灵活；属于冷加工，不产生热形变和金相组织变化，也不产生粉尘，环保无污染，无火灾危害；不产生附加应力变形，尤其是沿切割进给方向和法相方向，切割反作用很小，从而避免了零件由于附加应力而产生的变形。</p>
 <p>但同时，水射流切割也有难克服的缺点，主要有切口粗糙、切口纹理弯曲、切口斜面三方面问题，实际生产中可以通过使水刀前倾、偏摆的方法来补偿水射流的切割质量偏差。本次仿真即根据水刀头的模型进行<strong>前倾角</strong>和<strong>偏摆角</strong>的计算，模拟其切割过程。</p>
 <center>
-<img src="https://s1.ax1x.com/2020/05/17/Y2VlTA.png" width="50%"/>
+<img src="https://s1.ax1x.com/2020/05/17/Y2VlTA.png" width="50%">
 <br>
 水刀建模
 </center>
@@ -349,7 +349,7 @@ q1<span class="token operator">=</span>p560<span class="token punctuation">.</sp
 <p>这样做可以使得在切割的全程中，水刀只要一开始调整好前倾角δ和偏摆角γ之后便再也不需要驱动水刀的电机，机架末端机构的旋转带动水刀旋转，时时刻刻都保证切割时前倾角δ和偏摆角γ相同，因此水刀的运动与切割图形无关。当切割材料发生改变或者需要切割一个具有固定内切角的材料，需要调整前倾角δ和偏摆角γ时，仅仅需要转动水刀上的电机，而机架末端的位姿和其逆运动学解完全不需要改变。这样的设计真正做到了切割图案和切割方法的完全解耦，机架负责切割图案，水刀负责切割方法和质量。</p>
 <p>下图是不带刀头的机架轨迹动画，观察机架末端机构 x 轴，可见其始终与图案曲线相切，z 轴始终保持铅锤。</p>
 <center>
-<img src="https://s1.ax1x.com/2020/04/22/JNxt3D.gif"/>
+<img src="https://s1.ax1x.com/2020/04/22/JNxt3D.gif">
 <br>
 水刀机架轨迹规划
 </center>
@@ -357,13 +357,13 @@ q1<span class="token operator">=</span>p560<span class="token punctuation">.</sp
 
 <p>携带刀头后完整的水刀切割的仿真动画如下，分别展示了三种图案的不同视角。末端执行机构上与 z 轴重合的蓝色长直线代表水射流的方向，在切割过程中水射流方向与设定的前倾角δ和偏摆角γ吻合。</p>
 <center>
-<img src="https://s1.ax1x.com/2020/04/22/JNxc8S.gif"/>
+<img src="https://s1.ax1x.com/2020/04/22/JNxc8S.gif">
 <br>
 水刀切割动画
 </center>
 <br>
 
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
+<h1><span id="参考资料">参考资料</span><a href="#参考资料" class="header-anchor">#</a></h1><ol>
 <li> 《机器人学导论：分析、控制及应用》Saeed B.Niku</li>
 <li> <a target="_blank" rel="noopener" href="https://blog.csdn.net/fendoubasaonian/article/details/78229445?locationNum=8&fps=1" title="Matlab 中 Robotics toolbox 的安装及使用">Matlab 中 Robotics toolbox 的安装及使用</a></li>
 <li> <a target="_blank" rel="noopener" href="https://github.com/petercorke/robotics-toolbox-matlab/blob/master/%40SerialLink/ikine6s.m">ikine6s.m robotics-toolbox-matlab GitHub</a></li>
@@ -415,7 +415,7 @@ q1<span class="token operator">=</span>p560<span class="token punctuation">.</sp
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?89201816"></script>
+<script src="/js/journal.js?71258859"></script>
 
 
 <script type="text/javascript">
