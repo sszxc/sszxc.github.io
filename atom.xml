@@ -260,9 +260,9 @@
     <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="深度学习" scheme="http://example.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="Python" scheme="http://example.com/tags/Python/"/>
+    
+    <category term="深度学习" scheme="http://example.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
     <category term="TensorFlow" scheme="http://example.com/tags/TensorFlow/"/>
     
@@ -296,9 +296,9 @@
     <category term="uncategorized" scheme="http://example.com/categories/uncategorized/"/>
     
     
-    <category term="深度学习" scheme="http://example.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="Python" scheme="http://example.com/tags/Python/"/>
+    
+    <category term="深度学习" scheme="http://example.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
     <category term="TensorFlow" scheme="http://example.com/tags/TensorFlow/"/>
     
@@ -358,9 +358,9 @@
     <category term="uncategorized" scheme="http://example.com/categories/uncategorized/"/>
     
     
-    <category term="深度学习" scheme="http://example.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="Python" scheme="http://example.com/tags/Python/"/>
+    
+    <category term="深度学习" scheme="http://example.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
     <category term="Anaconda" scheme="http://example.com/tags/Anaconda/"/>
     
