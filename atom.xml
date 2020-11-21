@@ -267,9 +267,9 @@
     
     <category term="GAN" scheme="http://example.com/tags/GAN/"/>
     
-    <category term="TensorFlow" scheme="http://example.com/tags/TensorFlow/"/>
-    
     <category term="Pokémon" scheme="http://example.com/tags/Pokemon/"/>
+    
+    <category term="TensorFlow" scheme="http://example.com/tags/TensorFlow/"/>
     
   </entry>
   
@@ -303,9 +303,9 @@
     
     <category term="GAN" scheme="http://example.com/tags/GAN/"/>
     
-    <category term="MNIST" scheme="http://example.com/tags/MNIST/"/>
-    
     <category term="TensorFlow" scheme="http://example.com/tags/TensorFlow/"/>
+    
+    <category term="MNIST" scheme="http://example.com/tags/MNIST/"/>
     
   </entry>
   
