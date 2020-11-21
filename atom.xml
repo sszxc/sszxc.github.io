@@ -390,9 +390,9 @@
     <category term="技术" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="Python" scheme="http://example.com/tags/Python/"/>
-    
     <category term="图像处理" scheme="http://example.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+    <category term="Python" scheme="http://example.com/tags/Python/"/>
     
   </entry>
   
@@ -421,11 +421,11 @@
     
     <category term="仿真" scheme="http://example.com/tags/%E4%BB%BF%E7%9C%9F/"/>
     
-    <category term="图像处理" scheme="http://example.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
-    
     <category term="C" scheme="http://example.com/tags/C/"/>
     
     <category term="Webots" scheme="http://example.com/tags/Webots/"/>
+    
+    <category term="图像处理" scheme="http://example.com/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
