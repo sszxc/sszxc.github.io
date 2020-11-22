@@ -25,7 +25,7 @@ Python 3.6...">
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?62874704">
+<link rel="stylesheet" href="/css/journal.css?777993">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -79,16 +79,16 @@ Python 3.6...">
 
             
             
-            <a class="a-block drawer-menu-item false" href="/about/index.html">
-                About
+            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
+                Gallery
             </a>
             
             <a class="a-block drawer-menu-item false" href="/archives/index.html">
                 Archives
             </a>
             
-            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
-                Gallery
+            <a class="a-block drawer-menu-item false" href="/about/index.html">
+                About
             </a>
             
             <a class="a-block drawer-menu-item false" href="/projects/index.html">
@@ -138,16 +138,16 @@ Python 3.6...">
 
         
         
-        <a class="a-block nav-link-item false" href="/about/index.html">
-            About
+        <a class="a-block nav-link-item false" href="/gallery/index.html">
+            Gallery
         </a>
         
         <a class="a-block nav-link-item false" href="/archives/index.html">
             Archives
         </a>
         
-        <a class="a-block nav-link-item false" href="/gallery/index.html">
-            Gallery
+        <a class="a-block nav-link-item false" href="/about/index.html">
+            About
         </a>
         
         <a class="a-block nav-link-item false" href="/projects/index.html">
@@ -272,7 +272,8 @@ Python 3.6...">
 <p>来自：<a target="_blank" rel="noopener" href="http://www.zzkook.com/content/anaconda-zai-win10xia-zhuang-shi-yong-wen-ti-jie-jue-ban-fa-hui-zong-duo-tu">http://www.zzkook.com/content/anaconda-zai-win10xia-zhuang-shi-yong-wen-ti-jie-jue-ban-fa-hui-zong-duo-tu</a></p>
 <p>安装完之后记得使用<code>conda info</code>命令检查一下版本，同时升级的时候需要注意 CPU 和 GPU 版本之间的顺序。之前有次安装失败没注意看终端，结果装完了 CUDA 发现 TensorFlow 版本还没跟上。</p>
 <p>如果使用 CPU 版本的话应该就到此顺利结束了，但是为了使用 GPU 加速，任务还没完。加载环境后可以使用如下代码测试是否能调用 GPU，这一次很可惜不能。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow.python.client <span class="keyword">import</span> device_lib</span><br><span class="line">print(device_lib.list_local_devices())</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">from tensorflow.python.client import device_lib
+print(device_lib.list_local_devices())<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <hr>
 <h1><span id="cuda">CUDA</span><a href="#cuda" class="header-anchor">#</a></h1><p>根据 TensorFlow 官方给出的“经过测试的构建配置”，可以看到 TensorFlow1.14 对应的推荐 CUDA 版本是 10.0，和当前版本不符，显然为了稳定运行还需要降级 CUDA。</p>
@@ -361,7 +362,7 @@ Python 3.6...">
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?7842076"></script>
+<script src="/js/journal.js?42945267"></script>
 
 
 <script type="text/javascript">

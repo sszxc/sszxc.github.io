@@ -19,7 +19,7 @@
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?33038759">
+<link rel="stylesheet" href="/css/journal.css?66834788">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -73,16 +73,16 @@
 
             
             
-            <a class="a-block drawer-menu-item false" href="/about/index.html">
-                About
+            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
+                Gallery
             </a>
             
             <a class="a-block drawer-menu-item false" href="/archives/index.html">
                 Archives
             </a>
             
-            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
-                Gallery
+            <a class="a-block drawer-menu-item false" href="/about/index.html">
+                About
             </a>
             
             <a class="a-block drawer-menu-item false" href="/projects/index.html">
@@ -132,16 +132,16 @@
 
         
         
-        <a class="a-block nav-link-item false" href="/about/index.html">
-            About
+        <a class="a-block nav-link-item false" href="/gallery/index.html">
+            Gallery
         </a>
         
         <a class="a-block nav-link-item false" href="/archives/index.html">
             Archives
         </a>
         
-        <a class="a-block nav-link-item false" href="/gallery/index.html">
-            Gallery
+        <a class="a-block nav-link-item false" href="/about/index.html">
+            About
         </a>
         
         <a class="a-block nav-link-item false" href="/projects/index.html">
@@ -238,20 +238,55 @@
                 <div class="post-body">
                     <h1><span id="ssl-证书续订">SSL 证书续订</span><a href="#ssl-证书续订" class="header-anchor">#</a></h1><p><a target="_blank" rel="noopener" href="https://sszxc.net/2020/01/wordpress%e5%bb%ba%e7%ab%99%e6%97%a5%e5%bf%97/" title="上一篇博客">上一篇博客</a> 提到了使用 Let’s Encrypt 获取 SSL 证书的过程，由于其提供的免费证书有效期只有 3 个月，因此需要定期执行续订操作。</p>
 <p>按照官方教程，只需要使用 Let’s Encrypt 提供的证书管理工具 certbot，执行<code>certbot renew</code>就可以自动续订，但很不幸的是今天尝试后收到了一串无情的报错信息。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nginx: [error] invalid PID number <span class="string">&quot;&quot;</span> <span class="keyword">in</span> <span class="string">&quot;/var/run/nginx.pid&quot;</span></span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">All renewal attempts failed. The following certs could not be renewed:</span><br><span class="line">  /etc/letsencrypt/live/sszxc.net/fullchain.pem (failure)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nginx: [error] invalid PID number &quot;&quot; in &quot;&#x2F;var&#x2F;run&#x2F;nginx.pid&quot;
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+All renewal attempts failed. The following certs could not be renewed:
+  &#x2F;etc&#x2F;letsencrypt&#x2F;live&#x2F;sszxc.net&#x2F;fullchain.pem (failure)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>由此想到重启一下 nginx ，但是使用<code>nginx -c</code>命令重新加载 nginx 配置文件也会报错。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@sszxc:/etc/nginx<span class="comment"># nginx -c /etc/nginx/nginx.conf </span></span><br><span class="line">nginx: [emerg] <span class="built_in">bind</span>() to 0.0.0.0:80 failed (98: Address already <span class="keyword">in</span> use)</span><br><span class="line">nginx: [emerg] <span class="built_in">bind</span>() to 0.0.0.0:443 failed (98: Address already <span class="keyword">in</span> use)</span><br><span class="line">nginx: [emerg] still could not <span class="built_in">bind</span>()</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">root@sszxc:&#x2F;etc&#x2F;nginx# nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf 
+nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+nginx: [emerg] bind() to 0.0.0.0:443 failed (98: Address already in use)
+nginx: [emerg] still could not bind()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>使用<code>lsof -i:80</code>查看 80 端口的占用情况，发现是 nginx 它自己，这样看来可能的原因是上一次 nginx 没有正常关闭，所以导致端口一直被占用着了。使用<code>sudo fuser -k 80/tcp</code><strong>杀掉占用 80 端口的进程</strong>，然后就可以顺利重启 nginx 了，这之后使用<code>certbot renew</code>即可顺利自动续订。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Processing /etc/letsencrypt/renewal/sszxc.net.conf</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">Cert is due <span class="keyword">for</span> renewal, auto-renewing...</span><br><span class="line">Plugins selected: Authenticator nginx, Installer nginx</span><br><span class="line">Renewing an existing certificate</span><br><span class="line">Performing the following challenges:</span><br><span class="line">http-01 challenge <span class="keyword">for</span> sszxc.net</span><br><span class="line">http-01 challenge <span class="keyword">for</span> www.sszxc.net</span><br><span class="line">Waiting <span class="keyword">for</span> verification...</span><br><span class="line">Cleaning up challenges</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">new certificate deployed with reload of nginx server; fullchain is</span><br><span class="line">/etc/letsencrypt/live/sszxc.net/fullchain.pem</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line"></span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">Congratulations, all renewals succeeded. The following certs have been renewed:</span><br><span class="line">  /etc/letsencrypt/live/sszxc.net/fullchain.pem (success)</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Processing &#x2F;etc&#x2F;letsencrypt&#x2F;renewal&#x2F;sszxc.net.conf
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Cert is due for renewal, auto-renewing...
+Plugins selected: Authenticator nginx, Installer nginx
+Renewing an existing certificate
+Performing the following challenges:
+http-01 challenge for sszxc.net
+http-01 challenge for www.sszxc.net
+Waiting for verification...
+Cleaning up challenges
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+new certificate deployed with reload of nginx server; fullchain is
+&#x2F;etc&#x2F;letsencrypt&#x2F;live&#x2F;sszxc.net&#x2F;fullchain.pem
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Congratulations, all renewals succeeded. The following certs have been renewed:
+  &#x2F;etc&#x2F;letsencrypt&#x2F;live&#x2F;sszxc.net&#x2F;fullchain.pem (success)
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h1><span id="crontab-定时任务">Crontab 定时任务</span><a href="#crontab-定时任务" class="header-anchor">#</a></h1><p>为了自动化续订操作，这里可以使用 Crontab 程序定时执行命令。Vultr 提供的 VPS 内置了 Crontab 程序，如果手动安装的话命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install vixie-cron crontabs</span><br><span class="line">Crontab chkconfig crond on</span><br><span class="line">service crond start</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum install vixie-cron crontabs
+Crontab chkconfig crond on
+service crond start<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>说明：vixie-cron 软件包是 cron 的主程序；crontabs 软件包是用来安装、卸装、 或列举用来驱动 cron 守护进程的表格的程序。三行命令分别是安装、设为开机自启动和手动启动 Cron 服务。</p>
 <p>可以使用<code>service cron status</code>检查 Cron 服务状态，使用<code>crontab -e</code>创建 Cron 文件，使用<code>sudo crontab -l</code>查看修改完成后的定时命令。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@sszxc:/etc/nginx<span class="comment"># crontab -e</span></span><br><span class="line">no crontab <span class="keyword">for</span> root - using an empty one</span><br><span class="line"></span><br><span class="line">Select an editor.  To change later, run <span class="string">&#x27;select-editor&#x27;</span>.</span><br><span class="line">  1. /bin/nano        &lt;---- easiest</span><br><span class="line">  2. /usr/bin/vim.basic</span><br><span class="line">  3. /usr/bin/vim.tiny</span><br><span class="line">  4. /bin/ed</span><br><span class="line"></span><br><span class="line">Choose 1-4 [1]:</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">root@sszxc:&#x2F;etc&#x2F;nginx# crontab -e
+no crontab for root - using an empty one
+
+Select an editor.  To change later, run &#39;select-editor&#39;.
+  1. &#x2F;bin&#x2F;nano        &lt;---- easiest
+  2. &#x2F;usr&#x2F;bin&#x2F;vim.basic
+  3. &#x2F;usr&#x2F;bin&#x2F;vim.tiny
+  4. &#x2F;bin&#x2F;ed
+
+Choose 1-4 [1]:<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>选择一个编辑器之后即可进入如下编辑界面。</p>
 <center>
@@ -273,7 +308,17 @@ renewal 配置文件
 
 <p>可以看到第一行的 renew_before_expiry = 30 days 。意思是，距离证书到期时间为 30 天以内的时候，执行更新证书的命令<code>certbot renew</code>才会更新证书，所以前一次测试自然是不会成功了。</p>
 <p>最后可以使用<code>certbot certificates</code>查看当前的所有的证书信息，可以看到有效期还剩 89 天。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@sszxc:/<span class="comment"># certbot certificates</span></span><br><span class="line">Saving debug <span class="built_in">log</span> to /var/<span class="built_in">log</span>/letsencrypt/letsencrypt.log</span><br><span class="line"></span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line">Found the following certs:</span><br><span class="line">  Certificate Name: sszxc.net</span><br><span class="line">    Domains: sszxc.net www.sszxc.net</span><br><span class="line">    Expiry Date: 2020-**-** **:**:**+00:00 (VALID: 89 days)</span><br><span class="line">    Certificate Path: /etc/letsencrypt/live/sszxc.net/fullchain.pem</span><br><span class="line">    Private Key Path: /etc/letsencrypt/live/sszxc.net/privkey.pem</span><br><span class="line">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">root@sszxc:&#x2F;# certbot certificates
+Saving debug log to &#x2F;var&#x2F;log&#x2F;letsencrypt&#x2F;letsencrypt.log
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Found the following certs:
+  Certificate Name: sszxc.net
+    Domains: sszxc.net www.sszxc.net
+    Expiry Date: 2020-**-** **:**:**+00:00 (VALID: 89 days)
+    Certificate Path: &#x2F;etc&#x2F;letsencrypt&#x2F;live&#x2F;sszxc.net&#x2F;fullchain.pem
+    Private Key Path: &#x2F;etc&#x2F;letsencrypt&#x2F;live&#x2F;sszxc.net&#x2F;privkey.pem
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h1><span id="参考资料">参考资料</span><a href="#参考资料" class="header-anchor">#</a></h1><ol>
 <li> <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/376038b76221" title="服务器重启后，重启 nginx 报错">服务器重启后，重启 nginx 报错</a></li>
@@ -326,7 +371,7 @@ renewal 配置文件
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?51093650"></script>
+<script src="/js/journal.js?55599875"></script>
 
 
 <script type="text/javascript">
