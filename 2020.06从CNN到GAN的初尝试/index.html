@@ -23,7 +23,7 @@
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?98810912">
+<link rel="stylesheet" href="/css/journal.css?83719166">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -59,10 +59,10 @@
           href="https://fonts.googleapis.com/css?family=Lora|Montserrat|Anonymous+Pro:400|Material+Icons"/>
 </noscript>
     <!-- 不蒜子访客插件标记 -->
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <!-- <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
     <!-- 不蒜子访客插件标记 -->
 <meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Henry" type="application/atom+xml">
-</head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 <body>
 <div id="top"></div>
 <div id="app">
@@ -77,16 +77,16 @@
 
             
             
-            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
-                Gallery
-            </a>
-            
             <a class="a-block drawer-menu-item false" href="/archives/index.html">
                 Archives
             </a>
             
             <a class="a-block drawer-menu-item false" href="/about/index.html">
                 About
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
+                Gallery
             </a>
             
             <a class="a-block drawer-menu-item false" href="/projects/index.html">
@@ -136,16 +136,16 @@
 
         
         
-        <a class="a-block nav-link-item false" href="/gallery/index.html">
-            Gallery
-        </a>
-        
         <a class="a-block nav-link-item false" href="/archives/index.html">
             Archives
         </a>
         
         <a class="a-block nav-link-item false" href="/about/index.html">
             About
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/gallery/index.html">
+            Gallery
         </a>
         
         <a class="a-block nav-link-item false" href="/projects/index.html">
@@ -194,6 +194,7 @@
                             2020-06-17 11:02
                         </time>&nbsp;
                         <!-- 不蒜子访客插件标记 -->
+                        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
                         <span id="busuanzi_container_page_uv">
                             阅读数：<span id="busuanzi_value_page_uv"></span>
                         </span>
@@ -284,29 +285,27 @@
 <h1><span id="tensorflow">TensorFlow</span><a href="#tensorflow" class="header-anchor">#</a></h1><p>软件平台： Win10 1909、Anaconda 3、Python 3.6.8、TensorFlow 1.14、CUDA 10.0</p>
 <p>Coding 的时候，推荐查看官方的 API 手册： <a target="_blank" rel="noopener" href="https://www.tensorflow.org/versions/r1.15/api_docs/python/tf">https://www.tensorflow.org/versions/r1.15/api_docs/python/tf</a></p>
 <p>使用 TensorFlow 搭建网络的过程中，有几个关键函数及相应参数。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">tf.nn.conv2d(
-    input,
-    filter&#x3D;None,
-    strides&#x3D;None,
-    padding&#x3D;None,
-    use_cudnn_on_gpu&#x3D;True,
-    data_format&#x3D;&#39;NHWC&#39;,
-    dilations&#x3D;[1, 1, 1, 1],
-    name&#x3D;None,
-    filters&#x3D;None
-)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<pre class=" language-python"><code class="language-python">tf<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>conv2d<span class="token punctuation">(</span>
+    input<span class="token punctuation">,</span>
+    filter<span class="token operator">=</span>None<span class="token punctuation">,</span>
+    strides<span class="token operator">=</span>None<span class="token punctuation">,</span>
+    padding<span class="token operator">=</span>None<span class="token punctuation">,</span>
+    use_cudnn_on_gpu<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+    data_format<span class="token operator">=</span><span class="token string">'NHWC'</span><span class="token punctuation">,</span>
+    dilations<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    name<span class="token operator">=</span>None<span class="token punctuation">,</span>
+    filters<span class="token operator">=</span>None
+<span class="token punctuation">)</span></code></pre>
 <p>第一个参数 input 是输入的图像，要求一个四维张量、[batch, height, width, channels]；第二个参数 filter 是卷积核，要求一个四维张量、[k_h, k_w, in, out]，分别是卷积核的高和宽、卷积需要作用的通道数、输出的通道数（即卷积核的个数）；第三个参数 strides 是卷积核移动的步长、[1, s_h, s_w, 1]，分别是高度方向和宽度方向；第四个参数 padding，“SAME”补零，“VALID”不补零。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">tf.nn.max_pool(
-    value,
-    ksize,
-    strides,
-    padding,
-    data_format&#x3D;&#39;NHWC&#39;,
-    name&#x3D;None,
-    input&#x3D;None
-)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<pre class=" language-python"><code class="language-python">tf<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>max_pool<span class="token punctuation">(</span>
+    value<span class="token punctuation">,</span>
+    ksize<span class="token punctuation">,</span>
+    strides<span class="token punctuation">,</span>
+    padding<span class="token punctuation">,</span>
+    data_format<span class="token operator">=</span><span class="token string">'NHWC'</span><span class="token punctuation">,</span>
+    name<span class="token operator">=</span>None<span class="token punctuation">,</span>
+    input<span class="token operator">=</span>None
+<span class="token punctuation">)</span></code></pre>
 <p>第一个参数 value 是输入的图像，一般就是上一层 feature map[batch, height, width, channels]；第二个参数 ksize 是池化窗口的大小，取一个四维向量，一般是、[1, height, width, 1]，因为我们不想在 batch 和 channels 上做池化，所以这两个维度设为了 1；第三个参数 strides 和卷积类似，窗口在每一个维度上滑动的步长，一般也是、[1, s_h, s_w, 1]；第四个参数 padding：和卷积类似，可以取“VALID” 或者“SAME”。</p>
 <h3><span id="语法习惯">语法习惯</span><a href="#语法习惯" class="header-anchor">#</a></h3><p>使用 TensorFlow 编程时，为了使代码简洁高效，也有一些技巧习惯，学习后总结如下：</p>
 <p>节点 op，指基本计算，包括常量定义。会话 Session，调用 Sess.run（关注的 op)，会进行所有和 op 相关的运算，获取结果。sess.run 后面可以跟多个张量，同时输出。</p>
@@ -416,7 +415,7 @@ Generator Loss
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?25871136"></script>
+<script src="/js/journal.js?32583346"></script>
 
 
 <script type="text/javascript">

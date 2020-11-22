@@ -18,7 +18,7 @@
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?62641088">
+<link rel="stylesheet" href="/css/journal.css?13247399">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -54,10 +54,10 @@
           href="https://fonts.googleapis.com/css?family=Lora|Montserrat|Anonymous+Pro:400|Material+Icons"/>
 </noscript>
     <!-- 不蒜子访客插件标记 -->
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <!-- <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
     <!-- 不蒜子访客插件标记 -->
 <meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Henry" type="application/atom+xml">
-</head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 <body>
 <div id="top"></div>
 <div id="app">
@@ -72,16 +72,16 @@
 
             
             
-            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
-                Gallery
-            </a>
-            
             <a class="a-block drawer-menu-item false" href="/archives/index.html">
                 Archives
             </a>
             
             <a class="a-block drawer-menu-item false" href="/about/index.html">
                 About
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
+                Gallery
             </a>
             
             <a class="a-block drawer-menu-item false" href="/projects/index.html">
@@ -131,16 +131,16 @@
 
         
         
-        <a class="a-block nav-link-item false" href="/gallery/index.html">
-            Gallery
-        </a>
-        
         <a class="a-block nav-link-item false" href="/archives/index.html">
             Archives
         </a>
         
         <a class="a-block nav-link-item false" href="/about/index.html">
             About
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/gallery/index.html">
+            Gallery
         </a>
         
         <a class="a-block nav-link-item false" href="/projects/index.html">
@@ -189,6 +189,7 @@
                             2020-10-22 21:48
                         </time>&nbsp;
                         <!-- 不蒜子访客插件标记 -->
+                        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
                         <span id="busuanzi_container_page_uv">
                             阅读数：<span id="busuanzi_value_page_uv"></span>
                         </span>
@@ -310,51 +311,46 @@
 <p>在交互模式下，最后一个打印的表达式会赋值给变量<code>_</code>，就像是计算器里的”Ans”。要注意的是这个变量应该被用户视为只读的，不要显式地给它赋值 (explicitly assign a value to it)，你会创建一个同名的独立局部变量，用它的神奇行为掩盖内置变量。</p>
 <p>除了 int 和 float 外，Python 还支持其他类型的数字，例如小数和分数。Python 还具有对复数的内置支持，并使用<code>j</code>或<code>J</code>后缀指示虚部（例如<code>3+5j</code>）。</p>
 <h3><span id="312-strings">3.1.2. Strings</span><a href="#312-strings" class="header-anchor">#</a></h3><p>除了数字，Python 还可以操作字符串，字符串可以用几种方式表示。它们可以用单引号<code>&#39;…&#39;</code>或双引号<code>&quot;…&quot;</code>括起来，<code>\</code>可以用来转义引号 (escape quotes)。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">&gt;&gt;&gt; &#39;doesn\&#39;t&#39;  # use \&#39; to escape the single quote...
-&quot;doesn&#39;t&quot;
-&gt;&gt;&gt; &quot;doesn&#39;t&quot;  # ...or use double quotes instead
-&quot;doesn&#39;t&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
+<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token string">'doesn\'t'</span>  <span class="token comment" spellcheck="true"># use \' to escape the single quote...</span>
+<span class="token string">"doesn't"</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token string">"doesn't"</span>  <span class="token comment" spellcheck="true"># ...or use double quotes instead</span>
+<span class="token string">"doesn't"</span></code></pre>
 <p>在交互式解释器中，输出的字符串外面有引号，特殊字符不会转义；<code>print</code>函数略去前后引号，同时转义。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">&gt;&gt;&gt; s  # without print(), \n is included in the output
-&#39;First line.\nSecond line.&#39;
-&gt;&gt;&gt; print(s)  # with print(), \n produces a new line
-First line.
-Second line.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> s  <span class="token comment" spellcheck="true"># without print(), \n is included in the output</span>
+<span class="token string">'First line.\nSecond line.'</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># with print(), \n produces a new line</span>
+First line<span class="token punctuation">.</span>
+Second line<span class="token punctuation">.</span></code></pre>
 <p>如果不想把以<code>\</code>为前缀的字符解释为特殊字符，可以在第一个引号前加<code>r</code>来使用原始字符 (raw strings)。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">&gt;&gt;&gt; print(&#39;C:\some\name&#39;)  # here \n means newline!
-C:\some
+<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'C:\some\name'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># here \n means newline!</span>
+C<span class="token punctuation">:</span>\some
 ame
-&gt;&gt;&gt; print(r&#39;C:\some\name&#39;)  # note the r before the quote
-C:\some\name<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token string">'C:\some\name'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># note the r before the quote</span>
+C<span class="token punctuation">:</span>\some\name</code></pre>
 <p>字符串可以跨越多行，一种方法是使用三重引号 <code>&quot;&quot;&quot;...&quot;&quot;&quot;</code>or<code>&#39;&#39;&#39;...&#39;&#39;&#39;</code>，行尾会自动加进字符串，如果不想换行可以在行尾加<code>\</code>。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">print(&quot;&quot;&quot;\
+<pre class=" language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token triple-quoted-string string">"""\
 Hello \
 World
-&quot;&quot;&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
+"""</span><span class="token punctuation">)</span></code></pre>
 <p>字符串可以用<code>+</code>连接在一起，可以用<code>*</code>重复。彼此相邻的多个字符串会自动连接在一起，但这个特性对变量或表达式无效，要用<code>+</code>。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">&gt;&gt;&gt; text &#x3D; (&#39;Put several strings within parentheses &#39;
-...         &#39;to have them joined together.&#39;)
-&gt;&gt;&gt; text
-&#39;Put several strings within parentheses to have them joined together.&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
+<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> text <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">'Put several strings within parentheses '</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>         <span class="token string">'to have them joined together.'</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> text
+<span class="token string">'Put several strings within parentheses to have them joined together.'</span></code></pre>
 <p>字符串可以被索引（用方括号），第一位是 index 0，字符类型都是统一的，每个字符占一位。（index的复数是indices）<br>索引如果是负数，就从字符串的右边开始计数（因为-0就是0，从右边的话是-1开始）。</p>
 <p>除了索引，字符串还支持切片（slicing）：索引获取单个字符，切片获取子字符串。<br>切片总是包括开始，不包括结尾，因此<code>s[:i] + s[i:]</code>就是<code>s</code>。<br>切片有默认值，省略（omit）的第一个索引值默认为0，第二个索引值默认为总长。</p>
 <p>记住切片如何工作的一种方法是将索引看作字符之间的指针。</p>
-<pre class="line-numbers language-none"><code class="language-none"> +---+---+---+---+---+---+
+<pre><code> +---+---+---+---+---+---+
  | P | y | t | h | o | n |
  +---+---+---+---+---+---+
  0   1   2   3   4   5   6
--6  -5  -4  -3  -2  -1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+-6  -5  -4  -3  -2  -1</code></pre>
 <p>超出长度的索引会报错，但在切片里会返回空。</p>
 <p>Python的字符串不能被更改（immutable），给字符串指定位置赋值（assignment）会报错。</p>
 <p>内置函数<code>len()</code>可以返回字符串的长度。</p>
 <hr>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">#!&#x2F;usr&#x2F;bin&#x2F;env python3
-print(&quot;Hello, World!&quot;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#!/usr/bin/env python3</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Hello, World!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 
                 </div>
             </div>
@@ -402,7 +398,7 @@ print(&quot;Hello, World!&quot;);<span aria-hidden="true" class="line-numbers-ro
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?65625061"></script>
+<script src="/js/journal.js?40543306"></script>
 
 
 <script type="text/javascript">

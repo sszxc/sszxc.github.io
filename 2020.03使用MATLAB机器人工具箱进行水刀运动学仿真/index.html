@@ -18,7 +18,7 @@
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?92083982">
+<link rel="stylesheet" href="/css/journal.css?11639040">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -54,10 +54,10 @@
           href="https://fonts.googleapis.com/css?family=Lora|Montserrat|Anonymous+Pro:400|Material+Icons"/>
 </noscript>
     <!-- 不蒜子访客插件标记 -->
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <!-- <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
     <!-- 不蒜子访客插件标记 -->
 <meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Henry" type="application/atom+xml">
-</head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 <body>
 <div id="top"></div>
 <div id="app">
@@ -72,16 +72,16 @@
 
             
             
-            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
-                Gallery
-            </a>
-            
             <a class="a-block drawer-menu-item false" href="/archives/index.html">
                 Archives
             </a>
             
             <a class="a-block drawer-menu-item false" href="/about/index.html">
                 About
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
+                Gallery
             </a>
             
             <a class="a-block drawer-menu-item false" href="/projects/index.html">
@@ -131,16 +131,16 @@
 
         
         
-        <a class="a-block nav-link-item false" href="/gallery/index.html">
-            Gallery
-        </a>
-        
         <a class="a-block nav-link-item false" href="/archives/index.html">
             Archives
         </a>
         
         <a class="a-block nav-link-item false" href="/about/index.html">
             About
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/gallery/index.html">
+            Gallery
         </a>
         
         <a class="a-block nav-link-item false" href="/projects/index.html">
@@ -189,6 +189,7 @@
                             2020-03-23 00:40
                         </time>&nbsp;
                         <!-- 不蒜子访客插件标记 -->
+                        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
                         <span id="busuanzi_container_page_uv">
                             阅读数：<span id="busuanzi_value_page_uv"></span>
                         </span>
@@ -244,16 +245,15 @@
 <h1><span id="robotics-toolbox">Robotics Toolbox</span><a href="#robotics-toolbox" class="header-anchor">#</a></h1><p>本次仿真主要基于 MATLAB 的 Robotics Toolbox 工具箱 2，其在机器人建模、轨迹规划、控制、可视化方面使用非常方便。这里分享一个最近在 Bilibili 大学上看到的比较优秀的教程：<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv3775509" title="手把手教你 MATLAB 机器人工具箱">手把手教你 MATLAB 机器人工具箱</a>。</p>
 <p>下面简单介绍一下一些常用的命令。</p>
 <h2><span id="机器人模型建立">机器人模型建立</span><a href="#机器人模型建立" class="header-anchor">#</a></h2><p>机器人模型的构建，主要是通过上文提到的 D-H 表示法创建单个杆件，并将杆件进行连接得到机器人对象。默认采用的是‘standard’标准型 D-H 参数，如果选择改进型需要在后面加上‘modified’。</p>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">L1 &#x3D; Link(&#39;d&#39;, 0, &#39;a&#39;, 0, &#39;alpha&#39;, pi&#x2F;2);
-L2 &#x3D; Link(&#39;d&#39;, 0, &#39;a&#39;, 0.5, &#39;alpha&#39;, 0,&#39;offset&#39;,pi&#x2F;2);
-L3 &#x3D; Link(&#39;d&#39;, 0, &#39;a&#39;, 0, &#39;alpha&#39;, pi&#x2F;2,&#39;offset&#39;,pi&#x2F;4);
-L4 &#x3D; Link(&#39;d&#39;, 1, &#39;a&#39;, 0, &#39;alpha&#39;, -pi&#x2F;2);
-robot&#x3D;SerialLink([L1,L2,L3,L4]);
-robot.name&#x3D;&#39;testRobot&#39;;
-robot.display();
-theta&#x3D;[0 0 0 0]; 
-robot.plot(theta); %显示机器人的图像<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<pre class=" language-matlab"><code class="language-matlab">L1 <span class="token operator">=</span> <span class="token function">Link</span><span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'alpha'</span><span class="token punctuation">,</span> <span class="token keyword">pi</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+L2 <span class="token operator">=</span> <span class="token function">Link</span><span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token string">'alpha'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span><span class="token string">'offset'</span><span class="token punctuation">,</span><span class="token keyword">pi</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+L3 <span class="token operator">=</span> <span class="token function">Link</span><span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'alpha'</span><span class="token punctuation">,</span> <span class="token keyword">pi</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token string">'offset'</span><span class="token punctuation">,</span><span class="token keyword">pi</span><span class="token operator">/</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+L4 <span class="token operator">=</span> <span class="token function">Link</span><span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'alpha'</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token keyword">pi</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+robot<span class="token operator">=</span><span class="token function">SerialLink</span><span class="token punctuation">(</span><span class="token punctuation">[</span>L1<span class="token punctuation">,</span>L2<span class="token punctuation">,</span>L3<span class="token punctuation">,</span>L4<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+robot<span class="token punctuation">.</span>name<span class="token operator">=</span><span class="token string">'testRobot'</span><span class="token punctuation">;</span>
+robot<span class="token punctuation">.</span><span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+theta<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0</span> <span class="token number">0</span> <span class="token number">0</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> 
+robot<span class="token punctuation">.</span><span class="token function">plot</span><span class="token punctuation">(</span>theta<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">%显示机器人的图像</span></code></pre>
 <p>其中，Link 命令的参数除了四个基本的 D-H 参数，还可以包含 offset 关节变量偏移量、qlim 关节变量范围、m 质量、r 质心、I 惯性张量、B 粘性摩擦、Tc 静摩擦、G 减速比、Jm 转子惯量等参数，为更精细的设计仿真提供了很大的方便。</p>
 <center>
 <img src="https://s1.ax1x.com/2020/05/16/YyyW36.png">
@@ -263,15 +263,15 @@ robot.plot(theta); %显示机器人的图像<span aria-hidden="true" class="line
 <br>
 
 <p>相应地也可以建立一个球坐标机器人，使用<code>teach</code>命令进行示教，拖动左侧的滑块可以实时看到机械臂的运动情况。</p>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">L1 &#x3D; Link(&#39;d&#39;, 0, &#39;a&#39;, 0, &#39;alpha&#39;, pi&#x2F;2);
-L2 &#x3D; Link(&#39;d&#39;, 0, &#39;a&#39;, 0, &#39;alpha&#39;, pi&#x2F;2);
-L3 &#x3D; Link(&#39;d&#39;, 0, &#39;a&#39;, 0, &#39;alpha&#39;, pi&#x2F;2);
-L4 &#x3D; Link(&#39;d&#39;, 0.5, &#39;a&#39;, 0, &#39;alpha&#39;, 0);
-robot&#x3D;SerialLink([L1,L2,L3,L4]);
-robot.name&#x3D;&#39;testRobot&#39;;
-robot.display();
-theta&#x3D;[0 0 0 0]; 
-robot.teach(theta); %显示机器人的图像<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class=" language-matlab"><code class="language-matlab">L1 <span class="token operator">=</span> <span class="token function">Link</span><span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'alpha'</span><span class="token punctuation">,</span> <span class="token keyword">pi</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+L2 <span class="token operator">=</span> <span class="token function">Link</span><span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'alpha'</span><span class="token punctuation">,</span> <span class="token keyword">pi</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+L3 <span class="token operator">=</span> <span class="token function">Link</span><span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'alpha'</span><span class="token punctuation">,</span> <span class="token keyword">pi</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+L4 <span class="token operator">=</span> <span class="token function">Link</span><span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'alpha'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+robot<span class="token operator">=</span><span class="token function">SerialLink</span><span class="token punctuation">(</span><span class="token punctuation">[</span>L1<span class="token punctuation">,</span>L2<span class="token punctuation">,</span>L3<span class="token punctuation">,</span>L4<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+robot<span class="token punctuation">.</span>name<span class="token operator">=</span><span class="token string">'testRobot'</span><span class="token punctuation">;</span>
+robot<span class="token punctuation">.</span><span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+theta<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">0</span> <span class="token number">0</span> <span class="token number">0</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> 
+robot<span class="token punctuation">.</span><span class="token function">teach</span><span class="token punctuation">(</span>theta<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">%显示机器人的图像</span></code></pre>
 <center>
 <img src="https://s1.ax1x.com/2020/05/17/Y2V8Yt.png">
 <br>
@@ -288,16 +288,14 @@ PUMA560 示教
 <br>
 
 <h2><span id="正逆运动学求解">正逆运动学求解</span><a href="#正逆运动学求解" class="header-anchor">#</a></h2><p>工具箱提供了正逆运动学求解的函数：正解<code>fkine</code>，逆解<code>ikine</code>。 以 PUMA560 为例，可以用以下代码进行正运动学求解。</p>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">target&#x3D;[1,1,1,1,1,1];
-%target&#x3D;[0,pi&#x2F;3,-pi&#x2F;3,0,pi&#x2F;4,0];
-fkine(p560,target);
-p560.plot(target);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
+<pre class=" language-matlab"><code class="language-matlab">target<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">%target=[0,pi/3,-pi/3,0,pi/4,0];</span>
+<span class="token function">fkine</span><span class="token punctuation">(</span>p560<span class="token punctuation">,</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span>
+p560<span class="token punctuation">.</span><span class="token function">plot</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>为方便验算，选择正运动学求解得到的末端位姿作为目标，使用 fkine 命令进行逆运动学求解，代码如下。</p>
-<pre class="line-numbers language-matlab" data-language="matlab"><code class="language-matlab">target&#x3D;[pi&#x2F;4,-pi&#x2F;3,0,0,0,pi&#x2F;6];
-p1&#x3D;p560.fkine(target);
-q1&#x3D;p560.ikine(p1);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
+<pre class=" language-matlab"><code class="language-matlab">target<span class="token operator">=</span><span class="token punctuation">[</span><span class="token keyword">pi</span><span class="token operator">/</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token keyword">pi</span><span class="token operator">/</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token keyword">pi</span><span class="token operator">/</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+p1<span class="token operator">=</span>p560<span class="token punctuation">.</span><span class="token function">fkine</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span>
+q1<span class="token operator">=</span>p560<span class="token punctuation">.</span><span class="token function">ikine</span><span class="token punctuation">(</span>p1<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>不出意外，逆解结果应该和输入的关节变量相等。当出现多解时，意味着机器人可以以多种方式实现这一动作。特别的，当机械臂关节数为 6，腕部三个旋转关节的轴相交于一点，或者满足其他一些特殊构型时 3，可以使用<code>ikine6s</code>函数求封闭解，此时可以由一个或者多个字符来控制运动学位型：左手或者右手 ‘l’，‘r’ ，肘部在上或者肘部在下 ‘u’，‘d’ ，手腕翻转或不翻转 ‘f’，‘n’。</p>
 <h1><span id="基本轨迹规划">基本轨迹规划</span><a href="#基本轨迹规划" class="header-anchor">#</a></h1><p>有了正逆运动学，我们就可以指定任意点，让机器人对进行运动学逆解运算，再将分量分解到各关节，驱动末端达到指定位置。这是一种简单的点位运动（PTP），在此基础上我们更希望其实现指定轨迹的运动，即连续运动（CP）。由于在逆解的计算中解析解一般较为困难，一般都是以数值解近似，所以 CP 运动一般是以 PTP 运动为基础，通过在相邻两点之间采用满足精度要求的直线或圆弧轨迹进行插补，来实现轨迹的连续化。</p>
 <p>这里展示一个“5-3-5”次多项式插补得到的轨迹规划，分别展示了 PUMA560 的三个关节的位置、速度、加速度，可以看到多项式插补的情况下加速度连续，也就意味着不会造成力的突变。</p>
@@ -429,7 +427,7 @@ q1&#x3D;p560.ikine(p1);<span aria-hidden="true" class="line-numbers-rows"><span>
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?31880349"></script>
+<script src="/js/journal.js?63776442"></script>
 
 
 <script type="text/javascript">
