@@ -27,7 +27,7 @@
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?75973380">
+<link rel="stylesheet" href="/css/journal.css?63045672">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -66,7 +66,7 @@
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <!-- 不蒜子访客插件标记 -->
 <meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Henry" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+</head>
 <body>
 <div id="top"></div>
 <div id="app">
@@ -85,12 +85,12 @@
                 About
             </a>
             
-            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
-                Gallery
-            </a>
-            
             <a class="a-block drawer-menu-item false" href="/archives/index.html">
                 Archives
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
+                Gallery
             </a>
             
             <a class="a-block drawer-menu-item false" href="/projects/index.html">
@@ -144,12 +144,12 @@
             About
         </a>
         
-        <a class="a-block nav-link-item false" href="/gallery/index.html">
-            Gallery
-        </a>
-        
         <a class="a-block nav-link-item false" href="/archives/index.html">
             Archives
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/gallery/index.html">
+            Gallery
         </a>
         
         <a class="a-block nav-link-item false" href="/projects/index.html">
@@ -311,33 +311,19 @@
 
 <p>检查了一下代码就不难理解，INT 中断输出引脚，是用来给处理器判断 DMP 的中断状态的，实现更高效、不遗漏的数据读取。</p>
 <p>在<code>setup()</code>里也开启了中断检测，把 INTERRUPT_PIN 脚的上升沿绑定到 dmpDataReady 函数。</p>
-<pre class=" language-c"><code class="language-c">Serial<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token function">F</span><span class="token punctuation">(</span><span class="token string">"Enabling interrupt detection (Arduino external interrupt "</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-Serial<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token function">digitalPinToInterrupt</span><span class="token punctuation">(</span>INTERRUPT_PIN<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-Serial<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">F</span><span class="token punctuation">(</span><span class="token string">")..."</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">attachInterrupt</span><span class="token punctuation">(</span><span class="token function">digitalPinToInterrupt</span><span class="token punctuation">(</span>INTERRUPT_PIN<span class="token punctuation">)</span><span class="token punctuation">,</span> dmpDataReady<span class="token punctuation">,</span> RISING<span class="token punctuation">)</span><span class="token punctuation">;</span>
-mpuIntStatus <span class="token operator">=</span> mpu<span class="token punctuation">.</span><span class="token function">getIntStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">Serial.print(F(<span class="string">&quot;Enabling interrupt detection (Arduino external interrupt &quot;</span>));</span><br><span class="line">Serial.print(digitalPinToInterrupt(INTERRUPT_PIN));</span><br><span class="line">Serial.println(F(<span class="string">&quot;)...&quot;</span>));</span><br><span class="line">attachInterrupt(digitalPinToInterrupt(INTERRUPT_PIN), dmpDataReady, RISING);</span><br><span class="line">mpuIntStatus = mpu.getIntStatus();</span><br></pre></td></tr></table></figure>
+
 <p><code>dmpDataReady()</code>只是用来修改一个标志位，其在主函数<code>loop()</code>中被检查。</p>
-<pre class=" language-c"><code class="language-c"><span class="token keyword">volatile</span> bool mpuInterrupt <span class="token operator">=</span> false<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// indicates whether MPU interrupt pin has gone high</span>
-<span class="token keyword">void</span> <span class="token function">dmpDataReady</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    mpuInterrupt <span class="token operator">=</span> true<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">volatile</span> <span class="keyword">bool</span> mpuInterrupt = <span class="literal">false</span>; &#123;% raw %&#125;<span class="comment">// indicates whether MPU interrupt pin has gone high</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dmpDataReady</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    mpuInterrupt = <span class="literal">true</span>;</span><br><span class="line">&#125;&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+
 <p>所以可以在<code>loop()</code>里把所有相关标志位都删了，不停地访问，检查是否有有效数据，不出意外就可以在串口里看到返回值。</p>
 <p>DMP 输出的是四元数，例程也支持多种其他返回值。</p>
-<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">//#define OUTPUT_READABLE_QUATERNION // 返回四元数</span>
-<span class="token comment" spellcheck="true">//#define OUTPUT_READABLE_EULER // 返回欧拉角</span>
-<span class="token macro property">#<span class="token directive keyword">define</span> OUTPUT_READABLE_YAWPITCHROLL </span><span class="token comment" spellcheck="true">// 返回 YPR 角度</span>
-<span class="token comment" spellcheck="true">//#define OUTPUT_READABLE_REALACCEL // 返回加速度 去掉重力</span>
-<span class="token comment" spellcheck="true">//#define OUTPUT_READABLE_WORLDACCEL // 返回加速度 去掉重力 补偿旋转</span>
-<span class="token comment" spellcheck="true">//#define OUTPUT_TEAPOT // 一个可视化的 demo 可以参考 https://youtu.be/kyX9cRxJNdo</span></code></pre>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//#define OUTPUT_READABLE_QUATERNION // 返回四元数</span></span><br><span class="line"><span class="comment">//#define OUTPUT_READABLE_EULER // 返回欧拉角</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> OUTPUT_READABLE_YAWPITCHROLL <span class="comment">// 返回 YPR 角度</span></span></span><br><span class="line"><span class="comment">//#define OUTPUT_READABLE_REALACCEL // 返回加速度 去掉重力</span></span><br><span class="line"><span class="comment">//#define OUTPUT_READABLE_WORLDACCEL // 返回加速度 去掉重力 补偿旋转</span></span><br><span class="line"><span class="comment">//#define OUTPUT_TEAPOT // 一个可视化的 demo 可以参考 https://youtu.be/kyX9cRxJNdo</span></span><br></pre></td></tr></table></figure>
+
 <p>此时也可以验证上文中提到的 Gimbal Lock，使用 YPR 模式时，当 Pitch 轴旋转约 90 度时，另两轴的数据就会出现明显异常。小心，例程的输出：Z 轴旋转是 Yaw；Y 轴旋转是 Pitch；X 轴旋转是 Roll。</p>
 <p>此外注意到 demo 在初始化时，还手动加了一个补偿量。</p>
-<pre class=" language-c"><code class="language-c"><span class="token comment" spellcheck="true">// supply your own gyro offsets here, scaled for min sensitivity</span>
-mpu<span class="token punctuation">.</span><span class="token function">setXGyroOffset</span><span class="token punctuation">(</span><span class="token number">51</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-mpu<span class="token punctuation">.</span><span class="token function">setYGyroOffset</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-mpu<span class="token punctuation">.</span><span class="token function">setZGyroOffset</span><span class="token punctuation">(</span><span class="token number">21</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-mpu<span class="token punctuation">.</span><span class="token function">setXAccelOffset</span><span class="token punctuation">(</span><span class="token number">1150</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-mpu<span class="token punctuation">.</span><span class="token function">setYAccelOffset</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-mpu<span class="token punctuation">.</span><span class="token function">setZAccelOffset</span><span class="token punctuation">(</span><span class="token number">1060</span><span class="token punctuation">)</span><span class="token punctuation">;</span> </code></pre>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// supply your own gyro offsets here, scaled for min sensitivity</span></span><br><span class="line">mpu.setXGyroOffset(<span class="number">51</span>);</span><br><span class="line">mpu.setYGyroOffset(<span class="number">8</span>);</span><br><span class="line">mpu.setZGyroOffset(<span class="number">21</span>);</span><br><span class="line">mpu.setXAccelOffset(<span class="number">1150</span>); </span><br><span class="line">mpu.setYAccelOffset(<span class="number">-50</span>); </span><br><span class="line">mpu.setZAccelOffset(<span class="number">1060</span>); </span><br></pre></td></tr></table></figure>
+
 <p>关于补偿量的确定，可以参考这篇 <a target="_blank" rel="noopener" href="https://wired.chillibasket.com/2015/01/calibrating-mpu6050/">Calibrating &amp; Optimising the MPU6050</a>，相关讨论 <a target="_blank" rel="noopener" href="https://www.i2cdevlib.com/forums/topic/91-how-to-decide-gyro-and-accelerometer-offsett/">How to decide Gyro and Accelerometer offsett</a>。</p>
 <p>和这些相关的一个奇怪现象就是，DMP 输出的数据往往需要四五秒左右稳定下来，特别是 Yaw 轴，猜测可能是一个自动校准过程。</p>
 <p>调试完之后也发现了一位网友提供的 <a target="_blank" rel="noopener" href="https://arduino.stackexchange.com/questions/10308/how-to-clear-fifo-buffer-on-mpu6050">精简版 DMP 代码</a>（不需外部中断）。</p>
@@ -389,7 +375,7 @@ mpu<span class="token punctuation">.</span><span class="token function">setZAcce
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?72267554"></script>
+<script src="/js/journal.js?30123209"></script>
 
 
 <script type="text/javascript">

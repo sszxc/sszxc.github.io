@@ -18,7 +18,7 @@
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?12669787">
+<link rel="stylesheet" href="/css/journal.css?91722">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -57,7 +57,7 @@
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <!-- 不蒜子访客插件标记 -->
 <meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Henry" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+</head>
 <body>
 <div id="top"></div>
 <div id="app">
@@ -76,12 +76,12 @@
                 About
             </a>
             
-            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
-                Gallery
-            </a>
-            
             <a class="a-block drawer-menu-item false" href="/archives/index.html">
                 Archives
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
+                Gallery
             </a>
             
             <a class="a-block drawer-menu-item false" href="/projects/index.html">
@@ -135,12 +135,12 @@
             About
         </a>
         
-        <a class="a-block nav-link-item false" href="/gallery/index.html">
-            Gallery
-        </a>
-        
         <a class="a-block nav-link-item false" href="/archives/index.html">
             Archives
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/gallery/index.html">
+            Gallery
         </a>
         
         <a class="a-block nav-link-item false" href="/projects/index.html">
@@ -301,11 +301,7 @@ ORB-SLAM 基本流程
 <p>编译完成后，ROS 调用摄像头的时候可能会出现报错，提示<code>Unable to open camera calibration file [/****/****.yaml]</code>，其实主要是没有安装 image_view，直接执行<code>sudo apt-get install ros-indigo-image-view</code>即可。另一种可能原因是。launch 文件中的设备号错了，笔记本电脑的 video0 一般是网络摄像头，插入的 USB 摄像头一般是 video1，如果想看 USB 摄像头是哪个端口号，可 cd 到根目录中的 dev 文件夹下查看。</p>
 <p>在 ROS 执行。launch 文件的过程中可能会出现报错，提示<code>[****.launch] is neither a launch file in package [****] nor is [****] a launch file name</code>，根本原因就是系统没有把对应的。launch 文件添加到路径里。解决办法是回到上层，重新对。bash 文件执行 source。</p>
 <p>最终运行的时候需要开三个终端，执行三个命令。为了方便起见，可以新建一个脚本文件。特别地，我新建了如下的。sh 文件，使用 chmod 命令修改权限之后可以直接执行，一键启动～</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#启动 ORB-SLAM2 demo</span>
-gnome-terminal -x <span class="token function">bash</span> -c <span class="token string">"roscore;"</span>
-<span class="token function">sleep</span> 2
-gnome-terminal -x <span class="token function">bash</span> -c <span class="token string">"source /home/henry/SLAM/usb_cam/build/devel/setup.bash;roslaunch usb_cam usb_cam-test.launch;"</span>
-gnome-terminal -x <span class="token function">bash</span> -c <span class="token string">"rosrun ORB_SLAM2 Mono /home/henry/SLAM/ORB_SLAM2/Vocabulary/ORBvoc.txt  /home/henry/SLAM/ORB_SLAM2/Examples/ROS/ORB_SLAM2/my.yaml"</span></code></pre>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#启动 ORB-SLAM2 demo</span></span><br><span class="line">gnome-terminal -x bash -c <span class="string">&quot;roscore;&quot;</span></span><br><span class="line">sleep 2</span><br><span class="line">gnome-terminal -x bash -c <span class="string">&quot;source /home/henry/SLAM/usb_cam/build/devel/setup.bash;roslaunch usb_cam usb_cam-test.launch;&quot;</span></span><br><span class="line">gnome-terminal -x bash -c <span class="string">&quot;rosrun ORB_SLAM2 Mono /home/henry/SLAM/ORB_SLAM2/Vocabulary/ORBvoc.txt  /home/henry/SLAM/ORB_SLAM2/Examples/ROS/ORB_SLAM2/my.yaml&quot;</span></span><br></pre></td></tr></table></figure>
 <center>
 <img src="https://s1.ax1x.com/2020/10/14/0IQtFU.jpg" width="100%">
 <br>
@@ -367,7 +363,7 @@ ORB-SLAM 界面
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?26475508"></script>
+<script src="/js/journal.js?10644257"></script>
 
 
 <script type="text/javascript">
