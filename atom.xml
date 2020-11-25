@@ -231,9 +231,9 @@
     
     <category term="机器人" scheme="https://sszxc.net/about/index.html/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
     
-    <category term="强化学习" scheme="https://sszxc.net/about/index.html/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="深度学习" scheme="https://sszxc.net/about/index.html/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="强化学习" scheme="https://sszxc.net/about/index.html/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -263,11 +263,11 @@
     
     <category term="Python" scheme="https://sszxc.net/about/index.html/tags/Python/"/>
     
-    <category term="深度学习" scheme="https://sszxc.net/about/index.html/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="GAN" scheme="https://sszxc.net/about/index.html/tags/GAN/"/>
     
     <category term="TensorFlow" scheme="https://sszxc.net/about/index.html/tags/TensorFlow/"/>
+    
+    <category term="深度学习" scheme="https://sszxc.net/about/index.html/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
     <category term="Pokémon" scheme="https://sszxc.net/about/index.html/tags/Pokemon/"/>
     
@@ -299,13 +299,13 @@
     
     <category term="Python" scheme="https://sszxc.net/about/index.html/tags/Python/"/>
     
-    <category term="深度学习" scheme="https://sszxc.net/about/index.html/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="GAN" scheme="https://sszxc.net/about/index.html/tags/GAN/"/>
     
     <category term="MNIST" scheme="https://sszxc.net/about/index.html/tags/MNIST/"/>
     
     <category term="TensorFlow" scheme="https://sszxc.net/about/index.html/tags/TensorFlow/"/>
+    
+    <category term="深度学习" scheme="https://sszxc.net/about/index.html/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -361,9 +361,9 @@
     
     <category term="Python" scheme="https://sszxc.net/about/index.html/tags/Python/"/>
     
-    <category term="深度学习" scheme="https://sszxc.net/about/index.html/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="TensorFlow" scheme="https://sszxc.net/about/index.html/tags/TensorFlow/"/>
+    
+    <category term="深度学习" scheme="https://sszxc.net/about/index.html/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
     <category term="Anaconda" scheme="https://sszxc.net/about/index.html/tags/Anaconda/"/>
     
@@ -421,11 +421,11 @@
     
     <category term="仿真" scheme="https://sszxc.net/about/index.html/tags/%E4%BB%BF%E7%9C%9F/"/>
     
-    <category term="图像处理" scheme="https://sszxc.net/about/index.html/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
-    
     <category term="C" scheme="https://sszxc.net/about/index.html/tags/C/"/>
     
     <category term="Webots" scheme="https://sszxc.net/about/index.html/tags/Webots/"/>
+    
+    <category term="图像处理" scheme="https://sszxc.net/about/index.html/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
@@ -449,9 +449,9 @@
     <category term="技术" scheme="https://sszxc.net/about/index.html/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="Python" scheme="https://sszxc.net/about/index.html/tags/Python/"/>
-    
     <category term="语音" scheme="https://sszxc.net/about/index.html/tags/%E8%AF%AD%E9%9F%B3/"/>
+    
+    <category term="Python" scheme="https://sszxc.net/about/index.html/tags/Python/"/>
     
     <category term="ROS" scheme="https://sszxc.net/about/index.html/tags/ROS/"/>
     
