@@ -18,7 +18,7 @@
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?56761185">
+<link rel="stylesheet" href="/css/journal.css?66673153">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -76,16 +76,16 @@
 
             
             
-            <a class="a-block drawer-menu-item false" href="/archives/index.html">
-                Archives
+            <a class="a-block drawer-menu-item false" href="/about/index.html">
+                About
             </a>
             
             <a class="a-block drawer-menu-item false" href="/gallery/index.html">
                 Gallery
             </a>
             
-            <a class="a-block drawer-menu-item false" href="/about/index.html">
-                About
+            <a class="a-block drawer-menu-item false" href="/archives/index.html">
+                Archives
             </a>
             
 
@@ -131,16 +131,16 @@
 
         
         
-        <a class="a-block nav-link-item false" href="/archives/index.html">
-            Archives
+        <a class="a-block nav-link-item false" href="/about/index.html">
+            About
         </a>
         
         <a class="a-block nav-link-item false" href="/gallery/index.html">
             Gallery
         </a>
         
-        <a class="a-block nav-link-item false" href="/about/index.html">
-            About
+        <a class="a-block nav-link-item false" href="/archives/index.html">
+            Archives
         </a>
         
 
@@ -250,6 +250,13 @@
 <li><a href="#32-first-steps-towards-programming">3.2. First Steps Towards Programming</a></li>
 </ul>
 </li>
+<li><a href="#4-more-control-flow-tools">4. More Control Flow Tools</a><ul>
+<li><a href="#41-if-statements">4.1. <code>if</code> Statements</a></li>
+<li><a href="#42-for-statements">4.2. <code>for</code> Statements</a></li>
+<li><a href="#43-the-range-function">4.3. The <code>range()</code> Function</a></li>
+<li><a href="#44-break-and-continue-statements-and-else-clauses-on-loops">4.4. <code>break</code> and <code>continue</code> Statements, and <code>else</code> Clauses on Loops</a></li>
+</ul>
+</li>
 </ul>
 <!-- tocstop -->
 
@@ -292,6 +299,7 @@
 <p>ASCII 包含英文、数字、符号，1 个字节；Unicode 包含多国语言，通常 2 个字节，内存中一般用这个处理；UTF-8 变长编码，用于传输。<a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017075323632896">字符串和编码 廖雪峰的官方网站</a></p>
 <p>要声明默认编码以外的其他编码，应在文件的第一行添加一个特殊的注释行。 语法如下：<code># -*- coding: encoding -*-</code></p>
 <p>一个例外就是为了告诉 Linux/OS X 系统这是一个 Python 可执行程序 (Windows 系统会忽略这个注释），第一行应该写<code>#!/usr/bin/env python3</code></p>
+<hr>
 <h1><span id="3-an-informal-introduction-to-python">3. An Informal Introduction to Python</span><a href="#3-an-informal-introduction-to-python" class="header-anchor">#</a></h1><blockquote>
 <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/tutorial/introduction.html">https://docs.python.org/3/tutorial/introduction.html</a></p>
 </blockquote>
@@ -305,11 +313,12 @@
 <p>在交互模式下，最后一个打印的表达式会赋值给变量<code>_</code>，就像是计算器里的”Ans”。要注意的是这个变量应该被用户视为只读的，不要显式地给它赋值 (explicitly assign a value to it)，你会创建一个同名的独立局部变量，用它的神奇行为掩盖内置变量。</p>
 <p>除了 int 和 float 外，Python 还支持其他类型的数字，例如小数和分数。Python 还具有对复数的内置支持，并使用<code>j</code>或<code>J</code>后缀指示虚部（例如<code>3+5j</code>)。</p>
 <h3><span id="312-strings">3.1.2. Strings</span><a href="#312-strings" class="header-anchor">#</a></h3><p>除了数字，Python 还可以操作字符串，字符串可以用几种方式表示。它们可以用单引号<code>&#39;…&#39;</code>或双引号<code>&quot;…&quot;</code>括起来，<code>\</code>可以用来转义引号 (escape quotes)。</p>
+<p>注意这里的单引号、双引号和 C 不一样，两者唯一区别就是：外面双引号，里面的双引号就要加<code>\</code>转义。</p>
 <pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token string">'doesn\'t'</span>  <span class="token comment" spellcheck="true"># use \' to escape the single quote...</span>
 <span class="token string">"doesn't"</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token string">"doesn't"</span>  <span class="token comment" spellcheck="true"># ...or use double quotes instead</span>
 <span class="token string">"doesn't"</span></code></pre>
-<p>在交互式解释器中，输出的字符串外面有引号，特殊字符不会转义；<code>print</code>函数略去前后引号，同时转义。</p>
+<p>在交互式解释器中，输出的字符串外面有引号，特殊字符不会转义；但<code>print</code>函数略去前后引号，同时转义。</p>
 <pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> s  <span class="token comment" spellcheck="true"># without print(), \n is included in the output</span>
 <span class="token string">'First line.\nSecond line.'</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># with print(), \n produces a new line</span>
@@ -363,8 +372,63 @@ World
 <p>可以通过使用<code>append()</code>方法在列表的末尾添加新项。</p>
 <p>也可以给切片赋值，这样可以更改 list 的大小，甚至清空。</p>
 <p>内置函数<code>len()</code>同样适用于 list。</p>
-<p>支持嵌套 (nest) 列表。</p>
-<h2><span id="32-first-steps-towards-programming">3.2. First Steps Towards Programming</span><a href="#32-first-steps-towards-programming" class="header-anchor">#</a></h2><hr>
+<p>列表支持嵌套 (nest) 。</p>
+<h2><span id="32-first-steps-towards-programming">3.2. First Steps Towards Programming</span><a href="#32-first-steps-towards-programming" class="header-anchor">#</a></h2><p>当然，Python 也不止 1+1，下面例程给出斐波那切数列的初始子序列 (an initial sub-sequence of the Fibonacci series)：</p>
+<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token comment" spellcheck="true"># Fibonacci series:</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token comment" spellcheck="true"># the sum of two elements defines the next</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> a<span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">while</span> a <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">:</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     <span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     a<span class="token punctuation">,</span> b <span class="token operator">=</span> b<span class="token punctuation">,</span> a<span class="token operator">+</span>b
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token number">0</span>
+<span class="token number">1</span>
+<span class="token number">2</span>
+<span class="token number">3</span>
+<span class="token number">5</span>
+<span class="token number">8</span></code></pre>
+<ul>
+<li>第一行、最后一行的多重赋值：先计算等号右边，再赋值</li>
+<li>任何非零数都为真，长度非零就为真</li>
+<li>缩进是 Python 组织语句的方式</li>
+</ul>
+<hr>
+<h1><span id="4-more-control-flow-tools">4. More Control Flow Tools</span><a href="#4-more-control-flow-tools" class="header-anchor">#</a></h1><h2><span id="41-if-statements">4.1. <code>if</code> Statements</span><a href="#41-if-statements" class="header-anchor">#</a></h2><pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> int<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">"Please enter an integer: "</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+Please enter an integer<span class="token punctuation">:</span> <span class="token number">42</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">if</span> x <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     x <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Negative changed to zero'</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token keyword">elif</span> x <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Zero'</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token keyword">elif</span> x <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Single'</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token keyword">else</span><span class="token punctuation">:</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'More'</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
+<h2><span id="42-for-statements">4.2. <code>for</code> Statements</span><a href="#42-for-statements" class="header-anchor">#</a></h2><p>不像 Pascal 只能遍历数字，也不像 C 那样能定义遍历步骤和条件，Python 按顺序遍历任何序列。For example (no pun intended):<br>英文双关了，哈哈。</p>
+<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token comment" spellcheck="true"># Measure some strings:</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> words <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'cat'</span><span class="token punctuation">,</span> <span class="token string">'window'</span><span class="token punctuation">,</span> <span class="token string">'defenestrate'</span><span class="token punctuation">]</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">for</span> w <span class="token keyword">in</span> words<span class="token punctuation">:</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     <span class="token keyword">print</span><span class="token punctuation">(</span>w<span class="token punctuation">,</span> len<span class="token punctuation">(</span>w<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+cat <span class="token number">3</span>
+window <span class="token number">6</span>
+defenestrate <span class="token number">12</span></code></pre>
+<p>一边遍历一边修改可能会出问题，一般都是拷贝一份。</p>
+<h2><span id="43-the-range-function">4.3. The <code>range()</code> Function</span><a href="#43-the-range-function" class="header-anchor">#</a></h2><p>遍历数字的时候，内饰函数<code>range()</code>很方便 (comes in handy)。指定结尾是不出现在序列里的，<code>range(10)</code>生成 0-9。当然也可以调整步进 step。</p>
+<pre class=" language-python"><code class="language-python">range（起点，终点，步进）</code></pre>
+<p>如果你想直接 print 的话，会有奇怪的事情：</p>
+<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>range<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span></code></pre>
+<p><code>range()</code>返回的对象的行为看起来是一个列表，但实际上并非如此。它是一个对象，当您对其进行迭代时，它会返回所需序列的后续项，但它并没有真正组成列表，从而节省了空间。</p>
+<p>我们把这种对象称为可迭代的 (iterable)，即，函数和结构能从中获得连续的 (successive) 项直到耗尽。<code>for</code>就是这样的结构，<code>sum()</code>就是一个函数的例子。</p>
+<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> sum<span class="token punctuation">(</span>range<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 0 + 1 + 2 + 3</span>
+<span class="token number">6</span></code></pre>
+<p>那么如何从<code>range()</code>获得 list 呢？</p>
+<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> list<span class="token punctuation">(</span>range<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span></code></pre>
+<h2><span id="44-break-and-continue-statements-and-else-clauses-on-loops">4.4. <code>break</code> and <code>continue</code> Statements, and <code>else</code> Clauses on Loops</span><a href="#44-break-and-continue-statements-and-else-clauses-on-loops" class="header-anchor">#</a></h2><p>Clauses 从句</p>
+<hr>
 <pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#!/usr/bin/env python3</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Hello, World!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 
@@ -415,7 +479,7 @@ World
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?8994957"></script>
+<script src="/js/journal.js?79144710"></script>
 
 
 <!-- Valine 评论标记 -->    
