@@ -411,9 +411,9 @@
     <category term="技术" scheme="https://sszxc.net/about/index.html/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="Python" scheme="https://sszxc.net/about/index.html/tags/Python/"/>
-    
     <category term="图像处理" scheme="https://sszxc.net/about/index.html/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+    <category term="Python" scheme="https://sszxc.net/about/index.html/tags/Python/"/>
     
   </entry>
   
@@ -440,11 +440,11 @@
     
     <category term="机器人" scheme="https://sszxc.net/about/index.html/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
     
+    <category term="仿真" scheme="https://sszxc.net/about/index.html/tags/%E4%BB%BF%E7%9C%9F/"/>
+    
     <category term="C" scheme="https://sszxc.net/about/index.html/tags/C/"/>
     
     <category term="Webots" scheme="https://sszxc.net/about/index.html/tags/Webots/"/>
-    
-    <category term="仿真" scheme="https://sszxc.net/about/index.html/tags/%E4%BB%BF%E7%9C%9F/"/>
     
     <category term="图像处理" scheme="https://sszxc.net/about/index.html/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
