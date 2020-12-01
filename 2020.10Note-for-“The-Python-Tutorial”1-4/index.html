@@ -18,7 +18,7 @@
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?86978349">
+<link rel="stylesheet" href="/css/journal.css?36586911">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -76,16 +76,16 @@
 
             
             
+            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
+                Gallery
+            </a>
+            
             <a class="a-block drawer-menu-item false" href="/about/index.html">
                 About
             </a>
             
             <a class="a-block drawer-menu-item false" href="/archives/index.html">
                 Archives
-            </a>
-            
-            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
-                Gallery
             </a>
             
 
@@ -131,16 +131,16 @@
 
         
         
+        <a class="a-block nav-link-item false" href="/gallery/index.html">
+            Gallery
+        </a>
+        
         <a class="a-block nav-link-item false" href="/about/index.html">
             About
         </a>
         
         <a class="a-block nav-link-item false" href="/archives/index.html">
             Archives
-        </a>
-        
-        <a class="a-block nav-link-item false" href="/gallery/index.html">
-            Gallery
         </a>
         
 
@@ -257,13 +257,14 @@
 <li><a href="#44-break-and-continue-statements-and-else-clauses-on-loops">4.4. <code>break</code> and <code>continue</code> Statements, and <code>else</code> Clauses on Loops</a></li>
 <li><a href="#45-pass-statements">4.5. <code>pass</code> Statements</a></li>
 <li><a href="#46-defining-functions">4.6. Defining Functions</a></li>
+<li><a href="#47-more-on-defining-functions">4.7. More on Defining Functions</a></li>
 </ul>
 </li>
 </ul>
 <!-- tocstop -->
 
 <blockquote>
-<p><a target="_blank" rel="noopener" href="https://docs.python.org/3/tutorial/index.html">https://docs.python.org/3/tutorial/index.html</a><br>摘抄 + 翻译<br>§1~§4主要涉及解释器、基本语法、基本数据类型。</p>
+<p><a target="_blank" rel="noopener" href="https://docs.python.org/3/tutorial/index.html">https://docs.python.org/3/tutorial/index.html</a><br>摘抄 + 翻译<br>§1~§4 主要涉及解释器、基本语法、基本数据类型。</p>
 </blockquote>
 <p>Python 很简单，很强大。高级数据结构，高效的面向对象编程，优雅的语法 elegant syntax，动态类型 dynamic typing，解释性本质 interpreted nature。</p>
 <p>Python 的解释器 interpreter 和标准库都能以源代码或二进制形式 source or binary form 获取，还有很多第三方库。</p>
@@ -453,7 +454,41 @@ range<span class="token punctuation">(</span><span class="token number">0</span>
 </li>
 </ul>
 <h2><span id="46-defining-functions">4.6. Defining Functions</span><a href="#46-defining-functions" class="header-anchor">#</a></h2><p>关键字 <code>def</code> 引入一个函数<em>定义</em>。它后面必需跟函数名称和带括号的形参列表 (the parenthesized list of formal parameters)。构成函数体的语句从下一行开始，并且必须缩进 (indented)。</p>
+<p>函数主体的第一条语句可以是字符串文字 (string literal)，这是函数的文档字符串 (docstring)。</p>
+<p>函数的<em>执行</em>会引入一个新的符号表，用来存储局部变量。变量引用的时候先在本地符号表中查找，然后是闭包函数的符号表，接着是全局符号表，最后是内置符号表。因此，全局变量和闭包函数的变量不能在函数内部赋值（可以被引用），除非使用了<code>global</code>或者<code>nonlocal</code>。</p>
+<p>函数被调用时，实参会被引入到局部符号表中，参数的值始终是对象引用。当一个函数调用另一个函数时，也会为其创建一个新的局部符号表。</p>
+<p>函数定义会将函数名称与函数对象在当前符号表中进行关联。其他名称也可指向同一个函数对象并可被用来访问访函数。</p>
+<p><code>return</code>语句会从函数内部返回一个值。不带表达式参数的 <code>return</code> 会返回 <code>None</code>。函数执行完毕退出也会返回 <code>None</code>。</p>
+<p>最后插播一个关于闭包的博客，很清晰——<a target="_blank" rel="noopener" href="https://www.cnblogs.com/s-1314-521/p/9763376.html">谈谈自己的理解：python 中闭包，闭包的实质</a>。</p>
+<blockquote>
+<p>主要问题在于外函数绑定来的临时变量，内函数不能修改。<br>这件事情也和 Python 的解释原理有关。在解释器开始执行的时候，会在内存中开辟⼀个空间，每当遇到⼀个变量，就把变量名和值记录下来；但是当遇到函数定义的时候，解释器只是把函数名读入内存，表⽰这个函数存在了，⾄于函数内部的变量和逻辑，解释器是不关⼼的。只有当函数被调⽤的时候，解释器才会根据函数内部声明的变量来开辟变量的内部空间。</p>
+</blockquote>
+<p>这里也附一个自己的测试代码，这里<code>global</code>和<code>nonlocal</code>都是不可缺少的。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">outer</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment" spellcheck="true"># outer是外部函数</span>
+    b <span class="token operator">=</span> <span class="token number">10</span>
+    <span class="token keyword">def</span> <span class="token function">inner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment" spellcheck="true"># inner是内函数</span>
+        nonlocal b  <span class="token comment" spellcheck="true"># 外函数的临时变量</span>
+        <span class="token keyword">global</span> c  <span class="token comment" spellcheck="true"># 全局变量</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>a <span class="token operator">+</span> b<span class="token punctuation">)</span>
+        b <span class="token operator">+=</span> <span class="token number">10</span>
+        c <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token keyword">return</span> inner  <span class="token comment" spellcheck="true"># 外函数的返回值是内函数的引用</span>
+    <span class="token comment" spellcheck="true"># 外函数结束的时候发现内部函数将会用到自己的临时变量，临时变量就不会释放，会绑定给这个内部函数</span>
 
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    c <span class="token operator">=</span> <span class="token number">99</span>
+
+    demo <span class="token operator">=</span> outer<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>outer<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>demo<span class="token punctuation">)</span>
+    demo<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 15</span>
+    demo<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 25</span>
+
+    demo2 <span class="token operator">=</span> outer<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>outer<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>demo2<span class="token punctuation">)</span>
+    demo2<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 17</span></code></pre>
+<h2><span id="47-more-on-defining-functions">4.7. More on Defining Functions</span><a href="#47-more-on-defining-functions" class="header-anchor">#</a></h2>
                 </div>
             </div>
     
@@ -501,7 +536,7 @@ range<span class="token punctuation">(</span><span class="token number">0</span>
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?49266792"></script>
+<script src="/js/journal.js?29126716"></script>
 
 
 <!-- Valine 评论标记 -->    

@@ -4,18 +4,20 @@
 <html lang="zh-CN" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 
 <head>
-    <title>记一次 TensorFlow 版本升级 - Henry</title>
+    <title>两个函数的地址怎么完全一样——关于函数调用栈 - Henry</title>
 <meta charset="utf-8">
 <meta name="X-UA-Compatible" content="IE=edge">
 <meta name="author" content="Henry">
-<meta name="description" content="
-一杯茶一包烟，一个环境配一天
+<meta name="description" content="在测试 Python 变量引用顺序的时候，修修改改，写出了下面这样的测试代码：
+def plus(a, b):
+    return 10
 
-某天上网冲浪的时候，看到一种说法 TensorFlow1.14 对新版本的兼容性会更好，于是在大作业之前手贱升级了一下，结果发现再也不能调用 GPU 运算了，接着就有了这篇踩坑记录。 原环境：
+def test1():
+    def plus(a, b):
+        return 20
+    return plus
 
-Win10 1909
-Anaconda 3
-Python 3.6...">
+def test...">
 <meta name="keywords" content="">
 
     <meta charset="utf-8">
@@ -25,7 +27,7 @@ Python 3.6...">
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?6550140">
+<link rel="stylesheet" href="/css/journal.css?38418853">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -183,10 +185,10 @@ Python 3.6...">
             <div class="post-head-wrapper-text-only"
                  style="background-image: url('')">
                 <div class="post-title">
-                    记一次 TensorFlow 版本升级
+                    两个函数的地址怎么完全一样——关于函数调用栈
                     <div class="post-meta">
-                        <time datetime="2020-06-02T07:40:20.000Z" itemprop="datePublished">
-                            2020-06-02 15:40
+                        <time datetime="2020-12-01T07:41:43.000Z" itemprop="datePublished">
+                            2020-12-01 15:41
                         </time>&nbsp;
                         <!-- 不蒜子访客插件标记 -->                        
                         <span id="busuanzi_container_page_pv" style='display:none'> 
@@ -194,25 +196,7 @@ Python 3.6...">
                         </span>
                         <!-- 不蒜子访客插件标记 -->
                         
-                        
-                        <i class="material-icons" style="">folder</i>
-                        
-                        <a href='/categories/uncategorized/'>uncategorized</a>
-                        
-                        
     
-                        
-                        
-                        <i class="material-icons" style="">label</i>
-                        
-                        <a href='/tags/Python/'>Python</a>, 
-                        
-                        <a href='/tags/TensorFlow/'>TensorFlow</a>, 
-                        
-                        <a href='/tags/深度学习/'>深度学习</a>, 
-                        
-                        <a href='/tags/Anaconda/'>Anaconda</a>
-                        
                         
 
                         
@@ -241,86 +225,79 @@ Python 3.6...">
     
             <div class="post-body-wrapper">
                 <div class="post-body">
-                    <blockquote>
-<p>一杯茶一包烟，一个环境配一天</p>
-</blockquote>
-<p>某天上网冲浪的时候，看到一种说法 TensorFlow1.14 对新版本的兼容性会更好，于是在大作业之前手贱升级了一下，结果发现再也不能调用 GPU 运算了，接着就有了这篇踩坑记录。 原环境：</p>
-<ul>
-<li>Win10 1909</li>
-<li>Anaconda 3</li>
-<li>Python 3.6.8</li>
-<li>TensorFlow 1.12</li>
-<li>CUDA 10.1</li>
-</ul>
-<p>本文涉及到 TensorFlow 的指定版本升级、CUDA 的卸载重装与 cuDNN 的重装。</p>
-<hr>
-<h1><span id="tensorflow">TensorFlow</span><a href="#tensorflow" class="header-anchor">#</a></h1><p>首先升级 TensorFlow，启动 Anaconda，激活相应环境，启动命令行，使用<code>pip install tensorflow==1.14.0</code>或<code>pip install tensorflow-gpu==1.14.0</code>命令安装指定版本 TensorFlow。</p>
-<p>最早配置的服务器是清华源，而当天不知道什么原因下载非常不稳定，于是尝试换成中科大源，但是仍然下载失败。</p>
-<p><code>pip install --channel https://mirrors.ustc.edu.cn/anaconda/pkgs/main/ tensorflow-gpu==1.14.0</code></p>
-<p>神秘的是，吃了晚饭回来网络就恢复正常了。</p>
-<p>下载之后出现提示，“Could not install packages due to an EnvironmentError: [WinError 5] 拒绝访问”，谷歌后解决方案如下。</p>
-<blockquote>
-<p><em>解决方法： C:\Users\xxx&gt; 中的 xxx 不是管理员，或者说就是权限不够；在 conda 在的路径里，……\Anaconda3 右击属性-&gt;安全-&gt;user 选中现在的用户，修改权限至所有权限；重新打开命令行，即可。</em></p>
-</blockquote>
-<p>来自：<a target="_blank" rel="noopener" href="http://www.zzkook.com/content/anaconda-zai-win10xia-zhuang-shi-yong-wen-ti-jie-jue-ban-fa-hui-zong-duo-tu">http://www.zzkook.com/content/anaconda-zai-win10xia-zhuang-shi-yong-wen-ti-jie-jue-ban-fa-hui-zong-duo-tu</a></p>
-<p>安装完之后记得使用<code>conda info</code>命令检查一下版本，同时升级的时候需要注意 CPU 和 GPU 版本之间的顺序。之前有次安装失败没注意看终端，结果装完了 CUDA 发现 TensorFlow 版本还没跟上。</p>
-<p>如果使用 CPU 版本的话应该就到此顺利结束了，但是为了使用 GPU 加速，任务还没完。加载环境后可以使用如下代码测试是否能调用 GPU，这一次很可惜不能。</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> tensorflow<span class="token punctuation">.</span>python<span class="token punctuation">.</span>client <span class="token keyword">import</span> device_lib
-<span class="token keyword">print</span><span class="token punctuation">(</span>device_lib<span class="token punctuation">.</span>list_local_devices<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
-<hr>
-<h1><span id="cuda">CUDA</span><a href="#cuda" class="header-anchor">#</a></h1><p>根据 TensorFlow 官方给出的“经过测试的构建配置”，可以看到 TensorFlow1.14 对应的推荐 CUDA 版本是 10.0，和当前版本不符，显然为了稳定运行还需要降级 CUDA。</p>
-<center>
-<img src="https://s1.ax1x.com/2020/06/02/ttNNIe.jpg" width="90%">
-</center>
-来自：[https://www.tensorflow.org/install/source#tested\_build\_configurations](https://www.tensorflow.org/install/source#tested_build_configurations)
+                    <p>在测试 Python 变量引用顺序的时候，修修改改，写出了下面这样的测试代码：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">plus</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token number">10</span>
 
-<p>首先是 CUDA 卸载，参考下面这篇博客，在控制面板中卸载含有相关关键词的程序。</p>
-<blockquote>
-<p><em>CUDA 的卸载：控制面板-卸载程序（不要用 360 等杀毒软件，找不到对应程序的），按照安装时间排序，最上面这几个带版本号的，就是刚才安装的 CUDA 了，挨个卸载即可</em></p>
-</blockquote>
-<p>来自：<a target="_blank" rel="noopener" href="https://blog.csdn.net/XunCiy/article/details/89070315">https://blog.csdn.net/XunCiy/article/details/89070315</a></p>
-<p>然后是安装包的重新下载，在英伟达官网的 <a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-toolkit-archive">归档</a> 里能找到历史版本的 CUDA。这里推荐使用离线版而不是在线版，借助 IDM 等下载工具能有效提高效率。</p>
-<center>
-<img src="https://s1.ax1x.com/2020/06/02/ttU1YQ.jpg" width="90%">
-</center>
-<br>
+<span class="token keyword">def</span> <span class="token function">test1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">plus</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">20</span>
+    <span class="token keyword">return</span> plus
 
+<span class="token keyword">def</span> <span class="token function">test2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">plus</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">30</span>
+    <span class="token keyword">return</span> plus
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    demo1 <span class="token operator">=</span> test1<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    demo2 <span class="token operator">=</span> test2<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>plus<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>demo1<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>demo2<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>test1<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>test2<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>对应输出结果：</p>
+<pre><code>&lt;function plus at 0x000002063B18B798&gt;
+&lt;function testa.&lt;locals&gt;.plus at 0x000002063B18B678&gt;
+&lt;function testb.&lt;locals&gt;.plus at 0x000002063B18B948&gt;
+&lt;function testa.&lt;locals&gt;.plus at 0x000002063B18B9D8&gt;
+&lt;function testb.&lt;locals&gt;.plus at 0x000002063B18B9D8&gt;</code></pre>
+<p>可以发现，前面几句都很正常，但最后两行不同的函数，内存地址竟然一样。</p>
+<p>请教了一下专业人士，原来和函数栈结构有关。</p>
 <hr>
-<h1><span id="cudnn">cuDNN</span><a href="#cudnn" class="header-anchor">#</a></h1><p>下一步是 cuDNN，在 <a target="_blank" rel="noopener" href="https://developer.nvidia.com/rdp/cudnn-download">官网</a> 下载，对照上文，下载指定版本后解压、覆盖、检查环境变量，参考教程如下。</p>
-<blockquote>
-<p><em>下载完，解压 cudnn, 会出现四个文件，如下：[图片、] 在 cuda 安装完后，系统自动在 C 盘的 Program Files 文件中创建了 NVIDIA GPUComputing Toolkit 文件夹，你可以找到如下路径：[图片、] 你可以发现在这个 v9.0 目录下也有类似 cudnn 中的文件夹。将 cudnn 的 bin,include,lib 中的内容 拷贝到 v9.0 的 bin,include,lib 对应目录下，提示替换的话点击 OK。完成，最好重启一下电脑。OK。</em></p>
-</blockquote>
-<p>来自：<a target="_blank" rel="noopener" href="https://blog.csdn.net/c20081052/article/details/86683446">https://blog.csdn.net/c20081052/article/details/86683446</a></p>
-<p>这时候运行之前的代码，发现已经可以检测到 GPU，但是跑之前的网络仍然报错，提示版本不匹配。</p>
-<p><code>Loaded runtime CuDNN library: 7.3.1 but source was compiled with: 7.4.1.</code></p>
-<p>查资料后发现，很多博客都建议回退旧版本，这当然不能接受。最终找到了下面这一篇，看来这是使用 Anaconda 造成的问题，主环境中的 cuDNN 版本修改并没有顾及到虚拟环境，于是按照指南顺利解决。</p>
-<blockquote>
-<p><em>也许你和我一样使用的是 Anaconda，那么，请打开你的 Anaconda 安装路径（比如：我的路径是 F:\Anaconda\anaconda\pkgs），你会发现这有个、[图片、] 好的，我们找到了这个玩意，也许 Anaconda 直接是使用这里的 CUDNN，而不是在 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0 这个地方的 CUDNN（这只是猜测）。为此，我们尝试一下直接更新这个 pkgs，在这个网站下载 (<a target="_blank" rel="noopener" href="https://anaconda.org/anaconda/cudnn/files?sort=basename&amp;sort%5C_order=desc">https://anaconda.org/anaconda/cudnn/files?sort=basename&amp;sort\_order=desc</a>) 选择合适版本的 CUDNN（一定要注意是合适的版本），然后把刚下载的文件解压得到：[图片、] 将里面 Library 的东西复制覆盖到 F:\Anaconda\anaconda\pkgs\ cudnn-7.1.4-cuda9.0_0\Library 的东西（也许你的 Anaconda 路径不同，需要自己找一下）路径，再试一下。</em></p>
-</blockquote>
-<p>来自：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Tilamy/article/details/88616201">https://blog.csdn.net/Tilamy/article/details/88616201</a></p>
+<p>参考 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/clover-toeic/p/3755401.html">C 语言函数调用栈（一） clover_toeic</a>，先复习一下函数调用时的具体步骤：</p>
+<ol>
+<li><p>主调函数将被调函数所要求的参数，根据相应的函数调用约定，保存在运行时栈中。该操作会改变程序的栈指针。</p>
+<p> 注：x86 平台将参数压入调用栈中。而 x86_64 平台具有 16 个通用 64 位寄存器，故调用函数时前 6 个参数通常由寄存器传递，其余参数才通过栈传递。</p>
+</li>
+<li><p>主调函数将控制权移交给被调函数（使用 call 指令）。函数的返回地址（待执行的下条指令地址）保存在程序栈中（压栈操作隐含在 call 指令中）。</p>
+</li>
+<li><p>若有必要，被调函数会设置帧基指针，并保存被调函数希望保持不变的寄存器值。</p>
+</li>
+<li><p>被调函数通过修改栈顶指针的值，为自己的局部变量在运行时栈中分配内存空间，并从帧基指针的位置处向低地址方向存放被调函数的局部变量和临时变量。</p>
+</li>
+<li><p>被调函数执行自己任务，此时可能需要访问由主调函数传入的参数。若被调函数返回一个值，该值通常保存在一个指定寄存器中（如 EAX)。</p>
+</li>
+<li><p>一旦被调函数完成操作，为该函数局部变量分配的栈空间将被释放。这通常是步骤 4 的逆向执行。</p>
+</li>
+<li><p>恢复步骤 3 中保存的寄存器值，包含主调函数的帧基指针寄存器。</p>
+</li>
+<li><p>被调函数将控制权交还主调函数（使用 ret 指令）。根据使用的函数调用约定，该操作也可能从程序栈上清除先前传入的参数。</p>
+</li>
+<li><p>主调函数再次获得控制权后，可能需要将先前的参数从栈上清除。在这种情况下，对栈的修改需要将帧基指针值恢复到步骤 1 之前的值。</p>
+</li>
+</ol>
+<p>步骤 3 与步骤 4 在函数调用之初常一同出现，统称为函数序 (prologue)；步骤 6 到步骤 8 在函数调用的最后常一同出现，统称为函数跋 (epilogue)。函数序和函数跋是编译器自动添加的开始和结束汇编代码，其实现与 CPU 架构和编译器相关。除步骤 5 代表函数实体外，其它所有操作组成函数调用。</p>
 <hr>
-<p>至此，终于全部完成，新环境：</p>
-<ul>
-<li>Win10 1909</li>
-<li>Anaconda 3</li>
-<li>Python 3.6.8</li>
-<li>TensorFlow 1.14</li>
-<li>CUDA 10.0</li>
-</ul>
+<p>回到这次的问题，参考 C 语言的逻辑，猜测原因是这样的：</p>
+<p>执行 <code>print</code> 语句时，先调用括号内的 <code>test</code>，函数入栈、执行、出栈，返回值交给 <code>print</code> 打印。所以这一行语句执行前后内存空间又回到了原来的状态。</p>
+<p>又因为 <code>test1</code> 和 <code>test2</code> 两个函数的大小刚好一样，所以两句话最后返回的地址也就一样了。</p>
+<p>而 <code>demo1</code>、<code>demo2</code> 两句话是对函数的拷贝构造，执行完之后作为一个对象留了下来，没有被弹出，所以仍然占用着内存地址。</p>
 
                 </div>
             </div>
     
             <nav class="post-pagination">
     
-    <a class="newer-posts" href="/2020.06LaTeX%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/">
-        上一篇<br>LaTeX 入门笔记
+    <a class="newer-posts" href="/2020.12Note-for-%E2%80%9CThe-Python-Tutorial%E2%80%9D5-9/">
+        上一篇<br>Note for “The Python Tutorial” §5~§9
     </a>
     
     <span class="page-number"></span>
     
-    <a class="older-posts" href="/2020.05%E5%9F%BA%E4%BA%8EHOG%E6%8F%8F%E8%BF%B0%E5%AD%90+SVM%E5%88%86%E7%B1%BB%E5%99%A8%E7%9A%84%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">
-        下一篇<br>基于 HOG 描述子+SVM 分类器的目标检测
+    <a class="older-posts" href="/2020.11Textnow%E6%94%B6%E4%B8%8D%E5%88%B0%E9%AA%8C%E8%AF%81%E7%A0%81/">
+        下一篇<br>Textnow 收不到验证码？记得开启 UDP 转发
     </a>
     
 </nav>
@@ -355,7 +332,7 @@ Python 3.6...">
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?73149915"></script>
+<script src="/js/journal.js?86431735"></script>
 
 
 <!-- Valine 评论标记 -->    
