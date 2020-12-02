@@ -18,7 +18,7 @@
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?86662269">
+<link rel="stylesheet" href="/css/journal.css?6581569">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -76,12 +76,12 @@
 
             
             
-            <a class="a-block drawer-menu-item false" href="/archives/index.html">
-                Archives
-            </a>
-            
             <a class="a-block drawer-menu-item false" href="/about/index.html">
                 About
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/archives/index.html">
+                Archives
             </a>
             
             <a class="a-block drawer-menu-item false" href="/gallery/index.html">
@@ -131,12 +131,12 @@
 
         
         
-        <a class="a-block nav-link-item false" href="/archives/index.html">
-            Archives
-        </a>
-        
         <a class="a-block nav-link-item false" href="/about/index.html">
             About
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/archives/index.html">
+            Archives
         </a>
         
         <a class="a-block nav-link-item false" href="/gallery/index.html">
@@ -260,6 +260,8 @@
 <li><a href="#47-more-on-defining-functions">4.7. More on Defining Functions</a><ul>
 <li><a href="#471-default-argument-values">4.7.1. Default Argument Values</a></li>
 <li><a href="#472-keyword-arguments">4.7.2. Keyword Arguments</a></li>
+<li><a href="#473-special-parameters">4.7.3. Special parameters</a></li>
+<li><a href="#474-arbitrary-argument-lists">4.7.4. Arbitrary Argument Lists</a></li>
 </ul>
 </li>
 </ul>
@@ -268,7 +270,7 @@
 <!-- tocstop -->
 
 <blockquote>
-<p><a target="_blank" rel="noopener" href="https://docs.python.org/3/tutorial/index.html">https://docs.python.org/3/tutorial/index.html</a><br>摘抄 + 翻译<br>§1~§4 主要涉及解释器、基本语法、基本数据类型。</p>
+<p><a target="_blank" rel="noopener" href="https://docs.python.org/3/tutorial/index.html">https://docs.python.org/3/tutorial/index.html</a><br>翻译 + 摘抄——确实学到很多<br>§1~§4 主要涉及解释器、基本语法、基本数据类型。</p>
 </blockquote>
 <p>Python 很简单，很强大。高级数据结构，高效的面向对象编程，优雅的语法 elegant syntax，动态类型 dynamic typing，解释性本质 interpreted nature。</p>
 <p>Python 的解释器 interpreter 和标准库都能以源代码或二进制形式 source or binary form 获取，还有很多第三方库。</p>
@@ -502,7 +504,64 @@ range<span class="token punctuation">(</span><span class="token number">0</span>
 i <span class="token operator">=</span> <span class="token number">6</span>
 f<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>另外，如果默认参数是列表、字典等可变对象的时候，每次调用会实时更新对象的变更。如果不想再后续调用的时候共享默认值，可以把<code>L=[]</code>改成<code>L=None</code>。</p>
-<h3><span id="472-keyword-arguments">4.7.2. Keyword Arguments</span><a href="#472-keyword-arguments" class="header-anchor">#</a></h3>
+<h3><span id="472-keyword-arguments">4.7.2. Keyword Arguments</span><a href="#472-keyword-arguments" class="header-anchor">#</a></h3><p>函数也可以用<code>kwarg=value</code>的关键词参数来调用，顺序不重要，不能对同一个参数多次赋值。</p>
+<p>特别的是，当存在一个形式为 <code>**name</code> 的最后一个形参时，它会接收一个字典 <code>dict</code>，其中包含 [除了与已有形参相对应的关键字参数以外的] 所有关键字参数。</p>
+<p>这可以与一个形式为 <code>*name</code>、接收一个 [包含除了与已有形参列表以外的位置参数的] 元组的形参组合使用。（<code>*name</code> 必须出现在 <code>**name</code> 之前）</p>
+<p>很有意思的例子：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">cheeseshop</span><span class="token punctuation">(</span>kind<span class="token punctuation">,</span> <span class="token operator">*</span>arguments<span class="token punctuation">,</span> <span class="token operator">**</span>keywords<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"-- Do you have any"</span><span class="token punctuation">,</span> kind<span class="token punctuation">,</span> <span class="token string">"?"</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"-- I'm sorry, we're all out of"</span><span class="token punctuation">,</span> kind<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> arg <span class="token keyword">in</span> arguments<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>arg<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"-"</span> <span class="token operator">*</span> <span class="token number">40</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> kw <span class="token keyword">in</span> keywords<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>kw<span class="token punctuation">,</span> <span class="token string">":"</span><span class="token punctuation">,</span> keywords<span class="token punctuation">[</span>kw<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+cheeseshop<span class="token punctuation">(</span><span class="token string">"Limburger"</span><span class="token punctuation">,</span> <span class="token string">"It's very runny, sir."</span><span class="token punctuation">,</span>
+           <span class="token string">"It's really very, VERY runny, sir."</span><span class="token punctuation">,</span>
+           shopkeeper<span class="token operator">=</span><span class="token string">"Michael Palin"</span><span class="token punctuation">,</span>
+           client<span class="token operator">=</span><span class="token string">"John Cleese"</span><span class="token punctuation">,</span>
+           sketch<span class="token operator">=</span><span class="token string">"Cheese Shop Sketch"</span><span class="token punctuation">)</span></code></pre>
+<p>对应输出：</p>
+<pre><code>-- Do you have any Limburger ?
+-- I&#39;m sorry, we&#39;re all out of Limburger
+It&#39;s very runny, sir.
+It&#39;s really very, VERY runny, sir.
+----------------------------------------
+shopkeeper : Michael Palin
+client : John Cleese
+sketch : Cheese Shop Sketch</code></pre>
+<h3><span id="473-special-parameters">4.7.3. Special parameters</span><a href="#473-special-parameters" class="header-anchor">#</a></h3><p>一般来说参数可以按照位置或者关键词方式传递给 Python 函数，但是开发时候可以限制参数传递的方式。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>pos1<span class="token punctuation">,</span> pos2<span class="token punctuation">,</span> <span class="token operator">/</span><span class="token punctuation">,</span> pos_or_kwd<span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">,</span> kwd1<span class="token punctuation">,</span> kwd2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+      <span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span>    <span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span>     <span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span>
+        <span class="token operator">|</span>             <span class="token operator">|</span>                  <span class="token operator">|</span>
+        <span class="token operator">|</span>        Positional <span class="token operator">or</span> keyword   <span class="token operator">|</span>
+        <span class="token operator">|</span>                                <span class="token operator">-</span> Keyword only
+         <span class="token operator">-</span><span class="token operator">-</span> Positional only</code></pre>
+<p>注意<code>/</code>和<code>*</code>符号，当然这是可选的。</p>
+<p>关键字参数也称为命名参数。Keyword parameters are also referred to as named parameters.</p>
+<p>这里还有些细节，用到的时候再查。</p>
+<p>一个特殊的例子：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">foo</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> <span class="token operator">**</span>kwds<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token string">'name'</span> <span class="token keyword">in</span> kwds</code></pre>
+<p>因为参数名<code>name</code>和<code>**kwds</code>的内容可能存在冲突，所以任何调用都不能让他返回<code>True</code>。如（下面这两种写法等价）：</p>
+<pre class=" language-python"><code class="language-python">foo<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">**</span><span class="token punctuation">{</span><span class="token string">'name'</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+foo<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> name <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">)</span></code></pre>
+<p>解决办法是把<code>name</code>改成仅位置参数，就不会产生歧义了。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">foo</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> <span class="token operator">/</span><span class="token punctuation">,</span> <span class="token operator">**</span>kwds<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token string">'name'</span> <span class="token keyword">in</span> kwds
+<span class="token operator">>></span><span class="token operator">></span> foo<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">**</span><span class="token punctuation">{</span><span class="token string">'name'</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token boolean">True</span></code></pre>
+<p>Recap（概括）：</p>
+<ul>
+<li><p>如果希望形参名称对用户来说不可用，则使用仅限位置形参。这适用于形参名称没有实际意义，以及当你希望强制规定调用时的参数顺序，或是需要同时收受一些位置形参和任意关键字形参等情况。</p>
+</li>
+<li><p>当形参名称有实际意义，以及显式指定形参名称可使函数定义更易理解，或者当你想要防止用户过于依赖传入参数的位置时，则使用仅限关键字形参。</p>
+</li>
+<li><p>对于 API 来说，使用仅限位置形参可以防止形参名称在未来被修改时造成破坏性的 API 变动。</p>
+</li>
+</ul>
+<h3><span id="474-arbitrary-argument-lists">4.7.4. Arbitrary Argument Lists</span><a href="#474-arbitrary-argument-lists" class="header-anchor">#</a></h3>
                 </div>
             </div>
     
@@ -550,7 +609,7 @@ f<span class="token punctuation">(</span><span class="token punctuation">)</span
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?24175665"></script>
+<script src="/js/journal.js?99880943"></script>
 
 
 <!-- Valine 评论标记 -->    
