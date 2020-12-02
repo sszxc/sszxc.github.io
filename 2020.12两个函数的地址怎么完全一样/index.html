@@ -27,7 +27,7 @@ def test...">
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?38418853">
+<link rel="stylesheet" href="/css/journal.css?78325904">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -253,7 +253,7 @@ def test...">
 &lt;function testb.&lt;locals&gt;.plus at 0x000002063B18B948&gt;
 &lt;function testa.&lt;locals&gt;.plus at 0x000002063B18B9D8&gt;
 &lt;function testb.&lt;locals&gt;.plus at 0x000002063B18B9D8&gt;</code></pre>
-<p>可以发现，前面几句都很正常，但最后两行不同的函数，内存地址竟然一样。</p>
+<p>可以发现，前面几句都很正常：“变量引用的时候先在本地符号表中查找，然后是闭包函数的符号表，接着是全局符号表，最后是内置符号表。”但最后两行，不同函数的内存地址竟然一样。</p>
 <p>请教了一下专业人士，原来和函数栈结构有关。</p>
 <hr>
 <p>参考 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/clover-toeic/p/3755401.html">C 语言函数调用栈（一） clover_toeic</a>，先复习一下函数调用时的具体步骤：</p>
@@ -281,9 +281,9 @@ def test...">
 <p>步骤 3 与步骤 4 在函数调用之初常一同出现，统称为函数序 (prologue)；步骤 6 到步骤 8 在函数调用的最后常一同出现，统称为函数跋 (epilogue)。函数序和函数跋是编译器自动添加的开始和结束汇编代码，其实现与 CPU 架构和编译器相关。除步骤 5 代表函数实体外，其它所有操作组成函数调用。</p>
 <hr>
 <p>回到这次的问题，参考 C 语言的逻辑，猜测原因是这样的：</p>
-<p>执行 <code>print</code> 语句时，先调用括号内的 <code>test</code>，函数入栈、执行、出栈，返回值交给 <code>print</code> 打印。所以这一行语句执行前后内存空间又回到了原来的状态。</p>
-<p>又因为 <code>test1</code> 和 <code>test2</code> 两个函数的大小刚好一样，所以两句话最后返回的地址也就一样了。</p>
-<p>而 <code>demo1</code>、<code>demo2</code> 两句话是对函数的拷贝构造，执行完之后作为一个对象留了下来，没有被弹出，所以仍然占用着内存地址。</p>
+<p>执行 <code>print</code> 语句时，先调用括号内的 <code>test</code>，函数入栈、执行、出栈，返回值交给 <code>print</code> 打印。所以这一行语句执行后内存空间又回到了原来的状态，没有留下任何痕迹。</p>
+<p>又因为 <code>test1</code> 和 <code>test2</code> 两个函数的大小刚好一样，所以两句 <code>print</code> 返回的地址也就一样了。</p>
+<p>而 <code>demo1</code>、<code>demo2</code> 两句话是对函数的拷贝构造，执行完之后作为一个对象留了下来，没有被弹出，所以仍然占用着内存地址， <code>print</code> 结果当然就是各自不同的地址了。</p>
 
                 </div>
             </div>
@@ -332,7 +332,7 @@ def test...">
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?86431735"></script>
+<script src="/js/journal.js?47316929"></script>
 
 
 <!-- Valine 评论标记 -->    
