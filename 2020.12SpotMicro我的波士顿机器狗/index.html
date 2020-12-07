@@ -22,10 +22,10 @@
 远程桌面
 
 
-3D 打印
 电路设计
-组装与舵机测试
+3D 打印与组装
 Ubuntu 系统
+舵机校准
 
 
 
@@ -39,7 +39,7 @@ Ubuntu 系统
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?47748328">
+<link rel="stylesheet" href="/css/journal.css?96841093">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -97,16 +97,16 @@ Ubuntu 系统
 
             
             
-            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
-                Gallery
+            <a class="a-block drawer-menu-item false" href="/archives/index.html">
+                Archives
             </a>
             
             <a class="a-block drawer-menu-item false" href="/about/index.html">
                 About
             </a>
             
-            <a class="a-block drawer-menu-item false" href="/archives/index.html">
-                Archives
+            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
+                Gallery
             </a>
             
 
@@ -152,16 +152,16 @@ Ubuntu 系统
 
         
         
-        <a class="a-block nav-link-item false" href="/gallery/index.html">
-            Gallery
+        <a class="a-block nav-link-item false" href="/archives/index.html">
+            Archives
         </a>
         
         <a class="a-block nav-link-item false" href="/about/index.html">
             About
         </a>
         
-        <a class="a-block nav-link-item false" href="/archives/index.html">
-            Archives
+        <a class="a-block nav-link-item false" href="/gallery/index.html">
+            Gallery
         </a>
         
 
@@ -257,10 +257,10 @@ Ubuntu 系统
 <li><a href="#%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2">远程桌面</a></li>
 </ul>
 </li>
-<li><a href="#3d-%E6%89%93%E5%8D%B0">3D 打印</a></li>
 <li><a href="#%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1">电路设计</a></li>
-<li><a href="#%E7%BB%84%E8%A3%85%E4%B8%8E%E8%88%B5%E6%9C%BA%E6%B5%8B%E8%AF%95">组装与舵机测试</a></li>
+<li><a href="#3d-%E6%89%93%E5%8D%B0%E4%B8%8E%E7%BB%84%E8%A3%85">3D 打印与组装</a></li>
 <li><a href="#ubuntu-%E7%B3%BB%E7%BB%9F">Ubuntu 系统</a></li>
+<li><a href="#%E8%88%B5%E6%9C%BA%E6%A0%A1%E5%87%86">舵机校准</a></li>
 </ul>
 <!-- tocstop -->
 
@@ -273,11 +273,12 @@ Ubuntu 系统
 <h1><span id="树莓派的使用">树莓派的使用</span><a href="#树莓派的使用" class="header-anchor">#</a></h1><h2><span id="烧写系统">烧写系统</span><a href="#烧写系统" class="header-anchor">#</a></h2><p>参考教程 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/59027897">如何给树莓派安装操作系统</a>；<a target="_blank" rel="noopener" href="https://www.waveshare.net/study/article-594-1.html">树莓派系列教程 1：人生若只如初见</a>。</p>
 <p><a target="_blank" rel="noopener" href="https://www.raspberrypi.org/downloads/noobs/">https://www.raspberrypi.org/downloads/noobs/</a></p>
 <h2><span id="远程桌面">远程桌面</span><a href="#远程桌面" class="header-anchor">#</a></h2><p>远程桌面好像不能关机，只能在命令行里输入<code>sudo poweroff</code>来安全关机。</p>
-<h1><span id="3d-打印">3D 打印</span><a href="#3d-打印" class="header-anchor">#</a></h1><p>从 Nov 20th 开始，断断续续一直打到 Dec 6th 基本完成</p>
 <h1><span id="电路设计">电路设计</span><a href="#电路设计" class="header-anchor">#</a></h1><p>关于为什么不用同一个降压<br>主要是电机是一个感性的负载，电机在转动的时候会有反向冲击感应电动势，这对于 mcu 芯片来说是绝对不行的。<br>来自 <a target="_blank" rel="noopener" href="https://www.icxbk.com/ask/detail/2809.html">https://www.icxbk.com/ask/detail/2809.html</a> </p>
-<h1><span id="组装与舵机测试">组装与舵机测试</span><a href="#组装与舵机测试" class="header-anchor">#</a></h1><h1><span id="ubuntu-系统">Ubuntu 系统</span><a href="#ubuntu-系统" class="header-anchor">#</a></h1><p><a target="_blank" rel="noopener" href="https://github.com/mike4192/spotMicro">mike4192 的这个仓库</a> 是建立在 Linux 上的 ROS Kinetic 环境中的，所以要从官方的树莓派专用系统 Raspbian 转到支持 ROS 的 Ubuntu 系统。</p>
+<h1><span id="3d-打印与组装">3D 打印与组装</span><a href="#3d-打印与组装" class="header-anchor">#</a></h1><p>从 Nov 20th 开始，断断续续一直打到 Dec 6th 基本完成</p>
+<p>舵机测试模块很好用</p>
+<h1><span id="ubuntu-系统">Ubuntu 系统</span><a href="#ubuntu-系统" class="header-anchor">#</a></h1><p><a target="_blank" rel="noopener" href="https://github.com/mike4192/spotMicro">mike4192 的这个仓库</a> 是建立在 Linux 上的 ROS Kinetic 环境中的，所以要从官方的树莓派专用系统 Raspbian 转到支持 ROS 的 Ubuntu 系统。</p>
 <p>预安装了 ROS 的镜像可以在 <a target="_blank" rel="noopener" href="https://downloads.ubiquityrobotics.com/pi.html">ubiquity robotics</a> 找到</p>
-
+<h1><span id="舵机校准">舵机校准</span><a href="#舵机校准" class="header-anchor">#</a></h1>
                 </div>
             </div>
     
@@ -321,7 +322,7 @@ Ubuntu 系统
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?92107068"></script>
+<script src="/js/journal.js?69090299"></script>
 
 
 <!-- Valine 评论标记 -->    
