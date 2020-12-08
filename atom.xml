@@ -6,7 +6,7 @@
   <link href="https://sszxc.net/about/index.html/atom.xml" rel="self"/>
   
   <link href="https://sszxc.net/about/index.html/"/>
-  <updated>2020-12-07T08:21:36.599Z</updated>
+  <updated>2020-12-08T16:56:15.209Z</updated>
   <id>https://sszxc.net/about/index.html/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://sszxc.net/about/index.html/2020.12SpotMicro%E6%88%91%E7%9A%84%E6%B3%A2%E5%A3%AB%E9%A1%BF%E6%9C%BA%E5%99%A8%E7%8B%97/"/>
     <id>https://sszxc.net/about/index.html/2020.12SpotMicro%E6%88%91%E7%9A%84%E6%B3%A2%E5%A3%AB%E9%A1%BF%E6%9C%BA%E5%99%A8%E7%8B%97/</id>
     <published>2020-12-16T07:41:43.000Z</published>
-    <updated>2020-12-07T08:21:36.599Z</updated>
+    <updated>2020-12-08T16:56:15.209Z</updated>
     
-    <content type="html"><![CDATA[<p style="text-align:center;font-size:60px;">『还在施工中~』</p><!-- toc --><ul><li><a href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%89%8D%E9%9D%A2">写在最前面</a><ul><li><a href="#%E9%A1%B9%E7%9B%AE%E5%8E%9F%E5%9C%B0%E5%9D%80">项目原地址</a></li></ul></li><li><a href="#%E6%A0%91%E8%8E%93%E6%B4%BE%E7%9A%84%E4%BD%BF%E7%94%A8">树莓派的使用</a><ul><li><a href="#%E7%83%A7%E5%86%99%E7%B3%BB%E7%BB%9F">烧写系统</a></li><li><a href="#%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2">远程桌面</a></li></ul></li><li><a href="#%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1">电路设计</a></li><li><a href="#3d-%E6%89%93%E5%8D%B0%E4%B8%8E%E7%BB%84%E8%A3%85">3D 打印与组装</a></li><li><a href="#ubuntu-%E7%B3%BB%E7%BB%9F">Ubuntu 系统</a></li><li><a href="#%E8%88%B5%E6%9C%BA%E6%A0%A1%E5%87%86">舵机校准</a></li></ul><!-- tocstop --><h1><span id="写在最前面">写在最前面</span><a href="#写在最前面" class="header-anchor">#</a></h1><p>最早看到这个项目已经是大半年前了，直到八月份看了这篇推送——<a href="https://mp.weixin.qq.com/s/rM3SkUiQIxsGz9MNIg1skQ">用树莓派 DIY 波士顿机器狗，帮你省下 50 万：教程开源，人人皆可上手</a>，才真正下定决心，做一个自己的机器狗。</p><h2><span id="项目原地址">项目原地址</span><a href="#项目原地址" class="header-anchor">#</a></h2><p>这次选择的硬件方案是 <a href="https://gitlab.com/custom_robots/spotmicroai/3dprinting/-/tree/master/User%20Nahuel%20Taibo%20models/v2.1">来自 Nahuel Taibo 的 modifications v2.1</a>；参考的软件方案是来自 <a href="https://github.com/mike4192/spotMicro">来自 mike4192 的 spotMicro</a>。</p><p>需要的材料清单：<br>树莓派/stm32 控制器<br>12 × 舵机（当时果断下单这么多被店家问了不少，以至于现在商品图上已经加上“机器人专用”了）</p><p>8 × ‘F625zz Flange ball bearing’<br>‘M2×6 自攻螺钉’（固定舵机摇臂）</p><p>总成本大约~元</p><p>需要的知识清单：<br>基本电路知识、Linux 系统、ROS 系统</p><h1><span id="树莓派的使用">树莓派的使用</span><a href="#树莓派的使用" class="header-anchor">#</a></h1><h2><span id="烧写系统">烧写系统</span><a href="#烧写系统" class="header-anchor">#</a></h2><p>参考教程 <a href="https://zhuanlan.zhihu.com/p/59027897">如何给树莓派安装操作系统</a>；<a href="https://www.waveshare.net/study/article-594-1.html">树莓派系列教程 1：人生若只如初见</a>。</p><p><a href="https://www.raspberrypi.org/downloads/noobs/">https://www.raspberrypi.org/downloads/noobs/</a></p><h2><span id="远程桌面">远程桌面</span><a href="#远程桌面" class="header-anchor">#</a></h2><p>远程桌面好像不能关机，只能在命令行里输入<code>sudo poweroff</code>来安全关机。</p><h1><span id="电路设计">电路设计</span><a href="#电路设计" class="header-anchor">#</a></h1><p>关于为什么不用同一个降压<br>主要是电机是一个感性的负载，电机在转动的时候会有反向冲击感应电动势，这对于 mcu 芯片来说是绝对不行的。<br>来自 <a href="https://www.icxbk.com/ask/detail/2809.html">https://www.icxbk.com/ask/detail/2809.html</a> </p><h1><span id="3d-打印与组装">3D 打印与组装</span><a href="#3d-打印与组装" class="header-anchor">#</a></h1><p>从 Nov 20th 开始，断断续续一直打到 Dec 6th 基本完成</p><p>舵机测试模块很好用</p><h1><span id="ubuntu-系统">Ubuntu 系统</span><a href="#ubuntu-系统" class="header-anchor">#</a></h1><p><a href="https://github.com/mike4192/spotMicro">mike4192 的这个仓库</a> 是建立在 Linux 上的 ROS Kinetic 环境中的，所以要从官方的树莓派专用系统 Raspbian 转到支持 ROS 的 Ubuntu 系统。</p><p>预安装了 ROS 的镜像可以在 <a href="https://downloads.ubiquityrobotics.com/pi.html">ubiquity robotics</a> 找到</p><h1><span id="舵机校准">舵机校准</span><a href="#舵机校准" class="header-anchor">#</a></h1>]]></content>
+    <content type="html"><![CDATA[<p style="text-align:center;font-size:60px;">『还在施工中~』</p><!-- toc --><ul><li><a href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%89%8D%E9%9D%A2">写在最前面</a></li><li><a href="#%E6%A0%91%E8%8E%93%E6%B4%BE%E7%9A%84%E4%BD%BF%E7%94%A8">树莓派的使用</a><ul><li><a href="#%E7%83%A7%E5%86%99%E7%B3%BB%E7%BB%9F">烧写系统</a></li><li><a href="#%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2">远程桌面</a></li></ul></li><li><a href="#%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1">电路设计</a></li><li><a href="#3d-%E6%89%93%E5%8D%B0%E4%B8%8E%E7%BB%84%E8%A3%85">3D 打印与组装</a></li><li><a href="#ubuntu-%E7%B3%BB%E7%BB%9F">Ubuntu 系统</a></li><li><a href="#%E8%88%B5%E6%9C%BA%E6%A0%A1%E5%87%86">舵机校准</a></li><li><a href="#%E5%8A%9F%E8%83%BD%E5%A4%8D%E7%8E%B0">功能复现</a></li></ul><!-- tocstop --><h1><span id="写在最前面">写在最前面</span><a href="#写在最前面" class="header-anchor">#</a></h1><p>最早看到这个项目已经是大半年前了，直到八月份看了这篇推送——<a href="https://mp.weixin.qq.com/s/rM3SkUiQIxsGz9MNIg1skQ">用树莓派 DIY 波士顿机器狗，帮你省下 50 万：教程开源，人人皆可上手</a>，才真正下定决心，做一个自己的机器狗。</p><p>本文包括树莓派上手、电路设计与焊接、3D 打印 SpotMicro 结构、功能复现，源代码学习以及后续的二次开发另开一篇（下次一定）。</p><p>这次选择的硬件方案是 <a href="https://gitlab.com/custom_robots/spotmicroai/3dprinting/-/tree/master/User%20Nahuel%20Taibo%20models/v2.1">来自 Nahuel Taibo 的 modifications v2.1</a>；参考的软件方案是来自 <a href="https://github.com/mike4192/spotMicro">来自 mike4192 的 spotMicro</a>。</p><p>需要的材料清单：<br>树莓派/stm32 控制器<br>12 × 舵机（当时果断下单这么多被店家问了不少，以至于现在商品图上已经加上“机器人专用”了）</p><p>8 × ‘F625zz Flange ball bearing’<br>‘M2×6 自攻螺钉’（固定舵机摇臂）</p><p>总成本大约~元</p><p>需要的知识清单：<br>基本电路知识、Linux 系统、ROS 系统</p><h1><span id="树莓派的使用">树莓派的使用</span><a href="#树莓派的使用" class="header-anchor">#</a></h1><h2><span id="烧写系统">烧写系统</span><a href="#烧写系统" class="header-anchor">#</a></h2><p>参考教程 <a href="https://zhuanlan.zhihu.com/p/59027897">如何给树莓派安装操作系统</a>；<a href="https://www.waveshare.net/study/article-594-1.html">树莓派系列教程 1：人生若只如初见</a>。</p><p><a href="https://www.raspberrypi.org/downloads/noobs/">https://www.raspberrypi.org/downloads/noobs/</a></p><h2><span id="远程桌面">远程桌面</span><a href="#远程桌面" class="header-anchor">#</a></h2><p>远程桌面好像不能关机，只能在命令行里输入<code>sudo poweroff</code>来安全关机。</p><h1><span id="电路设计">电路设计</span><a href="#电路设计" class="header-anchor">#</a></h1><p>关于为什么不用同一个降压<br>主要是电机是一个感性的负载，电机在转动的时候会有反向冲击感应电动势，这对于 mcu 芯片来说是绝对不行的。<br>来自 <a href="https://www.icxbk.com/ask/detail/2809.html">https://www.icxbk.com/ask/detail/2809.html</a> </p><h1><span id="3d-打印与组装">3D 打印与组装</span><a href="#3d-打印与组装" class="header-anchor">#</a></h1><p>从 Nov 20th 开始，断断续续一直打到 Dec 6th 基本完成</p><p>舵机测试模块很好用</p><h1><span id="ubuntu-系统">Ubuntu 系统</span><a href="#ubuntu-系统" class="header-anchor">#</a></h1><p><a href="https://github.com/mike4192/spotMicro">mike4192 的这个仓库</a> 是建立在 Linux 上的 ROS Kinetic 环境中的，所以要从官方的树莓派专用系统 Raspbian 转到支持 ROS 的 Ubuntu 系统。</p><p>预安装了 ROS 的镜像可以在 <a href="https://downloads.ubiquityrobotics.com/pi.html">ubiquity robotics</a> 找到</p><h1><span id="舵机校准">舵机校准</span><a href="#舵机校准" class="header-anchor">#</a></h1><h1><span id="功能复现">功能复现</span><a href="#功能复现" class="header-anchor">#</a></h1><p>Dec 8th 站起来了</p>]]></content>
     
     
       
@@ -297,9 +297,9 @@
     
     <category term="机器人" scheme="https://sszxc.net/about/index.html/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
     
-    <category term="深度学习" scheme="https://sszxc.net/about/index.html/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="强化学习" scheme="https://sszxc.net/about/index.html/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="深度学习" scheme="https://sszxc.net/about/index.html/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -329,11 +329,11 @@
     
     <category term="Python" scheme="https://sszxc.net/about/index.html/tags/Python/"/>
     
+    <category term="深度学习" scheme="https://sszxc.net/about/index.html/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
     <category term="GAN" scheme="https://sszxc.net/about/index.html/tags/GAN/"/>
     
     <category term="TensorFlow" scheme="https://sszxc.net/about/index.html/tags/TensorFlow/"/>
-    
-    <category term="深度学习" scheme="https://sszxc.net/about/index.html/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
     <category term="Pokémon" scheme="https://sszxc.net/about/index.html/tags/Pokemon/"/>
     
@@ -365,13 +365,13 @@
     
     <category term="Python" scheme="https://sszxc.net/about/index.html/tags/Python/"/>
     
+    <category term="深度学习" scheme="https://sszxc.net/about/index.html/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
     <category term="GAN" scheme="https://sszxc.net/about/index.html/tags/GAN/"/>
     
     <category term="MNIST" scheme="https://sszxc.net/about/index.html/tags/MNIST/"/>
     
     <category term="TensorFlow" scheme="https://sszxc.net/about/index.html/tags/TensorFlow/"/>
-    
-    <category term="深度学习" scheme="https://sszxc.net/about/index.html/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -423,9 +423,9 @@
     
     <category term="Python" scheme="https://sszxc.net/about/index.html/tags/Python/"/>
     
-    <category term="TensorFlow" scheme="https://sszxc.net/about/index.html/tags/TensorFlow/"/>
-    
     <category term="深度学习" scheme="https://sszxc.net/about/index.html/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="TensorFlow" scheme="https://sszxc.net/about/index.html/tags/TensorFlow/"/>
     
     <category term="Anaconda" scheme="https://sszxc.net/about/index.html/tags/Anaconda/"/>
     
@@ -452,9 +452,9 @@
     <category term="项目" scheme="https://sszxc.net/about/index.html/categories/%E9%A1%B9%E7%9B%AE/"/>
     
     
-    <category term="Python" scheme="https://sszxc.net/about/index.html/tags/Python/"/>
-    
     <category term="图像处理" scheme="https://sszxc.net/about/index.html/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+    <category term="Python" scheme="https://sszxc.net/about/index.html/tags/Python/"/>
     
   </entry>
   
@@ -481,11 +481,11 @@
     
     <category term="机器人" scheme="https://sszxc.net/about/index.html/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
     
-    <category term="仿真" scheme="https://sszxc.net/about/index.html/tags/%E4%BB%BF%E7%9C%9F/"/>
-    
     <category term="C" scheme="https://sszxc.net/about/index.html/tags/C/"/>
     
     <category term="Webots" scheme="https://sszxc.net/about/index.html/tags/Webots/"/>
+    
+    <category term="仿真" scheme="https://sszxc.net/about/index.html/tags/%E4%BB%BF%E7%9C%9F/"/>
     
     <category term="图像处理" scheme="https://sszxc.net/about/index.html/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
     
