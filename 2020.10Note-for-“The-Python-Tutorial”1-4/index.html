@@ -18,7 +18,7 @@
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?73613767">
+<link rel="stylesheet" href="/css/journal.css?51730173">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -76,16 +76,16 @@
 
             
             
+            <a class="a-block drawer-menu-item false" href="/archives/index.html">
+                Archives
+            </a>
+            
             <a class="a-block drawer-menu-item false" href="/gallery/index.html">
                 Gallery
             </a>
             
             <a class="a-block drawer-menu-item false" href="/about/index.html">
                 About
-            </a>
-            
-            <a class="a-block drawer-menu-item false" href="/archives/index.html">
-                Archives
             </a>
             
 
@@ -131,16 +131,16 @@
 
         
         
+        <a class="a-block nav-link-item false" href="/archives/index.html">
+            Archives
+        </a>
+        
         <a class="a-block nav-link-item false" href="/gallery/index.html">
             Gallery
         </a>
         
         <a class="a-block nav-link-item false" href="/about/index.html">
             About
-        </a>
-        
-        <a class="a-block nav-link-item false" href="/archives/index.html">
-            Archives
         </a>
         
 
@@ -262,8 +262,13 @@
 <li><a href="#472-keyword-arguments">4.7.2. Keyword Arguments</a></li>
 <li><a href="#473-special-parameters">4.7.3. Special parameters</a></li>
 <li><a href="#474-arbitrary-argument-lists">4.7.4. Arbitrary Argument Lists</a></li>
+<li><a href="#475-unpacking-argument-lists">4.7.5. Unpacking Argument Lists</a></li>
+<li><a href="#476-lambda-expressions">4.7.6. Lambda Expressions</a></li>
+<li><a href="#477-documentation-strings">4.7.7. Documentation Strings</a></li>
+<li><a href="#478-function-annotations">4.7.8. Function Annotations</a></li>
 </ul>
 </li>
+<li><a href="#48-intermezzo-coding-style">4.8. Intermezzo: Coding Style</a></li>
 </ul>
 </li>
 </ul>
@@ -561,7 +566,68 @@ foo<span class="token punctuation">(</span><span class="token number">1</span><s
 <li><p>对于 API 来说，使用仅限位置形参可以防止形参名称在未来被修改时造成破坏性的 API 变动。</p>
 </li>
 </ul>
-<h3><span id="474-arbitrary-argument-lists">4.7.4. Arbitrary Argument Lists</span><a href="#474-arbitrary-argument-lists" class="header-anchor">#</a></h3>
+<h3><span id="474-arbitrary-argument-lists">4.7.4. Arbitrary Argument Lists</span><a href="#474-arbitrary-argument-lists" class="header-anchor">#</a></h3><p>arbitrary 任意的，武断的</p>
+<p>最后一种是可变参数 List，这些参数会包装在元组 tuple 中。可变参数前面可能会有常规参数，后面只能是关键字参数。</p>
+<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">def</span> <span class="token function">concat</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> sep<span class="token operator">=</span><span class="token string">"/"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     <span class="token keyword">return</span> sep<span class="token punctuation">.</span>join<span class="token punctuation">(</span>args<span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token operator">>></span><span class="token operator">></span> concat<span class="token punctuation">(</span><span class="token string">"earth"</span><span class="token punctuation">,</span> <span class="token string">"mars"</span><span class="token punctuation">,</span> <span class="token string">"venus"</span><span class="token punctuation">)</span>
+<span class="token string">'earth/mars/venus'</span>
+<span class="token operator">>></span><span class="token operator">></span> concat<span class="token punctuation">(</span><span class="token string">"earth"</span><span class="token punctuation">,</span> <span class="token string">"mars"</span><span class="token punctuation">,</span> <span class="token string">"venus"</span><span class="token punctuation">,</span> sep<span class="token operator">=</span><span class="token string">"."</span><span class="token punctuation">)</span>
+<span class="token string">'earth.mars.venus'</span></code></pre>
+<p>注释：<code>join()</code>方法返回通过指定字符连接序列中元素后生成的新字符串。</p>
+<h3><span id="475-unpacking-argument-lists">4.7.5. Unpacking Argument Lists</span><a href="#475-unpacking-argument-lists" class="header-anchor">#</a></h3><p>解包参数列表，使用<code>*</code>从 list 或者 tuple 中获取单独的参数，同理使用<code>**</code>解包 dictionary。</p>
+<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> list<span class="token punctuation">(</span>range<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">)</span>            <span class="token comment" spellcheck="true"># normal call with separate arguments</span>
+<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span>
+<span class="token operator">>></span><span class="token operator">></span> args <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
+<span class="token operator">>></span><span class="token operator">></span> list<span class="token punctuation">(</span>range<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">)</span><span class="token punctuation">)</span>            <span class="token comment" spellcheck="true"># call with arguments unpacked from a list</span>
+<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span></code></pre>
+<h3><span id="476-lambda-expressions">4.7.6. Lambda Expressions</span><a href="#476-lambda-expressions" class="header-anchor">#</a></h3><p>可以用 <code>lambda</code> 关键字来创建一个小的匿名函数。</p>
+<p>举例如下：</p>
+<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> pairs <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'one'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'two'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'three'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token string">'four'</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+<span class="token operator">>></span><span class="token operator">></span> pairs<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> pair<span class="token punctuation">:</span> pair<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> pairs
+<span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token string">'four'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'one'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'three'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'two'</span><span class="token punctuation">)</span><span class="token punctuation">]</span></code></pre>
+<p>这个例子很有意思，<code>sort</code>方法支持一个<code>key</code>参数，用来选择进行比较的元素。因此这句话执行的时候依次传入 pairs 的每个元素，然后用<code>lambda</code>函数切片，取出<code>(1, &#39;one&#39;)</code>里的<code>&#39;one&#39;</code>等，最后英文字母顺序排列。</p>
+<p>更多关于 Lambda 表达式：<br>Lambda 表达式有何用处？如何使用？ - 涛吴的回答 - 知乎<br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20125256/answer/14058285">https://www.zhihu.com/question/20125256/answer/14058285</a></p>
+<h3><span id="477-documentation-strings">4.7.7. Documentation Strings</span><a href="#477-documentation-strings" class="header-anchor">#</a></h3><p>Here are some conventions （约定） about the content and formatting of documentation strings.</p>
+<p>第一行大写字母开头，句点结尾。</p>
+<p>第一行是函数简短精确的目的介绍。简洁起见，不应该显式声明 (explicitly state) 名称和类型，因为这些可以通过其他方式获得。</p>
+<p>如果有很多行，那么第二行应该空出来，在视觉上分离。后面可以写函数的调用约定、副作用等。</p>
+<p>Python 解析器 (parser) 不会删除多行字符串的缩进 (strip indentation)。缩进的约定是：第一行之后的第一个非空行确定整个文档的缩进量（不用第一行的原因是它通常和字符串开头引号相邻，不明显）。之后所有行都遵守这个缩进。最后 Tab 转化为 8 个空格。</p>
+<p>一个例子：</p>
+<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">def</span> <span class="token function">my_function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     <span class="token triple-quoted-string string">"""Do nothing, but document it.
+...
+...     No, really, it doesn't do anything.
+...     """</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     <span class="token keyword">pass</span></code></pre>
+<h3><span id="478-function-annotations">4.7.8. Function Annotations</span><a href="#478-function-annotations" class="header-anchor">#</a></h3><p>函数标注是关于用户自定义函数中使用的类型的完全可选元数据信息，以字典的形式存放在函数的 <code>__annotations__</code> 属性中，并且不会影响函数的任何其他部分。</p>
+<p>直接看例子，这里有一个位置参数、一个关键字参数以及返回值带有相应标注：</p>
+<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>ham<span class="token punctuation">:</span> str<span class="token punctuation">,</span> eggs<span class="token punctuation">:</span> str <span class="token operator">=</span> <span class="token string">'eggs'</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> str<span class="token punctuation">:</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Annotations:"</span><span class="token punctuation">,</span> f<span class="token punctuation">.</span>__annotations__<span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Arguments:"</span><span class="token punctuation">,</span> ham<span class="token punctuation">,</span> eggs<span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     <span class="token keyword">return</span> ham <span class="token operator">+</span> <span class="token string">' and '</span> <span class="token operator">+</span> eggs
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token operator">>></span><span class="token operator">></span> f<span class="token punctuation">(</span><span class="token string">'spam'</span><span class="token punctuation">)</span>
+Annotations<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'ham'</span><span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'str'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token string">'return'</span><span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'str'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token string">'eggs'</span><span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'str'</span><span class="token operator">></span><span class="token punctuation">}</span>
+Arguments<span class="token punctuation">:</span> spam eggs
+<span class="token string">'spam and eggs'</span></code></pre>
+<h2><span id="48-intermezzo-coding-style">4.8. Intermezzo: Coding Style</span><a href="#48-intermezzo-coding-style" class="header-anchor">#</a></h2><p>intermezzo 间奏曲，插曲</p>
+<p><a target="_blank" rel="noopener" href="https://www.python.org/dev/peps/pep-0008/">PEP 8</a> has emerged as the style guide that most projects adhere to（遵循，坚持）.</p>
+<p>这里摘录几个重要的：</p>
+<ul>
+<li>使用四格缩进，而不是<code>Tab</code></li>
+<li>及时换行，不超过 79 字符</li>
+<li>使用空行分隔函数和类，以及函数内部的代码块</li>
+<li>把注释放到单独的一行</li>
+<li>写 docstrings</li>
+<li>在操作符两边、逗号后面使用空格，但不要在括号内用</li>
+<li>命名规范统一，使用<code>UpperCamelCase</code>来命名类，而以<code>lowercase_with_underscores</code>来命名函数和方法，始终应使用<code>self</code>来命名类的第一个方法</li>
+<li>如果你的代码旨在用于国际环境，请不要使用花哨的编码。Python 默认的 UTF-8 或者纯 ASCII 在任何情况下都能有最好的表现</li>
+<li>如果不是有外国人要阅读维护代码，不要在标识符用 non-ASCII characters</li>
+</ul>
+
                 </div>
             </div>
     
@@ -609,7 +675,7 @@ foo<span class="token punctuation">(</span><span class="token number">1</span><s
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?11678486"></script>
+<script src="/js/journal.js?32533727"></script>
 
 
 <!-- Valine 评论标记 -->    
