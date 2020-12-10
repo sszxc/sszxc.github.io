@@ -1,0 +1,497 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>可能是最好的 Git 分支管理教程 - Henry</title>
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="author" content="Henry">
+<meta name="description" content="通俗易懂的可视化 Git 分支管理教程——Learn Git Branching.
+特点：将知识点设计成关卡，每一步操作都有可视化效果展示，附带一个完全自由的沙盒调试玩耍。
+具体操作就不谈了，非常容易上手，下文仅给自己做些笔记。
+
+
+
+欢迎光临
+
+
+
+主要#1.1 Git Commit#Git...">
+<meta name="keywords" content="">
+
+    <meta charset="utf-8">
+    <meta name="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="renderer" content="webkit">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/journal.css?53152008">
+
+<script src="/js/loadCSS.js"></script>
+<script>
+    loadCSS("https://fonts.googleapis.com/css?family=Lora|Montserrat|Fira+Mono|Material+Icons");
+    (function (d) {
+        var config = {
+                kitId: 'dwg1tuc',
+                scriptTimeout: 3000,
+                async: true
+            },
+            h = d.documentElement, t = setTimeout(function () {
+                h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+            }, config.scriptTimeout), tk = d.createElement("script"), f = false,
+            s = d.getElementsByTagName("script")[0], a;
+        h.className += " wf-loading";
+        tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+        tk.async = true;
+        tk.onload = tk.onreadystatechange = function () {
+            a = this.readyState;
+            if (f || a && a != "complete" && a != "loaded") return;
+            f = true;
+            clearTimeout(t);
+            try {
+                Typekit.load(config)
+            } catch (e) {
+            }
+        };
+        s.parentNode.insertBefore(tk, s)
+    })(document);
+</script>
+<noscript>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Lora|Montserrat|Anonymous+Pro:400|Material+Icons"/>
+</noscript>
+    <!-- 不蒜子访客插件标记 -->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <!-- 不蒜子访客插件标记 -->
+    <!-- Valine 评论标记 -->
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <!-- Valine 评论标记 -->
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Henry" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+<body>
+<div id="top"></div>
+<div id="app">
+<div class="single-column-drawer-container" ref="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            <a class="a-block drawer-menu-item false" href="https://sszxc.net/about/index.html">
+                首页
+            </a>
+            
+
+            
+            
+            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
+                Gallery
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/archives/index.html">
+                Archives
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/about/index.html">
+                About
+            </a>
+            
+
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav ref="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div ref="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a ref="navTitle" class="navbar-brand" href="/">
+            Henry
+        </a>
+    </div>
+</nav>
+<div class="single-column-header-container" ref="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="/">
+        <div class="single-column-header-title">Henry</div>
+        <div class="single-column-header-subtitle"></div>
+    </a>
+</div>
+<div ref="sideContainer" class="side-container">
+    <a class="a-block nav-head false" href="/">
+        <div class="nav-title">
+            Henry.
+        </div>
+        <div class="nav-subtitle">
+            奔走在自己的热爱里
+        </div>
+    </a>
+
+    <div class="nav-link-list">
+        
+
+        
+        
+        <a class="a-block nav-link-item false" href="/gallery/index.html">
+            Gallery
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/archives/index.html">
+            Archives
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/about/index.html">
+            About
+        </a>
+        
+
+        
+    </div>
+
+    
+    <div class="nav-footer">        
+        Proudly published with Hexo<br>
+        
+        Theme <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> by <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a><br>
+        
+        &copy; 2020 <a href="https://sszxc.net/about/index.html">Henry</a>
+    </div>
+</div>
+<div ref="extraContainer" class="extra-container">
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+
+        
+    </div>
+</div>
+
+
+
+<div ref="streamContainer" class="stream-container">
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            <div class="post-head-wrapper-text-only"
+                 style="background-image: url('')">
+                <div class="post-title">
+                    可能是最好的 Git 分支管理教程
+                    <div class="post-meta">
+                        <time datetime="2020-12-10T10:41:26.000Z" itemprop="datePublished">
+                            2020-12-10 18:41
+                        </time>&nbsp;
+                        <!-- 不蒜子访客插件标记 -->                        
+                        <span id="busuanzi_container_page_pv" style='display:none'> 
+                            阅读数：<span id="busuanzi_value_page_pv"></span>
+                        </span>
+                        <!-- 不蒜子访客插件标记 -->
+                        
+    
+                        
+
+                        
+                        
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+                        
+                    </div>
+                </div>
+            </div>
+    
+            <div class="post-body-wrapper">
+                <div class="post-body">
+                    <p>通俗易懂的可视化 Git 分支管理教程——<a target="_blank" rel="noopener" href="https://learngitbranching.js.org/?locale=zh_CN">Learn Git Branching</a>.</p>
+<p>特点：将知识点设计成关卡，每一步操作都有可视化效果展示，附带一个完全自由的沙盒调试玩耍。</p>
+<p>具体操作就不谈了，非常容易上手，下文仅给自己做些笔记。</p>
+<center>
+<img src="https://s3.ax1x.com/2020/12/10/rFYu01.jpg" width="98%">
+<br>
+欢迎光临
+</center>
+<br>
+
+<h1><span id="主要">主要</span><a href="#主要" class="header-anchor">#</a></h1><h2><span id="11-git-commit">1.1 Git Commit</span><a href="#11-git-commit" class="header-anchor">#</a></h2><p>Git 仓库中的提交记录保存的是你的目录下所有文件的快照。Git 希望提交记录尽可能地轻量，因此在你每次进行提交时，它并不会盲目地复制整个目录。条件允许的情况下，它会将当前版本与仓库中的上一个版本进行对比，并把所有的差异打包到一起作为一个提交记录。</p>
+<p>Git 还保存了提交的历史记录，父节点是当前提交中变更的基础。对于项目组的成员来说，维护提交历史对大家都有好处。</p>
+<p><code>git commit</code>创建一个新的提交记录。</p>
+<h2><span id="12-git-branch">1.2 Git Branch</span><a href="#12-git-branch" class="header-anchor">#</a></h2><p>Git 的分支也非常轻量。它们只是简单地指向某个提交纪录 —— 仅此而已。所以许多 Git 爱好者传颂：早建分支！多用分支！这是因为即使创建再多的分支也不会造成储存或内存上的开销，并且按逻辑分解工作到不同的分支要比维护那些特别臃肿的分支简单多了。</p>
+<p>在将分支和提交记录结合起来后，我们会看到两者如何协作。现在只要记住使用分支其实就相当于在说：“我想基于这个提交以及它所有的父提交进行新的工作。”</p>
+<p><code>git branch newImage</code>创建一个名为 newImage 的分支。</p>
+<p>分支名后带一个<code>*</code>表示当前分支，commit 的时候会基于当前分支提交。</p>
+<p><code>git checkout &lt;name&gt;</code>切换到新的分支上。</p>
+<p><code>git checkout -b &lt;name&gt;</code>创建一个新的分支同时切换到新创建的分支。</p>
+<h2><span id="13-git-merge">1.3 Git Merge</span><a href="#13-git-merge" class="header-anchor">#</a></h2><p>接下来咱们看看如何将两个分支合并到一起，就是说我们新建一个分支，在其上开发某个新功能，开发完成后再合并回主线。</p>
+<p>第一种方法 —— <code>git merge</code>。在 Git 中合并两个分支时会产生一个特殊的提交记录，它有两个父节点。翻译成自然语言相当于：“我要把这两个父节点本身及它们所有的祖先都包含进来。”</p>
+<p>假设当前分支为<code>master(C3)</code>，使用<code>git merge bugFix</code>将<code>bugFix</code>合并到<code>master</code>里。</p>
+<center>
+<img src="https://s3.ax1x.com/2020/12/10/rFdQzT.png" width="80%">
+<br>
+merge 方法
+</center>
+<br>
+
+<p>为了帮助学习理解，我引入了颜色搭配。每个分支都有不同的颜色，而每个节点（提交记录）的颜色是所有包含该节点的分支颜色的混合。</p>
+<p>所以，C3、C4 是<code>master</code>分支的颜色，其他的节点则是<code>master</code>和<code>bugFix</code>分支颜色的混合。</p>
+<p><code>git checkout bugFix; git merge master</code>，再把<code>master</code>分支合并到<code>bugFix</code>。</p>
+<p>因为<code>master</code>继承自<code>bugFix</code>，Git 什么都不用做，只是简单地把<code>bugFix</code>移动到<code>master</code>所指向的那个提交记录。</p>
+<p>现在所有提交记录的颜色都一样了，这表明每一个分支都包含了代码库的所有修改！</p>
+<h2><span id="14-git-rebase">1.4 Git Rebase</span><a href="#14-git-rebase" class="header-anchor">#</a></h2><p>第二种合并分支的方法是<code>git rebase</code>。Rebase 实际上就是取出一系列的提交记录，“复制”它们，然后在另外一个地方逐个地放下去。</p>
+<p><code>Rebase</code>的优势就是可以创造更线性的提交历史。</p>
+<p>假设当前所在的分支是<code>bugFix(C3)</code>，<code>git rebase master</code>把<code>bugFix</code>分支里的工作直接移到<code>master</code>分支上。移动以后会使得两个分支的功能看起来像是按顺序开发，但实际上它们是并行开发的。</p>
+<center>
+<img src="https://s3.ax1x.com/2020/12/10/rFs2kQ.png" width="80%">
+<br>
+rebase 方法
+</center>
+<br>
+
+<p>注意，提交记录<code>C3</code>依然存在（树上那个半透明的节点），而 C3’是我们<code>Rebase</code>到<code>master</code>分支上的<code>C3</code>的副本。</p>
+<p>现在唯一的问题就是<code>master</code>还没有更新。切换到 <code>master</code> 上，<code>git rebase bugFix</code>把它 rebase 到 bugFix 分支上。由于 <code>bugFix</code> 继承自 <code>master</code>，所以 Git 只是简单的把 <code>master</code> 分支的引用向前移动了一下而已。</p>
+<h2><span id="21-分离-head">2.1 分离 HEAD</span><a href="#21-分离-head" class="header-anchor">#</a></h2><p>HEAD 是一个对当前检出记录的符号引用 —— 也就是指向你正在其基础上进行工作的提交记录。</p>
+<p>HEAD 通常情况下是指向分支名的（如<code>bugFix</code>），提交时 HEAD 会跟着变化。</p>
+<p>分离的 HEAD 就是让其指向了某个具体的提交记录而不是分支名，一般用哈希值来指定提交记录。</p>
+<p>命令前：HEAD -&gt; master -&gt; C1<br>命令：<code>git checkout C1</code><br>命令后：HEAD -&gt; C1</p>
+<h2><span id="22-amp-23-相对引用">2.2 &amp; 2.3 相对引用</span><a href="#22-amp-23-相对引用" class="header-anchor">#</a></h2><p>通过指定提交记录哈希值的方式在 Git 中移动不太方便。在实际应用时，并没有像本程序中这么漂亮的可视化提交树供你参考，所以你就不得不用 <code>git log</code> 来查查看提交记录的哈希值。并且哈希值在真实的 Git 世界中也会更长（译者注：基于 SHA-1，共 40 位）。例如前一关的介绍中的提交记录的哈希值可能是 <code>fed2da64c0efc5293610bdd892f82a58e8cbc5d8</code>，舌头都快打结了吧。比较令人欣慰的是，Git 对哈希的处理很智能。你只需要提供能够唯一标识提交记录的前几个字符即可。因此我可以仅输入<code>fed2</code> 而不是上面的一长串字符。</p>
+<p>Git 引入了相对引用：</p>
+<ul>
+<li>使用 <code>^</code> 向上移动 1 个提交记录</li>
+<li>使用 <code>~&lt;num&gt;</code> 向上移动多个提交记录，如 <code>~3</code></li>
+</ul>
+<p>首先看看操作符<code>^</code>。 <code>master^</code> 相当于<code>master</code> 的父节点，<code>master^^</code> 是 <code>master</code> 的第二个父节点。也可以将 HEAD 作为相对引用的参照：<code>git checkout HEAD^</code>，使用 HEAD^ 向上移动。</p>
+<p><code>~</code>操作符后面可以跟一个数字（可选，不跟数字时与 <code>^</code> 相同，向上移动一次），指定向上移动多少次，例如<code>git checkout HEAD~4</code>一次后退四步。</p>
+<p>使用相对引用最多的就是移动分支。可以直接使用 <code>-f</code> 选项让分支指向另一个提交。例如<code>git branch -f master HEAD~3</code>将<code>master</code>分支强制指向 HEAD 的第 3 级父提交。</p>
+<h2><span id="24-撤销变更">2.4 撤销变更</span><a href="#24-撤销变更" class="header-anchor">#</a></h2><p>git reset 通过把分支记录回退几个提交记录来实现撤销改动。你可以将这想象成“改写历史”。git reset 向上移动分支，原来指向的提交记录就跟从来没有提交过一样。</p>
+<center>
+<img src="https://s3.ax1x.com/2020/12/10/rFIe0A.png" width="80%">
+<br>
+reset 方法
+</center>
+<br>
+
+<p><code>git reset HEAD~1</code>把 master 分支移回到 C1；现在我们的本地代码库根本就不知道有 C2 这个提交了。<br>（译者注：在 reset 后， C2 所做的变更还在，但是处于未加入暂存区状态。）</p>
+<p>虽然在你的本地分支中使用 git reset 很方便，但是这种“改写历史”的方法对大家一起使用的远程分支是无效的哦！为了撤销更改并分享给别人，我们需要使用 git revert。</p>
+<center>
+<img src="https://s3.ax1x.com/2020/12/10/rF4jat.png" width="80%">
+<br>
+revert 方法
+</center>
+<br>
+
+<p><code>git revert HEAD</code>新提交记录 C2’ 引入了更改 —— 这些更改刚好是用来撤销 C2 这个提交的。也就是说 C2’ 的状态与 C1 是相同的。<code>revert</code>之后就可以把你的更改推送到远程仓库与别人分享啦。</p>
+<!-- ## 3.1 Git Cherry-pick
+
+到现在我们已经学习了 Git 的基础知识 —— 提交、分支以及在提交树上移动。 这些概念涵盖了 Git 90% 的功能，同样也足够满足开发者的日常需求
+然而，剩余的 10% 在处理复杂的工作流时（或者当你陷入困惑时）可能就显得尤为重要了。接下来要讨论的这个话题是“整理提交记录” —— 开发人员有时会说“我想要把这个提交放到这里，那个提交放到刚才那个提交的后面”, 而接下来就讲的就是它的实现方式，非常清晰、灵活，还很生动。
+
+看起来挺复杂，其实是个很简单的概念。
+
+本系列的第一个命令是 git cherry-pick, 命令形式为：
+    • git cherry-pick <提交号>...
+如果你想将一些提交复制到当前所在的位置（HEAD）下面的话，Cherry-pick 是最直接的方式了。我个人非常喜欢 cherry-pick，因为它特别简单。
+咱们还是通过例子来看一下！
+
+这里有一个仓库，我们想将 side 分支上的工作复制到 master 分支，你立刻想到了之前学过的 rebase 了吧？但是咱们还是看看 cherry-pick 有什么本领吧。
+git cherry-pick C2 C4
+这就是了！我们只需要提交记录 C2 和 C4，所以 Git 就将被它们抓过来放到当前分支下了。 就是这么简单！
+
+## 3.2 交互式 rebase
+当你知道你所需要的提交记录（并且还知道这些提交记录的哈希值）时，用 cherry-pick 再好不过了 —— 没有比这更简单的方式了。
+但是如果你不清楚你想要的提交记录的哈希值呢？幸好 Git 帮你想到了这一点，我们可以利用交互式的 rebase —— 如果你想从一系列的提交记录中找到想要的记录，这就是最好的方法了
+咱们具体来看一下……
+
+交互式 rebase 指的是使用带参数 --interactive 的 rebase 命令，简写为 -i
+如果你在命令后增加了这个选项，Git 会打开一个 UI 界面并列出将要被复制到目标分支的备选提交记录，它还会显示每个提交记录的哈希值和提交说明，提交说明有助于你理解这个提交进行了哪些更改。
+在实际使用时，所谓的 UI 窗口一般会在文本编辑器 —— 如 Vim —— 中打开一个文件。 考虑到课程的初衷，我弄了一个对话框来模拟这些操作。
+
+当 rebase UI 界面打开时，你能做 3 件事：
+    • 调整提交记录的顺序（通过鼠标拖放来完成）
+    • 删除你不想要的提交（通过切换 pick 的状态来完成，关闭就意味着你不想要这个提交记录）
+    • 合并提交。 遗憾的是由于某种逻辑的原因，我们的课程不支持此功能，因此我不会详细介绍这个操作。简而言之，它允许你把多个提交记录合并成一个。
+接下来咱们看个实例
+
+当你点击下面的按钮时，会出现一个交互对话框。对提交记录做个排序（当然你也可以删除某些提交），点击确定看结果
+git rebase -i HEAD~4
+Git 严格按照你在对话框中指定的方式进行了复制。 -->
+
+<h1><span id="远程">远程</span><a href="#远程" class="header-anchor">#</a></h1><h2><span id="11-git-clone">1.1 Git Clone</span><a href="#11-git-clone" class="header-anchor">#</a></h2><p>远程仓库特点——备份、社交化。</p>
+<p>直到现在，教程都聚焦于本地仓库的操作（branch、merge、rebase 等等）。但我们现在需要学习远程仓库的操作 —— 我们需要一个配置这种环境的命令，它就是 <code>git clone</code>。</p>
+<center>
+<img src="https://s3.ax1x.com/2020/12/10/rFo14x.png" width="80%">
+<br>
+git clone
+</center>
+<br>
+
+<h2><span id="12-远程分支">1.2 远程分支</span><a href="#12-远程分支" class="header-anchor">#</a></h2><p><code>git clone</code>之后，本地仓库多了一个名为 <code>o/master</code> 的分支，这种类型的分支就叫远程分支，其拥有一些特殊属性。</p>
+<p>远程分支有一个命名规范 —— 它们的格式是：<code>&lt;remote name&gt;/&lt;branch name&gt;</code>。因此，如果你看到一个名为 <code>o/master</code> 的分支，那么这个分支就叫 <code>master</code>，远程仓库的名称就是 <code>o</code>。大多数的开发人员会将它们主要的远程仓库命名为 <code>origin</code>，为了简化 UI，这里我们用简写 <code>o</code>。</p>
+<p>远程分支反映了远程仓库“在你上次和它通信时”的状态。</p>
+<p>远程分支有一个特别的属性，在你检出<code>checkout</code>时自动进入分离 HEAD 状态。Git 这么做是出于不能直接在这些分支上进行操作的原因，你必须在别的地方完成你的工作，（更新了远程分支之后）再用远程分享你的工作成果。</p>
+<center>
+<img src="https://s3.ax1x.com/2020/12/10/rF7Jne.png" width="80%">
+<br>
+自动分离
+</center>
+<br>
+
+<h2><span id="13-git-fetch">1.3 Git Fetch</span><a href="#13-git-fetch" class="header-anchor">#</a></h2><p>从远程仓库获取数据 ——<code> git fetch</code>。</p>
+<center>
+<img src="https://s3.ax1x.com/2020/12/10/rF7j9x.png" width="80%">
+<br>
+git fetch
+</center>
+<br>
+
+<p><code>git fetch</code> 实际上将本地仓库中的远程分支指针<code>o/master</code>更新成了远程仓库相应分支最新的状态。</p>
+<p><code>git fetch</code> 通常通过互联网（使用 <code>http://</code> 或 <code>git://</code> 协议） 与远程仓库通信。</p>
+<p>git fetch 并不会改变你本地仓库的状态。它不会更新你的 master 分支，也不会修改你磁盘上的文件。可以理解成<code>git fetch</code>把远程仓库下载到了本地副本，但还没有合并。</p>
+<center>
+<img src="https://pic3.zhimg.com/v2-af3bf6fee935820d481853e452ed2d55_r.jpg?source=1940ef5c" width="80%">
+</center>
+<br>
+
+<p>可以配合知乎这篇回答里的图片理解。</p>
+<blockquote>
+<p>git pull 和 git fetch 的区别？ - 波罗学的回答 - 知乎 <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/38305012/answer/625881308">https://www.zhihu.com/question/38305012/answer/625881308</a></p>
+</blockquote>
+<h2><span id="14-git-pull">1.4 Git Pull</span><a href="#14-git-pull" class="header-anchor">#</a></h2><p>如何进行合并？可以有以下方式：</p>
+<ul>
+<li>git cherry-pick o/master</li>
+<li>git rebase o/master</li>
+<li>git merge o/master</li>
+</ul>
+<p>由于先抓取更新、再合并到本地分支这个流程很常用，因此 Git 提供了一个专门的命令来完成这两个操作——<code>git pull</code>。它相当于<code>git fetch</code>+<code>git merge</code>。</p>
+<center>
+<img src="https://s3.ax1x.com/2020/12/10/rFbuz6.png" width="80%">
+<br>
+git pull
+</center>
+<br>
+
+<h2><span id="15-模拟团队合作">1.5 模拟团队合作</span><a href="#15-模拟团队合作" class="header-anchor">#</a></h2><p>引入一个自造命令 <code>git fakeTeamwork</code>——“假装”你的同事、朋友、合作伙伴更新了远程仓库。</p>
+<p>例如<code>git fakeTeamwork foo 3</code>指定 3 个提交记录到远程仓库的 foo 分支。</p>
+<h2><span id="16-git-push">1.6 Git Push</span><a href="#16-git-push" class="header-anchor">#</a></h2><p><code>git push</code> 负责将你的变更上传到指定的远程仓库，并在远程仓库上合并你的新提交记录。</p>
+<center>
+<img src="https://s3.ax1x.com/2020/12/10/rFbHYR.png" width="80%">
+<br>
+git push
+</center>
+<br>
+
+<h2><span id="17-偏离的提交历史">1.7 偏离的提交历史</span><a href="#17-偏离的提交历史" class="header-anchor">#</a></h2><blockquote>
+<p>假设你周一克隆了一个仓库，然后开始研发某个新功能。到周五时，你新功能开发测试完毕，可以发布了。但是 —— 天啊！你的同事这周写了一堆代码，还改了许多你的功能中使用的 API，这些变动会导致你新开发的功能变得不可用。但是他们已经将那些提交推送到远程仓库了，因此你的工作就变成了基于项目旧版的代码，与远程仓库最新的代码不匹配了。</p>
+</blockquote>
+<p>这种情况（历史偏离）有许多的不确定性，Git 会强制你先合并远程最新的代码，然后才能分享你的工作。</p>
+<p>这里用 rebase 方法或者 merge 方法都行，特别的，<code>git pull</code>默认是<code>fetch</code>+<code>merge</code>，而<code>git pull --rebase</code>可以理解成<code>fetch</code>+<code>rebase</code>。</p>
+<center>
+<img src="https://s3.ax1x.com/2020/12/10/rFqaN9.png" width="80%">
+<br>
+rebase 方法
+</center>
+<br>
+
+<center>
+<img src="https://s3.ax1x.com/2020/12/10/rFqB1x.png" width="80%">
+<br>
+merge 方法
+</center>
+<br>
+
+<h2><span id="18-锁定的-masterlocked-master">1.8 锁定的 Master(Locked Master)</span><a href="#18-锁定的-masterlocked-master" class="header-anchor">#</a></h2><p>如果你是在一个大的合作团队中工作，很可能是 master 被锁定了，需要一些 Pull Request 流程来合并修改。如果你直接提交 (commit) 到本地 master, 然后试图推送 (push) 修改，你将会收到这样类似的信息：</p>
+<pre><code>! [远程服务器拒绝] master -&gt; master (TF402455: 不允许推送 (push) 这个分支；你必须使用 pull request 来更新这个分支。)</code></pre>
+<p>解决方案：新建一个分支 feature, 推送到远程服务器。然后 reset 你的 master 分支和远程服务器保持一致，否则下次你 pull 并且他人的提交和你冲突的时候就会有问题。</p>
+<h2><span id="21-推送主分支">2.1 推送主分支</span><a href="#21-推送主分支" class="header-anchor">#</a></h2><blockquote>
+<p>在大型项目中开发人员通常会在（从 master 上分出来的）特性分支上工作，工作完成后只做一次集成。这跟前面课程的描述很相像（把 side 分支推送到远程仓库），不过本节我们会深入一些。<br>但是有些开发人员只在 master 上做 push、pull —— 这样的话 master 总是最新的，始终与远程分支 (o/master) 保持一致。</p>
+</blockquote>
+<h2><span id="22-合并远程仓库">2.2 合并远程仓库</span><a href="#22-合并远程仓库" class="header-anchor">#</a></h2><blockquote>
+<p>在开发社区里，有许多关于 merge 与 rebase 的讨论。以下是关于 rebase 的优缺点：<br>优点：Rebase 使你的提交树变得很干净，所有的提交都在一条线上<br>缺点：Rebase 修改了提交树的历史<br>比如，提交 C1 可以被 rebase 到 C3 之后。这看起来 C1 中的工作是在 C3 之后进行的，但实际上是在 C3 之前。<br>一些开发人员喜欢保留提交历史，因此更偏爱 merge。而其他人（比如我自己）可能更喜欢干净的提交树，于是偏爱 rebase。仁者见仁，智者见智。:D</p>
+</blockquote>
+
+                </div>
+            </div>
+    
+            <nav class="post-pagination">
+    
+    <a class="newer-posts" href="/2020.12SpotMicro%E6%88%91%E7%9A%84%E6%B3%A2%E5%A3%AB%E9%A1%BF%E6%9C%BA%E5%99%A8%E7%8B%97/">
+        上一篇<br>SpotMicro 我的波士顿机器狗
+    </a>
+    
+    <span class="page-number"></span>
+    
+    <a class="older-posts" href="/2020.12Note-for-%E2%80%9CThe-Python-Tutorial%E2%80%9D5-9/">
+        下一篇<br>Note for “The Python Tutorial” §5~§9
+    </a>
+    
+</nav>
+
+    
+            
+
+<!-- Valine 评论标记 -->
+<div id="vcomments"></div>
+<!-- Valine 评论标记 -->
+
+
+        </div>
+    </div>
+    <div class="single-column-footer">
+    Proudly published with Hexo<br>
+    
+    Theme <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> by <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a><br>
+    
+    &copy; 2020 <a href="https://sszxc.net/about/index.html">Henry</a>
+</div>
+</div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"
+        integrity="sha256-EGs9T1xMHdvM1geM8jPpoo8EZ1V1VRsmcJz8OByENLA=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+        integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"
+        integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
+        integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
+<script src="/js/journal.js?23089727"></script>
+
+
+<!-- Valine 评论标记 -->    
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: 'bhAgu5B7wfHH3QPw2xdK5ipo-gzGzoHsz',
+            appKey: 'qlqwVcwVeB4JoD3nJRdv6O9W',
+            placeholder: "快来评论一下吧！￣▽￣"
+        })
+    </script>
+<!-- Valine 评论标记 -->
+
+
+</body>
+</html>
