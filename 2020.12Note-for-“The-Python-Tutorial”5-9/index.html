@@ -18,7 +18,7 @@
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?6322511">
+<link rel="stylesheet" href="/css/journal.css?1005497">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -76,16 +76,16 @@
 
             
             
-            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
-                Gallery
-            </a>
-            
             <a class="a-block drawer-menu-item false" href="/archives/index.html">
                 Archives
             </a>
             
             <a class="a-block drawer-menu-item false" href="/about/index.html">
                 About
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
+                Gallery
             </a>
             
 
@@ -131,16 +131,16 @@
 
         
         
-        <a class="a-block nav-link-item false" href="/gallery/index.html">
-            Gallery
-        </a>
-        
         <a class="a-block nav-link-item false" href="/archives/index.html">
             Archives
         </a>
         
         <a class="a-block nav-link-item false" href="/about/index.html">
             About
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/gallery/index.html">
+            Gallery
         </a>
         
 
@@ -178,8 +178,8 @@
                 <div class="post-title">
                     Note for “The Python Tutorial” §5~§9
                     <div class="post-meta">
-                        <time datetime="2020-12-06T15:48:43.000Z" itemprop="datePublished">
-                            2020-12-06 23:48
+                        <time datetime="2020-12-25T01:14:43.000Z" itemprop="datePublished">
+                            2020-12-25 09:14
                         </time>&nbsp;
                         <!-- 不蒜子访客插件标记 -->                        
                         <span id="busuanzi_container_page_pv" style='display:none'> 
@@ -226,27 +226,58 @@
                 <div class="post-body">
                     <!-- toc -->
 
-
-
+<ul>
+<li><a href="#5-data-structures">5. Data Structures</a><ul>
+<li><a href="#51-more-on-lists">5.1. More on Lists</a><ul>
+<li><a href="#511-using-lists-as-stacks">5.1.1. Using Lists as Stacks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <!-- tocstop -->
 
 <blockquote>
-<p><a target="_blank" rel="noopener" href="https://docs.python.org/3/tutorial/index.html">https://docs.python.org/3/tutorial/index.html</a><br>摘抄 + 翻译<br>§5~§9主要涉及数据结构、模块、输入输出、异常处理、类。</p>
+<p><a target="_blank" rel="noopener" href="https://docs.python.org/3/tutorial/index.html">https://docs.python.org/3/tutorial/index.html</a><br>摘抄 + 翻译<br>§5~§9 主要涉及数据结构、模块、输入输出、异常处理、类。</p>
 </blockquote>
-
+<h1><span id="5-data-structures">5. Data Structures</span><a href="#5-data-structures" class="header-anchor">#</a></h1><p>这一节回顾一些学过的，同时补充一点新知识。</p>
+<h2><span id="51-more-on-lists">5.1. More on Lists</span><a href="#51-more-on-lists" class="header-anchor">#</a></h2><p>List 数据类型还有更多方法。</p>
+<ul>
+<li><p><code>list.append(x)</code><br>在末尾添加一个元素，相当于<code>a[len(a):]=[x]</code><br>注意这里写成<code>a[len(a)]=[x]</code>或<code>a[len(a):]=x</code>都是不对的，小心。</p>
+</li>
+<li><p><code>list.extend(iterable)</code><br>使用可迭代对象中的所有元素来扩展列表，相当于<code>a[len(a):] = iterable</code></p>
+</li>
+<li><p><code>list.insert(i, x)</code><br>在给定的位置插入一个元素。第一个参数是要插入的元素的索引，所以<code>a.insert(0, x)</code>插入列表头部，<code>a.insert(len(a), x)</code>等同于<code>a.append(x)</code>。</p>
+</li>
+<li><p><code>list.remove(x)</code><br>移除列表中第一个值为 x 的元素。如果没有这样的元素，则抛出 (raise) ValueError 异常。</p>
+</li>
+<li><p><code>list.pop([i])</code><br>删除列表中给定位置的元素并返回它。如果没有给定位置参数，<code>pop()</code>将会删除并返回列表中的最后一个元素。<br>（方法签名中<code>i</code>两边的方括号表示这个参数是可选的，而不是要你输入方括号。在 Python 参考库中会经常看到这种表示方法）。</p>
+</li>
+<li><p><code>list.clear()</code><br>删除列表中所有的元素，相当于<code>del a[:]</code>。</p>
+</li>
+<li><p><code>list.index(x[, start[, end]])</code><br>返回列表中第一个值为 x 的元素的从零开始的索引，如果找不到将会抛出 ValueError 异常。<br>可选参数 start 和 end 用于将搜索限制为列表的特定子序列。返回的索引是相对于整个序列的开始计算的，而不是 start 参数。</p>
+</li>
+<li><p><code>list.count(x)</code><br>返回元素 x 在列表中出现的次数。</p>
+</li>
+<li><p><code>list.sort(*, key=None, reverse=False)</code><br>对列表中的元素进行排序。<br>两个可选参数（只能是关键字参数，这里用<code>*</code>表示这一规定，可以参考 <a href="https://sszxc.net/2020.10Note-for-%E2%80%9CThe-Python-Tutorial%E2%80%9D1-4/#473-special-parameters">## 4.7.3</a>）：key 指定一个带有一个参数的函数，用于从 iterable 中的每个元素中提取比较键（例如，key=str.lower（大写转成小写）)，默认值是 None（直接比较元素）；reverse 是一个布尔值，表示倒序排列。<br>从 python2.2 开始，排序被保证为稳定的。意思是说多个元素如果有相同的 key，则排序前后他们的先后顺序不变。这有助于多次排序（例如，按部门排序，然后按工资级别排序）。<br>在 Py3.0 之前，其实用的是一个 cmp 参数，用于定义元素之间的比较方法（例如只关注某个值、顺序倒序），旧代码可以使用<code>functools.cmp_to_key()</code>方法转换过来。<br>参考：<a target="_blank" rel="noopener" href="https://docs.python.org/3/howto/sorting.html#the-old-way-using-the-cmp-parameter">https://docs.python.org/3/howto/sorting.html#the-old-way-using-the-cmp-parameter</a></p>
+</li>
+<li><p><code>list.reverse()</code><br>反转列表中的元素。</p>
+</li>
+<li><p><code>list.copy()</code><br>返回列表的一个浅拷贝，相当于 a[:] 。<br>多废话几句：所谓浅拷贝就是对引用的拷贝，所谓深拷贝就是对对象的资源的拷贝。深拷贝只有一种方式：copy 模块中的 deepcopy 函数。</p>
+</li>
+</ul>
+<p>注意到很多只改变 list 的方法没有返回值，这是 Python 中所有可变数据结构的设计原则。</p>
+<p>另一件事是并非所有数据都可以排序或比较。例如，[None, ‘hello’, 10] 就不可排序，因为整数不能与字符串比较，而 None 不能与其他类型比较。并且还存在一些没有定义大小关系的类型。例如，3+4j &lt; 5+7j 就不是一个合法的比较。</p>
+<h3><span id="511-using-lists-as-stacks">5.1.1. Using Lists as Stacks</span><a href="#511-using-lists-as-stacks" class="header-anchor">#</a></h3>
                 </div>
             </div>
     
             <nav class="post-pagination">
     
-    <a class="newer-posts" href="/2020.12%E5%8F%AF%E8%83%BD%E6%98%AF%E6%9C%80%E5%A5%BD%E7%9A%84Git%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86%E6%95%99%E7%A8%8B/">
-        上一篇<br>可能是最好的 Git 分支管理教程
-    </a>
-    
     <span class="page-number"></span>
     
-    <a class="older-posts" href="/2020.12%E4%B8%A4%E4%B8%AA%E5%87%BD%E6%95%B0%E7%9A%84%E5%9C%B0%E5%9D%80%E6%80%8E%E4%B9%88%E5%AE%8C%E5%85%A8%E4%B8%80%E6%A0%B7/">
-        下一篇<br>两个函数的地址怎么完全一样——关于函数调用栈
+    <a class="older-posts" href="/2020.12SpotMicro%E6%88%91%E7%9A%84%E6%B3%A2%E5%A3%AB%E9%A1%BF%E6%9C%BA%E5%99%A8%E7%8B%97/">
+        下一篇<br>SpotMicro 我的波士顿机器狗
     </a>
     
 </nav>
@@ -281,7 +312,7 @@
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?12337091"></script>
+<script src="/js/journal.js?18352047"></script>
 
 
 <!-- Valine 评论标记 -->    
