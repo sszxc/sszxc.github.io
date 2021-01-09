@@ -4,30 +4,25 @@
 <html lang="zh-CN" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 
 <head>
-    <title>SpotMicro 我的波士顿机器狗 - Henry</title>
+    <title>SpotMicro 年轻人的第一只四足机器狗 - Henry</title>
 <meta charset="utf-8">
 <meta name="X-UA-Compatible" content="IE=edge">
 <meta name="author" content="Henry">
-<meta name="description" content="『还在施工中~』
+<meta name="description" content="
 
 
-
-
-写在最前面
-树莓派的使用
-烧写系统
-远程桌面
-
-
-电路设计
+写在最前
 3D 打印与组装
-Ubuntu 系统
+电路设计
+树莓派
 舵机校准
 功能复现
+改进与提升
 
 
 
-写在最前面#最早看到这个项目已经是大半年前了，直到八月份看了这篇推送——用树莓派 DIY 波士顿机器狗，帮你省下 50 万：教程开源，人人皆可上...">
+写在最前#最早看到这个项目已经是大半年前了，直到八月份看了这篇推送——用树莓派 DIY 波士顿机器狗，帮你省下 50 万：教程开源，人人皆可上手，才真正下定决心——做一个自己的机器狗。
+这次选择的硬件方案...">
 <meta name="keywords" content="">
 
     <meta charset="utf-8">
@@ -37,7 +32,7 @@ Ubuntu 系统
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?19039971">
+<link rel="stylesheet" href="/css/journal.css?28112309">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -95,16 +90,16 @@ Ubuntu 系统
 
             
             
+            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
+                Gallery
+            </a>
+            
             <a class="a-block drawer-menu-item false" href="/archives/index.html">
                 Archives
             </a>
             
             <a class="a-block drawer-menu-item false" href="/about/index.html">
                 About
-            </a>
-            
-            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
-                Gallery
             </a>
             
 
@@ -150,16 +145,16 @@ Ubuntu 系统
 
         
         
+        <a class="a-block nav-link-item false" href="/gallery/index.html">
+            Gallery
+        </a>
+        
         <a class="a-block nav-link-item false" href="/archives/index.html">
             Archives
         </a>
         
         <a class="a-block nav-link-item false" href="/about/index.html">
             About
-        </a>
-        
-        <a class="a-block nav-link-item false" href="/gallery/index.html">
-            Gallery
         </a>
         
 
@@ -172,7 +167,7 @@ Ubuntu 系统
         
         Theme <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> by <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a><br>
         
-        &copy; 2020 <a href="https://sszxc.net/about/index.html">Henry</a>
+        &copy; 2021 <a href="https://sszxc.net/about/index.html">Henry</a>
     </div>
 </div>
 <div ref="extraContainer" class="extra-container">
@@ -192,10 +187,10 @@ Ubuntu 系统
 <div ref="streamContainer" class="stream-container">
     <div class="post-list-container post-list-container-shadow">
         <div class="post">
-            <div class="post-head-wrapper-text-only"
-                 style="background-image: url('')">
+            <div class="post-head-wrapper"
+                 style="background-image: url('https://s3.ax1x.com/2021/01/09/sQhT0O.png')">
                 <div class="post-title">
-                    SpotMicro 我的波士顿机器狗
+                    SpotMicro 年轻人的第一只四足机器狗
                     <div class="post-meta">
                         <time datetime="2020-12-16T07:41:43.000Z" itemprop="datePublished">
                             2020-12-16 15:41
@@ -241,42 +236,77 @@ Ubuntu 系统
     
             <div class="post-body-wrapper">
                 <div class="post-body">
-                    <p style="text-align:center;font-size:60px;">『还在施工中~』</p>
-
-<!-- toc -->
+                    <!-- toc -->
 
 <ul>
-<li><a href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%89%8D%E9%9D%A2">写在最前面</a></li>
-<li><a href="#%E6%A0%91%E8%8E%93%E6%B4%BE%E7%9A%84%E4%BD%BF%E7%94%A8">树莓派的使用</a><ul>
-<li><a href="#%E7%83%A7%E5%86%99%E7%B3%BB%E7%BB%9F">烧写系统</a></li>
-<li><a href="#%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2">远程桌面</a></li>
-</ul>
-</li>
-<li><a href="#%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1">电路设计</a></li>
+<li><a href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%89%8D">写在最前</a></li>
 <li><a href="#3d-%E6%89%93%E5%8D%B0%E4%B8%8E%E7%BB%84%E8%A3%85">3D 打印与组装</a></li>
-<li><a href="#ubuntu-%E7%B3%BB%E7%BB%9F">Ubuntu 系统</a></li>
+<li><a href="#%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1">电路设计</a></li>
+<li><a href="#%E6%A0%91%E8%8E%93%E6%B4%BE">树莓派</a></li>
 <li><a href="#%E8%88%B5%E6%9C%BA%E6%A0%A1%E5%87%86">舵机校准</a></li>
 <li><a href="#%E5%8A%9F%E8%83%BD%E5%A4%8D%E7%8E%B0">功能复现</a></li>
+<li><a href="#%E6%94%B9%E8%BF%9B%E4%B8%8E%E6%8F%90%E5%8D%87">改进与提升</a></li>
 </ul>
 <!-- tocstop -->
 
-<h1><span id="写在最前面">写在最前面</span><a href="#写在最前面" class="header-anchor">#</a></h1><p>最早看到这个项目已经是大半年前了，直到八月份看了这篇推送——<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/rM3SkUiQIxsGz9MNIg1skQ">用树莓派 DIY 波士顿机器狗，帮你省下 50 万：教程开源，人人皆可上手</a>，才真正下定决心，做一个自己的机器狗。</p>
-<p>本文包括树莓派上手、电路设计与焊接、3D 打印 SpotMicro 结构、功能复现，源代码学习以及后续的二次开发另开一篇（下次一定）。</p>
+<h1><span id="写在最前">写在最前</span><a href="#写在最前" class="header-anchor">#</a></h1><p>最早看到这个项目已经是大半年前了，直到八月份看了这篇推送——<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/rM3SkUiQIxsGz9MNIg1skQ">用树莓派 DIY 波士顿机器狗，帮你省下 50 万：教程开源，人人皆可上手</a>，才真正下定决心——做一个自己的机器狗。</p>
 <p>这次选择的硬件方案是 <a target="_blank" rel="noopener" href="https://gitlab.com/custom_robots/spotmicroai/3dprinting/-/tree/master/User%20Nahuel%20Taibo%20models/v2.1">来自 Nahuel Taibo 的 modifications v2.1</a>；参考的软件方案是来自 <a target="_blank" rel="noopener" href="https://github.com/mike4192/spotMicro">来自 mike4192 的 spotMicro</a>。</p>
-<p>需要的材料清单：<br>树莓派/stm32 控制器<br>12 × 舵机（当时果断下单这么多被店家问了不少，以至于现在商品图上已经加上“机器人专用”了）</p>
-<p>8 × ‘F625zz Flange ball bearing’<br>‘M2×6 自攻螺钉’（固定舵机摇臂）</p>
-<p>总成本大约~元</p>
-<p>需要的知识清单：<br>基本电路知识、Linux 系统、ROS 系统</p>
-<h1><span id="树莓派的使用">树莓派的使用</span><a href="#树莓派的使用" class="header-anchor">#</a></h1><h2><span id="烧写系统">烧写系统</span><a href="#烧写系统" class="header-anchor">#</a></h2><p>参考教程 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/59027897">如何给树莓派安装操作系统</a>；<a target="_blank" rel="noopener" href="https://www.waveshare.net/study/article-594-1.html">树莓派系列教程 1：人生若只如初见</a>。</p>
-<p><a target="_blank" rel="noopener" href="https://www.raspberrypi.org/downloads/noobs/">https://www.raspberrypi.org/downloads/noobs/</a></p>
-<h2><span id="远程桌面">远程桌面</span><a href="#远程桌面" class="header-anchor">#</a></h2><p>远程桌面好像不能关机，只能在命令行里输入<code>sudo poweroff</code>来安全关机。</p>
-<h1><span id="电路设计">电路设计</span><a href="#电路设计" class="header-anchor">#</a></h1><p>关于为什么不用同一个降压<br>主要是电机是一个感性的负载，电机在转动的时候会有反向冲击感应电动势，这对于 mcu 芯片来说是绝对不行的。<br>来自 <a target="_blank" rel="noopener" href="https://www.icxbk.com/ask/detail/2809.html">https://www.icxbk.com/ask/detail/2809.html</a> </p>
-<h1><span id="3d-打印与组装">3D 打印与组装</span><a href="#3d-打印与组装" class="header-anchor">#</a></h1><p>从 Nov 20th 开始，断断续续一直打到 Dec 6th 基本完成</p>
-<p>舵机测试模块很好用</p>
-<h1><span id="ubuntu-系统">Ubuntu 系统</span><a href="#ubuntu-系统" class="header-anchor">#</a></h1><p><a target="_blank" rel="noopener" href="https://github.com/mike4192/spotMicro">mike4192 的这个仓库</a> 是建立在 Linux 上的 ROS Kinetic 环境中的，所以要从官方的树莓派专用系统 Raspbian 转到支持 ROS 的 Ubuntu 系统。</p>
-<p>预安装了 ROS 的镜像可以在 <a target="_blank" rel="noopener" href="https://downloads.ubiquityrobotics.com/pi.html">ubiquity robotics</a> 找到</p>
-<h1><span id="舵机校准">舵机校准</span><a href="#舵机校准" class="header-anchor">#</a></h1><h1><span id="功能复现">功能复现</span><a href="#功能复现" class="header-anchor">#</a></h1><p>Dec 8th 站起来了</p>
-<p>Dec 9th 迈出第一步</p>
+<p>本文包括树莓派上手、电路设计与焊接、3D 打印、SpotMicro 功能复现，希望对你有帮助。</p>
+<p>需要的材料清单：</p>
+<ul>
+<li>树莓派/stm32 控制器</li>
+<li>一台 3D 打印机/直接购买 3D 打印服务</li>
+<li>PDI-HV5523MG 舵机 × 12（当时一次性下单 12 个，被店家追着问了不少，现在商品图上好像已经加上“机器人专用”了）</li>
+<li>法兰球轴承 F625ZZ × 8</li>
+<li>M3 螺丝（各种长度）</li>
+<li>2S/3S 电池</li>
+<li>5V 降压电路（LM2596/MP2482）</li>
+<li>PCA9685 舵机驱动板</li>
+<li>LCD 显示器（可选）</li>
+<li>防滑贴/减震垫（可选）</li>
+<li>迷你路由器（可选）</li>
+</ul>
+<h1><span id="3d-打印与组装">3D 打印与组装</span><a href="#3d-打印与组装" class="header-anchor">#</a></h1><p>机器狗的机械结构部分参考了<a target="_blank" rel="noopener" href="https://gitlab.com/custom_robots/spotmicroai/3dprinting/-/tree/master/User%20Nahuel%20Taibo%20models/v2.1">来自 Nahuel Taibo 的 modifications v2.1</a>，作者主要是修改了几个连接，加了身体的强度。在Gitlab里逛逛会发现这个社区里有很多爱好者分享了自己的修改经验，很感动。</p>
+<p>下载到所有零件的STL文件后，只要自己切片一下就可以开始打了。原版是黄黑配色，这次做的是黑白的，可以提前在KeyShot里渲染一下效果选颜色。整个打印工作从 Nov.20th 开始，断断续续一直到 Dec.6th 基本完成，期间也走了不少弯路。打完之后也可以打磨抛光一下。</p>
+<p>组装任务相对就很简单了，需要注意的是舵机安装的时候要上电确认一下关节活动空间，这时候准备一个带旋钮的舵机测试板就很有帮助了。</p>
+<h1><span id="电路设计">电路设计</span><a href="#电路设计" class="header-anchor">#</a></h1><p>电路部分，主要就是降压稳压的功能，需要注意的问题是树莓派要求的功率不小，用普通的5V1A适配器供电时都会提示供电不足。这次的电路拓扑图如下：</p>
+<center>
+<img src="https://s3.ax1x.com/2021/01/09/sQgcuD.png" width="80%">
+<br>
+电路拓扑图
+</center>
+<br>
+
+<p>关于为什么功率电路和控制器芯片不用同一个降压模块，解释是：主要是电机是一个感性的负载，电机在转动的时候会有反向冲击感应电动势，这对于 mcu 芯片来说是绝对不行的。<br>来自：<a target="_blank" rel="noopener" href="https://www.icxbk.com/ask/detail/2809.html">请教个树莓派的供电问题</a></p>
+<h1><span id="树莓派">树莓派</span><a href="#树莓派" class="header-anchor">#</a></h1><p>树莓派是一个基于 Linux 的单片机电脑，可玩性很高，这次将使用树莓派 3B 作为机器狗控制器。</p>
+<p>初次上手，先玩玩树莓派官方推荐的 Raspbian 系统。（这一步也可以跳过）</p>
+<p>参考教程 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/59027897">如何给树莓派安装操作系统</a> 以及 <a target="_blank" rel="noopener" href="https://www.waveshare.net/study/article-594-1.html">树莓派系列教程 1：人生若只如初见</a>。可以在 <a target="_blank" rel="noopener" href="https://www.raspberrypi.org/downloads/noobs/">官网</a> 下载 NOOBS 离线安装版，可以先下种子，方便加速。启动后会显示NOOBS的界面，进行系统安装。</p>
+<p>Raspbian 系统可以安装xrdp服务，在局域网下使用Win10的“远程桌面连接”访问。注意在远程桌面模式好像不能关机，只能在命令行里输入<code>sudo poweroff</code>来安全关机。</p>
+<p>由于<a target="_blank" rel="noopener" href="https://github.com/mike4192/spotMicro">mike4192 的这个仓库</a> 是建立在 Linux 上的 ROS Kinetic 环境中的，所以要从官方的树莓派专用系统 Raspbian 转到支持 ROS 的 Ubuntu 系统。预安装了 ROS 的镜像可以在 <a target="_blank" rel="noopener" href="https://downloads.ubiquityrobotics.com/pi.html">ubiquity robotics</a> 找到，然后使用Etcher工具直接将镜像写入SD卡就可以启动了。</p>
+<h1><span id="舵机校准">舵机校准</span><a href="#舵机校准" class="header-anchor">#</a></h1><p>连接好所有供电以及树莓派和驱动板之间的I2C线缆后，可以感受到狗狗已经跃跃欲试了。接下来一步是舵机校准，这里可以参考作者给出的“servo_calibration.md”文件，调整每一个舵机的偏移量，完成一个“servo_calibration_spreadsheet.ods”表格，把数据写入配置文件，完成。<br><code>nano ~/catkin_ws/src/spot_micro_motion_cmd/config/spot_micro_motion_cmd.yaml </code></p>
+<h1><span id="功能复现">功能复现</span><a href="#功能复现" class="header-anchor">#</a></h1><p>注意编译的时候要把I2C驱动板连上，否则会提示<code>error: ‘i2c_smbus_read_byte_data’ was not declared in this scope</code></p>
+<p>直接<code>rosrun</code>可能会找不到可执行文件，因为脚本是Python写的，这时候需要<code>chmod +x</code>给一下权限。</p>
+<p>最后汇总一下常用命令：</p>
+<pre><code># 启动驱动板
+rosrun i2cpwm_board i2cpwm_board
+# 舵机控制
+rosrun servo_move_keyboard servoMoveKeyboard.py
+# 修改配置文件
+nano ~/catkin_ws/src/spot_micro_motion_cmd/config/spot_micro_motion_cmd.yaml
+# 机器人进程
+roslaunch spot_micro_motion_cmd spot_micro_motion_cmd.launch
+# 遥控
+rosrun spot_micro_keyboard_command spotMicroKeyboardMove.py</code></pre>
+<p style="text-align:center;font-size:60px;">『还在施工中~』</p>
+
+<h1><span id="改进与提升">改进与提升</span><a href="#改进与提升" class="header-anchor">#</a></h1><p>原作者模型中的足底也是直接用的打印件，测试之后发现效果一般，这次使用的是一种防滑贴，裁剪改造了一下，重新打了一个半圆柱形的足贴在底面，效果不错。</p>
+<p>之前的调试一直都是在室内局域网下完成的，为了让狗跑得更自由，可以在身上背一个迷你路由器。这次选的是一款能用USB供电的路由器，绑定一下树莓派的MAC地址和IP，连接到局域网的设备就都能SSH访问它了。路由器和树莓派可以用有线连接，这样树莓派的无线网卡可以同时连接到互联网，互不冲突。</p>
+<p>基于这个平台，或许还可以加SLAM、视觉识别等等模块。受限于舵机性能，这款四足机器狗最终可能只能是一个玩具，但这个项目确实激发了自己对四足的兴趣。</p>
+<p>其他一些参考资料：</p>
+<p>逆运动学参考论文：Sen, Muhammed Arif &amp; Bakircioglu, Veli &amp; Kalyoncu, Mete. (2017). Inverse Kinematic Analysis Of A Quadruped Robot. International Journal of Scientific &amp; Technology Research. 6.</p>
+<p>Spot Micro AI 社区: <a target="_blank" rel="noopener" href="https://gitlab.com/custom_robots/spotmicroai">https://gitlab.com/custom_robots/spotmicroai</a></p>
+<p>四足机器人的变革与机遇——宇树科技：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1BV411h7MZ">https://www.bilibili.com/video/BV1BV411h7MZ</a></p>
+<p>菠萝狗–一个低成本大型全套四足机器人软硬件开源项目：<a target="_blank" rel="noopener" href="https://github.com/ToanTech/py-apple-quadruped-robot">https://github.com/ToanTech/py-apple-quadruped-robot</a></p>
 
                 </div>
             </div>
@@ -310,7 +340,7 @@ Ubuntu 系统
     
     Theme <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> by <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a><br>
     
-    &copy; 2020 <a href="https://sszxc.net/about/index.html">Henry</a>
+    &copy; 2021 <a href="https://sszxc.net/about/index.html">Henry</a>
 </div>
 </div>
 
@@ -325,7 +355,7 @@ Ubuntu 系统
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?26421483"></script>
+<script src="/js/journal.js?74219888"></script>
 
 
 <!-- Valine 评论标记 -->    
