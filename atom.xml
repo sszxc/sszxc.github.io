@@ -6,7 +6,7 @@
   <link href="https://sszxc.net/about/index.html/atom.xml" rel="self"/>
   
   <link href="https://sszxc.net/about/index.html/"/>
-  <updated>2021-01-11T05:53:39.904Z</updated>
+  <updated>2021-01-11T05:55:55.464Z</updated>
   <id>https://sszxc.net/about/index.html/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://sszxc.net/about/index.html/2021.01%E2%80%9C%E5%8F%A6%E4%B8%80%E4%B8%AA%E4%B9%9F%E6%98%AF%E5%A5%B3%E5%AD%A9%E7%9A%84%E6%A6%82%E7%8E%87%E2%80%9D%E5%9B%BE%E8%A7%A3%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87/"/>
     <id>https://sszxc.net/about/index.html/2021.01%E2%80%9C%E5%8F%A6%E4%B8%80%E4%B8%AA%E4%B9%9F%E6%98%AF%E5%A5%B3%E5%AD%A9%E7%9A%84%E6%A6%82%E7%8E%87%E2%80%9D%E5%9B%BE%E8%A7%A3%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87/</id>
     <published>2021-01-11T05:32:43.000Z</published>
-    <updated>2021-01-11T05:53:39.904Z</updated>
+    <updated>2021-01-11T05:55:55.464Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>比较如下几个问题，求出结果，并谈谈你的见解。<br>a) 问题 1：李叔叔有两个孩子，两个孩子都是女孩的概率是多少？<br>b) 问题 2：李叔叔有两个孩子，其中一个是女孩，两个孩子都是女孩的概率是多少？<br>c) 问题 3：李叔叔有两个孩子，至少有一个孩子是在星期日出生的女孩，两个孩子都是女孩的概率是多少？</p></blockquote><p>摸鱼的时候看到一个经典概率论题目的变形，标准答案分别为$ \frac{1}{4}、 \frac{1}{3}、 \frac{13}{27} $，标准解法不多说了。</p><p>很明显，同样一个问题，给出的题干信息不同，求得的概率值不相同。但是仔细观察答案可以发现，限定条件越多，最后的概率越接近$ \frac{1}{2} $。想了一会儿，发现可以用图解的办法来解释，很妙。</p><center><img src="https://s3.ax1x.com/2021/01/11/s32s9s.png" width="80%"><br></center><p>如上图所示：M 表示男孩，F 表示女孩；绿色部分为符合条件的样本空间，作为分母，而蓝色圈出的 (F,F) 象限表示满足“两个都是女孩”条件，两者交集作为分子。</p><p>图（1）描述的是“问题 2”给出的情况，因为男孩女孩出生概率均为$ \frac{1}{2} $，很明显最后的概率为$ \frac{1}{3} $。</p><p>图（2）描述的是“问题 3”给出的情况，限定条件“在星期日出生”帮忙在 F 区域分别画出了$ \frac{1}{7} $区域，最后的概率可以用小学数学$ \frac{7+7-1}{14+14-1} = \frac{13}{27} $。</p><p>图（3）则近似表示了“限定条件无限多”的情况，两个绿色区域的宽度无限小，极限情况下“两个都是女孩”的概率可以用线段长度表示——$ \frac{1}{2} $。</p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>比较如下几个问题，求出结果，并谈谈你的见解。<br>a) 问题 1：李叔叔有两个孩子，两个孩子都是女孩的概率是多少？<br>b) 问题 2：李叔叔有两个孩子，其中一个是女孩，两个孩子都是女孩的概率是多少？<br>c) 问题 3：李叔叔有两个孩子，至少有一个孩子是在星期日出生的女孩，两个孩子都是女孩的概率是多少？</p></blockquote><p>摸鱼的时候看到一个经典概率论题目的变形，标准答案分别为$ \frac{1}{4}、 \frac{1}{3}、 \frac{13}{27} $，标准解法不多说了。</p><p>很明显，同样一个问题，给出的题干信息不同，求得的概率值不相同。但是仔细观察答案可以发现，限定条件越多，最后的概率越接近$ \frac{1}{2} $。想了一会儿，发现可以用图解的办法来解释，很妙。</p><center><img src="https://s3.ax1x.com/2021/01/11/s32s9s.png"><br></center><p>如上图所示：M 表示男孩，F 表示女孩；绿色部分为符合条件的样本空间，作为分母，而蓝色圈出的 (F,F) 象限表示满足“两个都是女孩”条件，两者交集作为分子。</p><p>图（1）描述的是“问题 2”给出的情况，因为男孩女孩出生概率均为$ \frac{1}{2} $，很明显最后的概率为$ \frac{1}{3} $。</p><p>图（2）描述的是“问题 3”给出的情况，限定条件“在星期日出生”帮忙在 F 区域分别画出了$ \frac{1}{7} $区域，最后的概率可以用小学数学$ \frac{7+7-1}{14+14-1} = \frac{13}{27} $。</p><p>图（3）则近似表示了“限定条件无限多”的情况，两个绿色区域的宽度无限小，极限情况下“两个都是女孩”的概率可以用线段长度表示——$ \frac{1}{2} $。</p>]]></content>
     
     
       
@@ -374,9 +374,9 @@
     
     <category term="GAN" scheme="https://sszxc.net/about/index.html/tags/GAN/"/>
     
-    <category term="TensorFlow" scheme="https://sszxc.net/about/index.html/tags/TensorFlow/"/>
-    
     <category term="Pokémon" scheme="https://sszxc.net/about/index.html/tags/Pokemon/"/>
+    
+    <category term="TensorFlow" scheme="https://sszxc.net/about/index.html/tags/TensorFlow/"/>
     
   </entry>
   
@@ -410,9 +410,9 @@
     
     <category term="GAN" scheme="https://sszxc.net/about/index.html/tags/GAN/"/>
     
-    <category term="MNIST" scheme="https://sszxc.net/about/index.html/tags/MNIST/"/>
-    
     <category term="TensorFlow" scheme="https://sszxc.net/about/index.html/tags/TensorFlow/"/>
+    
+    <category term="MNIST" scheme="https://sszxc.net/about/index.html/tags/MNIST/"/>
     
   </entry>
   
