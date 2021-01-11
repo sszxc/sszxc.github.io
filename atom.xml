@@ -6,7 +6,7 @@
   <link href="https://sszxc.net/about/index.html/atom.xml" rel="self"/>
   
   <link href="https://sszxc.net/about/index.html/"/>
-  <updated>2020-12-25T04:14:36.231Z</updated>
+  <updated>2021-01-11T05:53:39.904Z</updated>
   <id>https://sszxc.net/about/index.html/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>“另一个也是女孩的概率”——图解条件概率</title>
+    <link href="https://sszxc.net/about/index.html/2021.01%E2%80%9C%E5%8F%A6%E4%B8%80%E4%B8%AA%E4%B9%9F%E6%98%AF%E5%A5%B3%E5%AD%A9%E7%9A%84%E6%A6%82%E7%8E%87%E2%80%9D%E5%9B%BE%E8%A7%A3%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87/"/>
+    <id>https://sszxc.net/about/index.html/2021.01%E2%80%9C%E5%8F%A6%E4%B8%80%E4%B8%AA%E4%B9%9F%E6%98%AF%E5%A5%B3%E5%AD%A9%E7%9A%84%E6%A6%82%E7%8E%87%E2%80%9D%E5%9B%BE%E8%A7%A3%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87/</id>
+    <published>2021-01-11T05:32:43.000Z</published>
+    <updated>2021-01-11T05:53:39.904Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>比较如下几个问题，求出结果，并谈谈你的见解。<br>a) 问题 1：李叔叔有两个孩子，两个孩子都是女孩的概率是多少？<br>b) 问题 2：李叔叔有两个孩子，其中一个是女孩，两个孩子都是女孩的概率是多少？<br>c) 问题 3：李叔叔有两个孩子，至少有一个孩子是在星期日出生的女孩，两个孩子都是女孩的概率是多少？</p></blockquote><p>摸鱼的时候看到一个经典概率论题目的变形，标准答案分别为$ \frac{1}{4}、 \frac{1}{3}、 \frac{13}{27} $，标准解法不多说了。</p><p>很明显，同样一个问题，给出的题干信息不同，求得的概率值不相同。但是仔细观察答案可以发现，限定条件越多，最后的概率越接近$ \frac{1}{2} $。想了一会儿，发现可以用图解的办法来解释，很妙。</p><center><img src="https://s3.ax1x.com/2021/01/11/s32s9s.png" width="80%"><br></center><p>如上图所示：M 表示男孩，F 表示女孩；绿色部分为符合条件的样本空间，作为分母，而蓝色圈出的 (F,F) 象限表示满足“两个都是女孩”条件，两者交集作为分子。</p><p>图（1）描述的是“问题 2”给出的情况，因为男孩女孩出生概率均为$ \frac{1}{2} $，很明显最后的概率为$ \frac{1}{3} $。</p><p>图（2）描述的是“问题 3”给出的情况，限定条件“在星期日出生”帮忙在 F 区域分别画出了$ \frac{1}{7} $区域，最后的概率可以用小学数学$ \frac{7+7-1}{14+14-1} = \frac{13}{27} $。</p><p>图（3）则近似表示了“限定条件无限多”的情况，两个绿色区域的宽度无限小，极限情况下“两个都是女孩”的概率可以用线段长度表示——$ \frac{1}{2} $。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;比较如下几个问题，求出结果，并谈谈你的见解。&lt;br&gt;a) 问题 1：李叔叔有两个孩子，两个孩子都是女孩的概率是多少？&lt;br&gt;b) 问题 2：李叔叔有两个孩子，其中一个是女孩，两个孩子都是女孩的概率是多少？&lt;br&gt;c) 问题 3：李叔叔有两个孩子，至</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Note for “The Python Tutorial” §5~§9</title>
@@ -42,7 +63,7 @@
     <link href="https://sszxc.net/about/index.html/2020.12SpotMicro%E4%B8%80%E4%B8%AA%E5%BC%80%E6%BA%90%E6%9C%BA%E5%99%A8%E7%8B%97%E9%A1%B9%E7%9B%AE/"/>
     <id>https://sszxc.net/about/index.html/2020.12SpotMicro%E4%B8%80%E4%B8%AA%E5%BC%80%E6%BA%90%E6%9C%BA%E5%99%A8%E7%8B%97%E9%A1%B9%E7%9B%AE/</id>
     <published>2020-12-16T07:41:43.000Z</published>
-    <updated>2021-01-10T01:44:44.692Z</updated>
+    <updated>2021-01-11T03:38:42.242Z</updated>
     
     <content type="html"><![CDATA[<!-- toc --><ul><li><a href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%89%8D">写在最前</a></li><li><a href="#3d-%E6%89%93%E5%8D%B0%E4%B8%8E%E7%BB%84%E8%A3%85">3D 打印与组装</a></li><li><a href="#%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1">电路设计</a></li><li><a href="#%E6%A0%91%E8%8E%93%E6%B4%BE">树莓派</a></li><li><a href="#%E8%88%B5%E6%9C%BA%E6%A0%A1%E5%87%86">舵机校准</a></li><li><a href="#%E5%8A%9F%E8%83%BD%E5%A4%8D%E7%8E%B0">功能复现</a></li><li><a href="#%E6%94%B9%E8%BF%9B%E4%B8%8E%E6%8F%90%E5%8D%87">改进与提升</a></li></ul><!-- tocstop --><h1><span id="写在最前">写在最前</span><a href="#写在最前" class="header-anchor">#</a></h1><p>最早看到这个项目已经是大半年前了，直到八月份看了这篇推送——<a href="https://mp.weixin.qq.com/s/rM3SkUiQIxsGz9MNIg1skQ">用树莓派 DIY 波士顿机器狗，帮你省下 50 万：教程开源，人人皆可上手</a>，才真正下定决心——做一个自己的机器狗。</p><p>这次选择的硬件方案是 <a href="https://gitlab.com/custom_robots/spotmicroai/3dprinting/-/tree/master/User%20Nahuel%20Taibo%20models/v2.1">来自 Nahuel Taibo 的 modifications v2.1</a>；参考的软件方案是来自 <a href="https://github.com/mike4192/spotMicro">来自 mike4192 的 spotMicro</a>。</p><p>本文包括树莓派上手、电路设计与焊接、3D 打印、SpotMicro 功能复现，希望对你有帮助。</p><p>需要的材料清单：</p><ul><li>树莓派/stm32 控制器</li><li>一台 3D 打印机/直接购买 3D 打印服务</li><li>PDI-HV5523MG 舵机 × 12（当时一次性下单 12 个，被店家追着问了不少，现在商品图上好像已经加上“机器人专用”了）</li><li>法兰球轴承 F625ZZ × 8</li><li>M3 螺丝（各种长度）</li><li>2S/3S 电池</li><li>5V 降压电路（LM2596/MP2482）</li><li>PCA9685 舵机驱动板</li><li>LCD 显示器（可选）</li><li>防滑贴/减震垫（可选）</li><li>迷你路由器（可选）</li></ul><h1><span id="3d-打印与组装">3D 打印与组装</span><a href="#3d-打印与组装" class="header-anchor">#</a></h1><p>机器狗的机械结构部分参考了 <a href="https://gitlab.com/custom_robots/spotmicroai/3dprinting/-/tree/master/User%20Nahuel%20Taibo%20models/v2.1">来自 Nahuel Taibo 的 modifications v2.1</a>，作者主要是修改了几个连接，加了身体的强度。在 Gitlab 里逛逛会发现这个社区里有很多爱好者分享了自己的修改经验，很感动。</p><p>下载到所有零件的 STL 文件后，只要自己切片一下就可以开始打了。原版是黄黑配色，这次做的是黑白的，可以提前在 KeyShot 里渲染一下效果选颜色。整个打印工作从 Nov.20th 开始，断断续续一直到 Dec.6th 基本完成，期间也走了不少弯路。打完之后也可以打磨抛光一下。</p><p>组装任务相对就很简单了，需要注意的是舵机安装的时候要上电确认一下关节活动空间，这时候准备一个带旋钮的舵机测试板就很有帮助了。</p><h1><span id="电路设计">电路设计</span><a href="#电路设计" class="header-anchor">#</a></h1><p>电路部分，主要就是降压稳压的功能，需要注意的问题是树莓派要求的功率不小，用普通的 5V1A 适配器供电时都会提示供电不足。这次的电路拓扑图如下：</p><center><img src="https://s3.ax1x.com/2021/01/09/sQgcuD.png" width="80%"><br>电路拓扑图</center><br><p>关于为什么功率电路和控制器芯片不用同一个降压模块，解释是：主要是电机是一个感性的负载，电机在转动的时候会有反向冲击感应电动势，这对于 mcu 芯片来说是绝对不行的。<br>来自：<a href="https://www.icxbk.com/ask/detail/2809.html">请教个树莓派的供电问题</a></p><h1><span id="树莓派">树莓派</span><a href="#树莓派" class="header-anchor">#</a></h1><p>树莓派是一个基于 Linux 的单片机电脑，可玩性很高，这次将使用树莓派 3B 作为机器狗控制器。</p><p>初次上手，先玩玩树莓派官方推荐的 Raspbian 系统。（这一步也可以跳过）</p><p>参考教程 <a href="https://zhuanlan.zhihu.com/p/59027897">如何给树莓派安装操作系统</a> 以及 <a href="https://www.waveshare.net/study/article-594-1.html">树莓派系列教程 1：人生若只如初见</a>。可以在 <a href="https://www.raspberrypi.org/downloads/noobs/">官网</a> 下载 NOOBS 离线安装版，可以先下种子，方便加速。启动后会显示 NOOBS 的界面，进行系统安装。</p><p>Raspbian 系统可以安装 xrdp 服务，在局域网下使用 Win10 的“远程桌面连接”访问。注意在远程桌面模式好像不能关机，只能在命令行里输入<code>sudo poweroff</code>来安全关机。</p><p>由于 <a href="https://github.com/mike4192/spotMicro">mike4192 的这个仓库</a> 是建立在 Linux 上的 ROS Kinetic 环境中的，所以要从官方的树莓派专用系统 Raspbian 转到支持 ROS 的 Ubuntu 系统。预安装了 ROS 的镜像可以在 <a href="https://downloads.ubiquityrobotics.com/pi.html">ubiquity robotics</a> 找到，然后使用 Etcher 工具直接将镜像写入 SD 卡就可以启动了。</p><h1><span id="舵机校准">舵机校准</span><a href="#舵机校准" class="header-anchor">#</a></h1><p>连接好所有供电以及树莓派和驱动板之间的 I2C 线缆后，可以感受到狗狗已经跃跃欲试了。接下来一步是舵机校准，这里可以参考作者给出的“servo_calibration.md”文件，调整每一个舵机的偏移量，完成一个“servo_calibration_spreadsheet.ods”表格，把数据写入配置文件，完成。<br><code>nano ~/catkin_ws/src/spot_micro_motion_cmd/config/spot_micro_motion_cmd.yaml </code></p><h1><span id="功能复现">功能复现</span><a href="#功能复现" class="header-anchor">#</a></h1><p>注意编译的时候要把 I2C 驱动板连上，否则会提示<code>error: ‘i2c_smbus_read_byte_data’ was not declared in this scope</code></p><p>直接<code>rosrun</code>可能会找不到可执行文件，因为脚本是 Python 写的，这时候需要<code>chmod +x</code>给一下权限。</p><p>最后汇总一下常用命令：</p><pre><code># 启动驱动板rosrun i2cpwm_board i2cpwm_board# 舵机控制rosrun servo_move_keyboard servoMoveKeyboard.py# 修改配置文件nano ~/catkin_ws/src/spot_micro_motion_cmd/config/spot_micro_motion_cmd.yaml# 机器人进程roslaunch spot_micro_motion_cmd spot_micro_motion_cmd.launch# 遥控rosrun spot_micro_keyboard_command spotMicroKeyboardMove.py</code></pre><p style="text-align:center;font-size:30px;">『还在施工中~』</p><h1><span id="改进与提升">改进与提升</span><a href="#改进与提升" class="header-anchor">#</a></h1><p>原作者模型中的足底也是直接用的打印件，测试之后发现效果一般，这次使用的是一种防滑贴，裁剪改造了一下，重新打了一个半圆柱形的足贴在底面，效果不错。</p><p>之前的调试一直都是在室内局域网下完成的，为了让狗跑得更自由，可以在身上背一个迷你路由器。这次选的是一款能用 USB 供电的路由器，绑定一下树莓派的 MAC 地址和 IP，连接到局域网的设备就都能 SSH 访问它了。路由器和树莓派可以用有线连接，这样树莓派的无线网卡可以同时连接到互联网，互不冲突。</p><p>基于这个平台，或许还可以加 SLAM、视觉识别等等模块。受限于舵机性能，这款四足机器狗最终可能只能是一个玩具，但这个项目确实激发了自己对四足的兴趣。</p><p>其他一些参考资料：</p><p>逆运动学参考论文：Sen, Muhammed Arif &amp; Bakircioglu, Veli &amp; Kalyoncu, Mete. (2017). Inverse Kinematic Analysis Of A Quadruped Robot. International Journal of Scientific &amp; Technology Research. 6.</p><p>Spot Micro AI 社区：<a href="https://gitlab.com/custom_robots/spotmicroai">https://gitlab.com/custom_robots/spotmicroai</a></p><p>四足机器人的变革与机遇——宇树科技：<a href="https://www.bilibili.com/video/BV1BV411h7MZ">https://www.bilibili.com/video/BV1BV411h7MZ</a></p><p>菠萝狗–一个低成本大型全套四足机器人软硬件开源项目：<a href="https://github.com/ToanTech/py-apple-quadruped-robot">https://github.com/ToanTech/py-apple-quadruped-robot</a></p>]]></content>
     
@@ -508,34 +529,6 @@
     <category term="Webots" scheme="https://sszxc.net/about/index.html/tags/Webots/"/>
     
     <category term="图像处理" scheme="https://sszxc.net/about/index.html/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>在 ROS 下使用百度 UNIT 实现语音交互</title>
-    <link href="https://sszxc.net/about/index.html/2020.04%E5%9C%A8ROS%E4%B8%8B%E4%BD%BF%E7%94%A8%E7%99%BE%E5%BA%A6UNIT%E5%AE%9E%E7%8E%B0%E8%AF%AD%E9%9F%B3%E4%BA%A4%E4%BA%92/"/>
-    <id>https://sszxc.net/about/index.html/2020.04%E5%9C%A8ROS%E4%B8%8B%E4%BD%BF%E7%94%A8%E7%99%BE%E5%BA%A6UNIT%E5%AE%9E%E7%8E%B0%E8%AF%AD%E9%9F%B3%E4%BA%A4%E4%BA%92/</id>
-    <published>2020-04-23T04:10:23.000Z</published>
-    <updated>2020-12-05T16:29:43.485Z</updated>
-    
-    <content type="html"><![CDATA[<p>在本学期的《感知与人机交互》小组课程实验中，我选择的是之前从未接触过的语音系统模块。从语音识别的基本原理开始了解，分帧、音素、状态网络训练等概念的学习让我对现在的语音技术有了一定的了解；搭建完整个语音交互系统后，对现阶段已经投入市场运行的一些智能交互系统也有了更深刻的认识，诸如火车站购票系统、医院挂号系统、淘宝智能客服、车载语音助手等等也已不再神秘。</p><ul><li>主要使用：百度语音识别 API + 百度语音合成 API + 百度 UNIT 理解交互平台</li><li>工作环境：Ubuntu 18.04 + ROS melodic + Python2</li><li>3rd party: requests, pyaudio, python-vlc</li></ul><p>查阅 ROS 官网 1 后可以看到，ROS 一共提供了五个语音识别库（Audio / Speech Recognition）：baidu_speech、hark、pocketsphinx、rospeex、ROSECHO (A Chinese Smart Speaker based on IFLYOS)。综合考虑中文性能、易用性后选择了百度提供的 API。</p><p>为了实现较“高级”的人机交互，也尝试了一些智能交互类型的 API，如图灵机器人、百度 UNIT 平台等。由于图灵机器人免费调用的次数非常有限，而且缺少自定义功能，所以最终的选择是百度 UNIT。</p><p>为了和实验主线程通信，有如下结构示意图。其中方形是主线程话题，圆形是语音模块节点，虚线表示传输的是使能信号，实线是带有具体信息的信号。</p><center><img src="https://s1.ax1x.com/2020/05/17/Y2Vf0J.jpg" width="80%"><br>流程图</center><br><p>主要流程是：</p><ul><li>订阅主线程 topic Talk_Msg，得到主线程通知之后，开始本次对话。</li><li>调用 TTS 引擎发出提问，播放结束后启用 STT 引擎解读用户语音。</li><li>同时调用 UNIT API，获取本次对话的 session ID 用于服务器保持本次对话内容，实现多轮对话。</li><li>重复对话直到获取意图完成，发布 topic Listen_Msg，内容为语音识别的结果，即姓名+物品。</li></ul><h2><span id="语音合成与识别">语音合成与识别</span><a href="#语音合成与识别" class="header-anchor">#</a></h2><p>处理好网络问题后，顺利安装依赖库文件并 clone 百度语音 API 的相关 demo，初次运行时提示 print 附近有报错，怀疑是之前安装的 Anaconda 与 ROS 下的 Python 版本冲突，于是把。bashrc 里面的 anaconda 先注释了，确保调用 python2，暂时解决这个兼容性问题。</p><p>此 API 需要在百度开发平台先注册功能，并获取相应的 API Key、Secret Key。首先测试百度语音合成 API 的功能，使用命令<code>rostopic pub /speak_string std_msgs/String &#39;你好世界&#39;</code>向 TTS 节点发送 string 类型信息，成功调用了 TTS 引擎，扬声器正确发出声音。此外，API 还支持不同的语速、音调、音量、性别，可以按需进行调整。但是需要注意的是语音合成的音量非常轻，默认参数下很难听到，导致一开始误以为合成失败，当然也可能是个人硬件问题。</p><p>然后是语音识别部分，第一次启动提示报错：<code>Value for header &#123;Content-length: 183&#125; must be of type str or bytes, not &lt;type &#39;int&#39;&gt;</code>。之后在 GitHub issues4 找到了答案，应该是百度 API 的格式有变化，rate 参数的类型从 int 变成了 string，检查百度官方文档后可以确定这一问题，修改即可。</p><p>之后 demo 程序可以正常启动，按照流程说话采集后陆续报了如下几个错误代码，但都在官方接口文档 5 上找到了解答。</p><table border="1" align="center">    <tr align="center">        <th>错误码</th>        <th>含义</th>        <th>一般解决方法</th>    </tr>    <tr align="center">        <td>3301</td>        <td>识别结果实际为空</td>        <td>可能是音频质量过差，不清晰，或者是空白音频。 有时也可能是 pcm 填错采样率。如 16K 采样率的 pcm 文件，填写的 rate 参数为 8000。</td>    </tr>    <tr align="center">        <td>3314</td>        <td>音频长度过短</td>        <td>用户的 len 参数小于等于 4。</td>    </tr></table><br><!--: 旧版本表格 journal 主题默认样式不显示边框|错误码|含义|一般解决方法||:-:|---|---||3301|识别结果实际为空|可能是音频质量过差，不清晰，或者是空白音频。 有时也可能是 pcm 填错采样率。如 16K 采样率的 pcm 文件，填写的 rate 参数为 8000。||3314|音频长度过短|用户的 len 参数小于等于 4。|--><p>然后测试 STT 节点功能，启动后响应回车键，麦克风开始录音，当录制到的声音小于一定阈值时，停止录音，并可以将音频文件发送至云端进行识别，最后将结果返回客户端。</p><p>实际的语音识别效果受到多种因素影响，其中录音环境是最重要的一个因素，当人声清晰、无背景噪音的时候，识别效果非常好，若存在背景噪音，例如电脑风扇声等，都会很大程度地影响识别效果。</p><p>此外，待识别的语句如果存在生僻字，识别效果也会打折扣。针对生僻专有名词的场景，百度提供了自定义词库来快速提升对应名词准确率，或者可以通过语音自训练平台训练专属模型持续提升识别准确率。</p><p>值得一提的是，百度官方示例程序中，竟然出现了<code>simple_speek.py</code>这样的文件名，不知道是笔误还是审核疏忽。</p><h2><span id="智能交互">智能交互</span><a href="#智能交互" class="header-anchor">#</a></h2><p>UNIT 是百度的一个智能交互理解平台，期望实现“面向任务”的理解与交互能力，这里的一项任务可以是解答用户的某个问题、执行用户指令，甚至通过一系列交互引导用户达成某项需求，其官方使用场景有：酒店语音助手、儿童故事机、火车票场景、查天气机器人等。</p><center><img src="https://s1.ax1x.com/2020/05/17/Y2VIt1.jpg" width="80%"><br>百度 UNIT 结构</center><br><p>这次在 UNIT 上搭建了一个“你要拿什么”的技能，对应设置了 name 和 object 两个词槽，并上传了自定义字典。配置了不同词槽的澄清话术，并设置了对话模板，然后导入样本集进行训练，最后顺利部署这一技能，获取到技能 ID。</p><p>接着测试 API 功能，按照官方文档给出的 json 文件格式写好数据包，请求参数中有一项 query_info→source，请求信息来源，可选值：”ASR”,”KEYBOARD”。ASR 为语音输入，KEYBOARD 为键盘文本输入。针对 ASR 输入，UNIT 平台内置了纠错机制，会尝试解决语音输入中的一些常见错误。由于之前已经单独配置了语音合成与识别节点，所以这里就先使用文本输入。</p><p>配置好 API Key、Secret Key、机器人编号、技能编号之后，在 ROS 下进行相应的 API 测试，整理完节点之间的逻辑关系后设置了几个话题：/UNIT_Listen、/speak_string、/TTS_LastWord，配合自己模拟的主线程进行测试。实际测试结果是多轮对话一直失败，服务器返回的 session-ID 一直无法保持。</p><p>后来使用 Ubuntu 下的网页 API 测试工具 Postman 进行本地 API 调试，可以看到 UNIT 平台正常返回了对话数据，手动保存返回的 session ID 之后，加入到发送的 json 中，可以成功实现多轮对话的功能。</p><center><img src="https://s1.ax1x.com/2020/05/17/Y2V5kR.png" width="100%"><br>Postman</center><br><p>因此开始仔细对比两边的 json 数据包，最后发现是 Python 中编写 json 格式字符串时，没有注意转义符与换行符，json 字段中需要保留的双引号存在嵌套的情况，没有特殊处理导致有效内容被转义了，于是数据包发送失败。</p><p>由于对 json 文件格式、Python 语法不熟悉，这个问题花费了相当长的时间，使用了 API 测试工具 Postman 之后提高了工作效率，也更容易地发现了 bug 所在。修复之后重新开始测试，最终效果基本能到达预期要求。</p><center><img src="https://s1.ax1x.com/2020/05/17/Y2Vh79.png" width="70%"><br>效果图</center><br><p>以下是三个实际运行的案例文字版，分别表现了正常获取意图、重复澄清、整句获取三种场景功能。</p><blockquote><p>发送消息：请问有什么可以帮你？<br>正在录音。..<br>收到消息：帮我拿杯快乐水。<br>回复消息：你叫什么名字<br>正在录音。..<br>收到消息：我叫小明。<br>获取意图：小明想要可乐。明白了，马上就去拿。</p></blockquote><blockquote><p>发送消息：请问有什么可以帮你？<br>正在录音。..<br>收到消息：龟龟，帮我拿个东西。<br>回复消息：不好意思，需要我帮你拿什么<br>正在录音。..<br>收到消息：水杯。<br>回复消息：你叫什么名字<br>正在录音。..<br>收到消息：张三。<br>获取意图：张三想要水杯。明白了，马上就去拿。</p></blockquote><blockquote><p>发送消息：请问有什么可以帮你？<br>正在录音。..<br>收到消息：我是玛丽，帮我拿一包泡面。<br>获取意图：玛丽想要方便面。明白了，马上就去拿。</p></blockquote><p>那么最后，总结一下，本次实验调试并接入百度语音合成与识别 API，配置相关参数；在百度 UNIT 理解交互平台上搭建对话技能，对应要求建立相应字典，完成较高容错率的交互功能；整合上述两部分功能并与主线程通信，学习了一些调试技巧。本次涉及到的语音部分代码已托管在 <a href="https://github.com/sszxc/TurtyTalk">Github 平台</a>。</p><h2><span id="参考资料">参考资料</span><a href="#参考资料" class="header-anchor">#</a></h2><ol><li><a href="http://wiki.ros.org/Sensors">Sensors supported by ROS</a></li><li><a href="https://blog.csdn.net/seeseeatre/article/details/79228816">ROS Kinetic 使用 PocketSphinx 进行语音识别</a></li><li><a href="http://doc.tianbot.com/rosecho/1586400">ROSECHO 中文 ROS 语音交互模块</a></li><li><a href="https://github.com/DinnerHowe/baidu_speech/issues/2">baidu_speech Errors in Kinetic</a></li><li><a href="http://wiki.ros.org/baidu_speech">ROS 百度语音 API 官方文档</a></li><li><a href="https://www.ncnynl.com/archives/201905/3035.html">ROS 与语音交互教程-ROS 下使用百度语音 baidu_speech 识别</a></li><li><a href="https://ai.baidu.com/ai-doc/UNIT/Zk38h1vl4">UNIT 技能对话 API 文档</a></li><li><a href="https://blog.csdn.net/qq_38288618/article/details/79111564">ros 使用百度 UNIT 快速搭建机器人对话系统</a></li><li><a href="https://ai.baidu.com/forum/topic/show/870054?&pageNo=1">技能对话接口，API 多轮对话的实现</a></li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;在本学期的《感知与人机交互》小组课程实验中，我选择的是之前从未接触过的语音系统模块。从语音识别的基本原理开始了解，分帧、音素、状态网络训练等概念的学习让我对现在的语音技术有了一定的了解；搭建完整个语音交互系统后，对现阶段已经投入市场运行的一些智能交互系统也有了更深刻的认识，</summary>
-      
-    
-    
-    
-    <category term="项目" scheme="https://sszxc.net/about/index.html/categories/%E9%A1%B9%E7%9B%AE/"/>
-    
-    
-    <category term="语音" scheme="https://sszxc.net/about/index.html/tags/%E8%AF%AD%E9%9F%B3/"/>
-    
-    <category term="Python" scheme="https://sszxc.net/about/index.html/tags/Python/"/>
-    
-    <category term="ROS" scheme="https://sszxc.net/about/index.html/tags/ROS/"/>
     
   </entry>
   
