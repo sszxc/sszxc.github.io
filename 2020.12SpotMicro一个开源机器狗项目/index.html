@@ -8,7 +8,14 @@
 <meta charset="utf-8">
 <meta name="X-UA-Compatible" content="IE=edge">
 <meta name="author" content="Henry">
-<meta name="description" content="
+<meta name="description" content=" 
+  
+document.getElementById(&#34;spkj&#34;).style.height=document.getElementById(&#34;spkj&#34;).scrollWidth*0.76+&#34;px&#34;;
+
+
+
+
+
 
 
 写在最前
@@ -17,12 +24,7 @@
 树莓派
 舵机校准
 功能复现
-改进与提升
-
-
-
-写在最前#最早看到这个项目已经是大半年前了，直到八月份看了这篇推送——用树莓派 DIY 波士顿机器狗，帮你省下 50 万：教程开源，人人皆可上手，才真正下定决心——做一个自己的机器狗。
-这次选择的硬件方案...">
+改进...">
 <meta name="keywords" content="">
 
     <meta charset="utf-8">
@@ -32,7 +34,7 @@
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?5816097">
+<link rel="stylesheet" href="/css/journal.css?44000401">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -90,12 +92,12 @@
 
             
             
-            <a class="a-block drawer-menu-item false" href="/archives/index.html">
-                Archives
-            </a>
-            
             <a class="a-block drawer-menu-item false" href="/about/index.html">
                 About
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/archives/index.html">
+                Archives
             </a>
             
             <a class="a-block drawer-menu-item false" href="/gallery/index.html">
@@ -145,12 +147,12 @@
 
         
         
-        <a class="a-block nav-link-item false" href="/archives/index.html">
-            Archives
-        </a>
-        
         <a class="a-block nav-link-item false" href="/about/index.html">
             About
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/archives/index.html">
+            Archives
         </a>
         
         <a class="a-block nav-link-item false" href="/gallery/index.html">
@@ -236,7 +238,14 @@
     
             <div class="post-body-wrapper">
                 <div class="post-body">
-                    <!-- toc -->
+                    <iframe id="spkj" src="https://player.bilibili.com/player.html?aid=756216894&bvid=BV1fr4y1T7h8&cid=282922338&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="100%"> </iframe>
+<script type="text/javascript">  
+document.getElementById("spkj").style.height=document.getElementById("spkj").scrollWidth*0.76+"px";
+</script>
+
+<br>
+
+<!-- toc -->
 
 <ul>
 <li><a href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%89%8D">写在最前</a></li>
@@ -249,9 +258,8 @@
 </ul>
 <!-- tocstop -->
 
-<h1><span id="写在最前">写在最前</span><a href="#写在最前" class="header-anchor">#</a></h1><p>最早看到这个项目已经是大半年前了，直到八月份看了这篇推送——<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/rM3SkUiQIxsGz9MNIg1skQ">用树莓派 DIY 波士顿机器狗，帮你省下 50 万：教程开源，人人皆可上手</a>，才真正下定决心——做一个自己的机器狗。</p>
+<h1><span id="写在最前">写在最前</span><a href="#写在最前" class="header-anchor">#</a></h1><p>最早看到这个项目已经是大半年前了，一直蠢蠢欲动，直到八月份看了这篇推送——<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/rM3SkUiQIxsGz9MNIg1skQ">用树莓派 DIY 波士顿机器狗，帮你省下 50 万：教程开源，人人皆可上手</a>，才真正下定决心——做一个自己的机器狗。</p>
 <p>这次选择的硬件方案是 <a target="_blank" rel="noopener" href="https://gitlab.com/custom_robots/spotmicroai/3dprinting/-/tree/master/User%20Nahuel%20Taibo%20models/v2.1">来自 Nahuel Taibo 的 modifications v2.1</a>；参考的软件方案是来自 <a target="_blank" rel="noopener" href="https://github.com/mike4192/spotMicro">来自 mike4192 的 spotMicro</a>。</p>
-<p>本文包括树莓派上手、电路设计与焊接、3D 打印、SpotMicro 功能复现，希望对你有帮助。</p>
 <p>需要的材料清单：</p>
 <ul>
 <li>树莓派/stm32 控制器</li>
@@ -266,9 +274,10 @@
 <li>防滑贴/减震垫（可选）</li>
 <li>迷你路由器（可选）</li>
 </ul>
-<h1><span id="3d-打印与组装">3D 打印与组装</span><a href="#3d-打印与组装" class="header-anchor">#</a></h1><p>机器狗的机械结构部分参考了 <a target="_blank" rel="noopener" href="https://gitlab.com/custom_robots/spotmicroai/3dprinting/-/tree/master/User%20Nahuel%20Taibo%20models/v2.1">来自 Nahuel Taibo 的 modifications v2.1</a>，作者主要是修改了几个连接，加了身体的强度。在 Gitlab 里逛逛会发现这个社区里有很多爱好者分享了自己的修改经验，很感动。</p>
-<p>下载到所有零件的 STL 文件后，只要自己切片一下就可以开始打了。原版是黄黑配色，这次做的是黑白的，可以提前在 KeyShot 里渲染一下效果选颜色。整个打印工作从 Nov.20th 开始，断断续续一直到 Dec.6th 基本完成，期间也走了不少弯路。打完之后也可以打磨抛光一下。</p>
-<p>组装任务相对就很简单了，需要注意的是舵机安装的时候要上电确认一下关节活动空间，这时候准备一个带旋钮的舵机测试板就很有帮助了。</p>
+<p>本文包括树莓派上手、电路设计、3D 打印、SpotMicro 功能复现，希望对你有帮助。</p>
+<h1><span id="3d-打印与组装">3D 打印与组装</span><a href="#3d-打印与组装" class="header-anchor">#</a></h1><p>机器狗的机械结构部分参考了 <a target="_blank" rel="noopener" href="https://gitlab.com/custom_robots/spotmicroai/3dprinting/-/tree/master/User%20Nahuel%20Taibo%20models/v2.1">来自 Nahuel Taibo 的 modifications v2.1</a>，作者主要是修改了几个连接，加了身体的强度。在 Gitlab 逛逛会发现这个社区里有很多爱好者在分享自己的经验，“Open Source, Open Mind”。</p>
+<p>下载到所有零件的 STL 文件后，只要自己切片一下就可以开始打了。原版是黄黑配色，这次做的是黑白的，可以提前在 KeyShot 里渲染一下，看看效果图选颜色。整个打印工作从 Nov.20th 开始，断断续续一直到 Dec.6th 基本完成，期间走了不少弯路，关于调平、支撑、翘边之类的，下次整理整理。</p>
+<p>组装任务相对就简单了，基本就是各种长度的 M3 螺丝。需要注意的是舵机安装的时候要上电确认一下关节活动空间，这时候如果有一个带旋钮的舵机测试板会很有帮助。</p>
 <h1><span id="电路设计">电路设计</span><a href="#电路设计" class="header-anchor">#</a></h1><p>电路部分，主要就是降压稳压的功能，需要注意的问题是树莓派要求的功率不小，用普通的 5V1A 适配器供电时都会提示供电不足。这次的电路拓扑图如下：</p>
 <center>
 <img src="https://s3.ax1x.com/2021/01/09/sQgcuD.png" width="80%">
@@ -279,14 +288,15 @@
 
 <p>关于为什么功率电路和控制器芯片不用同一个降压模块，解释是：主要是电机是一个感性的负载，电机在转动的时候会有反向冲击感应电动势，这对于 mcu 芯片来说是绝对不行的。<br>来自：<a target="_blank" rel="noopener" href="https://www.icxbk.com/ask/detail/2809.html">请教个树莓派的供电问题</a></p>
 <h1><span id="树莓派">树莓派</span><a href="#树莓派" class="header-anchor">#</a></h1><p>树莓派是一个基于 Linux 的单片机电脑，可玩性很高，这次将使用树莓派 3B 作为机器狗控制器。</p>
-<p>初次上手，先玩玩树莓派官方推荐的 Raspbian 系统。（这一步也可以跳过）</p>
-<p>参考教程 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/59027897">如何给树莓派安装操作系统</a> 以及 <a target="_blank" rel="noopener" href="https://www.waveshare.net/study/article-594-1.html">树莓派系列教程 1：人生若只如初见</a>。可以在 <a target="_blank" rel="noopener" href="https://www.raspberrypi.org/downloads/noobs/">官网</a> 下载 NOOBS 离线安装版，可以先下种子，方便加速。启动后会显示 NOOBS 的界面，进行系统安装。</p>
+<p>初次上手，先玩了玩树莓派官方推荐的 Raspbian 系统。（这一步也可以跳过）</p>
+<p>参考教程 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/59027897">如何给树莓派安装操作系统</a> 以及 <a target="_blank" rel="noopener" href="https://www.waveshare.net/study/article-594-1.html">树莓派系列教程 1：人生若只如初见</a>。在 <a target="_blank" rel="noopener" href="https://www.raspberrypi.org/downloads/noobs/">官网</a> 下载 NOOBS 离线安装版，可以先下种子，方便加速。启动后会显示 NOOBS 的界面，进行系统安装。</p>
 <p>Raspbian 系统可以安装 xrdp 服务，在局域网下使用 Win10 的“远程桌面连接”访问。注意在远程桌面模式好像不能关机，只能在命令行里输入<code>sudo poweroff</code>来安全关机。</p>
 <p>由于 <a target="_blank" rel="noopener" href="https://github.com/mike4192/spotMicro">mike4192 的这个仓库</a> 是建立在 Linux 上的 ROS Kinetic 环境中的，所以要从官方的树莓派专用系统 Raspbian 转到支持 ROS 的 Ubuntu 系统。预安装了 ROS 的镜像可以在 <a target="_blank" rel="noopener" href="https://downloads.ubiquityrobotics.com/pi.html">ubiquity robotics</a> 找到，然后使用 Etcher 工具直接将镜像写入 SD 卡就可以启动了。</p>
-<h1><span id="舵机校准">舵机校准</span><a href="#舵机校准" class="header-anchor">#</a></h1><p>连接好所有供电以及树莓派和驱动板之间的 I2C 线缆后，可以感受到狗狗已经跃跃欲试了。接下来一步是舵机校准，这里可以参考作者给出的“servo_calibration.md”文件，调整每一个舵机的偏移量，完成一个“servo_calibration_spreadsheet.ods”表格，把数据写入配置文件，完成。<br><code>nano ~/catkin_ws/src/spot_micro_motion_cmd/config/spot_micro_motion_cmd.yaml </code></p>
-<h1><span id="功能复现">功能复现</span><a href="#功能复现" class="header-anchor">#</a></h1><p>注意编译的时候要把 I2C 驱动板连上，否则会提示<code>error: ‘i2c_smbus_read_byte_data’ was not declared in this scope</code></p>
-<p>直接<code>rosrun</code>可能会找不到可执行文件，因为脚本是 Python 写的，这时候需要<code>chmod +x</code>给一下权限。</p>
-<p>最后汇总一下常用命令：</p>
+<p>系统搞定之后就是<code>git clone</code>以及 ROS 编译。注意编译的时候要把 I2C 驱动板连上，否则会提示<code>error: ‘i2c_smbus_read_byte_data’ was not declared in this scope</code></p>
+<h1><span id="舵机校准">舵机校准</span><a href="#舵机校准" class="header-anchor">#</a></h1><p>连接好所有供电以及树莓派和驱动板之间的 I2C 线缆后，可以感受到狗狗已经跃跃欲试了。接下来一步是舵机校准，这里可以参考作者给出的“servo_calibration.md”文件，找个平台把狗夹起来，调整每一个舵机的偏移量，完成一个“servo_calibration_spreadsheet.ods”表格，把数据写入配置文件，完成。<br><code>nano ~/catkin_ws/src/spot_micro_motion_cmd/config/spot_micro_motion_cmd.yaml </code></p>
+<h1><span id="功能复现">功能复现</span><a href="#功能复现" class="header-anchor">#</a></h1><p>到此安装完成，可以开始动了，具体操作直接看作者代码注释就好。</p>
+<p>需要注意直接<code>rosrun</code>可能会找不到可执行文件，因为脚本是 Python 写的，这时候需要<code>chmod +x</code>给一下权限。</p>
+<p>这里简单汇总一下常用命令：</p>
 <pre><code># 启动驱动板
 rosrun i2cpwm_board i2cpwm_board
 # 舵机控制
@@ -297,11 +307,9 @@ nano ~/catkin_ws/src/spot_micro_motion_cmd/config/spot_micro_motion_cmd.yaml
 roslaunch spot_micro_motion_cmd spot_micro_motion_cmd.launch
 # 遥控
 rosrun spot_micro_keyboard_command spotMicroKeyboardMove.py</code></pre>
-<p style="text-align:center;font-size:30px;">『还在施工中~』</p>
-
-<h1><span id="改进与提升">改进与提升</span><a href="#改进与提升" class="header-anchor">#</a></h1><p>原作者模型中的足底也是直接用的打印件，测试之后发现效果一般，这次使用的是一种防滑贴，裁剪改造了一下，重新打了一个半圆柱形的足贴在底面，效果不错。</p>
-<p>之前的调试一直都是在室内局域网下完成的，为了让狗跑得更自由，可以在身上背一个迷你路由器。这次选的是一款能用 USB 供电的路由器，绑定一下树莓派的 MAC 地址和 IP，连接到局域网的设备就都能 SSH 访问它了。路由器和树莓派可以用有线连接，这样树莓派的无线网卡可以同时连接到互联网，互不冲突。</p>
-<p>基于这个平台，或许还可以加 SLAM、视觉识别等等模块。受限于舵机性能，这款四足机器狗最终可能只能是一个玩具，但这个项目确实激发了自己对四足的兴趣。</p>
+<h1><span id="改进与提升">改进与提升</span><a href="#改进与提升" class="header-anchor">#</a></h1><p>原作者模型中的足底也是直接用的打印件，测试之后发现效果一般，后来找到一种防滑贴，裁剪改造了一下，效果不错。</p>
+<p>之前的调试一直都是在室内局域网下完成的，为了扩展一下场景，让狗跑得更自由，可以在身上背一个迷你路由器。这次选的是一款能用 USB 供电的路由器，只要绑定一下树莓派的 MAC 地址和 IP，连接到局域网的设备就都能 SSH 访问它了。路由器和树莓派可以用有线连接，这样树莓派的无线网卡可以同时连接到互联网，互不冲突。</p>
+<p>受限于舵机性能，这只四足机器狗可能更偏玩具属性，但确实激发了自己对四足的兴趣。</p>
 <p>其他一些参考资料：</p>
 <p>逆运动学参考论文：Sen, Muhammed Arif &amp; Bakircioglu, Veli &amp; Kalyoncu, Mete. (2017). Inverse Kinematic Analysis Of A Quadruped Robot. International Journal of Scientific &amp; Technology Research. 6.</p>
 <p>Spot Micro AI 社区：<a target="_blank" rel="noopener" href="https://gitlab.com/custom_robots/spotmicroai">https://gitlab.com/custom_robots/spotmicroai</a></p>
@@ -355,7 +363,7 @@ rosrun spot_micro_keyboard_command spotMicroKeyboardMove.py</code></pre>
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?9251523"></script>
+<script src="/js/journal.js?16561319"></script>
 
 
 <!-- Valine 评论标记 -->    
