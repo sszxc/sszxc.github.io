@@ -30,7 +30,7 @@ OSI Model
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?47060141">
+<link rel="stylesheet" href="/css/journal.css?18811505">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -92,12 +92,12 @@ OSI Model
                 About
             </a>
             
-            <a class="a-block drawer-menu-item false" href="/archives/index.html">
-                Archives
-            </a>
-            
             <a class="a-block drawer-menu-item false" href="/gallery/index.html">
                 Gallery
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/archives/index.html">
+                Archives
             </a>
             
 
@@ -147,12 +147,12 @@ OSI Model
             About
         </a>
         
-        <a class="a-block nav-link-item false" href="/archives/index.html">
-            Archives
-        </a>
-        
         <a class="a-block nav-link-item false" href="/gallery/index.html">
             Gallery
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/archives/index.html">
+            Archives
         </a>
         
 
@@ -329,10 +329,37 @@ OSI Model
 <p>ShadowSocksR(SSR) 功能详细介绍及使用教程<br><a target="_blank" rel="noopener" href="https://www.quchao.net/ShadowsocksR.html">https://www.quchao.net/ShadowsocksR.html</a></p>
 </blockquote>
 <p>全局模式会开启系统 HTTP 代理，你的所有 HTTP 上网流量将会通过 SSR 代理。<br>注意：仅能代理 HTTP 流量，即浏览网页的流量——例如浏览器浏览网页，或者某些应用程序的应用内网页（比如 QQ 的群文件、群公告这些就是），或者某些比较奇葩的使用 HTTP 方式进行通信的程序（比如 Steam 版的影之诗）。<br>如果要代理应用程序，请详见 Windows -SSTap 教程。</p>
-<h1><span id="如何为-git-设置代理">如何为 Git 设置代理？</span><a href="#如何为-git-设置代理" class="header-anchor">#</a></h1><p><a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000000118837">https://segmentfault.com/q/1010000000118837</a><br>Git 目前支持的三种协议 <code>git://</code>、<code>ssh://</code> 和 <code>http://</code>，其代理配置各不相同：<code>core.gitproxy</code> 用于 <code>git://</code> 协议，<code>http.proxy</code> 用于 <code>http://</code> 协议，<code>ssh://</code> 协议的代理需要配置 ssh 的 <code>ProxyCommand</code> 参数。</p>
-<h1><span id="git">git</span><a href="#git" class="header-anchor">#</a></h1><h1><span id="socks5">socks5</span><a href="#socks5" class="header-anchor">#</a></h1><h1><span id="参考资料">参考资料</span><a href="#参考资料" class="header-anchor">#</a></h1><p>计算机网络笔记 Part1 概述<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45067603/article/details/106974036">https://blog.csdn.net/weixin_45067603/article/details/106974036</a></p>
+<h1><span id="socks5">socks5</span><a href="#socks5" class="header-anchor">#</a></h1><blockquote>
+<p>实现SOCKS5协议<br><a target="_blank" rel="noopener" href="https://yuerblog.cc/2019/06/09/%E5%AE%9E%E7%8E%B0socks5%E5%8D%8F%E8%AE%AE/">https://yuerblog.cc/2019/06/09/%E5%AE%9E%E7%8E%B0socks5%E5%8D%8F%E8%AE%AE/</a></p>
+</blockquote>
+<p>代理为什么需要一个协议？</p>
+<p>假设我们是TCP通讯。那么A首先要TCP连接B，B接着TCP连接C，这样就形成了一个数据的代理通路，可以双向流通数据了。但是呢，我们A不仅要访问C啊，还要访问D、E、F等等。作为代理的B，怎么知道A要连的是C或E或F的哪个目标呢？因为这个原因，A和B之间必须要有一个协商的过程，其核心目的：A要告诉B，希望连接的目标地址是什么。所以，这种TCP代理是需要协议的，因此SOCKS5就是做这个事情的，可想而知它并不是什么复杂的事情。同时我们也要意识到，SOCKS5协议其实对应用层协议（例如HTTP）是无感的，它是4层的代理协议。</p>
+<h1><span id="ssh">SSH</span><a href="#ssh" class="header-anchor">#</a></h1><blockquote>
+<p>彻底搞懂“公钥加密算法RSA”的工作原理<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV14y4y1272w?from=search&amp;seid=16919005021128326986">https://www.bilibili.com/video/BV14y4y1272w?from=search&amp;seid=16919005021128326986</a></p>
+</blockquote>
+<p>模运算 单向函数<br>大数无法质因数分解</p>
+<blockquote>
+<p>数字签名是什么？<br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html">http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html</a></p>
+</blockquote>
+<blockquote>
+<p>SSH原理与运用（一）：远程登录<br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html">http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html</a></p>
+</blockquote>
+<p>SSH之所以能够保证安全，原因在于它采用了公钥加密。</p>
+<p>整个过程是这样的：（1）远程主机收到用户的登录请求，把自己的公钥发给用户。（2）用户使用这个公钥，将登录密码加密后，发送回来。（3）远程主机用自己的私钥，解密登录密码，如果密码正确，就同意用户登录。</p>
+<h1><span id="git">Git</span><a href="#git" class="header-anchor">#</a></h1><blockquote>
+<p>论git中使用https和ssh协议的区别<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/jfkidear/article/details/90376815">https://blog.csdn.net/jfkidear/article/details/90376815</a></p>
+</blockquote>
+<p>git可以使用四种主要的协议来传输资料: 本地协议（Local），HTTP 协议，SSH（Secure Shell）协议及 git 协议。其中，本地协议由于目前大都是进行远程开发和共享代码所以一般不常用，而git协议由于缺乏授权机制且较难架设所以也不常用。最常用的便是SSH和HTTP(S)协议。git关联远程仓库可以使用http协议或者ssh协议。</p>
+<blockquote>
+<p>如何为 Git 设置代理？<br><a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000000118837">https://segmentfault.com/q/1010000000118837</a></p>
+</blockquote>
+<p>Git 目前支持的三种协议 <code>git://</code>、<code>ssh://</code> 和 <code>http://</code>，其代理配置各不相同：<code>core.gitproxy</code> 用于 <code>git://</code> 协议，<code>http.proxy</code> 用于 <code>http://</code> 协议，<code>ssh://</code> 协议的代理需要配置 ssh 的 <code>ProxyCommand</code> 参数。</p>
+<h1><span id="参考资料">参考资料</span><a href="#参考资料" class="header-anchor">#</a></h1><p>计算机网络笔记 Part1 概述<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45067603/article/details/106974036">https://blog.csdn.net/weixin_45067603/article/details/106974036</a></p>
 <p>为什么家里要有公网 IP[公网 IP 光猫设置 动态域名解析]<br><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1483055">https://cloud.tencent.com/developer/article/1483055</a></p>
 <p>墙妈妈<br><a target="_blank" rel="noopener" href="https://www.wallmama.com/">https://www.wallmama.com/</a></p>
+<p>关于Shadowsocks的小白常见问题 总结篇<br><a target="_blank" rel="noopener" href="https://doubibackup.com/6r9z6_wi-2.html">https://doubibackup.com/6r9z6_wi-2.html</a></p>
+<p>推荐一个可以在地图上显示TraceRoute（路由追踪）路径信息的软件<br><a target="_blank" rel="noopener" href="https://doubibackup.com/cvdqb0y7.html">https://doubibackup.com/cvdqb0y7.html</a></p>
+<p>Shadowsocks 端口已被占用的错误解决办法<br><a target="_blank" rel="noopener" href="https://doubibackup.com/z2a4lk3l-5.html">https://doubibackup.com/z2a4lk3l-5.html</a></p>
 
                 </div>
             </div>
@@ -377,7 +404,7 @@ OSI Model
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?33531421"></script>
+<script src="/js/journal.js?28459695"></script>
 
 
 <!-- Valine 评论标记 -->    
