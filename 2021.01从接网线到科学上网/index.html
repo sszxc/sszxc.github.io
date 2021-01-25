@@ -30,7 +30,7 @@ OSI Model
     <meta name="renderer" content="webkit">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?18811505">
+<link rel="stylesheet" href="/css/journal.css?70715429">
 
 <script src="/js/loadCSS.js"></script>
 <script>
@@ -92,12 +92,12 @@ OSI Model
                 About
             </a>
             
-            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
-                Gallery
-            </a>
-            
             <a class="a-block drawer-menu-item false" href="/archives/index.html">
                 Archives
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
+                Gallery
             </a>
             
 
@@ -147,12 +147,12 @@ OSI Model
             About
         </a>
         
-        <a class="a-block nav-link-item false" href="/gallery/index.html">
-            Gallery
-        </a>
-        
         <a class="a-block nav-link-item false" href="/archives/index.html">
             Archives
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/gallery/index.html">
+            Gallery
         </a>
         
 
@@ -286,7 +286,17 @@ OSI Model
 <blockquote>
 <p>【原创】关于 DNS 不得不说的一些事<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/rjzheng/p/11395695.html">https://www.cnblogs.com/rjzheng/p/11395695.html</a></p>
 </blockquote>
-<p>浏览器中输入URL到返回页面的全过程(俗称天龙八步)：<br>1.根据域名，进行DNS域名解析；<br>2.拿到解析的IP地址，建立TCP连接；<br>3.向IP地址，发送HTTP请求；<br>4.服务器处理请求；<br>5.返回响应结果；<br>6.关闭TCP连接；<br>7.浏览器解析HTML；<br>8.浏览器布局渲染；</p>
+<p>浏览器中输入 URL 到返回页面的全过程（俗称天龙八步）：</p>
+<ol>
+<li>根据域名，进行 DNS 域名解析；</li>
+<li>拿到解析的 IP 地址，建立 TCP 连接；</li>
+<li>向 IP 地址，发送 HTTP 请求；</li>
+<li>服务器处理请求；</li>
+<li>返回响应结果；</li>
+<li>关闭 TCP 连接；</li>
+<li>浏览器解析 HTML；</li>
+<li>浏览器布局渲染；</li>
+</ol>
 <h1><span id="127001">127.0.0.1</span><a href="#127001" class="header-anchor">#</a></h1><blockquote>
 <p>彻底明白 ip 地址，区分 localhost、127.0.0.1 和 0.0.0.0<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ad7cd1d5be45">https://www.jianshu.com/p/ad7cd1d5be45</a></p>
 </blockquote>
@@ -307,59 +317,76 @@ OSI Model
 <p>NAT、PAT、DMZ、端口映射、端口转发、UPNP<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/cyrus0w/p/13100332.html">https://www.cnblogs.com/cyrus0w/p/13100332.html</a></p>
 </blockquote>
 <p>NAT（网络地址转换方法）：</p>
-<p>允许一个整体机构以一个公用IP地址出现在Internet上。顾名思义，它是一种把内部私有网络地址（IP地址）NAT转发成合法公有网络IP地址的技术。随着接入Internet的计算机数量的不断猛增，IP地址资源也就愈加显得捉襟见肘，显然，这样少的IP地址根本无法满足网络用户的需求，于是也就产生了NAT技术。虽然NAT可以借助于某些代理服务器来实现，但考虑到运算成本和网络性能，很多时候都是在路由器上来实现的。NAT不仅能解决IPv4地址不足问题，还可以为私网提供了安全保障。<br>NAT包括：静态NAT、动态NAT、ALG(应用程序级网关技术)、PAT（NAPT，即网络地址端口转换），这里着重解释下PAT。</p>
+<p>允许一个整体机构以一个公用 IP 地址出现在 Internet 上。顾名思义，它是一种把内部私有网络地址（IP 地址）NAT 转发成合法公有网络 IP 地址的技术。随着接入 Internet 的计算机数量的不断猛增，IP 地址资源也就愈加显得捉襟见肘，显然，这样少的 IP 地址根本无法满足网络用户的需求，于是也就产生了 NAT 技术。虽然 NAT 可以借助于某些代理服务器来实现，但考虑到运算成本和网络性能，很多时候都是在路由器上来实现的。NAT 不仅能解决 IPv4 地址不足问题，还可以为私网提供了安全保障。<br>NAT 包括：静态 NAT、动态 NAT、ALG（应用程序级网关技术）、PAT（NAPT，即网络地址端口转换），这里着重解释下 PAT。</p>
 <p>DMZ（隔离区）：</p>
-<p>一般为外网提供服务的服务器（如公司的对外宣传网站)很容易被黑客攻击。所以，如果把对外提供服务的服务器放到企业内网，一旦被攻陷入侵，黑客就可以利用这台机器（肉机）做跳版，通过局域网的漏洞与共享等来攻克其他内网机器。因此有必要建立一个特殊的区域，把这个区域起名为DMZ，即隔离区，或者叫非军事化区。如果把本文中的“端口映射”看完，你会发现DMZ实际就是“多个端口映射组合”。那为什么不把这些对外网提供服务的机器单独弄一条线连到公网呢？因为一般中小企业都仅有一个出口。</p>
-<p>DMZ区要求：</p>
-<p>1.内网可以访问外网: 内网的用户显然需要自由地访问外网。在这一策略中，防火墙需要进行源地址转换。<br>2.内网可以访问DMZ: 此策略是为了方便内网用户使用和管理DMZ中的服务器。<br>3.外网不能访问内网: 很显然，内网中存放的是公司内部数据，这些数据不允许外网的用户进行访问。<br>4.外网可以访问DMZ: DMZ中的服务器本身就是要给外界提供服务的，所以外网必须可以访问DMZ。同时，外网访问DMZ需要由防火墙完成对外地址到服务器实际地址的转换。<br>5.DMZ不能访问内网: 很明显，如果违背此策略，则当入侵者攻陷DMZ时，就可以进一步进攻到内网的重要数据。<br>6.DMZ不能访问外网: 此条策略也有例外，比如DMZ中放置邮件服务器时，就需要访问外网，否则将不能正常工作。</p>
+<p>一般为外网提供服务的服务器（如公司的对外宣传网站）很容易被黑客攻击。所以，如果把对外提供服务的服务器放到企业内网，一旦被攻陷入侵，黑客就可以利用这台机器（肉机）做跳版，通过局域网的漏洞与共享等来攻克其他内网机器。因此有必要建立一个特殊的区域，把这个区域起名为 DMZ，即隔离区，或者叫非军事化区。如果把本文中的“端口映射”看完，你会发现 DMZ 实际就是“多个端口映射组合”。那为什么不把这些对外网提供服务的机器单独弄一条线连到公网呢？因为一般中小企业都仅有一个出口。</p>
+<p>DMZ 区要求：</p>
+<ol>
+<li>内网可以访问外网：内网的用户显然需要自由地访问外网。在这一策略中，防火墙需要进行源地址转换。</li>
+<li>内网可以访问 DMZ: 此策略是为了方便内网用户使用和管理 DMZ 中的服务器。</li>
+<li>外网不能访问内网：很显然，内网中存放的是公司内部数据，这些数据不允许外网的用户进行访问。</li>
+<li>外网可以访问 DMZ: DMZ 中的服务器本身就是要给外界提供服务的，所以外网必须可以访问 DMZ。同时，外网访问 DMZ 需要由防火墙完成对外地址到服务器实际地址的转换。</li>
+<li>DMZ 不能访问内网：很明显，如果违背此策略，则当入侵者攻陷 DMZ 时，就可以进一步进攻到内网的重要数据。</li>
+<li>DMZ 不能访问外网：此条策略也有例外，比如 DMZ 中放置邮件服务器时，就需要访问外网，否则将不能正常工作。</li>
+</ol>
 <p>应用场景：</p>
-<p>因为DMZ是将计算机全部公开显露在互联网上，也就是将一台内网机器所有端口全部映射出去，所以适合要映射的服务端口全部在一台内网机器上且数量较多的时候，一般用于企业服务器对外端口较多的场景。</p>
+<p>因为 DMZ 是将计算机全部公开显露在互联网上，也就是将一台内网机器所有端口全部映射出去，所以适合要映射的服务端口全部在一台内网机器上且数量较多的时候，一般用于企业服务器对外端口较多的场景。</p>
 <h1><span id="vlan">VLAN</span><a href="#vlan" class="header-anchor">#</a></h1><blockquote>
 <p>VLAN 基础知识<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35616289">https://zhuanlan.zhihu.com/p/35616289</a></p>
 </blockquote>
+<p>VLAN(Virtual LAN)，翻译成中文是“虚拟局域网”。LAN 可以是由少数几台家用计算机构成的网络，也可以是数以百计的计算机构成的企业网络。VLAN 所指的 LAN 特指使用路由器分割的网络——也就是广播域。</p>
 <h1><span id="dns-缓存污染">DNS 缓存污染</span><a href="#dns-缓存污染" class="header-anchor">#</a></h1><blockquote>
 <p>域名服务器缓存污染<br><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%9F%9F%E5%90%8D%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%93%E5%AD%98%E6%B1%A1%E6%9F%93">https://zh.wikipedia.org/wiki/%E5%9F%9F%E5%90%8D%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%93%E5%AD%98%E6%B1%A1%E6%9F%93</a></p>
 </blockquote>
-<p>机构会对所有经过GFW的在UDP的53端口上的域名查询进行IDS入侵检测，一经发现与黑名单关键词相匹配的域名查询请求，会马上伪装成目标域名的解析服务器返回虚假的查询结果。由于通常的域名查询没有任何认证机制，而且域名查询通常基于无连接不可靠的UDP协议，查询者只能接受最先到达的格式正确结果，并丢弃之后的结果。</p>
+<p>机构会对所有经过 GFW 的在 UDP 的 53 端口上的域名查询进行 IDS 入侵检测，一经发现与黑名单关键词相匹配的域名查询请求，会马上伪装成目标域名的解析服务器返回虚假的查询结果。由于通常的域名查询没有任何认证机制，而且域名查询通常基于无连接不可靠的 UDP 协议，查询者只能接受最先到达的格式正确结果，并丢弃之后的结果。</p>
 <h1><span id="混淆">混淆</span><a href="#混淆" class="header-anchor">#</a></h1><blockquote>
 <p>看穿网络协议混淆<br><a target="_blank" rel="noopener" href="https://www.solidot.org/story?sid=45839">https://www.solidot.org/story?sid=45839</a></p>
 </blockquote>
 <p>国家级审查者使用深度包检测系统（DPI）去探测和屏蔽翻墙工具的使用。它们是通过协议头或其它应用层网络数据包中的指纹发现此类的翻墙工具。研究人员和活动人士因此相对应的提出了混淆协议方法。协议混淆工具采用的方法包括随机化所有发送的字节，模仿未封锁的协议如 HTTP，通过未屏蔽协议的实现隧道流量。Tor 匿名网络就开发了多种协议混淆，包括 obfsprox（obfsproxy3 和 obfsproxy4）和 meek。目前它们都没有遭到 DPI 的封锁。但审查者是否可以轻易的改变和部署新的 DPI 算法去精确的探测这些协议混淆工具？威斯康星大学的研究人员发表了一篇论文《Seeing through Network-Protocol Obfuscation》（PDF），他们给出的答案是肯定的。研究人员发现，现有的协议混淆机制都能很容易的探测出，使用机器学习对流量进行分类，一个国家级的审查者能达到 99%的准确率。</p>
-<h1><span id="q-哪些流量能被代理">Q: 哪些流量能被代理？</span><a href="#q-哪些流量能被代理" class="header-anchor">#</a></h1><blockquote>
+<h1><span id="哪些流量能被代理">哪些流量能被代理？</span><a href="#哪些流量能被代理" class="header-anchor">#</a></h1><blockquote>
 <p>ShadowSocksR(SSR) 功能详细介绍及使用教程<br><a target="_blank" rel="noopener" href="https://www.quchao.net/ShadowsocksR.html">https://www.quchao.net/ShadowsocksR.html</a></p>
 </blockquote>
 <p>全局模式会开启系统 HTTP 代理，你的所有 HTTP 上网流量将会通过 SSR 代理。<br>注意：仅能代理 HTTP 流量，即浏览网页的流量——例如浏览器浏览网页，或者某些应用程序的应用内网页（比如 QQ 的群文件、群公告这些就是），或者某些比较奇葩的使用 HTTP 方式进行通信的程序（比如 Steam 版的影之诗）。<br>如果要代理应用程序，请详见 Windows -SSTap 教程。</p>
-<h1><span id="socks5">socks5</span><a href="#socks5" class="header-anchor">#</a></h1><blockquote>
-<p>实现SOCKS5协议<br><a target="_blank" rel="noopener" href="https://yuerblog.cc/2019/06/09/%E5%AE%9E%E7%8E%B0socks5%E5%8D%8F%E8%AE%AE/">https://yuerblog.cc/2019/06/09/%E5%AE%9E%E7%8E%B0socks5%E5%8D%8F%E8%AE%AE/</a></p>
+<h1><span id="socks5">SOCKS5</span><a href="#socks5" class="header-anchor">#</a></h1><blockquote>
+<p>实现 SOCKS5 协议<br><a target="_blank" rel="noopener" href="https://yuerblog.cc/2019/06/09/%E5%AE%9E%E7%8E%B0socks5%E5%8D%8F%E8%AE%AE/">https://yuerblog.cc/2019/06/09/%E5%AE%9E%E7%8E%B0socks5%E5%8D%8F%E8%AE%AE/</a></p>
 </blockquote>
 <p>代理为什么需要一个协议？</p>
-<p>假设我们是TCP通讯。那么A首先要TCP连接B，B接着TCP连接C，这样就形成了一个数据的代理通路，可以双向流通数据了。但是呢，我们A不仅要访问C啊，还要访问D、E、F等等。作为代理的B，怎么知道A要连的是C或E或F的哪个目标呢？因为这个原因，A和B之间必须要有一个协商的过程，其核心目的：A要告诉B，希望连接的目标地址是什么。所以，这种TCP代理是需要协议的，因此SOCKS5就是做这个事情的，可想而知它并不是什么复杂的事情。同时我们也要意识到，SOCKS5协议其实对应用层协议（例如HTTP）是无感的，它是4层的代理协议。</p>
+<p>假设我们是 TCP 通讯。那么 A 首先要 TCP 连接 B，B 接着 TCP 连接 C，这样就形成了一个数据的代理通路，可以双向流通数据了。但是呢，我们 A 不仅要访问 C 啊，还要访问 D、E、F 等等。作为代理的 B，怎么知道 A 要连的是 C 或 E 或 F 的哪个目标呢？因为这个原因，A 和 B 之间必须要有一个协商的过程，其核心目的：A 要告诉 B，希望连接的目标地址是什么。所以，这种 TCP 代理是需要协议的，因此 SOCKS5 就是做这个事情的，可想而知它并不是什么复杂的事情。同时我们也要意识到，SOCKS5 协议其实对应用层协议（例如 HTTP）是无感的，它是 4 层的代理协议。</p>
 <h1><span id="ssh">SSH</span><a href="#ssh" class="header-anchor">#</a></h1><blockquote>
-<p>彻底搞懂“公钥加密算法RSA”的工作原理<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV14y4y1272w?from=search&amp;seid=16919005021128326986">https://www.bilibili.com/video/BV14y4y1272w?from=search&amp;seid=16919005021128326986</a></p>
+<p>彻底搞懂“公钥加密算法 RSA”的工作原理<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV14y4y1272w?from=search&amp;seid=16919005021128326986">https://www.bilibili.com/video/BV14y4y1272w?from=search&amp;seid=16919005021128326986</a><br>RSA 算法原理（一）<br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2013/06/rsa_algorithm_part_one.html">http://www.ruanyifeng.com/blog/2013/06/rsa_algorithm_part_one.html</a><br>数字签名是什么？<br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html">http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html</a></p>
 </blockquote>
-<p>模运算 单向函数<br>大数无法质因数分解</p>
+<p>模运算是单向函数，即 (m^e) mod n=c，已知 m、e、n 求 c 简单，已知 e、n、c 求 m 很难。<br>两个质数相乘容易，而将其合数分解很难，即 n=p1*p2，已知 p1、p2 求 n 简单，已知 n 求 p1、p2 困难。</p>
 <blockquote>
-<p>数字签名是什么？<br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html">http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html</a></p>
+<p>SSH 原理与运用（一）：远程登录<br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html">http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html</a></p>
 </blockquote>
-<blockquote>
-<p>SSH原理与运用（一）：远程登录<br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html">http://www.ruanyifeng.com/blog/2011/12/ssh_remote_login.html</a></p>
-</blockquote>
-<p>SSH之所以能够保证安全，原因在于它采用了公钥加密。</p>
+<p>SSH 之所以能够保证安全，原因在于它采用了公钥加密。</p>
 <p>整个过程是这样的：（1）远程主机收到用户的登录请求，把自己的公钥发给用户。（2）用户使用这个公钥，将登录密码加密后，发送回来。（3）远程主机用自己的私钥，解密登录密码，如果密码正确，就同意用户登录。</p>
 <h1><span id="git">Git</span><a href="#git" class="header-anchor">#</a></h1><blockquote>
-<p>论git中使用https和ssh协议的区别<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/jfkidear/article/details/90376815">https://blog.csdn.net/jfkidear/article/details/90376815</a></p>
+<p>论 git 中使用 https 和 ssh 协议的区别<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/jfkidear/article/details/90376815">https://blog.csdn.net/jfkidear/article/details/90376815</a></p>
 </blockquote>
-<p>git可以使用四种主要的协议来传输资料: 本地协议（Local），HTTP 协议，SSH（Secure Shell）协议及 git 协议。其中，本地协议由于目前大都是进行远程开发和共享代码所以一般不常用，而git协议由于缺乏授权机制且较难架设所以也不常用。最常用的便是SSH和HTTP(S)协议。git关联远程仓库可以使用http协议或者ssh协议。</p>
+<p>git 可以使用四种主要的协议来传输资料：本地协议（Local），HTTP 协议，SSH（Secure Shell）协议及 git 协议。其中，本地协议由于目前大都是进行远程开发和共享代码所以一般不常用，而 git 协议由于缺乏授权机制且较难架设所以也不常用。最常用的便是 SSH 和 HTTP(S) 协议。git 关联远程仓库可以使用 http 协议或者 ssh 协议。</p>
 <blockquote>
 <p>如何为 Git 设置代理？<br><a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000000118837">https://segmentfault.com/q/1010000000118837</a></p>
 </blockquote>
 <p>Git 目前支持的三种协议 <code>git://</code>、<code>ssh://</code> 和 <code>http://</code>，其代理配置各不相同：<code>core.gitproxy</code> 用于 <code>git://</code> 协议，<code>http.proxy</code> 用于 <code>http://</code> 协议，<code>ssh://</code> 协议的代理需要配置 ssh 的 <code>ProxyCommand</code> 参数。</p>
-<h1><span id="参考资料">参考资料</span><a href="#参考资料" class="header-anchor">#</a></h1><p>计算机网络笔记 Part1 概述<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45067603/article/details/106974036">https://blog.csdn.net/weixin_45067603/article/details/106974036</a></p>
+<h1><span id="参考资料">参考资料</span><a href="#参考资料" class="header-anchor">#</a></h1><blockquote>
+<p>计算机网络笔记 Part1 概述<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45067603/article/details/106974036">https://blog.csdn.net/weixin_45067603/article/details/106974036</a></p>
+</blockquote>
+<blockquote>
 <p>为什么家里要有公网 IP[公网 IP 光猫设置 动态域名解析]<br><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1483055">https://cloud.tencent.com/developer/article/1483055</a></p>
+</blockquote>
+<blockquote>
 <p>墙妈妈<br><a target="_blank" rel="noopener" href="https://www.wallmama.com/">https://www.wallmama.com/</a></p>
-<p>关于Shadowsocks的小白常见问题 总结篇<br><a target="_blank" rel="noopener" href="https://doubibackup.com/6r9z6_wi-2.html">https://doubibackup.com/6r9z6_wi-2.html</a></p>
-<p>推荐一个可以在地图上显示TraceRoute（路由追踪）路径信息的软件<br><a target="_blank" rel="noopener" href="https://doubibackup.com/cvdqb0y7.html">https://doubibackup.com/cvdqb0y7.html</a></p>
+</blockquote>
+<blockquote>
+<p>关于 Shadowsocks 的小白常见问题 总结篇<br><a target="_blank" rel="noopener" href="https://doubibackup.com/6r9z6_wi-2.html">https://doubibackup.com/6r9z6_wi-2.html</a></p>
+</blockquote>
+<blockquote>
+<p>推荐一个可以在地图上显示 TraceRoute（路由追踪）路径信息的软件<br><a target="_blank" rel="noopener" href="https://doubibackup.com/cvdqb0y7.html">https://doubibackup.com/cvdqb0y7.html</a></p>
+</blockquote>
+<blockquote>
 <p>Shadowsocks 端口已被占用的错误解决办法<br><a target="_blank" rel="noopener" href="https://doubibackup.com/z2a4lk3l-5.html">https://doubibackup.com/z2a4lk3l-5.html</a></p>
+</blockquote>
 
                 </div>
             </div>
@@ -404,7 +431,7 @@ OSI Model
         integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
         integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?28459695"></script>
+<script src="/js/journal.js?54354437"></script>
 
 
 <!-- Valine 评论标记 -->    
