@@ -391,9 +391,9 @@
     
     <category term="GAN" scheme="https://sszxc.net/about/index.html/tags/GAN/"/>
     
-    <category term="TensorFlow" scheme="https://sszxc.net/about/index.html/tags/TensorFlow/"/>
-    
     <category term="Pokémon" scheme="https://sszxc.net/about/index.html/tags/Pokemon/"/>
+    
+    <category term="TensorFlow" scheme="https://sszxc.net/about/index.html/tags/TensorFlow/"/>
     
   </entry>
   
@@ -427,9 +427,9 @@
     
     <category term="GAN" scheme="https://sszxc.net/about/index.html/tags/GAN/"/>
     
-    <category term="MNIST" scheme="https://sszxc.net/about/index.html/tags/MNIST/"/>
-    
     <category term="TensorFlow" scheme="https://sszxc.net/about/index.html/tags/TensorFlow/"/>
+    
+    <category term="MNIST" scheme="https://sszxc.net/about/index.html/tags/MNIST/"/>
     
   </entry>
   

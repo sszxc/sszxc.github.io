@@ -1,101 +1,230 @@
-<!DOCTYPE HTML>
-<html>
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="google-site-verification" content="" />
-  <meta name="referrer" content="unsafe-url">
-  
-  <title>Note for “The Python Tutorial” §5~§9</title>
-  <meta name="author" content="Henry">
-  <meta name="description" content="5. Data Structures
-5.1. More on Lists
-5.1.1. Using Lists as Stacks
+    <title>Note for “The Python Tutorial” §5~§9 - Henry</title>
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="author" content="Henry">
+<meta name="description" content="Python 官方文档阅读笔记">
+<meta name="keywords" content="">
 
+    <meta charset="utf-8">
+    <meta name="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="renderer" content="webkit">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/journal.css?70690029">
 
-
-
-
-
-
-
-https://docs.python.org/3/tutorial/index.html摘抄 + 翻译§5~§9 主要涉及数据结构、模块、输入输出、">
-  
-  
-  <meta property="og:title" content="Note for “The Python Tutorial” §5~§9"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:site_name" content="Henry"/>
-  <link href="/apple-touch-icon-precomposed.png" sizes="180x180" rel="apple-touch-icon-precomposed">
-  <link rel="alternate" href="/atom.xml" title="Henry" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/m.min.css">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
-
-<meta name="generator" content="Hexo 5.2.0"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
-
+<script src="/js/loadCSS.js"></script>
+<script>
+    loadCSS("https://fonts.googleapis.com/css?family=Lora|Montserrat|Fira+Mono|Material+Icons");
+    (function (d) {
+        var config = {
+                kitId: 'dwg1tuc',
+                scriptTimeout: 3000,
+                async: true
+            },
+            h = d.documentElement, t = setTimeout(function () {
+                h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+            }, config.scriptTimeout), tk = d.createElement("script"), f = false,
+            s = d.getElementsByTagName("script")[0], a;
+        h.className += " wf-loading";
+        tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+        tk.async = true;
+        tk.onload = tk.onreadystatechange = function () {
+            a = this.readyState;
+            if (f || a && a != "complete" && a != "loaded") return;
+            f = true;
+            clearTimeout(t);
+            try {
+                Typekit.load(config)
+            } catch (e) {
+            }
+        };
+        s.parentNode.insertBefore(tk, s)
+    })(document);
+</script>
+<noscript>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Lora|Montserrat|Anonymous+Pro:400|Material+Icons"/>
+</noscript>
+    <!-- 不蒜子访客插件标记 -->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <!-- 不蒜子访客插件标记 -->
+    <!-- Valine 评论标记 -->
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <!-- Valine 评论标记 -->
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Henry" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 <body>
-  <a id="top"></a>
-  <div id="main">
-    <div class="main-ctnr">
-      <div class="behind">
-  <a href="/" class="back black-color">
-    <svg class="i-close" viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
-        <path d="M2 30 L30 2 M30 30 L2 2"></path>
-    </svg>
-  </a>
-  
-    <div class="description">
-      &nbsp;奔走在自己的热爱里
+<div id="top"></div>
+<div id="app">
+<div class="single-column-drawer-container" ref="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            <a class="a-block drawer-menu-item false" href="https://sszxc.net/about/index.html">
+                首页
+            </a>
+            
+
+            
+            
+            <a class="a-block drawer-menu-item false" href="/about/index.html">
+                About
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
+                Gallery
+            </a>
+            
+            <a class="a-block drawer-menu-item false" href="/archives/index.html">
+                Archives
+            </a>
+            
+
+            
+        </div>
     </div>
+</div>
+<transition name="fade">
+    <div v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav ref="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div ref="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a ref="navTitle" class="navbar-brand" href="/">
+            Henry
+        </a>
+    </div>
+</nav>
+<div class="single-column-header-container" ref="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="/">
+        <div class="single-column-header-title">Henry</div>
+        <div class="single-column-header-subtitle"></div>
+    </a>
+</div>
+<div ref="sideContainer" class="side-container">
+    <a class="a-block nav-head false" href="/">
+        <div class="nav-title">
+            Henry.
+        </div>
+        <div class="nav-subtitle">
+            奔走在自己的热爱里
+        </div>
+    </a>
+
+    <div class="nav-link-list">
+        
+
+        
+        
+        <a class="a-block nav-link-item false" href="/about/index.html">
+            About
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/gallery/index.html">
+            Gallery
+        </a>
+        
+        <a class="a-block nav-link-item false" href="/archives/index.html">
+            Archives
+        </a>
+        
+
+        
+    </div>
+
     
+    <div class="nav-footer">        
+        Proudly published with Hexo<br>
+        
+        Theme <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> by <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a><br>
+        
+        &copy; 2021 <a href="https://sszxc.net/about/index.html">Henry</a>
+    </div>
+</div>
+<div ref="extraContainer" class="extra-container">
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+
+        
+    </div>
 </div>
 
 
-  <article class="standard post">
-    <div class="title">
-      
-  
-    <h1 class="page-title center">
-        Note for “The Python Tutorial” §5~§9
-    </h1>
-  
 
-
-    </div>
-    <div class="meta center">
-      <time datetime="2020-12-25T01:14:43.000Z" itemprop="datePublished">
-  <svg class="i-calendar" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-    <path d="M2 6 L2 30 30 30 30 6 Z M2 15 L30 15 M7 3 L7 9 M13 3 L13 9 M19 3 L19 9 M25 3 L25 9"></path>
-  </svg>
-  &nbsp;
-  2020-12-25
-</time>
-
-
-
-
-
+<div ref="streamContainer" class="stream-container">
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            <div class="post-head-wrapper"
+                 style="background-image: url('https://www.python.org/static/community_logos/python-logo-master-v3-TM.png')">
+                <div class="post-title">
+                    Note for “The Python Tutorial” §5~§9
+                    <div class="post-meta">
+                        <time datetime="2020-12-25T01:14:43.000Z" itemprop="datePublished">
+                            2020-12-25 09:14
+                        </time>&nbsp;
+                        <!-- 不蒜子访客插件标记 -->                        
+                        <span id="busuanzi_container_page_pv" style='display:none'> 
+                            阅读数：<span id="busuanzi_value_page_pv"></span>
+                        </span>
+                        <!-- 不蒜子访客插件标记 -->
+                        
     
-    &nbsp;
-    <svg class="i-tag" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-      <circle cx="24" cy="8" r="2"></circle>
-      <path d="M2 18 L18 2 30 2 30 14 14 30 Z"></path>
-    </svg>
-    &nbsp;
-    <a href="/tags/Python/">Python</a>·<a href="/tags/笔记/">笔记</a>
+                        
+                        
+                        <i class="material-icons" style="">label</i>
+                        
+                        <a href='/tags/Python/'>Python</a>, 
+                        
+                        <a href='/tags/笔记/'>笔记</a>
+                        
+                        
 
+                        
+                        
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-    </div>
-    <hr>
+                        
+                    </div>
+                </div>
+            </div>
     
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">5. Data Structures</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">5.1. More on Lists</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">5.1.1. Using Lists as Stacks</span></a></li></ol></li></ol></li></ol>
-    
-    <div class="picture-container">
-      
-    </div>
-    <!-- toc -->
+            <div class="post-body-wrapper">
+                <div class="post-body">
+                    <!-- toc -->
 
 <ul>
 <li><a href="#5-data-structures">5. Data Structures</a><ul>
@@ -140,65 +269,67 @@ https://docs.python.org/3/tutorial/index.html摘抄 + 翻译§5~§9 主要涉及
 <p>注意到很多只改变 list 的方法没有返回值，这是 Python 中所有可变数据结构的设计原则。</p>
 <p>另一件事是并非所有数据都可以排序或比较。例如，[None, ‘hello’, 10] 就不可排序，因为整数不能与字符串比较，而 None 不能与其他类型比较。并且还存在一些没有定义大小关系的类型。例如，3+4j &lt; 5+7j 就不是一个合法的比较。</p>
 <h3><span id="511-using-lists-as-stacks">5.1.1. Using Lists as Stacks</span><a href="#511-using-lists-as-stacks" class="header-anchor">#</a></h3>
-
-  </article>
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-  <div class="busuanzi center">
-    页阅读量:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
-    站访问量:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
-    站访客数:&nbsp;<span id="busuanzi_value_site_uv"></span>
-  </div>
-
+                </div>
+            </div>
+    
+            <nav class="post-pagination">
+    
+    <a class="newer-posts" href="/2021.01%E2%80%9C%E5%8F%A6%E4%B8%80%E4%B8%AA%E4%B9%9F%E6%98%AF%E5%A5%B3%E5%AD%A9%E7%9A%84%E6%A6%82%E7%8E%87%E2%80%9D%E5%9B%BE%E8%A7%A3%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87/">
+        上一篇<br>“另一个也是女孩的概率”——图解条件概率
+    </a>
+    
+    <span class="page-number"></span>
+    
+    <a class="older-posts" href="/2020.12SpotMicro%E4%B8%80%E4%B8%AA%E5%BC%80%E6%BA%90%E6%9C%BA%E5%99%A8%E7%8B%97%E9%A1%B9%E7%9B%AE/">
+        下一篇<br>SpotMicro 一个开源机器狗项目
+    </a>
+    
+</nav>
 
     
+            
+
+<!-- Valine 评论标记 -->
+<div id="vcomments"></div>
+<!-- Valine 评论标记 -->
 
 
-
-
-
+        </div>
     </div>
-  </div>
-  <footer class="page-footer"><div class="clearfix">
+    <div class="single-column-footer">
+    Proudly published with Hexo<br>
+    
+    Theme <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> by <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a><br>
+    
+    &copy; 2021 <a href="https://sszxc.net/about/index.html">Henry</a>
 </div>
-<div class="right-foot">
-    <div class="firstrow">
-        <a href="#top" target="_self">
-        <svg class="i-caret-right" viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
-            <path d="M10 30 L26 16 10 2 Z"></path>
-        </svg>
-        </a>
-        © XXX 2016-2020
-    </div>
-    <div class="secondrow">
-        <a target="_blank" rel="noopener" href="https://github.com/gaoryrt/hexo-theme-pln">
-        Theme Pln
-        </a>
-    </div>
 </div>
-<div class="clearfix">
+
 </div>
-</footer>
-  <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
-<script src="/js/search.min.js"></script>
-<script type="text/javascript">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"
+        integrity="sha256-EGs9T1xMHdvM1geM8jPpoo8EZ1V1VRsmcJz8OByENLA=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+        integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"
+        integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
+        integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
+<script src="/js/journal.js?13879019"></script>
 
-// disqus scripts
 
+<!-- Valine 评论标记 -->    
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: 'bhAgu5B7wfHH3QPw2xdK5ipo-gzGzoHsz',
+            appKey: 'qlqwVcwVeB4JoD3nJRdv6O9W',
+            placeholder: "快来评论一下吧！￣▽￣"
+        })
+    </script>
+<!-- Valine 评论标记 -->
 
-// dropdown scripts
-$(".dropdown").click(function(event) {
-  var current = $(this);
-  event.stopPropagation();
-  $(current).children(".dropdown-content")[($(current).children(".dropdown-content").hasClass("open"))?'removeClass':'addClass']("open")
-});
-$(document).click(function(){
-    $(".dropdown-content").removeClass("open");
-})
-
-var path = "/search.xml";
-searchFunc(path, 'local-search-input', 'local-search-result');
-
-</script>
 
 </body>
 </html>
