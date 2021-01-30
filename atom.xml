@@ -6,7 +6,7 @@
   <link href="https://sszxc.net/about/index.html/atom.xml" rel="self"/>
   
   <link href="https://sszxc.net/about/index.html/"/>
-  <updated>2021-01-30T13:55:43.232Z</updated>
+  <updated>2021-01-30T16:24:37.584Z</updated>
   <id>https://sszxc.net/about/index.html/</id>
   
   <author>
@@ -21,17 +21,15 @@
     <link href="https://sszxc.net/about/index.html/2021.01%E5%85%B3%E4%BA%8E3D%E6%89%93%E5%8D%B0%E6%9C%BA%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B/"/>
     <id>https://sszxc.net/about/index.html/2021.01%E5%85%B3%E4%BA%8E3D%E6%89%93%E5%8D%B0%E6%9C%BA%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B/</id>
     <published>2021-01-30T12:03:37.000Z</published>
-    <updated>2021-01-30T13:55:43.232Z</updated>
+    <updated>2021-01-30T16:24:37.584Z</updated>
     
-    <content type="html"><![CDATA[<p>翘边</p><p>价格<br>耗材<br>功率：开了热床200W左右</p><p>零件配合</p>]]></content>
+    <content type="html"><![CDATA[<h1><span id="打印成本">打印成本</span><a href="#打印成本" class="header-anchor">#</a></h1><p>PLA耗材<br>功率：开了热床200W左右</p><h1><span id="打印质量">打印质量</span><a href="#打印质量" class="header-anchor">#</a></h1><p>翘边<br>胶棒、美纹纸、晶格玻璃</p><p>支撑面</p><h1><span id="其他技巧">其他技巧</span><a href="#其他技巧" class="header-anchor">#</a></h1><p>零件配合<br>螺丝</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;翘边&lt;/p&gt;
-&lt;p&gt;价格&lt;br&gt;耗材&lt;br&gt;功率：开了热床200W左右&lt;/p&gt;
-&lt;p&gt;零件配合&lt;/p&gt;
-</summary>
+    <summary type="html">&lt;h1&gt;&lt;span id=&quot;打印成本&quot;&gt;打印成本&lt;/span&gt;&lt;a href=&quot;#打印成本&quot; class=&quot;header-anchor&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;PLA耗材&lt;br&gt;功率：开了热床200W左右&lt;/p&gt;
+&lt;h1&gt;&lt;span id=&quot;打印质量&quot;&gt;打印质量&lt;/span&gt;</summary>
       
     
     
