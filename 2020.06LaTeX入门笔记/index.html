@@ -1,232 +1,146 @@
-
-
-<!DOCTYPE html>
-<html lang="zh-CN" xmlns:v-bind="http://www.w3.org/1999/xhtml">
-
-<head>
-    <title>LaTeX 入门笔记 - Henry</title>
-<meta charset="utf-8">
-<meta name="X-UA-Compatible" content="IE=edge">
-<meta name="author" content="Henry">
-<meta name="description" content="
-网上教程好多，这里仅汇总整理一下本人入门 LaTeX 过程中的参考资料。 从零开始上手到导出第一份漂亮的课程作业，保守估计四小时，快来加入！
-
-安装#本人使用的是 TeXlive+TeXstuido 的配置，参考的教程是这篇 LaTeX 零基础入门教程。
-选择在清华镜像站中下载 texliv...">
-<meta name="keywords" content="">
-
-    <meta charset="utf-8">
-    <meta name="X-UA-Compatible" content="IE=edge">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <meta content="telephone=no" name="format-detection">
-    <meta name="renderer" content="webkit">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/journal.css?78867930">
-
-<script src="/js/loadCSS.js"></script>
-<script>
-    loadCSS("https://fonts.googleapis.com/css?family=Lora|Montserrat|Fira+Mono|Material+Icons");
-    (function (d) {
-        var config = {
-                kitId: 'dwg1tuc',
-                scriptTimeout: 3000,
-                async: true
-            },
-            h = d.documentElement, t = setTimeout(function () {
-                h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
-            }, config.scriptTimeout), tk = d.createElement("script"), f = false,
-            s = d.getElementsByTagName("script")[0], a;
-        h.className += " wf-loading";
-        tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
-        tk.async = true;
-        tk.onload = tk.onreadystatechange = function () {
-            a = this.readyState;
-            if (f || a && a != "complete" && a != "loaded") return;
-            f = true;
-            clearTimeout(t);
-            try {
-                Typekit.load(config)
-            } catch (e) {
-            }
-        };
-        s.parentNode.insertBefore(tk, s)
-    })(document);
-</script>
-<noscript>
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Lora|Montserrat|Anonymous+Pro:400|Material+Icons"/>
-</noscript>
-    <!-- 不蒜子访客插件标记 -->
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <!-- 不蒜子访客插件标记 -->
-    <!-- Valine 评论标记 -->
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-    <!-- Valine 评论标记 -->
-<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Henry" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
-<body>
-<div id="top"></div>
-<div id="app">
-<div class="single-column-drawer-container" ref="drawer"
-     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
-    <div class="drawer-content">
-        <div class="drawer-menu">
-            <a class="a-block drawer-menu-item false" href="https://sszxc.net/about/index.html">
-                首页
-            </a>
-            
-
-            
-            
-            <a class="a-block drawer-menu-item false" href="/about/index.html">
-                About
-            </a>
-            
-            <a class="a-block drawer-menu-item false" href="/archives/index.html">
-                Archives
-            </a>
-            
-            <a class="a-block drawer-menu-item false" href="/gallery/index.html">
-                Gallery
-            </a>
-            
-
-            
-        </div>
-    </div>
-</div>
-<transition name="fade">
-    <div v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
-</transition>
-<nav ref="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
-    <div ref="navBackground" class="nav-background"></div>
-    <div class="container container-narrow nav-content">
-        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
-            <i class="material-icons">
-                menu
-            </i>
-        </button>
-        <a ref="navTitle" class="navbar-brand" href="/">
-            Henry
-        </a>
-    </div>
-</nav>
-<div class="single-column-header-container" ref="pageHead"
-     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
-    <a href="/">
-        <div class="single-column-header-title">Henry</div>
-        <div class="single-column-header-subtitle"></div>
-    </a>
-</div>
-<div ref="sideContainer" class="side-container">
-    <a class="a-block nav-head false" href="/">
-        <div class="nav-title">
-            Henry.
-        </div>
-        <div class="nav-subtitle">
-            奔走在自己的热爱里
-        </div>
-    </a>
-
-    <div class="nav-link-list">
-        
-
-        
-        
-        <a class="a-block nav-link-item false" href="/about/index.html">
-            About
-        </a>
-        
-        <a class="a-block nav-link-item false" href="/archives/index.html">
-            Archives
-        </a>
-        
-        <a class="a-block nav-link-item false" href="/gallery/index.html">
-            Gallery
-        </a>
-        
-
-        
-    </div>
-
-    
-    <div class="nav-footer">        
-        Proudly published with Hexo<br>
-        
-        Theme <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> by <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a><br>
-        
-        &copy; 2021 <a href="https://sszxc.net/about/index.html">Henry</a>
-    </div>
-</div>
-<div ref="extraContainer" class="extra-container">
-    <div class="pagination">
-        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
-            <i class="material-icons pagination-action-icon">
-                keyboard_arrow_up
-            </i>
-        </a>
-
-        
-    </div>
-</div>
-
-
-
-<div ref="streamContainer" class="stream-container">
-    <div class="post-list-container post-list-container-shadow">
-        <div class="post">
-            <div class="post-head-wrapper-text-only"
-                 style="background-image: url('')">
-                <div class="post-title">
-                    LaTeX 入门笔记
-                    <div class="post-meta">
-                        <time datetime="2020-06-08T14:38:52.000Z" itemprop="datePublished">
-                            2020-06-08 22:38
-                        </time>&nbsp;
-                        <!-- 不蒜子访客插件标记 -->                        
-                        <span id="busuanzi_container_page_pv" style='display:none'> 
-                            阅读数：<span id="busuanzi_value_page_pv"></span>
-                        </span>
-                        <!-- 不蒜子访客插件标记 -->
-                        
-    
-                        
-                        
-                        <i class="material-icons" style="">label</i>
-                        
-                        <a href='/tags/LaTeX/'>LaTeX</a>
-                        
-                        
-
-                        
-                        
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LaTeX 入门笔记 | Henry</title><meta name="keywords" content="LaTeX"><meta name="author" content="Henry"><meta name="copyright" content="Henry"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="网上教程好多，这里仅汇总整理一下本人入门 LaTeX 过程中的参考资料。 从零开始上手到导出第一份漂亮的课程作业，保守估计四小时，快来加入！  安装#本人使用的是 TeXlive+TeXstuido 的配置，参考的教程是这篇 LaTeX 零基础入门教程。 选择在清华镜像站中下载 texlive，安装过程相当漫长，大约耗时一小时。https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LaTeX 入门笔记">
+<meta property="og:url" content="https://sszxc.net/about/index.html/2020.06LaTeX%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Henry">
+<meta property="og:description" content="网上教程好多，这里仅汇总整理一下本人入门 LaTeX 过程中的参考资料。 从零开始上手到导出第一份漂亮的课程作业，保守估计四小时，快来加入！  安装#本人使用的是 TeXlive+TeXstuido 的配置，参考的教程是这篇 LaTeX 零基础入门教程。 选择在清华镜像站中下载 texlive，安装过程相当漫长，大约耗时一小时。https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2020-06-08T14:38:52.000Z">
+<meta property="article:modified_time" content="2020-12-02T01:16:18.731Z">
+<meta property="article:author" content="Henry">
+<meta property="article:tag" content="LaTeX">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://sszxc.net/about/index.html/2020.06LaTeX%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
     }
-  });
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2020-12-02 09:16:18'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
-                        
-                    </div>
-                </div>
-            </div>
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
     
-            <div class="post-body-wrapper">
-                <div class="post-body">
-                    <blockquote>
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Henry" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/null" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Henry</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">LaTeX 入门笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-06-08T14:38:52.000Z" title="发表于 2020-06-08 22:38:52">2020-06-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-12-02T01:16:18.731Z" title="更新于 2020-12-02 09:16:18">2020-12-02</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
 <p><em>网上教程好多，这里仅汇总整理一下本人入门 LaTeX 过程中的参考资料。 从零开始上手到导出第一份漂亮的课程作业，保守估计四小时，快来加入！</em></p>
 </blockquote>
 <h1><span id="安装">安装</span><a href="#安装" class="header-anchor">#</a></h1><p>本人使用的是 TeXlive+TeXstuido 的配置，参考的教程是这篇 <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/3e842d67ada2">LaTeX 零基础入门教程</a>。</p>
@@ -290,68 +204,4 @@ Hello, world!
 <li><p>Latex 中网址 url 自动换行 <a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/da1091fb341084027949d672.html">https://jingyan.baidu.com/article/da1091fb341084027949d672.html</a></p>
 </li>
 </ul>
-
-                </div>
-            </div>
-    
-            <nav class="post-pagination">
-    
-    <a class="newer-posts" href="/2020.06%E4%BB%8ECNN%E5%88%B0GAN%E7%9A%84%E5%88%9D%E5%B0%9D%E8%AF%95/">
-        上一篇<br>从 CNN 到 GAN 的初尝试
-    </a>
-    
-    <span class="page-number"></span>
-    
-    <a class="older-posts" href="/2020.06%E8%AE%B0%E4%B8%80%E6%AC%A1TensorFlow%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/">
-        下一篇<br>记一次 TensorFlow 版本升级
-    </a>
-    
-</nav>
-
-    
-            
-
-<!-- Valine 评论标记 -->
-<div id="vcomments"></div>
-<!-- Valine 评论标记 -->
-
-
-        </div>
-    </div>
-    <div class="single-column-footer">
-    Proudly published with Hexo<br>
-    
-    Theme <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> by <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a><br>
-    
-    &copy; 2021 <a href="https://sszxc.net/about/index.html">Henry</a>
-</div>
-</div>
-
-</div>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"
-        integrity="sha256-EGs9T1xMHdvM1geM8jPpoo8EZ1V1VRsmcJz8OByENLA=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
-        integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"
-        integrity="sha256-FtWfRI+thWlNz2sB3SJbwKx5PgMyKIVgwHCTwa3biXc=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@14.2.1/dist/smooth-scroll.polyfills.min.js"
-        integrity="sha256-CI4Gq5E0io1Pv0xM3qPM+NUIOhbIBvC3GiN1Y4KhXpw=" crossorigin="anonymous"></script>
-<script src="/js/journal.js?68731504"></script>
-
-
-<!-- Valine 评论标记 -->    
-    <script>
-        new Valine({
-            el: '#vcomments',
-            appId: 'bhAgu5B7wfHH3QPw2xdK5ipo-gzGzoHsz',
-            appKey: 'qlqwVcwVeB4JoD3nJRdv6O9W',
-            placeholder: "快来评论一下吧！￣▽￣"
-        })
-    </script>
-<!-- Valine 评论标记 -->
-
-
-</body>
-</html>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Henry</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://sszxc.net/about/index.html/2020.06LaTeX%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/">https://sszxc.net/about/index.html/2020.06LaTeX%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://sszxc.net/about/index.html" target="_blank">Henry</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/LaTeX/">LaTeX</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020.06%E4%BB%8ECNN%E5%88%B0GAN%E7%9A%84%E5%88%9D%E5%B0%9D%E8%AF%95/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">从 CNN 到 GAN 的初尝试</div></div></a></div><div class="next-post pull-right"><a href="/2020.06%E8%AE%B0%E4%B8%80%E6%AC%A1TensorFlow%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">记一次 TensorFlow 版本升级</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/null" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Henry</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">基础</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">模板</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">相关工具</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">技巧</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021.01%E5%85%B3%E4%BA%8E3D%E6%89%93%E5%8D%B0%E6%9C%BA%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B/" title="关于 3D 打印机的一些事"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="关于 3D 打印机的一些事"/></a><div class="content"><a class="title" href="/2021.01%E5%85%B3%E4%BA%8E3D%E6%89%93%E5%8D%B0%E6%9C%BA%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B/" title="关于 3D 打印机的一些事">关于 3D 打印机的一些事</a><time datetime="2021-01-30T12:03:37.000Z" title="发表于 2021-01-30 20:03:37">2021-01-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021.01%E4%BB%8E%E6%8E%A5%E7%BD%91%E7%BA%BF%E5%88%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" title="从接网线到科学上网"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从接网线到科学上网"/></a><div class="content"><a class="title" href="/2021.01%E4%BB%8E%E6%8E%A5%E7%BD%91%E7%BA%BF%E5%88%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" title="从接网线到科学上网">从接网线到科学上网</a><time datetime="2021-01-23T15:03:37.000Z" title="发表于 2021-01-23 23:03:37">2021-01-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021.01%E2%80%9C%E5%8F%A6%E4%B8%80%E4%B8%AA%E4%B9%9F%E6%98%AF%E5%A5%B3%E5%AD%A9%E7%9A%84%E6%A6%82%E7%8E%87%E2%80%9D%E5%9B%BE%E8%A7%A3%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87/" title="“另一个也是女孩的概率”——图解条件概率"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="“另一个也是女孩的概率”——图解条件概率"/></a><div class="content"><a class="title" href="/2021.01%E2%80%9C%E5%8F%A6%E4%B8%80%E4%B8%AA%E4%B9%9F%E6%98%AF%E5%A5%B3%E5%AD%A9%E7%9A%84%E6%A6%82%E7%8E%87%E2%80%9D%E5%9B%BE%E8%A7%A3%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87/" title="“另一个也是女孩的概率”——图解条件概率">“另一个也是女孩的概率”——图解条件概率</a><time datetime="2021-01-11T05:32:43.000Z" title="发表于 2021-01-11 13:32:43">2021-01-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020.12Note-for-%E2%80%9CThe-Python-Tutorial%E2%80%9D5-9/" title="Note for “The Python Tutorial” §5~§9"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Note for “The Python Tutorial” §5~§9"/></a><div class="content"><a class="title" href="/2020.12Note-for-%E2%80%9CThe-Python-Tutorial%E2%80%9D5-9/" title="Note for “The Python Tutorial” §5~§9">Note for “The Python Tutorial” §5~§9</a><time datetime="2020-12-25T01:14:43.000Z" title="发表于 2020-12-25 09:14:43">2020-12-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020.12SpotMicro%E4%B8%80%E4%B8%AA%E5%BC%80%E6%BA%90%E6%9C%BA%E5%99%A8%E7%8B%97%E9%A1%B9%E7%9B%AE/" title="SpotMicro 一个开源机器狗项目"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpotMicro 一个开源机器狗项目"/></a><div class="content"><a class="title" href="/2020.12SpotMicro%E4%B8%80%E4%B8%AA%E5%BC%80%E6%BA%90%E6%9C%BA%E5%99%A8%E7%8B%97%E9%A1%B9%E7%9B%AE/" title="SpotMicro 一个开源机器狗项目">SpotMicro 一个开源机器狗项目</a><time datetime="2020-12-16T07:41:43.000Z" title="发表于 2020-12-16 15:41:43">2020-12-16</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Henry</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
