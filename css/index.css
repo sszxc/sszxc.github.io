@@ -1332,8 +1332,8 @@ canvas:not(#ribbon-canvas),
   --global-font-size: 14px;
   --global-bg: #fff;
   --font-color: #4c4948;
-  --hr-border: #a4d8fa;
-  --hr-before-color: #80c8f8;
+  --hr-border: #d2ebfd;
+  --hr-before-color: #bfe4fb;
   --search-bg: #f6f8fa;
   --search-input-color: #4c4948;
   --search-result-title: #4c4948;
@@ -3002,12 +3002,10 @@ blockquote footer cite:before {
 }
 #post-comment .comment-head #comment-switch {
   display: inline-block;
-  float: right;
-  margin: 0.1rem auto 0;
-  padding: 0.2rem 0.8rem;
-  width: max-content;
-  border-radius: 8px;
-  background: #f6f8fa;
+  vertical-align: middle;
+}
+#post-comment .comment-head #comment-switch > span {
+  display: none;
 }
 #post-comment .comment-head #comment-switch .first-comment {
   color: #49b1f5;
@@ -3105,7 +3103,7 @@ blockquote footer cite:before {
   transition: all 0.5s;
 }
 #page-header.full_page {
-  height: 100vh;
+  height: 400px;
   background-attachment: fixed;
 }
 #page-header.full_page #site-info {
@@ -3648,7 +3646,7 @@ _:future,
   overflow-wrap: break-word;
 }
 #article-container a {
-  color: #49b1f5;
+  color: #99a9bf;
 }
 #article-container a:hover {
   text-decoration: underline;
@@ -5119,9 +5117,6 @@ blockquote.pullquote.right {
 [data-theme='dark'] #article-container figure.highlight .highlight-tools {
   background: #1a1a1a !important;
   color: #90a4ae !important;
-}
-[data-theme='dark'] #post-comment #comment-switch {
-  background: #2c2c2c !important;
 }
 [data-theme='dark'] #post-comment #comment-switch .switch-btn {
   filter: brightness(0.8);
