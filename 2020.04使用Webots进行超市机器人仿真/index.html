@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>使用 Webots 进行超市机器人仿真 | Henry</title><meta name="keywords" content="机器人,仿真,C,Webots,图像处理"><meta name="author" content="Henry"><meta name="copyright" content="Henry"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="机器人模型设计#本学期的《机器人软件工程》课程实验在 Webots 仿真平台上进行，仿真环境如图所示，机器人的任务是根据需要抓取货仓中摆放的货物，填补到四面货架的合适位置上。    仿真环境   针对这一任务，我和 贝塔 设计了一款超市机器人“Super_Transbot”。 四个麦克纳姆轮组成的全向运动底盘，保证了机器人在狭小空间内的移动性能，内置了 GPS 以及电子罗盘模块">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>使用 Webots 进行超市机器人仿真 | Henry</title><meta name="keywords" content="机器人,仿真,C,Webots,图像处理"><meta name="author" content="Henry"><meta name="copyright" content="Henry"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="机器人模型设计 本学期的《机器人软件工程》课程实验在 Webots 仿真平台上进行，仿真环境如图所示，机器人的任务是根据需要抓取货仓中摆放的货物，填补到四面货架的合适位置上。    仿真环境  针对这一任务，我和 贝塔 设计了一款超市机器人“Super_Transbot”。 四个麦克纳姆轮组成的全向运动底盘，保证了机器人在狭小空间内的移动性能，内置了 GPS 以及电子罗盘模块实现">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 Webots 进行超市机器人仿真">
 <meta property="og:url" content="https://sszxc.net/about/index.html/2020.04%E4%BD%BF%E7%94%A8Webots%E8%BF%9B%E8%A1%8C%E8%B6%85%E5%B8%82%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BB%BF%E7%9C%9F/index.html">
 <meta property="og:site_name" content="Henry">
-<meta property="og:description" content="机器人模型设计#本学期的《机器人软件工程》课程实验在 Webots 仿真平台上进行，仿真环境如图所示，机器人的任务是根据需要抓取货仓中摆放的货物，填补到四面货架的合适位置上。    仿真环境   针对这一任务，我和 贝塔 设计了一款超市机器人“Super_Transbot”。 四个麦克纳姆轮组成的全向运动底盘，保证了机器人在狭小空间内的移动性能，内置了 GPS 以及电子罗盘模块">
+<meta property="og:description" content="机器人模型设计 本学期的《机器人软件工程》课程实验在 Webots 仿真平台上进行，仿真环境如图所示，机器人的任务是根据需要抓取货仓中摆放的货物，填补到四面货架的合适位置上。    仿真环境  针对这一任务，我和 贝塔 设计了一款超市机器人“Super_Transbot”。 四个麦克纳姆轮组成的全向运动底盘，保证了机器人在狭小空间内的移动性能，内置了 GPS 以及电子罗盘模块实现">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg">
 <meta property="article:published_time" content="2020-04-23T06:36:52.000Z">
@@ -15,7 +15,7 @@
 <meta property="article:tag" content="Webots">
 <meta property="article:tag" content="图像处理">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://sszxc.net/about/index.html/2020.04%E4%BD%BF%E7%94%A8Webots%E8%BF%9B%E8%A1%8C%E8%B6%85%E5%B8%82%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BB%BF%E7%9C%9F/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg"><link rel="shortcut icon" href="https://s3.ax1x.com/2021/02/03/yKMfTU.png"><link rel="canonical" href="https://sszxc.net/about/index.html/2020.04%E4%BD%BF%E7%94%A8Webots%E8%BF%9B%E8%A1%8C%E8%B6%85%E5%B8%82%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BB%BF%E7%9C%9F/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: undefined,
@@ -135,19 +135,17 @@
           if (t === 'dark') activateDarkMode()
           else if (t === 'light') activateLightMode()
         })(window)</script><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Henry" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/null" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s3.ax1x.com/2021/02/02/yuPIyj.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Henry</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">使用 Webots 进行超市机器人仿真</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2020-04-23T06:36:52.000Z" title="undefined 2020-04-23 14:36:52">2020-04-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://s3.ax1x.com/2021/02/03/yKMfTU.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-info-circle"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s3.ax1x.com/2021/02/02/yuPIyj.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Henry</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-info-circle"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">使用 Webots 进行超市机器人仿真</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2020-04-23T06:36:52.000Z" title="undefined 2020-04-23 14:36:52">2020-04-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
     <iframe src="//player.bilibili.com/player.html?aid=412949643&bvid=BV1GV411d7QG&cid=183293328&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
 </div>
-
 <br>
-
-<h1><span id="机器人模型设计">机器人模型设计</span><a href="#机器人模型设计" class="header-anchor">#</a></h1><p>本学期的《机器人软件工程》课程实验在 Webots 仿真平台上进行，仿真环境如图所示，机器人的任务是根据需要抓取货仓中摆放的货物，填补到四面货架的合适位置上。</p>
+<h1><span id="机器人模型设计"> 机器人模型设计</span></h1>
+<p>本学期的《机器人软件工程》课程实验在 Webots 仿真平台上进行，仿真环境如图所示，机器人的任务是根据需要抓取货仓中摆放的货物，填补到四面货架的合适位置上。</p>
 <center>
 <img src="https://s1.ax1x.com/2020/05/17/Y2ZJE9.jpg" width="80%">
 <br>
 仿真环境
 </center>
-
 <p>针对这一任务，我和 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/beta-1999/" title="贝塔">贝塔</a> 设计了一款超市机器人“Super_Transbot”。</p>
 <p>四个麦克纳姆轮组成的全向运动底盘，保证了机器人在狭小空间内的移动性能，内置了 GPS 以及电子罗盘模块实现自主定位。</p>
 <p>机器人前后分别设置一颗摄像头，用于识别货架上、货舱内的货物，并返回相应的类型和位置信息。</p>
@@ -157,108 +155,130 @@
 <br>
 机器人模型
 </center>
-
-<h1><span id="机器人模型搭建">机器人模型搭建</span><a href="#机器人模型搭建" class="header-anchor">#</a></h1><p>为了在 Webots 仿真平台中高效地搭建出机器人，我们充分遵照软件工程复用思想，将例程中“KUKA youBot”的麦克纳姆轮打包成 PROTO，从而实现麦轮节点的复用。四个麦轮直径 0.10m，通过 HingeJoint 安装在车身主体结构上。</p>
+<h1><span id="机器人模型搭建"> 机器人模型搭建</span></h1>
+<p>为了在 Webots 仿真平台中高效地搭建出机器人，我们充分遵照软件工程复用思想，将例程中“KUKA youBot”的麦克纳姆轮打包成 PROTO，从而实现麦轮节点的复用。四个麦轮直径 0.10m，通过 HingeJoint 安装在车身主体结构上。</p>
 <p>车身整体尺寸为 0.59m×0.40m×0.64m（长宽高），搭建车身时采用模块化设计，主要分为车身、机械臂两部分。车身主要由 Transform、Shape 嵌套而成，主要利用到的几何体包括 Cylinder、Box 等；机械臂主要是在 Pioneer3 所配置的机械臂的基础上进行适当改造，包括尺寸、电机扭矩及直线电机伸展长度等，同时在机械臂的抓手增加了一对力传感器，以实现对物品抓取力度的精准控制。</p>
 <p>机器人配置的摄像头分辨率为 256*128，视角 1.8，配备 Webots 自带的 Recognition API，一定程度上减少了物品识别的难度，使仿真专注于整体软件功能的开发，体现了离线编程的优势。</p>
 <p>为了实现更精确的物理仿真，我们还对机械臂抓手、麦轮的摩擦力参数进行了设置，以保证机器人能够在当前环境保持正常的运动；此外，还设置了合适的车身重量，以保证车辆的运动性能更加优越、抓取稳定性更好。</p>
-<h1><span id="机器人控制器设计">机器人控制器设计</span><a href="#机器人控制器设计" class="header-anchor">#</a></h1><p>为了实现流畅的取货补货功能，机器人控制器采用了状态机的思想，初始化完毕后进入 switch 状态机切换，其中 main_state 共九个状态：</p>
-<pre class=" language-c"><code class="language-c"><span class="token keyword">switch</span> <span class="token punctuation">(</span><span class="token operator">*</span>main_state<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-   <span class="token keyword">case</span> Init_Pose
-   <span class="token keyword">case</span> Recognize_Empty
-   <span class="token keyword">case</span> Arround_Moving
-   <span class="token keyword">case</span> Grab_Item
-   <span class="token keyword">case</span> Back_Moving
-   <span class="token keyword">case</span> TurnBack_To_LoadItem
-   <span class="token keyword">case</span> Item_Loading
-   <span class="token keyword">case</span> RunTo_NextShelf
-   <span class="token keyword">default</span>
-<span class="token punctuation">}</span></code></pre>
+<h1><span id="机器人控制器设计"> 机器人控制器设计</span></h1>
+<p>为了实现流畅的取货补货功能，机器人控制器采用了状态机的思想，初始化完毕后进入 switch 状态机切换，其中 main_state 共九个状态：</p>
+<pre class="highlight"><code class="c"><span class="hljs-keyword">switch</span> (*main_state)
+&#123;
+   <span class="hljs-keyword">case</span> Init_Pose
+   <span class="hljs-keyword">case</span> Recognize_Empty
+   <span class="hljs-keyword">case</span> Arround_Moving
+   <span class="hljs-keyword">case</span> Grab_Item
+   <span class="hljs-keyword">case</span> Back_Moving
+   <span class="hljs-keyword">case</span> TurnBack_To_LoadItem
+   <span class="hljs-keyword">case</span> Item_Loading
+   <span class="hljs-keyword">case</span> RunTo_NextShelf
+   <span class="hljs-keyword">default</span>
+&#125;
+</code></pre>
 <ul>
-<li><p>Init_Pose 为初始默认进入工作区状态，到达上图橙色点位后跳转到 Recognize_Empty，对货架进行识别。</p>
+<li>
+<p>Init_Pose 为初始默认进入工作区状态，到达上图橙色点位后跳转到 Recognize_Empty，对货架进行识别。</p>
 </li>
-<li><p>Recognize_Empty 为识别空货架状态，这个状态主要调用了识别货架的函数，识别完成后将货架上的货物状态更新到数组，若有缺货则进行补货判断，计算出需要的货物名称以及需要放置的位置，然后跳转到 Arround_Moving 寻找货品；若没有缺货则跳转到 RunTo_NextShelf 状态，前往下一个货架进行检测。</p>
+<li>
+<p>Recognize_Empty 为识别空货架状态，这个状态主要调用了识别货架的函数，识别完成后将货架上的货物状态更新到数组，若有缺货则进行补货判断，计算出需要的货物名称以及需要放置的位置，然后跳转到 Arround_Moving 寻找货品；若没有缺货则跳转到 RunTo_NextShelf 状态，前往下一个货架进行检测。</p>
 </li>
-<li><p>Arround_Moving 为环游巡检状态，运动过程中一直保持之前暂存的货物名称，以对货仓进行实时检测判断，直到找到了合适可抓取的货物，跳转至 Grab_Item。</p>
+<li>
+<p>Arround_Moving 为环游巡检状态，运动过程中一直保持之前暂存的货物名称，以对货仓进行实时检测判断，直到找到了合适可抓取的货物，跳转至 Grab_Item。</p>
 </li>
-<li><p>Grab_Item 为抓取仓库货物状态，根据暂存的货物名称行进到指定货物的抓取位置，控制机械臂进行抓取，提升后跳转至 Back_Moving 返程。</p>
+<li>
+<p>Grab_Item 为抓取仓库货物状态，根据暂存的货物名称行进到指定货物的抓取位置，控制机械臂进行抓取，提升后跳转至 Back_Moving 返程。</p>
 </li>
-<li><p>Back_Moving 为回程存货环游状态，机器人会携带着需要的货物返回之前的货架，此时需要进行路径规划选择一条最短路线，到达货架前后跳转至 TurnBack_To_LoadItem。</p>
+<li>
+<p>Back_Moving 为回程存货环游状态，机器人会携带着需要的货物返回之前的货架，此时需要进行路径规划选择一条最短路线，到达货架前后跳转至 TurnBack_To_LoadItem。</p>
 </li>
-<li><p>TurnBack_To_LoadItem 为转身面向货架状态，紧接着跳转至 Item_Loading 状态。</p>
+<li>
+<p>TurnBack_To_LoadItem 为转身面向货架状态，紧接着跳转至 Item_Loading 状态。</p>
 </li>
-<li><p>Item_Loading 为上货状态，根据货物需要放置的位置计算出机器人的目标位置，之后完成上货操作，跳转至 Init_Pose。</p>
+<li>
+<p>Item_Loading 为上货状态，根据货物需要放置的位置计算出机器人的目标位置，之后完成上货操作，跳转至 Init_Pose。</p>
 </li>
-<li><p>RunTo_NextShelf 为前往下一货架状态，根据存储的坐标进行路径规划，当到达下一货架定点时，跳转至 Recognize_Empty。</p>
+<li>
+<p>RunTo_NextShelf 为前往下一货架状态，根据存储的坐标进行路径规划，当到达下一货架定点时，跳转至 Recognize_Empty。</p>
 </li>
-<li><p>default 为错误报警状态。</p>
+<li>
+<p>default 为错误报警状态。</p>
 </li>
 </ul>
 <p>利用上述九个状态构成的状态机，能够较地完成对机器人装卸货物的任务要求，各状态内部操作的封装也使得我们的控制器看起来更加简洁干练。</p>
-<h1><span id="控制器关键函数">控制器关键函数</span><a href="#控制器关键函数" class="header-anchor">#</a></h1><ol>
-<li><p><strong>基本运动封装</strong></p>
+<h1><span id="控制器关键函数"> 控制器关键函数</span></h1>
+<ol>
+<li>
+<p><strong>基本运动封装</strong></p>
 <blockquote>
 <p>void lift(double position);</p>
 </blockquote>
-<p> 给定高度，使机械臂上升直线电机运动到指定位置。</p>
+<p>给定高度，使机械臂上升直线电机运动到指定位置。</p>
 <blockquote>
 <p>void moveFingers(double position);</p>
 </blockquote>
-<p> 给定宽度，使机械臂手中左右两个直线电机运动到指定位置。</p>
+<p>给定宽度，使机械臂手中左右两个直线电机运动到指定位置。</p>
 <blockquote>
 <p>bool Moveto_CertainPoint(double fin_posture[], double reach_precision);</p>
 </blockquote>
-<p> 给定位姿 fin_posture，包括 x、z 坐标与姿态角 angle；给定位控精度 reach_precision；内嵌函数 caculate_tmp_target()，给定目标位姿 double fin_posture[]，根据当前位姿与目标位置，进行位姿的线性插值，差值结果保存在 tmp_posture[] 中作为下一临时目标位姿。 为了解决罗盘值在 2π与 0 之间跳转时出现的机器人原地旋转一圈的冗余运动，因此在姿态角的线性差值前引入逻辑判断：if (fabs(fin_posture[2] - compass_angle) &gt; PI) 以达到向旋转角度更小的方向作旋转运动。</p>
+<p>给定位姿 fin_posture，包括 x、z 坐标与姿态角 angle；给定位控精度 reach_precision；内嵌函数 caculate_tmp_target()，给定目标位姿 double fin_posture[]，根据当前位姿与目标位置，进行位姿的线性插值，差值结果保存在 tmp_posture[] 中作为下一临时目标位姿。 为了解决罗盘值在 2π与 0 之间跳转时出现的机器人原地旋转一圈的冗余运动，因此在姿态角的线性差值前引入逻辑判断：if (fabs(fin_posture[2] - compass_angle) &gt; PI) 以达到向旋转角度更小的方向作旋转运动。</p>
 </li>
-<li><p><strong>识别空货架</strong></p>
+<li>
+<p><strong>识别空货架</strong></p>
 <blockquote>
 <p>bool Find_Empty(WbDeviceTag camera)</p>
 </blockquote>
-<p> 选定车体后侧摄像头，调用 API 识别货物，根据货架大小拟合公式，计算货架上货物的位置更新存入数组。具体来说，每格货架的宽度为 0.25，给机器人设置的定点位于货架水平方向中间，因此可以由检测到的货物与摄像头的相对位置，来判断货物位于哪一列货架。为高矮两种货架高度设置不同的阈值后，也可以根据纵向的相对位置来判断货物位于哪一层。</p>
- <center>
- <img src="https://s1.ax1x.com/2020/05/17/Y2Zt41.jpg" width="100%">
- <br>
- 货架识别示意图
- </center>
+<p>选定车体后侧摄像头，调用 API 识别货物，根据货架大小拟合公式，计算货架上货物的位置更新存入数组。具体来说，每格货架的宽度为 0.25，给机器人设置的定点位于货架水平方向中间，因此可以由检测到的货物与摄像头的相对位置，来判断货物位于哪一列货架。为高矮两种货架高度设置不同的阈值后，也可以根据纵向的相对位置来判断货物位于哪一层。</p>
+<center>
+<img src="https://s1.ax1x.com/2020/05/17/Y2Zt41.jpg" width="100%">
+<br>
+货架识别示意图
+</center>
 </li>
-<li><p><strong>寻找货物</strong></p>
+<li>
+<p><strong>寻找货物</strong></p>
 <blockquote>
 <p>bool Find_Goods(WbDeviceTag camera,char *good_name,int *item_grasped_id);</p>
 </blockquote>
-<p> 选定车体前侧摄像头，给定物品名 good_name，货物 ID 号 item_grasped_id，通过调用 API 识别并判断视野中货物信息（包括 ID、尺寸等），返回是否找到待存放货物的 bool 类型变量。考虑到机械臂的抓取能力，寻找的过程中滤除了距离机器人过远的货物，只考虑当前面对的货仓区域。</p>
- <center>
- <img src="https://s1.ax1x.com/2020/05/17/Y2ZYNR.jpg" width="90%">
- <br>
- 货物识别示意图
- </center>
+<p>选定车体前侧摄像头，给定物品名 good_name，货物 ID 号 item_grasped_id，通过调用 API 识别并判断视野中货物信息（包括 ID、尺寸等），返回是否找到待存放货物的 bool 类型变量。考虑到机械臂的抓取能力，寻找的过程中滤除了距离机器人过远的货物，只考虑当前面对的货仓区域。</p>
+<center>
+<img src="https://s1.ax1x.com/2020/05/17/Y2ZYNR.jpg" width="90%">
+<br>
+货物识别示意图
+</center>
 </li>
-<li><p><strong>对准并抓取</strong></p>
+<li>
+<p><strong>对准并抓取</strong></p>
 <blockquote>
 <p>bool Aim_and_Grasp(int *grasp_state, WbDeviceTag camera, int objectID);</p>
 </blockquote>
-<p> 选定车体前侧摄像头，传入给定的货物 ID 号来锁定摄像头目标。将抓取货物分为“调整位置、抓、举”三个步骤。首先针对不同货物的大小计算一个最合适的抓取位置，然后根据摄像头返回的物体大小粗略地计算手抓的位置，此时激活力传感器，不断收紧抓手直到力传感器达到阈值，表示已经抓紧物体，最后抬升物体达到指定高度，完成抓取功能。</p>
+<p>选定车体前侧摄像头，传入给定的货物 ID 号来锁定摄像头目标。将抓取货物分为“调整位置、抓、举”三个步骤。首先针对不同货物的大小计算一个最合适的抓取位置，然后根据摄像头返回的物体大小粗略地计算手抓的位置，此时激活力传感器，不断收紧抓手直到力传感器达到阈值，表示已经抓紧物体，最后抬升物体达到指定高度，完成抓取功能。</p>
 </li>
-<li><p><strong>返回货架</strong></p>
+<li>
+<p><strong>返回货架</strong></p>
 <blockquote>
 <p>TurnBack_To_LoadItem</p>
 </blockquote>
-<p> 这部分算法直接包含在状态机内，根据货物的目标位置，计算机器人水平方向相应的偏移距离，给定一个固定的前后偏移，将上货路径分为两步，由此确定机器人的行驶路径。</p>
+<p>这部分算法直接包含在状态机内，根据货物的目标位置，计算机器人水平方向相应的偏移距离，给定一个固定的前后偏移，将上货路径分为两步，由此确定机器人的行驶路径。</p>
 </li>
 </ol>
-<h1><span id="机器人软件开发与质量管理">机器人软件开发与质量管理</span><a href="#机器人软件开发与质量管理" class="header-anchor">#</a></h1><p>最后呼应一下课程名《机器人软件工程》，总结一下我们在开发过程中学习到的一些思路：</p>
+<h1><span id="机器人软件开发与质量管理"> 机器人软件开发与质量管理</span></h1>
+<p>最后呼应一下课程名《机器人软件工程》，总结一下我们在开发过程中学习到的一些思路：</p>
 <ol>
-<li><p> 模块化与抽象化技术 在整个超市机器人补货的复杂任务的前提下，将其拆分为“查货架”、“寻货”、“取货”、“回库”及“上货”五个易解决的小任务，实现了任务的模块化；对于每个独立的任务，只考虑该任务本身所需要的入参出参，忽略其细节（比如如何实现、如何计算等），实现了任务的抽象化。</p>
+<li>
+<p>模块化与抽象化技术 在整个超市机器人补货的复杂任务的前提下，将其拆分为“查货架”、“寻货”、“取货”、“回库”及“上货”五个易解决的小任务，实现了任务的模块化；对于每个独立的任务，只考虑该任务本身所需要的入参出参，忽略其细节（比如如何实现、如何计算等），实现了任务的抽象化。</p>
 </li>
-<li><p> 信息隐藏及局部化技术 对于获取机器人位置、方向角以及商品名的获取等类似只读操作，将其封装成功能函数，只返回需要读取的内容，而不能对其源头进行改动，实现了一定程度上的信息隐藏；而对于主状态的跳转，将其约束在状态机函数中，只能在此处进行更改，而不允许在子函数中发生改变，体现了主状态的局部化。</p>
+<li>
+<p>信息隐藏及局部化技术 对于获取机器人位置、方向角以及商品名的获取等类似只读操作，将其封装成功能函数，只返回需要读取的内容，而不能对其源头进行改动，实现了一定程度上的信息隐藏；而对于主状态的跳转，将其约束在状态机函数中，只能在此处进行更改，而不允许在子函数中发生改变，体现了主状态的局部化。</p>
 </li>
-<li><p> 复用技术 在超市机器人的模型设计中，大量使用 USE 操作，实现各节点属性的复用；同时，将麦克纳姆轮的模型封装成 PROTO 节点，使其能够为机器人底盘搭建起到重复使用效果。利用这些复用技术一定程度上减少了超市机器人模型搭建的工作量。</p>
+<li>
+<p>复用技术 在超市机器人的模型设计中，大量使用 USE 操作，实现各节点属性的复用；同时，将麦克纳姆轮的模型封装成 PROTO 节点，使其能够为机器人底盘搭建起到重复使用效果。利用这些复用技术一定程度上减少了超市机器人模型搭建的工作量。</p>
 </li>
-<li><p> 版本控制 为了实现项目良好的管理，我们采用了 GitHub 仓库进行版本控制，每次工作时进行拉取、合并、提交等必须的流程，同时附以简短的提交日志便于对方了解提交内容。除此之外，每完成一个功能之后，利用腾讯会议及 QQ 屏幕共享等软件交流讨论，同时对接下来的工作进行适当的调整和分配，明确各自的任务，并督促对方及时完成。</p>
+<li>
+<p>版本控制 为了实现项目良好的管理，我们采用了 GitHub 仓库进行版本控制，每次工作时进行拉取、合并、提交等必须的流程，同时附以简短的提交日志便于对方了解提交内容。除此之外，每完成一个功能之后，利用腾讯会议及 QQ 屏幕共享等软件交流讨论，同时对接下来的工作进行适当的调整和分配，明确各自的任务，并督促对方及时完成。</p>
 </li>
 </ol>
 <p>本次项目已经托管在 <a target="_blank" rel="noopener" href="https://github.com/sszxc/Super_Transbot" title="GitHub 平台">GitHub 平台</a>。</p>
-</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/">机器人</a><a class="post-meta__tags" href="/tags/%E4%BB%BF%E7%9C%9F/">仿真</a><a class="post-meta__tags" href="/tags/C/">C</a><a class="post-meta__tags" href="/tags/Webots/">Webots</a><a class="post-meta__tags" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a></div><div class="post_share"><div class="social-share" data-image="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020.05%E5%9F%BA%E4%BA%8EHOG%E6%8F%8F%E8%BF%B0%E5%AD%90+SVM%E5%88%86%E7%B1%BB%E5%99%A8%E7%9A%84%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/"><img class="prev-cover" src="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">基于 HOG 描述子+SVM 分类器的目标检测</div></div></a></div><div class="next-post pull-right"><a href="/2020.04%E5%9C%A8ROS%E4%B8%8B%E4%BD%BF%E7%94%A8%E7%99%BE%E5%BA%A6UNIT%E5%AE%9E%E7%8E%B0%E8%AF%AD%E9%9F%B3%E4%BA%A4%E4%BA%92/"><img class="next-cover" src="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">在 ROS 下使用百度 UNIT 实现语音交互</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">机器人模型设计</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">机器人模型搭建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">机器人控制器设计</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">控制器关键函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">机器人软件开发与质量管理</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2021 By Henry</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script>function panguFn () {
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/">机器人</a><a class="post-meta__tags" href="/tags/%E4%BB%BF%E7%9C%9F/">仿真</a><a class="post-meta__tags" href="/tags/C/">C</a><a class="post-meta__tags" href="/tags/Webots/">Webots</a><a class="post-meta__tags" href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">图像处理</a></div><div class="post_share"><div class="social-share" data-image="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020.05%E5%9F%BA%E4%BA%8EHOG%E6%8F%8F%E8%BF%B0%E5%AD%90+SVM%E5%88%86%E7%B1%BB%E5%99%A8%E7%9A%84%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/"><img class="prev-cover" src="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">基于 HOG 描述子+SVM 分类器的目标检测</div></div></a></div><div class="next-post pull-right"><a href="/2020.04%E5%9C%A8ROS%E4%B8%8B%E4%BD%BF%E7%94%A8%E7%99%BE%E5%BA%A6UNIT%E5%AE%9E%E7%8E%B0%E8%AF%AD%E9%9F%B3%E4%BA%A4%E4%BA%92/"><img class="next-cover" src="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">在 ROS 下使用百度 UNIT 实现语音交互</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text"> 机器人模型设计</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text"> 机器人模型搭建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text"> 机器人控制器设计</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text"> 控制器关键函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text"> 机器人软件开发与质量管理</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2021 By Henry</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script>function panguFn () {
   if (typeof pangu === 'object') pangu.autoSpacingPage()
   else {
     getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')

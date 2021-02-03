@@ -13,7 +13,7 @@
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="ROS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://sszxc.net/about/index.html/2020.04%E5%9C%A8ROS%E4%B8%8B%E4%BD%BF%E7%94%A8%E7%99%BE%E5%BA%A6UNIT%E5%AE%9E%E7%8E%B0%E8%AF%AD%E9%9F%B3%E4%BA%A4%E4%BA%92/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg"><link rel="shortcut icon" href="https://s3.ax1x.com/2021/02/03/yKMfTU.png"><link rel="canonical" href="https://sszxc.net/about/index.html/2020.04%E5%9C%A8ROS%E4%B8%8B%E4%BD%BF%E7%94%A8%E7%99%BE%E5%BA%A6UNIT%E5%AE%9E%E7%8E%B0%E8%AF%AD%E9%9F%B3%E4%BA%A4%E4%BA%92/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: undefined,
@@ -133,7 +133,7 @@
           if (t === 'dark') activateDarkMode()
           else if (t === 'light') activateLightMode()
         })(window)</script><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Henry" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/null" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s3.ax1x.com/2021/02/02/yuPIyj.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Henry</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">在 ROS 下使用百度 UNIT 实现语音交互</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2020-04-23T04:10:23.000Z" title="undefined 2020-04-23 12:10:23">2020-04-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>在本学期的《感知与人机交互》小组课程实验中，我选择的是之前从未接触过的语音系统模块。从语音识别的基本原理开始了解，分帧、音素、状态网络训练等概念的学习让我对现在的语音技术有了一定的了解；搭建完整个语音交互系统后，对现阶段已经投入市场运行的一些智能交互系统也有了更深刻的认识，诸如火车站购票系统、医院挂号系统、淘宝智能客服、车载语音助手等等也已不再神秘。</p>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://s3.ax1x.com/2021/02/03/yKMfTU.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-info-circle"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s3.ax1x.com/2021/02/02/yuPIyj.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Henry</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-info-circle"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">在 ROS 下使用百度 UNIT 实现语音交互</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2020-04-23T04:10:23.000Z" title="undefined 2020-04-23 12:10:23">2020-04-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>在本学期的《感知与人机交互》小组课程实验中，我选择的是之前从未接触过的语音系统模块。从语音识别的基本原理开始了解，分帧、音素、状态网络训练等概念的学习让我对现在的语音技术有了一定的了解；搭建完整个语音交互系统后，对现阶段已经投入市场运行的一些智能交互系统也有了更深刻的认识，诸如火车站购票系统、医院挂号系统、淘宝智能客服、车载语音助手等等也已不再神秘。</p>
 <ul>
 <li>主要使用：百度语音识别 API + 百度语音合成 API + 百度 UNIT 理解交互平台</li>
 <li>工作环境：Ubuntu 18.04 + ROS melodic + Python2</li>
@@ -148,7 +148,6 @@
 流程图
 </center>
 <br>
-
 <p>主要流程是：</p>
 <ul>
 <li>订阅主线程 topic Talk_Msg，得到主线程通知之后，开始本次对话。</li>
@@ -156,9 +155,10 @@
 <li>同时调用 UNIT API，获取本次对话的 session ID 用于服务器保持本次对话内容，实现多轮对话。</li>
 <li>重复对话直到获取意图完成，发布 topic Listen_Msg，内容为语音识别的结果，即姓名+物品。</li>
 </ul>
-<h2><span id="语音合成与识别">语音合成与识别</span><a href="#语音合成与识别" class="header-anchor">#</a></h2><p>处理好网络问题后，顺利安装依赖库文件并 clone 百度语音 API 的相关 demo，初次运行时提示 print 附近有报错，怀疑是之前安装的 Anaconda 与 ROS 下的 Python 版本冲突，于是把。bashrc 里面的 anaconda 先注释了，确保调用 python2，暂时解决这个兼容性问题。</p>
-<p>此 API 需要在百度开发平台先注册功能，并获取相应的 API Key、Secret Key。首先测试百度语音合成 API 的功能，使用命令<code>rostopic pub /speak_string std_msgs/String &#39;你好世界&#39;</code>向 TTS 节点发送 string 类型信息，成功调用了 TTS 引擎，扬声器正确发出声音。此外，API 还支持不同的语速、音调、音量、性别，可以按需进行调整。但是需要注意的是语音合成的音量非常轻，默认参数下很难听到，导致一开始误以为合成失败，当然也可能是个人硬件问题。</p>
-<p>然后是语音识别部分，第一次启动提示报错：<code>Value for header &#123;Content-length: 183&#125; must be of type str or bytes, not &lt;type &#39;int&#39;&gt;</code>。之后在 GitHub issues4 找到了答案，应该是百度 API 的格式有变化，rate 参数的类型从 int 变成了 string，检查百度官方文档后可以确定这一问题，修改即可。</p>
+<h2><span id="语音合成与识别"> 语音合成与识别</span></h2>
+<p>处理好网络问题后，顺利安装依赖库文件并 clone 百度语音 API 的相关 demo，初次运行时提示 print 附近有报错，怀疑是之前安装的 Anaconda 与 ROS 下的 Python 版本冲突，于是把。bashrc 里面的 anaconda 先注释了，确保调用 python2，暂时解决这个兼容性问题。</p>
+<p>此 API 需要在百度开发平台先注册功能，并获取相应的 API Key、Secret Key。首先测试百度语音合成 API 的功能，使用命令<code>rostopic pub /speak_string std_msgs/String '你好世界'</code>向 TTS 节点发送 string 类型信息，成功调用了 TTS 引擎，扬声器正确发出声音。此外，API 还支持不同的语速、音调、音量、性别，可以按需进行调整。但是需要注意的是语音合成的音量非常轻，默认参数下很难听到，导致一开始误以为合成失败，当然也可能是个人硬件问题。</p>
+<p>然后是语音识别部分，第一次启动提示报错：<code>Value for header &#123;Content-length: 183&#125; must be of type str or bytes, not &lt;type 'int'&gt;</code>。之后在 GitHub issues4 找到了答案，应该是百度 API 的格式有变化，rate 参数的类型从 int 变成了 string，检查百度官方文档后可以确定这一问题，修改即可。</p>
 <p>之后 demo 程序可以正常启动，按照流程说话采集后陆续报了如下几个错误代码，但都在官方接口文档 5 上找到了解答。</p>
 <table border="1" align="center">
     <tr align="center">
@@ -178,28 +178,26 @@
     </tr>
 </table>
 <br>
-
 <!--: 旧版本表格 journal 主题默认样式不显示边框
 |错误码|含义|一般解决方法|
 |:-:|---|---|
 |3301|识别结果实际为空|可能是音频质量过差，不清晰，或者是空白音频。 有时也可能是 pcm 填错采样率。如 16K 采样率的 pcm 文件，填写的 rate 参数为 8000。|
 |3314|音频长度过短|用户的 len 参数小于等于 4。|
 -->
-
 <p>然后测试 STT 节点功能，启动后响应回车键，麦克风开始录音，当录制到的声音小于一定阈值时，停止录音，并可以将音频文件发送至云端进行识别，最后将结果返回客户端。</p>
 <p>实际的语音识别效果受到多种因素影响，其中录音环境是最重要的一个因素，当人声清晰、无背景噪音的时候，识别效果非常好，若存在背景噪音，例如电脑风扇声等，都会很大程度地影响识别效果。</p>
 <p>此外，待识别的语句如果存在生僻字，识别效果也会打折扣。针对生僻专有名词的场景，百度提供了自定义词库来快速提升对应名词准确率，或者可以通过语音自训练平台训练专属模型持续提升识别准确率。</p>
 <p>值得一提的是，百度官方示例程序中，竟然出现了<code>simple_speek.py</code>这样的文件名，不知道是笔误还是审核疏忽。</p>
-<h2><span id="智能交互">智能交互</span><a href="#智能交互" class="header-anchor">#</a></h2><p>UNIT 是百度的一个智能交互理解平台，期望实现“面向任务”的理解与交互能力，这里的一项任务可以是解答用户的某个问题、执行用户指令，甚至通过一系列交互引导用户达成某项需求，其官方使用场景有：酒店语音助手、儿童故事机、火车票场景、查天气机器人等。</p>
+<h2><span id="智能交互"> 智能交互</span></h2>
+<p>UNIT 是百度的一个智能交互理解平台，期望实现“面向任务”的理解与交互能力，这里的一项任务可以是解答用户的某个问题、执行用户指令，甚至通过一系列交互引导用户达成某项需求，其官方使用场景有：酒店语音助手、儿童故事机、火车票场景、查天气机器人等。</p>
 <center>
 <img src="https://s1.ax1x.com/2020/05/17/Y2VIt1.jpg" width="80%">
 <br>
 百度 UNIT 结构
 </center>
 <br>
-
 <p>这次在 UNIT 上搭建了一个“你要拿什么”的技能，对应设置了 name 和 object 两个词槽，并上传了自定义字典。配置了不同词槽的澄清话术，并设置了对话模板，然后导入样本集进行训练，最后顺利部署这一技能，获取到技能 ID。</p>
-<p>接着测试 API 功能，按照官方文档给出的 json 文件格式写好数据包，请求参数中有一项 query_info→source，请求信息来源，可选值：”ASR”,”KEYBOARD”。ASR 为语音输入，KEYBOARD 为键盘文本输入。针对 ASR 输入，UNIT 平台内置了纠错机制，会尝试解决语音输入中的一些常见错误。由于之前已经单独配置了语音合成与识别节点，所以这里就先使用文本输入。</p>
+<p>接着测试 API 功能，按照官方文档给出的 json 文件格式写好数据包，请求参数中有一项 query_info→source，请求信息来源，可选值：“ASR”,“KEYBOARD”。ASR 为语音输入，KEYBOARD 为键盘文本输入。针对 ASR 输入，UNIT 平台内置了纠错机制，会尝试解决语音输入中的一些常见错误。由于之前已经单独配置了语音合成与识别节点，所以这里就先使用文本输入。</p>
 <p>配置好 API Key、Secret Key、机器人编号、技能编号之后，在 ROS 下进行相应的 API 测试，整理完节点之间的逻辑关系后设置了几个话题：/UNIT_Listen、/speak_string、/TTS_LastWord，配合自己模拟的主线程进行测试。实际测试结果是多轮对话一直失败，服务器返回的 session-ID 一直无法保持。</p>
 <p>后来使用 Ubuntu 下的网页 API 测试工具 Postman 进行本地 API 调试，可以看到 UNIT 平台正常返回了对话数据，手动保存返回的 session ID 之后，加入到发送的 json 中，可以成功实现多轮对话的功能。</p>
 <center>
@@ -208,7 +206,6 @@
 Postman
 </center>
 <br>
-
 <p>因此开始仔细对比两边的 json 数据包，最后发现是 Python 中编写 json 格式字符串时，没有注意转义符与换行符，json 字段中需要保留的双引号存在嵌套的情况，没有特殊处理导致有效内容被转义了，于是数据包发送失败。</p>
 <p>由于对 json 文件格式、Python 语法不熟悉，这个问题花费了相当长的时间，使用了 API 测试工具 Postman 之后提高了工作效率，也更容易地发现了 bug 所在。修复之后重新开始测试，最终效果基本能到达预期要求。</p>
 <center>
@@ -217,19 +214,37 @@ Postman
 效果图
 </center>
 <br>
-
 <p>以下是三个实际运行的案例文字版，分别表现了正常获取意图、重复澄清、整句获取三种场景功能。</p>
 <blockquote>
-<p>发送消息：请问有什么可以帮你？<br>正在录音。..<br>收到消息：帮我拿杯快乐水。<br>回复消息：你叫什么名字<br>正在录音。..<br>收到消息：我叫小明。<br>获取意图：小明想要可乐。明白了，马上就去拿。</p>
+<p>发送消息：请问有什么可以帮你？<br>
+正在录音。…<br>
+收到消息：帮我拿杯快乐水。<br>
+回复消息：你叫什么名字<br>
+正在录音。…<br>
+收到消息：我叫小明。<br>
+获取意图：小明想要可乐。明白了，马上就去拿。</p>
 </blockquote>
 <blockquote>
-<p>发送消息：请问有什么可以帮你？<br>正在录音。..<br>收到消息：龟龟，帮我拿个东西。<br>回复消息：不好意思，需要我帮你拿什么<br>正在录音。..<br>收到消息：水杯。<br>回复消息：你叫什么名字<br>正在录音。..<br>收到消息：张三。<br>获取意图：张三想要水杯。明白了，马上就去拿。</p>
+<p>发送消息：请问有什么可以帮你？<br>
+正在录音。…<br>
+收到消息：龟龟，帮我拿个东西。<br>
+回复消息：不好意思，需要我帮你拿什么<br>
+正在录音。…<br>
+收到消息：水杯。<br>
+回复消息：你叫什么名字<br>
+正在录音。…<br>
+收到消息：张三。<br>
+获取意图：张三想要水杯。明白了，马上就去拿。</p>
 </blockquote>
 <blockquote>
-<p>发送消息：请问有什么可以帮你？<br>正在录音。..<br>收到消息：我是玛丽，帮我拿一包泡面。<br>获取意图：玛丽想要方便面。明白了，马上就去拿。</p>
+<p>发送消息：请问有什么可以帮你？<br>
+正在录音。…<br>
+收到消息：我是玛丽，帮我拿一包泡面。<br>
+获取意图：玛丽想要方便面。明白了，马上就去拿。</p>
 </blockquote>
 <p>那么最后，总结一下，本次实验调试并接入百度语音合成与识别 API，配置相关参数；在百度 UNIT 理解交互平台上搭建对话技能，对应要求建立相应字典，完成较高容错率的交互功能；整合上述两部分功能并与主线程通信，学习了一些调试技巧。本次涉及到的语音部分代码已托管在 <a target="_blank" rel="noopener" href="https://github.com/sszxc/TurtyTalk">Github 平台</a>。</p>
-<h2><span id="参考资料">参考资料</span><a href="#参考资料" class="header-anchor">#</a></h2><ol>
+<h2><span id="参考资料"> 参考资料</span></h2>
+<ol>
 <li><a target="_blank" rel="noopener" href="http://wiki.ros.org/Sensors">Sensors supported by ROS</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/seeseeatre/article/details/79228816">ROS Kinetic 使用 PocketSphinx 进行语音识别</a></li>
 <li><a target="_blank" rel="noopener" href="http://doc.tianbot.com/rosecho/1586400">ROSECHO 中文 ROS 语音交互模块</a></li>
@@ -238,9 +253,9 @@ Postman
 <li><a target="_blank" rel="noopener" href="https://www.ncnynl.com/archives/201905/3035.html">ROS 与语音交互教程-ROS 下使用百度语音 baidu_speech 识别</a></li>
 <li><a target="_blank" rel="noopener" href="https://ai.baidu.com/ai-doc/UNIT/Zk38h1vl4">UNIT 技能对话 API 文档</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38288618/article/details/79111564">ros 使用百度 UNIT 快速搭建机器人对话系统</a></li>
-<li><a target="_blank" rel="noopener" href="https://ai.baidu.com/forum/topic/show/870054?&pageNo=1">技能对话接口，API 多轮对话的实现</a></li>
+<li><a target="_blank" rel="noopener" href="https://ai.baidu.com/forum/topic/show/870054?&amp;pageNo=1">技能对话接口，API 多轮对话的实现</a></li>
 </ol>
-</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AF%AD%E9%9F%B3/">语音</a><a class="post-meta__tags" href="/tags/Python/">Python</a><a class="post-meta__tags" href="/tags/ROS/">ROS</a></div><div class="post_share"><div class="social-share" data-image="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020.04%E4%BD%BF%E7%94%A8Webots%E8%BF%9B%E8%A1%8C%E8%B6%85%E5%B8%82%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BB%BF%E7%9C%9F/"><img class="prev-cover" src="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">使用 Webots 进行超市机器人仿真</div></div></a></div><div class="next-post pull-right"><a href="/2020.04%E4%BD%BF%E7%94%A8MATLAB%E8%AE%BE%E8%AE%A1%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E9%9F%B3%E6%BB%A4%E6%B3%A2%E5%99%A8/"><img class="next-cover" src="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">使用 MATLAB 设计简单的语音滤波器</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">语音合成与识别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">智能交互</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">参考资料</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2021 By Henry</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script>function panguFn () {
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AF%AD%E9%9F%B3/">语音</a><a class="post-meta__tags" href="/tags/Python/">Python</a><a class="post-meta__tags" href="/tags/ROS/">ROS</a></div><div class="post_share"><div class="social-share" data-image="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020.04%E4%BD%BF%E7%94%A8Webots%E8%BF%9B%E8%A1%8C%E8%B6%85%E5%B8%82%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%BB%BF%E7%9C%9F/"><img class="prev-cover" src="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">使用 Webots 进行超市机器人仿真</div></div></a></div><div class="next-post pull-right"><a href="/2020.04%E4%BD%BF%E7%94%A8MATLAB%E8%AE%BE%E8%AE%A1%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E9%9F%B3%E6%BB%A4%E6%B3%A2%E5%99%A8/"><img class="next-cover" src="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">使用 MATLAB 设计简单的语音滤波器</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text"> 语音合成与识别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text"> 智能交互</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text"> 参考资料</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2021 By Henry</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script>function panguFn () {
   if (typeof pangu === 'object') pangu.autoSpacingPage()
   else {
     getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')

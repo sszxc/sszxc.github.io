@@ -1318,7 +1318,7 @@ canvas:not(#ribbon-canvas),
   --white: #fff;
   --text-highlight-color: #1f2d3d;
   --blockquote-color: #6a737d;
-  --blockquote-bg: rgba(73,177,245,0.1);
+  --blockquote-bg: rgba(149,216,243,0.1);
   --reward-pop: #f5f5f5;
   --toc-link-color: #666261;
   --card-box-shadow: 0 3px 8px 6px rgba(7,17,27,0.06);
@@ -1420,7 +1420,7 @@ table td {
   vertical-align: middle;
 }
 *::selection {
-  background: #00c4b6;
+  background: #89aeb7;
   color: #f7f7f7;
 }
 button {
@@ -1538,7 +1538,7 @@ img:not([src]) {
 blockquote {
   margin: 0 0 1rem;
   padding: 0.1rem 0.8rem;
-  border-left: 0.2rem solid #49b1f5;
+  border-left: 0.2rem solid #95d8f3;
   background-color: var(--blockquote-bg);
   color: var(--blockquote-color);
 }
@@ -2708,8 +2708,8 @@ blockquote footer cite:before {
   transition: all 0.2s ease-in-out;
 }
 #aside-content #card-toc .toc-content .toc-link.active {
-  border-left-color: #009d92;
-  background: #00c4b6;
+  border-left-color: #61939f;
+  background: #89aeb7;
   color: #fff;
 }
 #aside-content #card-toc .toc-content:before {
@@ -3526,7 +3526,7 @@ _:future,
   cursor: pointer;
 }
 #pagination .page-number.current {
-  background: #00c4b6;
+  background: #89aeb7;
   color: var(--white);
   cursor: default;
 }
@@ -3612,7 +3612,7 @@ _:future,
   overflow-wrap: break-word;
 }
 #article-container a {
-  color: #99a9bf;
+  color: #49b1f5;
 }
 #article-container a:hover {
   text-decoration: underline;

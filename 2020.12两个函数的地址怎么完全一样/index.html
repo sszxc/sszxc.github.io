@@ -10,7 +10,7 @@
 <meta property="article:modified_time" content="2020-12-02T01:06:21.347Z">
 <meta property="article:author" content="Henry">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://sszxc.net/about/index.html/2020.12%E4%B8%A4%E4%B8%AA%E5%87%BD%E6%95%B0%E7%9A%84%E5%9C%B0%E5%9D%80%E6%80%8E%E4%B9%88%E5%AE%8C%E5%85%A8%E4%B8%80%E6%A0%B7/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg"><link rel="shortcut icon" href="https://s3.ax1x.com/2021/02/03/yKMfTU.png"><link rel="canonical" href="https://sszxc.net/about/index.html/2020.12%E4%B8%A4%E4%B8%AA%E5%87%BD%E6%95%B0%E7%9A%84%E5%9C%B0%E5%9D%80%E6%80%8E%E4%B9%88%E5%AE%8C%E5%85%A8%E4%B8%80%E6%A0%B7/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: undefined,
@@ -130,57 +130,68 @@
           if (t === 'dark') activateDarkMode()
           else if (t === 'light') activateLightMode()
         })(window)</script><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Henry" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/null" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s3.ax1x.com/2021/02/02/yuPIyj.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Henry</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">两个函数的地址怎么完全一样——关于函数调用栈</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2020-12-01T07:41:43.000Z" title="undefined 2020-12-01 15:41:43">2020-12-01</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>在测试 Python 变量引用顺序的时候，修修改改，写出了下面这样的测试代码：</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">plus</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> <span class="token number">10</span>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://s3.ax1x.com/2021/02/03/yKMfTU.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-info-circle"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s3.ax1x.com/2021/02/02/yuPIyj.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Henry</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-info-circle"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">两个函数的地址怎么完全一样——关于函数调用栈</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2020-12-01T07:41:43.000Z" title="undefined 2020-12-01 15:41:43">2020-12-01</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>在测试 Python 变量引用顺序的时候，修修改改，写出了下面这样的测试代码：</p>
+<pre class="highlight"><code class="python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">plus</span><span class="hljs-params">(a, b)</span>:</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">10</span>
 
-<span class="token keyword">def</span> <span class="token function">test1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">plus</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token number">20</span>
-    <span class="token keyword">return</span> plus
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test1</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">plus</span><span class="hljs-params">(a, b)</span>:</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-number">20</span>
+    <span class="hljs-keyword">return</span> plus
 
-<span class="token keyword">def</span> <span class="token function">test2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">plus</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token number">30</span>
-    <span class="token keyword">return</span> plus
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test2</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">plus</span><span class="hljs-params">(a, b)</span>:</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-number">30</span>
+    <span class="hljs-keyword">return</span> plus
 
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
-    demo1 <span class="token operator">=</span> test1<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    demo2 <span class="token operator">=</span> test2<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>plus<span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>demo1<span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>demo2<span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>test1<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>test2<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+    demo1 = test1()
+    demo2 = test2()
+    print(plus)
+    print(demo1)
+    print(demo2)
+    print(test1())
+    print(test2())
+</code></pre>
 <p>对应输出结果：</p>
-<pre><code>&lt;function plus at 0x000002063B18B798&gt;
+<pre class="highlight"><code class>&lt;function plus at 0x000002063B18B798&gt;
 &lt;function testa.&lt;locals&gt;.plus at 0x000002063B18B678&gt;
 &lt;function testb.&lt;locals&gt;.plus at 0x000002063B18B948&gt;
 &lt;function testa.&lt;locals&gt;.plus at 0x000002063B18B9D8&gt;
-&lt;function testb.&lt;locals&gt;.plus at 0x000002063B18B9D8&gt;</code></pre>
+&lt;function testb.&lt;locals&gt;.plus at 0x000002063B18B9D8&gt;
+</code></pre>
 <p>可以发现，前面几句都很正常：“变量引用的时候先在本地符号表中查找，然后是闭包函数的符号表，接着是全局符号表，最后是内置符号表。”但最后两行，不同函数的内存地址竟然一样。</p>
 <p>请教了一下专业人士，原来和函数栈结构有关。</p>
 <hr>
 <p>参考 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/clover-toeic/p/3755401.html">C 语言函数调用栈（一） clover_toeic</a>，先复习一下函数调用时的具体步骤：</p>
 <ol>
-<li><p>主调函数将被调函数所要求的参数，根据相应的函数调用约定，保存在运行时栈中。该操作会改变程序的栈指针。</p>
-<p> 注：x86 平台将参数压入调用栈中。而 x86_64 平台具有 16 个通用 64 位寄存器，故调用函数时前 6 个参数通常由寄存器传递，其余参数才通过栈传递。</p>
+<li>
+<p>主调函数将被调函数所要求的参数，根据相应的函数调用约定，保存在运行时栈中。该操作会改变程序的栈指针。</p>
+<p>注：x86 平台将参数压入调用栈中。而 x86_64 平台具有 16 个通用 64 位寄存器，故调用函数时前 6 个参数通常由寄存器传递，其余参数才通过栈传递。</p>
 </li>
-<li><p>主调函数将控制权移交给被调函数（使用 call 指令）。函数的返回地址（待执行的下条指令地址）保存在程序栈中（压栈操作隐含在 call 指令中）。</p>
+<li>
+<p>主调函数将控制权移交给被调函数（使用 call 指令）。函数的返回地址（待执行的下条指令地址）保存在程序栈中（压栈操作隐含在 call 指令中）。</p>
 </li>
-<li><p>若有必要，被调函数会设置帧基指针，并保存被调函数希望保持不变的寄存器值。</p>
+<li>
+<p>若有必要，被调函数会设置帧基指针，并保存被调函数希望保持不变的寄存器值。</p>
 </li>
-<li><p>被调函数通过修改栈顶指针的值，为自己的局部变量在运行时栈中分配内存空间，并从帧基指针的位置处向低地址方向存放被调函数的局部变量和临时变量。</p>
+<li>
+<p>被调函数通过修改栈顶指针的值，为自己的局部变量在运行时栈中分配内存空间，并从帧基指针的位置处向低地址方向存放被调函数的局部变量和临时变量。</p>
 </li>
-<li><p>被调函数执行自己任务，此时可能需要访问由主调函数传入的参数。若被调函数返回一个值，该值通常保存在一个指定寄存器中（如 EAX)。</p>
+<li>
+<p>被调函数执行自己任务，此时可能需要访问由主调函数传入的参数。若被调函数返回一个值，该值通常保存在一个指定寄存器中（如 EAX)。</p>
 </li>
-<li><p>一旦被调函数完成操作，为该函数局部变量分配的栈空间将被释放。这通常是步骤 4 的逆向执行。</p>
+<li>
+<p>一旦被调函数完成操作，为该函数局部变量分配的栈空间将被释放。这通常是步骤 4 的逆向执行。</p>
 </li>
-<li><p>恢复步骤 3 中保存的寄存器值，包含主调函数的帧基指针寄存器。</p>
+<li>
+<p>恢复步骤 3 中保存的寄存器值，包含主调函数的帧基指针寄存器。</p>
 </li>
-<li><p>被调函数将控制权交还主调函数（使用 ret 指令）。根据使用的函数调用约定，该操作也可能从程序栈上清除先前传入的参数。</p>
+<li>
+<p>被调函数将控制权交还主调函数（使用 ret 指令）。根据使用的函数调用约定，该操作也可能从程序栈上清除先前传入的参数。</p>
 </li>
-<li><p>主调函数再次获得控制权后，可能需要将先前的参数从栈上清除。在这种情况下，对栈的修改需要将帧基指针值恢复到步骤 1 之前的值。</p>
+<li>
+<p>主调函数再次获得控制权后，可能需要将先前的参数从栈上清除。在这种情况下，对栈的修改需要将帧基指针值恢复到步骤 1 之前的值。</p>
 </li>
 </ol>
 <p>步骤 3 与步骤 4 在函数调用之初常一同出现，统称为函数序 (prologue)；步骤 6 到步骤 8 在函数调用的最后常一同出现，统称为函数跋 (epilogue)。函数序和函数跋是编译器自动添加的开始和结束汇编代码，其实现与 CPU 架构和编译器相关。除步骤 5 代表函数实体外，其它所有操作组成函数调用。</p>

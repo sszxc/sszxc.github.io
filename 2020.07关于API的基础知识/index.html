@@ -1,16 +1,16 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>关于 API 的基础知识 | Henry</title><meta name="author" content="Henry"><meta name="copyright" content="Henry"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前两天需要完成一个扫描件转成 Excel 的操作，试了各种 OCR 软件效果都不理想，后来尝试了百度的文字识别 API，5 分钟搞定。看来广告说得对：“学会用 Python，比别人早下班 2 小时。” 🤷‍♂️  白嫖了好多次百度的 API，但是对各种基础知识都还一知半解，只会对着 Demo 改改。那么现在就从原理出发，花点时间查漏补缺一下吧。 API# API（Application Pro">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>关于 API 的基础知识 | Henry</title><meta name="author" content="Henry"><meta name="copyright" content="Henry"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前两天需要完成一个扫描件转成 Excel 的操作，试了各种 OCR 软件效果都不理想，后来尝试了百度的文字识别 API，5 分钟搞定。看来广告说得对：“学会用 Python，比别人早下班 2 小时。” 🤷‍♂️  白嫖了好多次百度的 API，但是对各种基础知识都还一知半解，只会对着 Demo 改改。那么现在就从原理出发，花点时间查漏补缺一下吧。  API  API（Application Pr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于 API 的基础知识">
 <meta property="og:url" content="https://sszxc.net/about/index.html/2020.07%E5%85%B3%E4%BA%8EAPI%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
 <meta property="og:site_name" content="Henry">
-<meta property="og:description" content="前两天需要完成一个扫描件转成 Excel 的操作，试了各种 OCR 软件效果都不理想，后来尝试了百度的文字识别 API，5 分钟搞定。看来广告说得对：“学会用 Python，比别人早下班 2 小时。” 🤷‍♂️  白嫖了好多次百度的 API，但是对各种基础知识都还一知半解，只会对着 Demo 改改。那么现在就从原理出发，花点时间查漏补缺一下吧。 API# API（Application Pro">
+<meta property="og:description" content="前两天需要完成一个扫描件转成 Excel 的操作，试了各种 OCR 软件效果都不理想，后来尝试了百度的文字识别 API，5 分钟搞定。看来广告说得对：“学会用 Python，比别人早下班 2 小时。” 🤷‍♂️  白嫖了好多次百度的 API，但是对各种基础知识都还一知半解，只会对着 Demo 改改。那么现在就从原理出发，花点时间查漏补缺一下吧。  API  API（Application Pr">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg">
 <meta property="article:published_time" content="2020-07-22T03:18:30.000Z">
 <meta property="article:modified_time" content="2020-12-02T01:16:26.323Z">
 <meta property="article:author" content="Henry">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://sszxc.net/about/index.html/2020.07%E5%85%B3%E4%BA%8EAPI%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg"><link rel="shortcut icon" href="https://s3.ax1x.com/2021/02/03/yKMfTU.png"><link rel="canonical" href="https://sszxc.net/about/index.html/2020.07%E5%85%B3%E4%BA%8EAPI%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: undefined,
@@ -130,11 +130,12 @@
           if (t === 'dark') activateDarkMode()
           else if (t === 'light') activateLightMode()
         })(window)</script><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Henry" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/null" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s3.ax1x.com/2021/02/02/yuPIyj.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Henry</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">关于 API 的基础知识</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2020-07-22T03:18:30.000Z" title="undefined 2020-07-22 11:18:30">2020-07-22</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://s3.ax1x.com/2021/02/03/yKMfTU.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-info-circle"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s3.ax1x.com/2021/02/02/yuPIyj.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Henry</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-info-circle"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">关于 API 的基础知识</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2020-07-22T03:18:30.000Z" title="undefined 2020-07-22 11:18:30">2020-07-22</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
 <p><em>前两天需要完成一个扫描件转成 Excel 的操作，试了各种 OCR 软件效果都不理想，后来尝试了百度的文字识别 API，5 分钟搞定。看来广告说得对：“学会用 Python，比别人早下班 2 小时。”</em> 🤷‍♂️</p>
 </blockquote>
 <p>白嫖了好多次百度的 API，但是对各种基础知识都还一知半解，只会对着 Demo 改改。那么现在就从原理出发，花点时间查漏补缺一下吧。</p>
-<h1><span id="api">API</span><a href="#api" class="header-anchor">#</a></h1><blockquote>
+<h1><span id="api"> API</span></h1>
+<blockquote>
 <p>API（Application Programming Interface，应用程序接口）是一些预先定义的函数，或指软件系统不同组成部分衔接的约定。用来提供应用程序与开发人员基于某软件或硬件得以访问的一组例程，而又无需访问源码，或理解内部工作机制的细节。——百度百科</p>
 </blockquote>
 <p>所以 API 就是指把某些功能封装好，方便其他人调用。而调用的人可以很方便地使用这些功能，并且可以不需要知道这些功能的具体实现过程。</p>
@@ -144,14 +145,15 @@
 调用 API 流程|<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41590495/article/details/105449114"><u>CSDN</u></a>
 </center>
 <br>
-
 <p>按照 <a target="_blank" rel="noopener" href="https://cloud.baidu.com/doc/APIGUIDE/s/Hk1myw1a8">百度智能云的文档</a>，百度的 API 分为管控型 API（云产品创建、查看、启动停止、扩缩容、释放停止，类似于控制台）和功能型 API（百度语音、人脸识别、文字识别）。</p>
 <p>插播一个 SDK 与 API 之间的关系：</p>
 <blockquote>
-<p>你可以把 SDK 想象成一个虚拟的程序包，在这个程序包中有一份做好的软件功能，这份程序包几乎是全封闭的，只有一个小小接口可以联通外界，这个接口就是 API。 比如—— 有一杯密封饮料，它的名字叫做“SDK”。 饮料上插着吸管，吸管的名字叫“API”。<br>来自：<u><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/21691705/answer/770586138">SDK 和 API 的区别？ - 简道云的回答 - 知乎</a></u></p>
+<p>你可以把 SDK 想象成一个虚拟的程序包，在这个程序包中有一份做好的软件功能，这份程序包几乎是全封闭的，只有一个小小接口可以联通外界，这个接口就是 API。 比如—— 有一杯密封饮料，它的名字叫做“SDK”。 饮料上插着吸管，吸管的名字叫“API”。<br>
+来自：<u><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/21691705/answer/770586138">SDK 和 API 的区别？ - 简道云的回答 - 知乎</a></u></p>
 </blockquote>
 <p>那么说回来，作为用户学习 API 调用的话，其实只需要关注两个部分，即上图中的“请求数据”和“处理并显示”部分，其他内容只管交给开发人员即可。</p>
-<h1><span id="http-请求">HTTP 请求</span><a href="#http-请求" class="header-anchor">#</a></h1><p>HTTP 的请求与响应，可以称为是 API 请求数据的载体。</p>
+<h1><span id="http-请求"> HTTP 请求</span></h1>
+<p>HTTP 的请求与响应，可以称为是 API 请求数据的载体。</p>
 <p>按照定义来说，HTTP 就是在网络上传输 HTML 的协议，用于浏览器和服务器的通信。根据 HTTP 标准，HTTP 请求可以使用多种请求方法，其中 GET 和 POST 是最常见的 HTTP 方法。</p>
 <center>
 <img src="https://s1.ax1x.com/2020/07/22/U7hqC4.png" width="100%">
@@ -159,14 +161,16 @@
 HTTP 请求
 </center>
 <br>
-
 <p>对于调用 API 这个场景，分别解释一下 HTTP 请求的几个部分：</p>
 <ul>
-<li><p>请求方法（POST、PUT 等），协议和域名（参考 API 文档）</p>
+<li>
+<p>请求方法（POST、PUT 等），协议和域名（参考 API 文档）</p>
 </li>
-<li><p>URL 路径（其中的变量参考 API 文档中的请求参数），QueryString 查询字符串（以<code>？</code>开始，用<code>&amp;</code>连接多个查询字符串），请求头域（一般放鉴权、当前时间等，可能会写在文档的公共请求头里）</p>
+<li>
+<p>URL 路径（其中的变量参考 API 文档中的请求参数），QueryString 查询字符串（以<code>？</code>开始，用<code>&amp;</code>连接多个查询字符串），请求头域（一般放鉴权、当前时间等，可能会写在文档的公共请求头里）</p>
 </li>
-<li><p>鉴权（用 AK/SK 生成的 Authorization 认证字符串，可以参考百度的 <a target="_blank" rel="noopener" href="https://cloud.baidu.com/doc/Reference/s/Njwvz1wot">教程</a>，原理了解即可，后续有现成 Demo 可以抄）</p>
+<li>
+<p>鉴权（用 AK/SK 生成的 Authorization 认证字符串，可以参考百度的 <a target="_blank" rel="noopener" href="https://cloud.baidu.com/doc/Reference/s/Njwvz1wot">教程</a>，原理了解即可，后续有现成 Demo 可以抄）</p>
 </li>
 </ul>
 <center>
@@ -175,139 +179,146 @@ HTTP 请求
 鉴权机制
 </center>
 <br>
-
 <ul>
-<li>Body（JSON 格式，最关键的部分，例如需要识别的图片、需要翻译的文本，参考 API 文档修改）    </li>
+<li>Body（JSON 格式，最关键的部分，例如需要识别的图片、需要翻译的文本，参考 API 文档修改）</li>
 </ul>
-<h1><span id="获取-api">获取 API</span><a href="#获取-api" class="header-anchor">#</a></h1><p>以百度 AI 开放平台为例，在官网找到想要使用的 API，注册、申请，在管理界面获取后文鉴权需要用到的 API_KEY/SECRET_KEY，然后就可以打开官方文档开始编写了。</p>
+<h1><span id="获取-api"> 获取 API</span></h1>
+<p>以百度 AI 开放平台为例，在官网找到想要使用的 API，注册、申请，在管理界面获取后文鉴权需要用到的 API_KEY/SECRET_KEY，然后就可以打开官方文档开始编写了。</p>
 <center>
 <img src="https://s1.ax1x.com/2020/07/22/UHE8N6.jpg" width="100%">
 <br>
 百度 AI 平台提供的服务
 </center>
 <br>
-
-<h1><span id="python-实现">Python 实现</span><a href="#python-实现" class="header-anchor">#</a></h1><p>以文字识别为例，百度给出了一个很详细的 <a target="_blank" rel="noopener" href="https://ai.baidu.com/ai-doc/OCR/dk3iqnq51">QuickStart</a>，对照着修改即可，这里简单过一下主函数流程。</p>
+<h1><span id="python-实现"> Python 实现</span></h1>
+<p>以文字识别为例，百度给出了一个很详细的 <a target="_blank" rel="noopener" href="https://ai.baidu.com/ai-doc/OCR/dk3iqnq51">QuickStart</a>，对照着修改即可，这里简单过一下主函数流程。</p>
 <p>首先导入一些模块</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> sys
-<span class="token keyword">import</span> json
-<span class="token keyword">import</span> base64
+<pre class="highlight"><code class="python"><span class="hljs-keyword">import</span> sys
+<span class="hljs-keyword">import</span> json
+<span class="hljs-keyword">import</span> base64
 
-<span class="token comment" spellcheck="true"># 保证兼容 python2 以及 python3</span>
-IS_PY3 <span class="token operator">=</span> sys<span class="token punctuation">.</span>version_info<span class="token punctuation">.</span>major <span class="token operator">==</span> <span class="token number">3</span>
-<span class="token keyword">if</span> IS_PY3<span class="token punctuation">:</span>
-    <span class="token keyword">from</span> urllib<span class="token punctuation">.</span>request <span class="token keyword">import</span> urlopen
-    <span class="token keyword">from</span> urllib<span class="token punctuation">.</span>request <span class="token keyword">import</span> Request
-    <span class="token keyword">from</span> urllib<span class="token punctuation">.</span>error <span class="token keyword">import</span> URLError
-    <span class="token keyword">from</span> urllib<span class="token punctuation">.</span>parse <span class="token keyword">import</span> urlencode
-    <span class="token keyword">from</span> urllib<span class="token punctuation">.</span>parse <span class="token keyword">import</span> quote_plus
-<span class="token keyword">else</span><span class="token punctuation">:</span>
-    <span class="token keyword">import</span> urllib2
-    <span class="token keyword">from</span> urllib <span class="token keyword">import</span> quote_plus
-    <span class="token keyword">from</span> urllib2 <span class="token keyword">import</span> urlopen
-    <span class="token keyword">from</span> urllib2 <span class="token keyword">import</span> Request
-    <span class="token keyword">from</span> urllib2 <span class="token keyword">import</span> URLError
-    <span class="token keyword">from</span> urllib <span class="token keyword">import</span> urlencode
+<span class="hljs-comment"># 保证兼容 python2 以及 python3</span>
+IS_PY3 = sys.version_info.major == <span class="hljs-number">3</span>
+<span class="hljs-keyword">if</span> IS_PY3:
+    <span class="hljs-keyword">from</span> urllib.request <span class="hljs-keyword">import</span> urlopen
+    <span class="hljs-keyword">from</span> urllib.request <span class="hljs-keyword">import</span> Request
+    <span class="hljs-keyword">from</span> urllib.error <span class="hljs-keyword">import</span> URLError
+    <span class="hljs-keyword">from</span> urllib.parse <span class="hljs-keyword">import</span> urlencode
+    <span class="hljs-keyword">from</span> urllib.parse <span class="hljs-keyword">import</span> quote_plus
+<span class="hljs-keyword">else</span>:
+    <span class="hljs-keyword">import</span> urllib2
+    <span class="hljs-keyword">from</span> urllib <span class="hljs-keyword">import</span> quote_plus
+    <span class="hljs-keyword">from</span> urllib2 <span class="hljs-keyword">import</span> urlopen
+    <span class="hljs-keyword">from</span> urllib2 <span class="hljs-keyword">import</span> Request
+    <span class="hljs-keyword">from</span> urllib2 <span class="hljs-keyword">import</span> URLError
+    <span class="hljs-keyword">from</span> urllib <span class="hljs-keyword">import</span> urlencode
 
-<span class="token comment" spellcheck="true"># 防止 https 证书校验不正确</span>
-ssl<span class="token punctuation">.</span>_create_default_https_context <span class="token operator">=</span> ssl<span class="token punctuation">.</span>_create_unverified_context</code></pre>
+<span class="hljs-comment"># 防止 https 证书校验不正确</span>
+ssl._create_default_https_context = ssl._create_unverified_context
+</code></pre>
 <p>然后是一些关键字符串，这里需要根据之前获取的 AK/SK、不同 API 的 URL 进行修改，示例中填充的是一个文字识别的例程。</p>
-<pre class=" language-python"><code class="language-python">API_KEY <span class="token operator">=</span> <span class="token string">'GmhC18eVP1Fo1ECX911dtOzw'</span>
-SECRET_KEY <span class="token operator">=</span> <span class="token string">'PQ2ukO4Aec2PTsgQU9UkiEKYciavlZk8'</span>
-OCR_URL <span class="token operator">=</span> <span class="token string">"https://aip.baidubce.com/rest/2.0/ocr/v1/accurate_basic"</span>
-TOKEN_URL <span class="token operator">=</span> <span class="token string">'https://aip.baidubce.com/oauth/2.0/token'</span></code></pre>
+<pre class="highlight"><code class="python">API_KEY = <span class="hljs-string">'GmhC18eVP1Fo1ECX911dtOzw'</span>
+SECRET_KEY = <span class="hljs-string">'PQ2ukO4Aec2PTsgQU9UkiEKYciavlZk8'</span>
+OCR_URL = <span class="hljs-string">"https://aip.baidubce.com/rest/2.0/ocr/v1/accurate_basic"</span>
+TOKEN_URL = <span class="hljs-string">'https://aip.baidubce.com/oauth/2.0/token'</span>
+</code></pre>
 <p>鉴权流程，后续使用的时候照抄即可。</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fetch_token</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
+<pre class="highlight"><code class="python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fetch_token</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-string">"""
     获取 token
     """</span>
-    params <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'grant_type'</span><span class="token punctuation">:</span> <span class="token string">'client_credentials'</span><span class="token punctuation">,</span>
-              <span class="token string">'client_id'</span><span class="token punctuation">:</span> API_KEY<span class="token punctuation">,</span>
-              <span class="token string">'client_secret'</span><span class="token punctuation">:</span> SECRET_KEY<span class="token punctuation">}</span>
-    post_data <span class="token operator">=</span> urlencode<span class="token punctuation">(</span>params<span class="token punctuation">)</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>IS_PY3<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        post_data <span class="token operator">=</span> post_data<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
-    req <span class="token operator">=</span> Request<span class="token punctuation">(</span>TOKEN_URL<span class="token punctuation">,</span> post_data<span class="token punctuation">)</span>
-    <span class="token keyword">try</span><span class="token punctuation">:</span>
-        f <span class="token operator">=</span> urlopen<span class="token punctuation">(</span>req<span class="token punctuation">,</span> timeout<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">)</span>
-        result_str <span class="token operator">=</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">except</span> URLError <span class="token keyword">as</span> err<span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>IS_PY3<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        result_str <span class="token operator">=</span> result_str<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    params = &#123;<span class="hljs-string">'grant_type'</span>: <span class="hljs-string">'client_credentials'</span>,
+              <span class="hljs-string">'client_id'</span>: API_KEY,
+              <span class="hljs-string">'client_secret'</span>: SECRET_KEY&#125;
+    post_data = urlencode(params)
+    <span class="hljs-keyword">if</span> (IS_PY3):
+        post_data = post_data.encode(<span class="hljs-string">'utf-8'</span>)
+    req = Request(TOKEN_URL, post_data)
+    <span class="hljs-keyword">try</span>:
+        f = urlopen(req, timeout=<span class="hljs-number">5</span>)
+        result_str = f.read()
+    <span class="hljs-keyword">except</span> URLError <span class="hljs-keyword">as</span> err:
+        print(err)
+    <span class="hljs-keyword">if</span> (IS_PY3):
+        result_str = result_str.decode()
 
-    result <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>result_str<span class="token punctuation">)</span>
+    result = json.loads(result_str)
 
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">'access_token'</span> <span class="token keyword">in</span> result<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">and</span> <span class="token string">'scope'</span> <span class="token keyword">in</span> result<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> <span class="token operator">not</span> <span class="token string">'brain_all_scope'</span> <span class="token keyword">in</span> result<span class="token punctuation">[</span><span class="token string">'scope'</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'please ensure has check the  ability'</span><span class="token punctuation">)</span>
-            exit<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">return</span> result<span class="token punctuation">[</span><span class="token string">'access_token'</span><span class="token punctuation">]</span>
-    <span class="token keyword">else</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'please overwrite the correct API_KEY and SECRET_KEY'</span><span class="token punctuation">)</span>
-        exit<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+    <span class="hljs-keyword">if</span> (<span class="hljs-string">'access_token'</span> <span class="hljs-keyword">in</span> result.keys() <span class="hljs-keyword">and</span> <span class="hljs-string">'scope'</span> <span class="hljs-keyword">in</span> result.keys()):
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-string">'brain_all_scope'</span> <span class="hljs-keyword">in</span> result[<span class="hljs-string">'scope'</span>].split(<span class="hljs-string">' '</span>):
+            <span class="hljs-keyword">print</span> (<span class="hljs-string">'please ensure has check the  ability'</span>)
+            exit()
+        <span class="hljs-keyword">return</span> result[<span class="hljs-string">'access_token'</span>]
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">print</span> (<span class="hljs-string">'please overwrite the correct API_KEY and SECRET_KEY'</span>)
+        exit()
+</code></pre>
 <p>用二进制方式读取需要识别的文件，加入 HTTP 请求内容。</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">read_file</span><span class="token punctuation">(</span>image_path<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
+<pre class="highlight"><code class="python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_file</span><span class="hljs-params">(image_path)</span>:</span>
+    <span class="hljs-string">"""
     读取文件
     """</span>
-    f <span class="token operator">=</span> None
-    <span class="token keyword">try</span><span class="token punctuation">:</span>
-        f <span class="token operator">=</span> open<span class="token punctuation">(</span>image_path<span class="token punctuation">,</span> <span class="token string">'rb'</span><span class="token punctuation">)</span>
-        <span class="token keyword">return</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">except</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'read image file fail'</span><span class="token punctuation">)</span>
-        <span class="token keyword">return</span> None
-    <span class="token keyword">finally</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> f<span class="token punctuation">:</span>
-            f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+    f = <span class="hljs-literal">None</span>
+    <span class="hljs-keyword">try</span>:
+        f = open(image_path, <span class="hljs-string">'rb'</span>)
+        <span class="hljs-keyword">return</span> f.read()
+    <span class="hljs-keyword">except</span>:
+        print(<span class="hljs-string">'read image file fail'</span>)
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span>
+    <span class="hljs-keyword">finally</span>:
+        <span class="hljs-keyword">if</span> f:
+            f.close()
+</code></pre>
 <p>HTTP 请求，这里用的是 Python 的 urllib 库中的 Request 函数，据说更方便的方案是使用 <a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1016959663602400/1183249464292448">requests</a>，一个 Python 第三方库，处理 URL 资源特别方便。</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">request</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
+<pre class="highlight"><code class="python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">request</span><span class="hljs-params">(url, data)</span>:</span>
+    <span class="hljs-string">"""
     调用远程服务
     """</span>
-    req <span class="token operator">=</span> Request<span class="token punctuation">(</span>url<span class="token punctuation">,</span> data<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    has_error <span class="token operator">=</span> <span class="token boolean">False</span>
-    <span class="token keyword">try</span><span class="token punctuation">:</span>
-        f <span class="token operator">=</span> urlopen<span class="token punctuation">(</span>req<span class="token punctuation">)</span>
-        result_str <span class="token operator">=</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>IS_PY3<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            result_str <span class="token operator">=</span> result_str<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">return</span> result_str
-    <span class="token keyword">except</span>  URLError <span class="token keyword">as</span> err<span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span></code></pre>
+    req = Request(url, data.encode(<span class="hljs-string">'utf-8'</span>))
+    has_error = <span class="hljs-literal">False</span>
+    <span class="hljs-keyword">try</span>:
+        f = urlopen(req)
+        result_str = f.read()
+        <span class="hljs-keyword">if</span> (IS_PY3):
+            result_str = result_str.decode()
+        <span class="hljs-keyword">return</span> result_str
+    <span class="hljs-keyword">except</span>  URLError <span class="hljs-keyword">as</span> err:
+        print(err)
+</code></pre>
 <p>主函数，鉴权、打包、请求、解析。</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+<pre class="highlight"><code class="python"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
 
-    <span class="token comment" spellcheck="true"># 获取 access token</span>
-    token <span class="token operator">=</span> fetch_token<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="hljs-comment"># 获取 access token</span>
+    token = fetch_token()
 
-    <span class="token comment" spellcheck="true"># 拼接通用文字识别高精度 url</span>
-    image_url <span class="token operator">=</span> OCR_URL <span class="token operator">+</span> <span class="token string">"?access_token="</span> <span class="token operator">+</span> token
+    <span class="hljs-comment"># 拼接通用文字识别高精度 url</span>
+    image_url = OCR_URL + <span class="hljs-string">"?access_token="</span> + token
 
-    text <span class="token operator">=</span> <span class="token string">""</span>
+    text = <span class="hljs-string">""</span>
 
-    <span class="token comment" spellcheck="true"># 读取书籍页面图片</span>
-    file_content <span class="token operator">=</span> read_file<span class="token punctuation">(</span><span class="token string">'./test.jpg'</span><span class="token punctuation">)</span>
+    <span class="hljs-comment"># 读取书籍页面图片</span>
+    file_content = read_file(<span class="hljs-string">'./test.jpg'</span>)
 
-    <span class="token comment" spellcheck="true"># 调用文字识别服务</span>
-    result <span class="token operator">=</span> request<span class="token punctuation">(</span>image_url<span class="token punctuation">,</span> urlencode<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'image'</span><span class="token punctuation">:</span> base64<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>file_content<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="hljs-comment"># 调用文字识别服务</span>
+    result = request(image_url, urlencode(&#123;<span class="hljs-string">'image'</span>: base64.b64encode(file_content)&#125;))
 
-    <span class="token comment" spellcheck="true"># 解析返回结果</span>
-    result_json <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>result<span class="token punctuation">)</span>
-    <span class="token keyword">for</span> words_result <span class="token keyword">in</span> result_json<span class="token punctuation">[</span><span class="token string">"words_result"</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-        text <span class="token operator">=</span> text <span class="token operator">+</span> words_result<span class="token punctuation">[</span><span class="token string">"words"</span><span class="token punctuation">]</span>
+    <span class="hljs-comment"># 解析返回结果</span>
+    result_json = json.loads(result)
+    <span class="hljs-keyword">for</span> words_result <span class="hljs-keyword">in</span> result_json[<span class="hljs-string">"words_result"</span>]:
+        text = text + words_result[<span class="hljs-string">"words"</span>]
 
-    <span class="token comment" spellcheck="true"># 打印文字</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span></code></pre>
+    <span class="hljs-comment"># 打印文字</span>
+    print(text)
+</code></pre>
 <p>百度 AI 开放平台有各种功能型 API 可以免费调用，玩得开心。</p>
-<h1><span id="参考资料">参考资料</span><a href="#参考资料" class="header-anchor">#</a></h1><ol>
+<h1><span id="参考资料"> 参考资料</span></h1>
+<ol>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41590495/article/details/105449114">API 是什么呢？CSDN</a></li>
 <li><a target="_blank" rel="noopener" href="https://cloud.baidu.com/doc/APIGUIDE/s/Hk1myw1a8">初见百度智能云 API（视频科普）</a></li>
 <li><a target="_blank" rel="noopener" href="https://cloud.baidu.com/doc/Reference/s/Njwvz1wot">鉴权认证机制</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1016959663602400/1183249464292448">requests - 廖雪峰的官方网站</a></li>
 </ol>
-</article><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020.08%E8%B5%A4%E5%AD%90%E4%B9%8B%E5%BF%83%E5%B1%B1%E5%B7%9D%E5%8F%AF%E9%89%B4/"><img class="prev-cover" src="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">赤子之心 山川可鉴</div></div></a></div><div class="next-post pull-right"><a href="/2020.06CS294-112%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><img class="next-cover" src="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">CS294-112 深度强化学习笔记（持续更新）</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">API</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">HTTP 请求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">获取 API</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">Python 实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">参考资料</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2021 By Henry</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script>function panguFn () {
+</article><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020.08%E8%B5%A4%E5%AD%90%E4%B9%8B%E5%BF%83%E5%B1%B1%E5%B7%9D%E5%8F%AF%E9%89%B4/"><img class="prev-cover" src="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">赤子之心 山川可鉴</div></div></a></div><div class="next-post pull-right"><a href="/2020.06CS294-112%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><img class="next-cover" src="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">CS294-112 深度强化学习笔记（持续更新）</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text"> API</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text"> HTTP 请求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text"> 获取 API</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text"> Python 实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text"> 参考资料</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2021 By Henry</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script>function panguFn () {
   if (typeof pangu === 'object') pangu.autoSpacingPage()
   else {
     getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
