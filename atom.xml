@@ -6,7 +6,7 @@
   <link href="https://sszxc.net/about/index.html/atom.xml" rel="self"/>
   
   <link href="https://sszxc.net/about/index.html/"/>
-  <updated>2021-02-03T16:45:44.231Z</updated>
+  <updated>2021-02-04T05:10:05.741Z</updated>
   <id>https://sszxc.net/about/index.html/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://sszxc.net/about/index.html/2021.01%E6%8B%A5%E6%9C%89%E4%B8%80%E5%8F%B03D%E6%89%93%E5%8D%B0%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%E4%BD%93%E9%AA%8C/"/>
     <id>https://sszxc.net/about/index.html/2021.01%E6%8B%A5%E6%9C%89%E4%B8%80%E5%8F%B03D%E6%89%93%E5%8D%B0%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%E4%BD%93%E9%AA%8C/</id>
     <published>2021-01-30T12:03:37.000Z</published>
-    <updated>2021-02-03T16:45:44.231Z</updated>
+    <updated>2021-02-04T05:10:05.741Z</updated>
     
-    <content type="html"><![CDATA[<p>买一台 3D 打印机大概是 <a href="https://sszxc.net/2020.02CAD%E6%8A%80%E8%83%BD%E4%B8%8E3D%E6%89%93%E5%8D%B0/">去年寒假时候</a> 的想法，后来在网上看到了荷兰 Ultimaker 公司的开源方案，成本不高，其配件也能在淘宝买到，于是狠狠心付款下单，花了三天时间组装调试完成。</p><h1><span id="基本参数"> 基本参数</span></h1><p>外观尺寸：358*428*498<br>打印行程：223*223*300<br>耗材：以 PLA 为例，大约是 70 元/千克<br>功率：约 200W（热床 75°）<br>噪音：正常运行房间里大约能测到 60dB，如果做好减震隔音，宿舍 24 小时打印也是没问题的<br>代打：网上价格一般在 0.4 元/克左右</p><h1><span id="建模"> 建模</span></h1><p>打孔零件配合<br>螺丝、光轴</p><p>Thingverse</p><h1><span id="切片"> 切片</span></h1><p>切片软件使用的是Ultimaker Cura，因为公司的开源精神，这个软件生态挺不错，一直都在频繁迭代更新，经常会出一些试验性功能。</p><img src="https://s3.ax1x.com/2021/02/04/yllR9U.jpg" alt="切片实例"><p>如上图所示，走线类型已经用不同颜色标注出来了：红色是外壳，橘黄色是填充，黄色是顶层/底层，绿色是内壁，天蓝色是支撑、平台附着等辅助结构。</p><p>而具体操作中，需要注意这么几点：</p><p>支撑，支撑面</p><h1><span id="打印"> 打印</span></h1><p>喷头直径 0.4mm 层纹</p><p>翘边<br>也一直都是最头疼的问题<br>感觉 90%的打印事故都出在这里（针对我这台机器来说），甚至我到现在也没有一个百分百不翘边的方案<br>胶棒、美纹纸、晶格玻璃</p><p>折腾到现在，我发现，影响第一层附着质量的最关键要素，还是平台调平。这个调平不仅仅是指保持水平，而且还要求喷头和平台之间的距离满足一个最优值——喷头离平台过高，融化的耗材与平台之间存在空隙，拐角粘不住，附着质量差；喷头离平台过低，由于平台不一定是绝对平面，所以耗材挤出速率会不均匀，直观上看起来就是有的地方半透明，有的地方“喷”了一大颗，后续也容易被刮到。</p><p>打印耗时和具体参数有很大关系，这里给个大概参考。大约半小时，常见的零件一般都得花七八个小时，</p><h1><span id="后处理"> 后处理</span></h1><p>砂纸<br>上色</p>]]></content>
+    <content type="html"><![CDATA[<p>买一台 3D 打印机大概是 <a href="https://sszxc.net/2020.02CAD%E6%8A%80%E8%83%BD%E4%B8%8E3D%E6%89%93%E5%8D%B0/">去年寒假时候</a> 的想法，后来在网上看到了荷兰 Ultimaker 公司的开源方案，成本不高，其配件也能在淘宝买到，于是狠狠心付款下单，花了三天时间组装调试，完成一台十字结构双 Z 轴的 FDM 打印机。</p><p>所以拥有一台 3D 打印机是怎样的体验？体验造物奇迹🤩。</p><h1><span id="基本参数"> 基本参数</span></h1><p>外观尺寸：358*428*498<br>打印行程：223*223*300<br>耗材：以 PLA 为例，大约是 70 元/千克<br>功率：约 200W（热床 75°）<br>噪音：正常运行房间里大约能测到 60dB，如果做好减震隔音，宿舍 24 小时打印也是没问题的<br>代打：网上价格一般在 0.4 元/克左右</p><h1><span id="建模"> 建模</span></h1><p>建模用的是SolidWorks，一般导出成STL格式文件就可以打印了。</p><p>当选择3D打印时，建模过程中也需要相应调整一些细节，比如<a href="https://www.bilibili.com/video/BV1mD4y1o7Cx">3D 打印零件和螺丝怎么组 CP 才科学？？</a>；还有合理拆分零件，减小悬空部分，提高打印效率；针对打印机的行程、精度，量力而行。</p><p>如果不想自己建模，也可以上 <a href="https://www.thingiverse.com/">Thingverse</a> 看看，有很多模型分享，虽然最近服务器有些问题，访问很不稳定。</p><h1><span id="切片"> 切片</span></h1><p>切片的意思就是把一个完整的三维模型分成很多个层，输出成 G-code 这种最为广泛使用的数控编程语言，给 3D 打印机执行。为了兼顾打印的效率、稳定，还需要设置填充密度、添加支撑、设置各种温度速度等。其中一些参数可能要根据打印机的具体情况，多次调整尝试才能定下来。</p><p>切片软件使用的是 Ultimaker Cura，因为公司的开源精神，这个软件生态挺不错，一直都在频繁迭代更新，经常会出一些试验性功能。</p><img src="https://s3.ax1x.com/2021/02/04/yllR9U.jpg" alt="切片实例"><p>如上图所示，走线类型已经用不同颜色标注出来了：红色是外壳，橘黄色是填充，黄色是顶层/底层，绿色是内壁，天蓝色是支撑、平台附着等辅助结构。</p><h1><span id="打印"> 打印</span></h1><p>有了 G-code 文件，就可以开机打印了。</p><p>打印的第一层与平台紧密粘住，是很重要的。只有这样，接下来的层才能在此基础上建构出来。但现实总是残酷的，翘边一直都是令人头疼的问题，感觉自己 90%的打印事故都出在这里。毕竟层高只有 0.2mm 左右，所以任何一点误差都会造成不小的影响。</p><p>发现附着不好时，一般有以下几种解决方法：</p><ul><li><p>降低首层打印速度：这可以在切片软件中设置，保持其他层速度不变，调整首层参数，给耗材足够的时间和平台接触粘合。</p></li><li><p>提高热床温度：材料冷却后会收缩，而平台始终保持着恒温，因此两者之间就会有相对位移，难以粘合。所以关键就是让首层尽可能保持高温，减小热胀冷缩带来的影响。如果打印机有冷却风扇的话，也记得在前几层关闭风扇。同理，也尽量减少房间内空气流动。</p></li><li><p>平台表面处理：不同的塑料和不同材料的粘合度不一样，可以在平台上使用特殊材料优化质量。例如，PLA 能和 3M 蓝色美纹胶带粘合得很好；而 ABS 则与 Kapton 胶带（也称聚酰亚胺树脂胶带）粘合得好。通用一些的做法还有清洗干净平台，避免灰尘、油脂；使用胶棒增加黏性；或者是换用晶格玻璃等高级平台。</p></li></ul><p>折腾到现在，我发现影响首层附着质量的最关键要素，还是平台调平。“调平”不仅是指保持水平，而且还要求喷头和平台之间的距离恒定且满足一个最优值——喷头离平台过高，融化的耗材与平台之间存在空隙，无法获得足够的附着力，拐角粘不住；喷头离平台过低，喷头被堵住，积累压力后又喷出来，导致耗材挤出速率不均匀，后续也容易被刮到。</p><p>网上一种推荐的调平方法是塞一张 A4 纸在喷头和平台中间，调整平台螺丝，直到 A4 纸刚好能够滑动但又能感受到摩擦。但是实际操作下来，感觉这个方法不太靠谱，“刚好能滑动”实在太主观了。</p><p>后来琢磨出来一种方法，用下图所示的方框进行测试——调低打印速度，在打印的过程中调整平台四角螺丝，直接用肉眼观察打印质量，使得挤出的耗材既不是明显没有和平台接触的圆柱形，也不是过度挤压后不均匀的半透明。</p><img src="https://s3.ax1x.com/2021/02/04/y19tds.jpg" alt="调平测试模型"><p>除此之外，还可能会出现些别的小问题，这里就简单记录下：拉丝或垂料，是因为在喷头移动时融化的耗材漏出来了，可以在切片里设置回抽；错层，这是因为打印机一般都用开环的步进电机，所以解决办法有降低喷头移动速度、确认所有紧固件、更换松弛了的同步带、检查驱动避免失步；细节不够，默认喷嘴直径是 0.4mm，如果要打非常细节的东西，也可以换用更小的喷嘴。</p><p>打印耗时和具体参数有很大关系，这里给个大概参考。大约半小时，常见的零件一般都得花七八个小时，</p><p>打印过程也可以用个网络摄像头监控，这些就自由发挥了。</p><h1><span id="后处理"> 后处理</span></h1><p>首先是拆除支撑，必备一把斜口钳；然后打磨抛光，可以用砂纸、打磨棒等；甚至还有上色，水补土喷灌、颜料之类的，或许可以请教模型大佬了。</p>]]></content>
     
     
       
@@ -378,9 +378,9 @@ c) 问题 3：李叔叔有两个孩</summary>
     
     <category term="机器人" scheme="https://sszxc.net/about/index.html/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
     
-    <category term="深度学习" scheme="https://sszxc.net/about/index.html/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="强化学习" scheme="https://sszxc.net/about/index.html/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="深度学习" scheme="https://sszxc.net/about/index.html/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -408,13 +408,13 @@ c) 问题 3：李叔叔有两个孩</summary>
     <category term="项目" scheme="https://sszxc.net/about/index.html/categories/%E9%A1%B9%E7%9B%AE/"/>
     
     
-    <category term="Python" scheme="https://sszxc.net/about/index.html/tags/Python/"/>
+    <category term="深度学习" scheme="https://sszxc.net/about/index.html/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
-    <category term="GAN" scheme="https://sszxc.net/about/index.html/tags/GAN/"/>
+    <category term="Python" scheme="https://sszxc.net/about/index.html/tags/Python/"/>
     
     <category term="TensorFlow" scheme="https://sszxc.net/about/index.html/tags/TensorFlow/"/>
     
-    <category term="深度学习" scheme="https://sszxc.net/about/index.html/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    <category term="GAN" scheme="https://sszxc.net/about/index.html/tags/GAN/"/>
     
     <category term="Pokémon" scheme="https://sszxc.net/about/index.html/tags/Pokemon/"/>
     
@@ -444,15 +444,15 @@ c) 问题 3：李叔叔有两个孩</summary>
     <category term="项目" scheme="https://sszxc.net/about/index.html/categories/%E9%A1%B9%E7%9B%AE/"/>
     
     
+    <category term="深度学习" scheme="https://sszxc.net/about/index.html/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
     <category term="Python" scheme="https://sszxc.net/about/index.html/tags/Python/"/>
+    
+    <category term="TensorFlow" scheme="https://sszxc.net/about/index.html/tags/TensorFlow/"/>
     
     <category term="GAN" scheme="https://sszxc.net/about/index.html/tags/GAN/"/>
     
     <category term="MNIST" scheme="https://sszxc.net/about/index.html/tags/MNIST/"/>
-    
-    <category term="TensorFlow" scheme="https://sszxc.net/about/index.html/tags/TensorFlow/"/>
-    
-    <category term="深度学习" scheme="https://sszxc.net/about/index.html/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -502,13 +502,13 @@ c) 问题 3：李叔叔有两个孩</summary>
     
     
     
-    <category term="Python" scheme="https://sszxc.net/about/index.html/tags/Python/"/>
-    
-    <category term="TensorFlow" scheme="https://sszxc.net/about/index.html/tags/TensorFlow/"/>
-    
     <category term="深度学习" scheme="https://sszxc.net/about/index.html/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
+    <category term="Python" scheme="https://sszxc.net/about/index.html/tags/Python/"/>
+    
     <category term="Anaconda" scheme="https://sszxc.net/about/index.html/tags/Anaconda/"/>
+    
+    <category term="TensorFlow" scheme="https://sszxc.net/about/index.html/tags/TensorFlow/"/>
     
   </entry>
   
