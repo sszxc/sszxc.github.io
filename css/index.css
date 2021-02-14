@@ -1782,7 +1782,7 @@ blockquote footer cite:before {
   transition: all 0.2s ease-in-out;
 }
 .article-sort-item.no-article-cover {
-  height: 80px;
+  height: 40px;
 }
 .article-sort-item.no-article-cover .article-sort-item-info {
   padding: 0;
