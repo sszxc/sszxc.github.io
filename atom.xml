@@ -400,9 +400,9 @@ c) 问题 3：李叔叔有两个孩</summary>
     
     <category term="机器人" scheme="https://sszxc.net/about/index.html/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
     
-    <category term="强化学习" scheme="https://sszxc.net/about/index.html/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="深度学习" scheme="https://sszxc.net/about/index.html/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="强化学习" scheme="https://sszxc.net/about/index.html/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -432,11 +432,11 @@ c) 问题 3：李叔叔有两个孩</summary>
     
     <category term="Python" scheme="https://sszxc.net/about/index.html/tags/Python/"/>
     
-    <category term="深度学习" scheme="https://sszxc.net/about/index.html/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="GAN" scheme="https://sszxc.net/about/index.html/tags/GAN/"/>
     
     <category term="TensorFlow" scheme="https://sszxc.net/about/index.html/tags/TensorFlow/"/>
+    
+    <category term="深度学习" scheme="https://sszxc.net/about/index.html/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
     <category term="Pokémon" scheme="https://sszxc.net/about/index.html/tags/Pokemon/"/>
     
@@ -468,13 +468,13 @@ c) 问题 3：李叔叔有两个孩</summary>
     
     <category term="Python" scheme="https://sszxc.net/about/index.html/tags/Python/"/>
     
-    <category term="深度学习" scheme="https://sszxc.net/about/index.html/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="GAN" scheme="https://sszxc.net/about/index.html/tags/GAN/"/>
     
     <category term="MNIST" scheme="https://sszxc.net/about/index.html/tags/MNIST/"/>
     
     <category term="TensorFlow" scheme="https://sszxc.net/about/index.html/tags/TensorFlow/"/>
+    
+    <category term="深度学习" scheme="https://sszxc.net/about/index.html/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
