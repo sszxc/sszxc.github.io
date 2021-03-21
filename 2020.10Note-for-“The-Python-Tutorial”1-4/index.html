@@ -18,7 +18,7 @@
   localSearch: undefined,
   translate: undefined,
   noticeOutdate: undefined,
-  highlight: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -254,49 +254,22 @@
 <h3><span id="312-strings"> 3.1.2. Strings</span></h3>
 <p>除了数字，Python 还可以操作字符串，字符串可以用几种方式表示。它们可以用单引号<code>'…'</code>或双引号<code>&quot;…&quot;</code>括起来，<code>\</code>可以用来转义引号 (escape quotes)。</p>
 <p>注意这里的单引号、双引号和 C 不一样，两者唯一区别就是：外面双引号，里面的双引号就要加<code>\</code>转义。</p>
-<pre class="highlight"><code class="python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">'doesn\'t'</span>  <span class="hljs-comment"># use \' to escape the single quote...</span>
-<span class="hljs-string">"doesn't"</span>
-<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">"doesn't"</span>  <span class="hljs-comment"># ...or use double quotes instead</span>
-<span class="hljs-string">"doesn't"</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;doesn\&#x27;t&#x27;</span>  <span class="comment"># use \&#x27; to escape the single quote...</span></span><br><span class="line"><span class="string">&quot;doesn&#x27;t&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&quot;doesn&#x27;t&quot;</span>  <span class="comment"># ...or use double quotes instead</span></span><br><span class="line"><span class="string">&quot;doesn&#x27;t&quot;</span></span><br></pre></td></tr></table></figure>
 <p>在交互式解释器中，输出的字符串外面有引号，特殊字符不会转义；但<code>print</code>函数略去前后引号，同时转义。</p>
-<pre class="highlight"><code class="python"><span class="hljs-meta">&gt;&gt;&gt; </span>s  <span class="hljs-comment"># without print(), \n is included in the output</span>
-<span class="hljs-string">'First line.\nSecond line.'</span>
-<span class="hljs-meta">&gt;&gt;&gt; </span>print(s)  <span class="hljs-comment"># with print(), \n produces a new line</span>
-First line.
-Second line.
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s  <span class="comment"># without print(), \n is included in the output</span></span><br><span class="line"><span class="string">&#x27;First line.\nSecond line.&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(s)  <span class="comment"># with print(), \n produces a new line</span></span><br><span class="line">First line.</span><br><span class="line">Second line.</span><br></pre></td></tr></table></figure>
 <p>如果不想把以<code>\</code>为前缀的字符解释为特殊字符，可以在第一个引号前加<code>r</code>来使用原始字符 (raw strings)。</p>
-<pre class="highlight"><code class="python"><span class="hljs-meta">&gt;&gt;&gt; </span>print(<span class="hljs-string">'C:\some\name'</span>)  <span class="hljs-comment"># here \n means newline!</span>
-C:\some
-ame
-<span class="hljs-meta">&gt;&gt;&gt; </span>print(<span class="hljs-string">r'C:\some\name'</span>)  <span class="hljs-comment"># note the r before the quote</span>
-C:\some\name
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">&#x27;C:\some\name&#x27;</span>)  <span class="comment"># here \n means newline!</span></span><br><span class="line">C:\some</span><br><span class="line">ame</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">r&#x27;C:\some\name&#x27;</span>)  <span class="comment"># note the r before the quote</span></span><br><span class="line">C:\some\name</span><br></pre></td></tr></table></figure>
 <p>字符串可以跨越多行，一种方法是使用三重引号 <code>&quot;&quot;&quot;...&quot;&quot;&quot;</code>or<code>'''...'''</code>，行尾会自动加进字符串，如果不想换行可以在行尾加<code>\</code>。</p>
-<pre class="highlight"><code class="python">print(<span class="hljs-string">"""\
-Hello \
-World
-"""</span>)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">&quot;&quot;&quot;\</span></span><br><span class="line"><span class="string">Hello \</span></span><br><span class="line"><span class="string">World</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>)</span><br></pre></td></tr></table></figure>
 <p>字符串可以用<code>+</code>连接在一起，可以用<code>*</code>重复。彼此相邻的多个字符串会自动连接在一起，但这个特性对变量或表达式无效，要用<code>+</code>。</p>
-<pre class="highlight"><code class="python"><span class="hljs-meta">&gt;&gt;&gt; </span>text = (<span class="hljs-string">'Put several strings within parentheses '</span>
-<span class="hljs-meta">... </span>        <span class="hljs-string">'to have them joined together.'</span>)
-<span class="hljs-meta">&gt;&gt;&gt; </span>text
-<span class="hljs-string">'Put several strings within parentheses to have them joined together.'</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>text = (<span class="string">&#x27;Put several strings within parentheses &#x27;</span></span><br><span class="line"><span class="meta">... </span>        <span class="string">&#x27;to have them joined together.&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>text</span><br><span class="line"><span class="string">&#x27;Put several strings within parentheses to have them joined together.&#x27;</span></span><br></pre></td></tr></table></figure>
 <p>字符串可以被索引（用方括号），第一位是 index 0，字符类型都是统一的，每个字符占一位。(index 的复数是 indices)<br>
 索引如果是负数，就从字符串的右边开始计数（因为-0 就是 0，从右边的话是-1 开始）。</p>
 <p>除了索引，字符串还支持切片 (slicing)：索引获取单个字符，切片获取子字符串。<br>
 切片总是包括开始，不包括结尾，因此<code>s[:i] + s[i:]</code>就是<code>s</code>。<br>
 切片有默认值，省略 (omit) 的第一个索引值默认为 0，第二个索引值默认为总长。</p>
 <p>记住切片如何工作的一种方法是将索引看作字符之间的指针。</p>
-<pre class="highlight"><code class> +---+---+---+---+---+---+
- | P | y | t | h | o | n |
- +---+---+---+---+---+---+
- 0   1   2   3   4   5   6
--6  -5  -4  -3  -2  -1
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> +---+---+---+---+---+---+</span><br><span class="line"> | P | y | t | h | o | n |</span><br><span class="line"> +---+---+---+---+---+---+</span><br><span class="line"> 0   1   2   3   4   5   6</span><br><span class="line">-6  -5  -4  -3  -2  -1</span><br></pre></td></tr></table></figure>
 <p>超出长度的索引会报错，但在切片里会返回空。</p>
 <p>Python 的字符串不能被更改 (immutable)，给字符串指定位置赋值 (assignment) 会报错。</p>
 <p>内置函数<code>len()</code>可以返回字符串的长度。</p>
@@ -319,10 +292,7 @@ The old formatting operations invoked when strings are the left operand of the %
 <p>Python 有很多复合 (compound) 数据类型，用来将数据组合到一起，最常用的是 list，是在方括号里用逗号分隔的列表。列表可以包含不同类型数据，但一般是相同类型。</p>
 <p>与字符串（以及其他内置的序列类型 built-in sequence types) 一样，list 可以被索引和切片 (index and slice)。</p>
 <p>所有切片操作都返回一个包含所请求元素的新列表。这意味着以下切片将返回列表的浅副本：</p>
-<pre class="highlight"><code class="python"><span class="hljs-meta">&gt;&gt;&gt; </span>squares = [<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]
-<span class="hljs-meta">&gt;&gt;&gt; </span>squares[:]
-[<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>, <span class="hljs-number">25</span>]
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>squares = [<span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>, <span class="number">25</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>squares[:]</span><br><span class="line">[<span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>, <span class="number">25</span>]</span><br></pre></td></tr></table></figure>
 <p>list 也支持串联 (concatenation)，就是用加号连接。</p>
 <p>与字符串不同，列表是可变类型，即可以更改其内容。不可变对象不能修改只能替换，所以要开新的空间。</p>
 <p>可以通过使用<code>append()</code>方法在列表的末尾添加新项。</p>
@@ -331,20 +301,7 @@ The old formatting operations invoked when strings are the left operand of the %
 <p>列表支持嵌套 (nest) 。</p>
 <h2><span id="32-first-steps-towards-programming"> 3.2. First Steps Towards Programming</span></h2>
 <p>当然，Python 也不止 1+1，下面例程给出斐波那切数列的初始子序列 (an initial sub-sequence of the Fibonacci series)：</p>
-<pre class="highlight"><code class="python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-comment"># Fibonacci series:</span>
-<span class="hljs-meta">... </span><span class="hljs-comment"># the sum of two elements defines the next</span>
-<span class="hljs-meta">... </span>a, b = <span class="hljs-number">0</span>, <span class="hljs-number">1</span>
-<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">while</span> a &lt; <span class="hljs-number">10</span>:
-<span class="hljs-meta">... </span>    print(a)
-<span class="hljs-meta">... </span>    a, b = b, a+b
-...
-<span class="hljs-number">0</span>
-<span class="hljs-number">1</span>
-<span class="hljs-number">2</span>
-<span class="hljs-number">3</span>
-<span class="hljs-number">5</span>
-<span class="hljs-number">8</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># Fibonacci series:</span></span><br><span class="line"><span class="meta">... </span><span class="comment"># the sum of two elements defines the next</span></span><br><span class="line"><span class="meta">... </span>a, b = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">while</span> a &lt; <span class="number">10</span>:</span><br><span class="line"><span class="meta">... </span>    print(a)</span><br><span class="line"><span class="meta">... </span>    a, b = b, a+b</span><br><span class="line">...</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">8</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>第一行、最后一行的多重赋值：先计算等号右边，再赋值</li>
 <li>任何非零数都为真，长度非零就为真</li>
@@ -353,49 +310,22 @@ The old formatting operations invoked when strings are the left operand of the %
 <hr>
 <h1><span id="4-more-control-flow-tools"> 4. More Control Flow Tools</span></h1>
 <h2><span id="41-if-statements"> 4.1. <code>if</code> Statements</span></h2>
-<pre class="highlight"><code class="python"><span class="hljs-meta">&gt;&gt;&gt; </span>x = int(input(<span class="hljs-string">"Please enter an integer: "</span>))
-Please enter an integer: <span class="hljs-number">42</span>
-<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">if</span> x &lt; <span class="hljs-number">0</span>:
-<span class="hljs-meta">... </span>    x = <span class="hljs-number">0</span>
-<span class="hljs-meta">... </span>    print(<span class="hljs-string">'Negative changed to zero'</span>)
-<span class="hljs-meta">... </span><span class="hljs-keyword">elif</span> x == <span class="hljs-number">0</span>:
-<span class="hljs-meta">... </span>    print(<span class="hljs-string">'Zero'</span>)
-<span class="hljs-meta">... </span><span class="hljs-keyword">elif</span> x == <span class="hljs-number">1</span>:
-<span class="hljs-meta">... </span>    print(<span class="hljs-string">'Single'</span>)
-<span class="hljs-meta">... </span><span class="hljs-keyword">else</span>:
-<span class="hljs-meta">... </span>    print(<span class="hljs-string">'More'</span>)
-...
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>x = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;Please enter an integer: &quot;</span>))</span><br><span class="line">Please enter an integer: <span class="number">42</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> x &lt; <span class="number">0</span>:</span><br><span class="line"><span class="meta">... </span>    x = <span class="number">0</span></span><br><span class="line"><span class="meta">... </span>    print(<span class="string">&#x27;Negative changed to zero&#x27;</span>)</span><br><span class="line"><span class="meta">... </span><span class="keyword">elif</span> x == <span class="number">0</span>:</span><br><span class="line"><span class="meta">... </span>    print(<span class="string">&#x27;Zero&#x27;</span>)</span><br><span class="line"><span class="meta">... </span><span class="keyword">elif</span> x == <span class="number">1</span>:</span><br><span class="line"><span class="meta">... </span>    print(<span class="string">&#x27;Single&#x27;</span>)</span><br><span class="line"><span class="meta">... </span><span class="keyword">else</span>:</span><br><span class="line"><span class="meta">... </span>    print(<span class="string">&#x27;More&#x27;</span>)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 <h2><span id="42-for-statements"> 4.2. <code>for</code> Statements</span></h2>
 <p>不像 Pascal 只能遍历数字，也不像 C 那样能定义遍历步骤和条件，Python 按顺序遍历任何序列。For example (no pun intended):<br>
 英文双关了，哈哈。</p>
-<pre class="highlight"><code class="python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-comment"># Measure some strings:</span>
-<span class="hljs-meta">... </span>words = [<span class="hljs-string">'cat'</span>, <span class="hljs-string">'window'</span>, <span class="hljs-string">'defenestrate'</span>]
-<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">for</span> w <span class="hljs-keyword">in</span> words:
-<span class="hljs-meta">... </span>    print(w, len(w))
-...
-cat <span class="hljs-number">3</span>
-window <span class="hljs-number">6</span>
-defenestrate <span class="hljs-number">12</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># Measure some strings:</span></span><br><span class="line"><span class="meta">... </span>words = [<span class="string">&#x27;cat&#x27;</span>, <span class="string">&#x27;window&#x27;</span>, <span class="string">&#x27;defenestrate&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> w <span class="keyword">in</span> words:</span><br><span class="line"><span class="meta">... </span>    print(w, <span class="built_in">len</span>(w))</span><br><span class="line">...</span><br><span class="line">cat <span class="number">3</span></span><br><span class="line">window <span class="number">6</span></span><br><span class="line">defenestrate <span class="number">12</span></span><br></pre></td></tr></table></figure>
 <p>一边遍历一边修改可能会出问题，一般都是拷贝一份。</p>
 <h2><span id="43-the-range-function"> 4.3. The <code>range()</code> Function</span></h2>
 <p>遍历数字的时候，内饰函数<code>range()</code>很方便 (comes in handy)。指定结尾是不出现在序列里的，<code>range(10)</code>生成 0-9。当然也可以调整步进 step。</p>
-<pre class="highlight"><code class="python">range（起点，终点，步进）
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">range</span>（起点，终点，步进）</span><br></pre></td></tr></table></figure>
 <p>如果你想直接 print 的话，会有奇怪的事情：</p>
-<pre class="highlight"><code class="python"><span class="hljs-meta">&gt;&gt;&gt; </span>print(range(<span class="hljs-number">10</span>))
-range(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="built_in">range</span>(<span class="number">10</span>))</span><br><span class="line"><span class="built_in">range</span>(<span class="number">0</span>, <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 <p><code>range()</code>返回的对象的行为看起来是一个列表，但实际上并非如此。它是一个对象，当您对其进行迭代时，它会返回所需序列的后续项，但它并没有真正组成列表，从而节省了空间。</p>
 <p>我们把这种对象称为可迭代的 (iterable)，即，函数和结构能从中获得连续的 (successive) 项直到耗尽。<code>for</code>就是这样的结构，<code>sum()</code>就是一个函数的例子。</p>
-<pre class="highlight"><code class="python"><span class="hljs-meta">&gt;&gt;&gt; </span>sum(range(<span class="hljs-number">4</span>))  <span class="hljs-comment"># 0 + 1 + 2 + 3</span>
-<span class="hljs-number">6</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">sum</span>(<span class="built_in">range</span>(<span class="number">4</span>))  <span class="comment"># 0 + 1 + 2 + 3</span></span><br><span class="line"><span class="number">6</span></span><br></pre></td></tr></table></figure>
 <p>那么如何从<code>range()</code>获得 list 呢？</p>
-<pre class="highlight"><code class="python"><span class="hljs-meta">&gt;&gt;&gt; </span>list(range(<span class="hljs-number">4</span>))
-[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">4</span>))</span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
 <h2><span id="44-break-and-continue-statements-and-else-clauses-on-loops"> 4.4. <code>break</code> and <code>continue</code> Statements, and <code>else</code> Clauses on Loops</span></h2>
 <p>Clauses 从句</p>
 <p>和 C 语言一样，<code>break</code>能跳出最内层的<code>for</code>和<code>while</code>循环 (the innermost enclosing for or while loop)。</p>
@@ -407,24 +337,15 @@ range(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>)
 <ul>
 <li>
 <p>等待键盘中断</p>
-<pre class="highlight"><code class="python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
-<span class="hljs-meta">... </span>    <span class="hljs-keyword">pass</span>  <span class="hljs-comment"># Busy-wait for keyboard interrupt (Ctrl+C)</span>
-...
-</code></pre>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">pass</span>  <span class="comment"># Busy-wait for keyboard interrupt (Ctrl+C)</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>创建类</p>
-<pre class="highlight"><code class="python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyEmptyClass</span>:</span>
-<span class="hljs-meta">... </span>    <span class="hljs-keyword">pass</span>
-...
-</code></pre>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">MyEmptyClass</span>:</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">pass</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>占位符，让你在更抽象层次先思考架构</p>
-<pre class="highlight"><code class="python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initlog</span><span class="hljs-params">(*args)</span>:</span>
-<span class="hljs-meta">... </span>    <span class="hljs-keyword">pass</span>   <span class="hljs-comment"># Remember to implement this!</span>
-...
-</code></pre>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">initlog</span>(<span class="params">*args</span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">pass</span>   <span class="comment"># Remember to implement this!</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2><span id="46-defining-functions"> 4.6. Defining Functions</span></h2>
@@ -440,100 +361,33 @@ range(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>)
 这件事情也和 Python 的解释原理有关。在解释器开始执行的时候，会在内存中开辟⼀个空间，每当遇到⼀个变量，就把变量名和值记录下来；但是当遇到函数定义的时候，解释器只是把函数名读入内存，表⽰这个函数存在了，⾄于函数内部的变量和逻辑，解释器是不关⼼的。只有当函数被调⽤的时候，解释器才会根据函数内部声明的变量来开辟变量的内部空间。</p>
 </blockquote>
 <p>这里也附一个自己的测试代码，这里<code>global</code>和<code>nonlocal</code>都是不可缺少的。</p>
-<pre class="highlight"><code class="python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">outer</span><span class="hljs-params">(a)</span>:</span>  <span class="hljs-comment"># outer 是外部函数</span>
-    b = <span class="hljs-number">10</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">inner</span><span class="hljs-params">()</span>:</span>  <span class="hljs-comment"># inner 是内函数</span>
-        <span class="hljs-keyword">nonlocal</span> b  <span class="hljs-comment"># 外函数的临时变量</span>
-        <span class="hljs-keyword">global</span> c  <span class="hljs-comment"># 全局变量</span>
-        print(a + b)
-        b += <span class="hljs-number">10</span>
-        c += <span class="hljs-number">1</span>
-    <span class="hljs-keyword">return</span> inner  <span class="hljs-comment"># 外函数的返回值是内函数的引用</span>
-    <span class="hljs-comment"># 外函数结束的时候发现内部函数将会用到自己的临时变量，临时变量就不会释放，会绑定给这个内部函数</span>
-
-<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
-    c = <span class="hljs-number">99</span>
-
-    demo = outer(<span class="hljs-number">5</span>)
-    print(outer)
-    print(demo)
-    demo()  <span class="hljs-comment"># 15</span>
-    demo()  <span class="hljs-comment"># 25</span>
-
-    demo2 = outer(<span class="hljs-number">7</span>)
-    print(outer)
-    print(demo2)
-    demo2()  <span class="hljs-comment"># 17</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">outer</span>(<span class="params">a</span>):</span>  <span class="comment"># outer 是外部函数</span></span><br><span class="line">    b = <span class="number">10</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span>():</span>  <span class="comment"># inner 是内函数</span></span><br><span class="line">        <span class="keyword">nonlocal</span> b  <span class="comment"># 外函数的临时变量</span></span><br><span class="line">        <span class="keyword">global</span> c  <span class="comment"># 全局变量</span></span><br><span class="line">        print(a + b)</span><br><span class="line">        b += <span class="number">10</span></span><br><span class="line">        c += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> inner  <span class="comment"># 外函数的返回值是内函数的引用</span></span><br><span class="line">    <span class="comment"># 外函数结束的时候发现内部函数将会用到自己的临时变量，临时变量就不会释放，会绑定给这个内部函数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    c = <span class="number">99</span></span><br><span class="line"></span><br><span class="line">    demo = outer(<span class="number">5</span>)</span><br><span class="line">    print(outer)</span><br><span class="line">    print(demo)</span><br><span class="line">    demo()  <span class="comment"># 15</span></span><br><span class="line">    demo()  <span class="comment"># 25</span></span><br><span class="line"></span><br><span class="line">    demo2 = outer(<span class="number">7</span>)</span><br><span class="line">    print(outer)</span><br><span class="line">    print(demo2)</span><br><span class="line">    demo2()  <span class="comment"># 17</span></span><br></pre></td></tr></table></figure>
 <h2><span id="47-more-on-defining-functions"> 4.7. More on Defining Functions</span></h2>
 <p>也可以使用可变数量的参数定义函数，有以下三种形式。</p>
 <h3><span id="471-default-argument-values"> 4.7.1. Default Argument Values</span></h3>
 <p>最有用的是指定一个默认参数。注意默认值是在函数定义阶段计算的，所以下面代码输出 5.</p>
-<pre class="highlight"><code class="python">i = <span class="hljs-number">5</span>
-
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">f</span><span class="hljs-params">(arg=i)</span>:</span>
-    print(arg)
-
-i = <span class="hljs-number">6</span>
-f()
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">i = <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span>(<span class="params">arg=i</span>):</span></span><br><span class="line">    print(arg)</span><br><span class="line"></span><br><span class="line">i = <span class="number">6</span></span><br><span class="line">f()</span><br></pre></td></tr></table></figure>
 <p>另外，如果默认参数是列表、字典等可变对象的时候，每次调用会实时更新对象的变更。如果不想再后续调用的时候共享默认值，可以把<code>L=[]</code>改成<code>L=None</code>。</p>
 <h3><span id="472-keyword-arguments"> 4.7.2. Keyword Arguments</span></h3>
 <p>函数也可以用<code>kwarg=value</code>的关键词参数来调用，顺序不重要，不能对同一个参数多次赋值。</p>
 <p>特别的是，当存在一个形式为 <code>**name</code> 的最后一个形参时，它会接收一个字典 <code>dict</code>，其中包含 [除了与已有形参相对应的关键字参数以外的] 所有关键字参数。</p>
 <p>这可以与一个形式为 <code>*name</code>、接收一个 [包含除了与已有形参列表以外的位置参数的] 元组的形参组合使用。（<code>*name</code> 必须出现在 <code>**name</code> 之前）</p>
 <p>很有意思的例子：</p>
-<pre class="highlight"><code class="python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">cheeseshop</span><span class="hljs-params">(kind, *arguments, **keywords)</span>:</span>
-    print(<span class="hljs-string">"-- Do you have any"</span>, kind, <span class="hljs-string">"?"</span>)
-    print(<span class="hljs-string">"-- I'm sorry, we're all out of"</span>, kind)
-    <span class="hljs-keyword">for</span> arg <span class="hljs-keyword">in</span> arguments:
-        print(arg)
-    print(<span class="hljs-string">"-"</span> * <span class="hljs-number">40</span>)
-    <span class="hljs-keyword">for</span> kw <span class="hljs-keyword">in</span> keywords:
-        print(kw, <span class="hljs-string">":"</span>, keywords[kw])
-
-cheeseshop(<span class="hljs-string">"Limburger"</span>, <span class="hljs-string">"It's very runny, sir."</span>,
-           <span class="hljs-string">"It's really very, VERY runny, sir."</span>,
-           shopkeeper=<span class="hljs-string">"Michael Palin"</span>,
-           client=<span class="hljs-string">"John Cleese"</span>,
-           sketch=<span class="hljs-string">"Cheese Shop Sketch"</span>)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cheeseshop</span>(<span class="params">kind, *arguments, **keywords</span>):</span></span><br><span class="line">    print(<span class="string">&quot;-- Do you have any&quot;</span>, kind, <span class="string">&quot;?&quot;</span>)</span><br><span class="line">    print(<span class="string">&quot;-- I&#x27;m sorry, we&#x27;re all out of&quot;</span>, kind)</span><br><span class="line">    <span class="keyword">for</span> arg <span class="keyword">in</span> arguments:</span><br><span class="line">        print(arg)</span><br><span class="line">    print(<span class="string">&quot;-&quot;</span> * <span class="number">40</span>)</span><br><span class="line">    <span class="keyword">for</span> kw <span class="keyword">in</span> keywords:</span><br><span class="line">        print(kw, <span class="string">&quot;:&quot;</span>, keywords[kw])</span><br><span class="line"></span><br><span class="line">cheeseshop(<span class="string">&quot;Limburger&quot;</span>, <span class="string">&quot;It&#x27;s very runny, sir.&quot;</span>,</span><br><span class="line">           <span class="string">&quot;It&#x27;s really very, VERY runny, sir.&quot;</span>,</span><br><span class="line">           shopkeeper=<span class="string">&quot;Michael Palin&quot;</span>,</span><br><span class="line">           client=<span class="string">&quot;John Cleese&quot;</span>,</span><br><span class="line">           sketch=<span class="string">&quot;Cheese Shop Sketch&quot;</span>)</span><br></pre></td></tr></table></figure>
 <p>对应输出：</p>
-<pre class="highlight"><code class>-- Do you have any Limburger ?
--- I'm sorry, we're all out of Limburger
-It's very runny, sir.
-It's really very, VERY runny, sir.
-----------------------------------------
-shopkeeper : Michael Palin
-client : John Cleese
-sketch : Cheese Shop Sketch
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-- Do you have any Limburger ?</span><br><span class="line">-- I&#39;m sorry, we&#39;re all out of Limburger</span><br><span class="line">It&#39;s very runny, sir.</span><br><span class="line">It&#39;s really very, VERY runny, sir.</span><br><span class="line">----------------------------------------</span><br><span class="line">shopkeeper : Michael Palin</span><br><span class="line">client : John Cleese</span><br><span class="line">sketch : Cheese Shop Sketch</span><br></pre></td></tr></table></figure>
 <h3><span id="473-special-parameters"> 4.7.3. Special parameters</span></h3>
 <p>一般来说参数可以按照位置或者关键词方式传递给 Python 函数，但是开发时候可以限制参数传递的方式。</p>
-<pre class="highlight"><code class="python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">f</span><span class="hljs-params">(pos1, pos2, /, pos_or_kwd, *, kwd1, kwd2)</span>:</span>
-      -----------    ----------     ----------
-        |             |                  |
-        |        Positional <span class="hljs-keyword">or</span> keyword   |
-        |                                - Keyword only
-         -- Positional only
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span>(<span class="params">pos1, pos2, /, pos_or_kwd, *, kwd1, kwd2</span>):</span></span><br><span class="line">      -----------    ----------     ----------</span><br><span class="line">        |             |                  |</span><br><span class="line">        |        Positional <span class="keyword">or</span> keyword   |</span><br><span class="line">        |                                - Keyword only</span><br><span class="line">         -- Positional only</span><br></pre></td></tr></table></figure>
 <p>注意<code>/</code>和<code>*</code>符号，当然这是可选的。</p>
 <p>关键字参数也称为命名参数。Keyword parameters are also referred to as named parameters.</p>
 <p>这里还有些细节，用到的时候再查。</p>
 <p>一个特殊的例子：</p>
-<pre class="highlight"><code class="python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">foo</span><span class="hljs-params">(name, **kwds)</span>:</span>
-    <span class="hljs-keyword">return</span> <span class="hljs-string">'name'</span> <span class="hljs-keyword">in</span> kwds
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span>(<span class="params">name, **kwds</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;name&#x27;</span> <span class="keyword">in</span> kwds</span><br></pre></td></tr></table></figure>
 <p>因为参数名<code>name</code>和<code>**kwds</code>的内容可能存在冲突，所以任何调用都不能让他返回<code>True</code>。如（下面这两种写法等价）：</p>
-<pre class="highlight"><code class="python">foo(<span class="hljs-number">1</span>, **&#123;<span class="hljs-string">'name'</span>: <span class="hljs-number">2</span>&#125;)
-foo(<span class="hljs-number">1</span>, name = <span class="hljs-number">2</span>)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">foo(<span class="number">1</span>, **&#123;<span class="string">&#x27;name&#x27;</span>: <span class="number">2</span>&#125;)</span><br><span class="line">foo(<span class="number">1</span>, name = <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 <p>解决办法是把<code>name</code>改成仅位置参数，就不会产生歧义了。</p>
-<pre class="highlight"><code class="python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">foo</span><span class="hljs-params">(name, /, **kwds)</span>:</span>
-    <span class="hljs-keyword">return</span> <span class="hljs-string">'name'</span> <span class="hljs-keyword">in</span> kwds
-<span class="hljs-meta">&gt;&gt;&gt; </span>foo(<span class="hljs-number">1</span>, **&#123;<span class="hljs-string">'name'</span>: <span class="hljs-number">2</span>&#125;)
-<span class="hljs-literal">True</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span>(<span class="params">name, /, **kwds</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;name&#x27;</span> <span class="keyword">in</span> kwds</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>foo(<span class="number">1</span>, **&#123;<span class="string">&#x27;name&#x27;</span>: <span class="number">2</span>&#125;)</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
 <p>Recap（概括）：</p>
 <ul>
 <li>
@@ -549,31 +403,15 @@ foo(<span class="hljs-number">1</span>, name = <span class="hljs-number">2</span
 <h3><span id="474-arbitrary-argument-lists"> 4.7.4. Arbitrary Argument Lists</span></h3>
 <p>arbitrary 任意的，武断的</p>
 <p>最后一种是可变参数 List，这些参数会包装在元组 tuple 中。可变参数前面可能会有常规参数，后面只能是关键字参数。</p>
-<pre class="highlight"><code class="python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">concat</span><span class="hljs-params">(*args, sep=<span class="hljs-string">"/"</span>)</span>:</span>
-<span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> sep.join(args)
-...
-<span class="hljs-meta">&gt;&gt;&gt; </span>concat(<span class="hljs-string">"earth"</span>, <span class="hljs-string">"mars"</span>, <span class="hljs-string">"venus"</span>)
-<span class="hljs-string">'earth/mars/venus'</span>
-<span class="hljs-meta">&gt;&gt;&gt; </span>concat(<span class="hljs-string">"earth"</span>, <span class="hljs-string">"mars"</span>, <span class="hljs-string">"venus"</span>, sep=<span class="hljs-string">"."</span>)
-<span class="hljs-string">'earth.mars.venus'</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">concat</span>(<span class="params">*args, sep=<span class="string">&quot;/&quot;</span></span>):</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> sep.join(args)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>concat(<span class="string">&quot;earth&quot;</span>, <span class="string">&quot;mars&quot;</span>, <span class="string">&quot;venus&quot;</span>)</span><br><span class="line"><span class="string">&#x27;earth/mars/venus&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>concat(<span class="string">&quot;earth&quot;</span>, <span class="string">&quot;mars&quot;</span>, <span class="string">&quot;venus&quot;</span>, sep=<span class="string">&quot;.&quot;</span>)</span><br><span class="line"><span class="string">&#x27;earth.mars.venus&#x27;</span></span><br></pre></td></tr></table></figure>
 <p>注释：<code>join()</code>方法返回通过指定字符连接序列中元素后生成的新字符串。</p>
 <h3><span id="475-unpacking-argument-lists"> 4.7.5. Unpacking Argument Lists</span></h3>
 <p>解包参数列表，使用<code>*</code>从 list 或者 tuple 中获取单独的参数，同理使用<code>**</code>解包 dictionary。</p>
-<pre class="highlight"><code class="python"><span class="hljs-meta">&gt;&gt;&gt; </span>list(range(<span class="hljs-number">3</span>, <span class="hljs-number">6</span>))            <span class="hljs-comment"># normal call with separate arguments</span>
-[<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]
-<span class="hljs-meta">&gt;&gt;&gt; </span>args = [<span class="hljs-number">3</span>, <span class="hljs-number">6</span>]
-<span class="hljs-meta">&gt;&gt;&gt; </span>list(range(*args))            <span class="hljs-comment"># call with arguments unpacked from a list</span>
-[<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">3</span>, <span class="number">6</span>))            <span class="comment"># normal call with separate arguments</span></span><br><span class="line">[<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>args = [<span class="number">3</span>, <span class="number">6</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">list</span>(<span class="built_in">range</span>(*args))            <span class="comment"># call with arguments unpacked from a list</span></span><br><span class="line">[<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
 <h3><span id="476-lambda-expressions"> 4.7.6. Lambda Expressions</span></h3>
 <p>可以用 <code>lambda</code> 关键字来创建一个小的匿名函数。</p>
 <p>举例如下：</p>
-<pre class="highlight"><code class="python"><span class="hljs-meta">&gt;&gt;&gt; </span>pairs = [(<span class="hljs-number">1</span>, <span class="hljs-string">'one'</span>), (<span class="hljs-number">2</span>, <span class="hljs-string">'two'</span>), (<span class="hljs-number">3</span>, <span class="hljs-string">'three'</span>), (<span class="hljs-number">4</span>, <span class="hljs-string">'four'</span>)]
-<span class="hljs-meta">&gt;&gt;&gt; </span>pairs.sort(key=<span class="hljs-keyword">lambda</span> pair: pair[<span class="hljs-number">1</span>])
-<span class="hljs-meta">&gt;&gt;&gt; </span>pairs
-[(<span class="hljs-number">4</span>, <span class="hljs-string">'four'</span>), (<span class="hljs-number">1</span>, <span class="hljs-string">'one'</span>), (<span class="hljs-number">3</span>, <span class="hljs-string">'three'</span>), (<span class="hljs-number">2</span>, <span class="hljs-string">'two'</span>)]
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>pairs = [(<span class="number">1</span>, <span class="string">&#x27;one&#x27;</span>), (<span class="number">2</span>, <span class="string">&#x27;two&#x27;</span>), (<span class="number">3</span>, <span class="string">&#x27;three&#x27;</span>), (<span class="number">4</span>, <span class="string">&#x27;four&#x27;</span>)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pairs.sort(key=<span class="keyword">lambda</span> pair: pair[<span class="number">1</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pairs</span><br><span class="line">[(<span class="number">4</span>, <span class="string">&#x27;four&#x27;</span>), (<span class="number">1</span>, <span class="string">&#x27;one&#x27;</span>), (<span class="number">3</span>, <span class="string">&#x27;three&#x27;</span>), (<span class="number">2</span>, <span class="string">&#x27;two&#x27;</span>)]</span><br></pre></td></tr></table></figure>
 <p>这个例子很有意思，<code>sort</code>方法支持一个<code>key</code>参数，用来选择进行比较的元素。因此这句话执行的时候依次传入 pairs 的每个元素，然后用<code>lambda</code>函数切片，取出<code>(1, 'one')</code>里的<code>'one'</code>等，最后英文字母顺序排列。</p>
 <p>更多关于 Lambda 表达式：<br>
 Lambda 表达式有何用处？如何使用？ - 涛吴的回答 - 知乎<br>
@@ -585,26 +423,11 @@ Lambda 表达式有何用处？如何使用？ - 涛吴的回答 - 知乎<br>
 <p>如果有很多行，那么第二行应该空出来，在视觉上分离。后面可以写函数的调用约定、副作用等。</p>
 <p>Python 解析器 (parser) 不会删除多行字符串的缩进 (strip indentation)。缩进的约定是：第一行之后的第一个非空行确定整个文档的缩进量（不用第一行的原因是它通常和字符串开头引号相邻，不明显）。之后所有行都遵守这个缩进。最后 Tab 转化为 8 个空格。</p>
 <p>一个例子：</p>
-<pre class="highlight"><code class="python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">my_function</span><span class="hljs-params">()</span>:</span>
-<span class="hljs-meta">... </span>    <span class="hljs-string">"""Do nothing, but document it.
-...
-<span class="hljs-meta">... </span>    No, really, it doesn't do anything.
-<span class="hljs-meta">... </span>    """</span>
-<span class="hljs-meta">... </span>    <span class="hljs-keyword">pass</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">my_function</span>():</span></span><br><span class="line"><span class="meta">... </span>    <span class="string">&quot;&quot;&quot;Do nothing, but document it.</span></span><br><span class="line"><span class="string">...</span></span><br><span class="line"><span class="string"><span class="meta">... </span>    No, really, it doesn&#x27;t do anything.</span></span><br><span class="line"><span class="string"><span class="meta">... </span>    &quot;&quot;&quot;</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
 <h3><span id="478-function-annotations"> 4.7.8. Function Annotations</span></h3>
 <p>函数标注是关于用户自定义函数中使用的类型的完全可选元数据信息，以字典的形式存放在函数的 <code>__annotations__</code> 属性中，并且不会影响函数的任何其他部分。</p>
 <p>直接看例子，这里有一个位置参数、一个关键字参数以及返回值带有相应标注：</p>
-<pre class="highlight"><code class="python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">f</span><span class="hljs-params">(ham: str, eggs: str = <span class="hljs-string">'eggs'</span>)</span> -&gt; str:</span>
-<span class="hljs-meta">... </span>    print(<span class="hljs-string">"Annotations:"</span>, f.__annotations__)
-<span class="hljs-meta">... </span>    print(<span class="hljs-string">"Arguments:"</span>, ham, eggs)
-<span class="hljs-meta">... </span>    <span class="hljs-keyword">return</span> ham + <span class="hljs-string">' and '</span> + eggs
-...
-<span class="hljs-meta">&gt;&gt;&gt; </span>f(<span class="hljs-string">'spam'</span>)
-Annotations: &#123;<span class="hljs-string">'ham'</span>: &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> '<span class="hljs-title">str</span>'&gt;, '<span class="hljs-title">return</span>':</span> &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> '<span class="hljs-title">str</span>'&gt;, '<span class="hljs-title">eggs</span>':</span> &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> '<span class="hljs-title">str</span>'&gt;&#125;
-<span class="hljs-title">Arguments</span>:</span> spam eggs
-<span class="hljs-string">'spam and eggs'</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">f</span>(<span class="params">ham: <span class="built_in">str</span>, eggs: <span class="built_in">str</span> = <span class="string">&#x27;eggs&#x27;</span></span>) -&gt; str:</span></span><br><span class="line"><span class="meta">... </span>    print(<span class="string">&quot;Annotations:&quot;</span>, f.__annotations__)</span><br><span class="line"><span class="meta">... </span>    print(<span class="string">&quot;Arguments:&quot;</span>, ham, eggs)</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> ham + <span class="string">&#x27; and &#x27;</span> + eggs</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f(<span class="string">&#x27;spam&#x27;</span>)</span><br><span class="line">Annotations: &#123;&#x27;ham&#x27;: &lt;class &#x27;str&#x27;&gt;, &#x27;return&#x27;: &lt;class &#x27;str&#x27;&gt;, &#x27;eggs&#x27;: &lt;class &#x27;str&#x27;&gt;&#125;</span><br><span class="line">Arguments: spam eggs</span><br><span class="line"><span class="string">&#x27;spam and eggs&#x27;</span></span><br></pre></td></tr></table></figure>
 <h2><span id="48-intermezzo-coding-style"> 4.8. Intermezzo: Coding Style</span></h2>
 <p>intermezzo 间奏曲，插曲</p>
 <p><a target="_blank" rel="noopener" href="https://www.python.org/dev/peps/pep-0008/">PEP 8</a> has emerged as the style guide that most projects adhere to（遵循，坚持）.</p>

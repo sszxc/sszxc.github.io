@@ -16,7 +16,7 @@
   localSearch: undefined,
   translate: undefined,
   noticeOutdate: undefined,
-  highlight: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -332,8 +332,7 @@ merge 方法
 <br>
 <h2><span id="18-锁定的-masterlocked-master"> 1.8 锁定的 Master(Locked Master)</span></h2>
 <p>如果你是在一个大的合作团队中工作，很可能是 master 被锁定了，需要一些 Pull Request 流程来合并修改。如果你直接提交 (commit) 到本地 master, 然后试图推送 (push) 修改，你将会收到这样类似的信息：</p>
-<pre class="highlight"><code class>! [远程服务器拒绝] master -&gt; master (TF402455: 不允许推送 (push) 这个分支；你必须使用 pull request 来更新这个分支。)
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">! [远程服务器拒绝] master -&gt; master (TF402455: 不允许推送 (push) 这个分支；你必须使用 pull request 来更新这个分支。)</span><br></pre></td></tr></table></figure>
 <p>解决方案：新建一个分支 feature, 推送到远程服务器。然后 reset 你的 master 分支和远程服务器保持一致，否则下次你 pull 并且他人的提交和你冲突的时候就会有问题。</p>
 <h2><span id="21-推送主分支"> 2.1 推送主分支</span></h2>
 <blockquote>

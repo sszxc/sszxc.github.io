@@ -18,7 +18,7 @@
   localSearch: undefined,
   translate: undefined,
   noticeOutdate: undefined,
-  highlight: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -198,12 +198,7 @@ ORB-SLAM 基本流程
 <p>编译完成后，ROS 调用摄像头的时候可能会出现报错，提示<code>Unable to open camera calibration file [/****/****.yaml]</code>，其实主要是没有安装 image_view，直接执行<code>sudo apt-get install ros-indigo-image-view</code>即可。另一种可能原因是。launch 文件中的设备号错了，笔记本电脑的 video0 一般是网络摄像头，插入的 USB 摄像头一般是 video1，如果想看 USB 摄像头是哪个端口号，可 cd 到根目录中的 dev 文件夹下查看。</p>
 <p>在 ROS 执行。launch 文件的过程中可能会出现报错，提示<code>[****.launch] is neither a launch file in package [****] nor is [****] a launch file name</code>，根本原因就是系统没有把对应的。launch 文件添加到路径里。解决办法是回到上层，重新对。bash 文件执行 source。</p>
 <p>最终运行的时候需要开三个终端，执行三个命令。为了方便起见，可以新建一个脚本文件。特别地，我新建了如下的。sh 文件，使用 chmod 命令修改权限之后可以直接执行，一键启动～</p>
-<pre class="highlight"><code class="bash"><span class="hljs-comment">#启动 ORB-SLAM2 demo</span>
-gnome-terminal -x bash -c <span class="hljs-string">"roscore;"</span>
-sleep 2
-gnome-terminal -x bash -c <span class="hljs-string">"source /home/henry/SLAM/usb_cam/build/devel/setup.bash;roslaunch usb_cam usb_cam-test.launch;"</span>
-gnome-terminal -x bash -c <span class="hljs-string">"rosrun ORB_SLAM2 Mono /home/henry/SLAM/ORB_SLAM2/Vocabulary/ORBvoc.txt  /home/henry/SLAM/ORB_SLAM2/Examples/ROS/ORB_SLAM2/my.yaml"</span>
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#启动 ORB-SLAM2 demo</span></span><br><span class="line">gnome-terminal -x bash -c <span class="string">&quot;roscore;&quot;</span></span><br><span class="line">sleep 2</span><br><span class="line">gnome-terminal -x bash -c <span class="string">&quot;source /home/henry/SLAM/usb_cam/build/devel/setup.bash;roslaunch usb_cam usb_cam-test.launch;&quot;</span></span><br><span class="line">gnome-terminal -x bash -c <span class="string">&quot;rosrun ORB_SLAM2 Mono /home/henry/SLAM/ORB_SLAM2/Vocabulary/ORBvoc.txt  /home/henry/SLAM/ORB_SLAM2/Examples/ROS/ORB_SLAM2/my.yaml&quot;</span></span><br></pre></td></tr></table></figure>
 <center>
 <img src="https://s1.ax1x.com/2020/10/14/0IQtFU.jpg" width="100%">
 <br>

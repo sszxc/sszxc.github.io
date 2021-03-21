@@ -19,7 +19,7 @@
   localSearch: undefined,
   translate: undefined,
   noticeOutdate: undefined,
-  highlight: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -141,16 +141,7 @@
 <p>下面简单介绍一下一些常用的命令。</p>
 <h2><span id="机器人模型建立"> 机器人模型建立</span></h2>
 <p>机器人模型的构建，主要是通过上文提到的 D-H 表示法创建单个杆件，并将杆件进行连接得到机器人对象。默认采用的是‘standard’标准型 D-H 参数，如果选择改进型需要在后面加上‘modified’。</p>
-<pre class="highlight"><code class="matlab">L1 = Link(<span class="hljs-string">'d'</span>, <span class="hljs-number">0</span>, <span class="hljs-string">'a'</span>, <span class="hljs-number">0</span>, <span class="hljs-string">'alpha'</span>, <span class="hljs-built_in">pi</span>/<span class="hljs-number">2</span>);
-L2 = Link(<span class="hljs-string">'d'</span>, <span class="hljs-number">0</span>, <span class="hljs-string">'a'</span>, <span class="hljs-number">0.5</span>, <span class="hljs-string">'alpha'</span>, <span class="hljs-number">0</span>,<span class="hljs-string">'offset'</span>,<span class="hljs-built_in">pi</span>/<span class="hljs-number">2</span>);
-L3 = Link(<span class="hljs-string">'d'</span>, <span class="hljs-number">0</span>, <span class="hljs-string">'a'</span>, <span class="hljs-number">0</span>, <span class="hljs-string">'alpha'</span>, <span class="hljs-built_in">pi</span>/<span class="hljs-number">2</span>,<span class="hljs-string">'offset'</span>,<span class="hljs-built_in">pi</span>/<span class="hljs-number">4</span>);
-L4 = Link(<span class="hljs-string">'d'</span>, <span class="hljs-number">1</span>, <span class="hljs-string">'a'</span>, <span class="hljs-number">0</span>, <span class="hljs-string">'alpha'</span>, -<span class="hljs-built_in">pi</span>/<span class="hljs-number">2</span>);
-robot=SerialLink([L1,L2,L3,L4]);
-robot.name=<span class="hljs-string">'testRobot'</span>;
-robot.display();
-theta=[<span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span>]; 
-robot.<span class="hljs-built_in">plot</span>(theta); <span class="hljs-comment">%显示机器人的图像</span>
-</code></pre>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">L1 = Link(<span class="string">&#x27;d&#x27;</span>, <span class="number">0</span>, <span class="string">&#x27;a&#x27;</span>, <span class="number">0</span>, <span class="string">&#x27;alpha&#x27;</span>, <span class="built_in">pi</span>/<span class="number">2</span>);</span><br><span class="line">L2 = Link(<span class="string">&#x27;d&#x27;</span>, <span class="number">0</span>, <span class="string">&#x27;a&#x27;</span>, <span class="number">0.5</span>, <span class="string">&#x27;alpha&#x27;</span>, <span class="number">0</span>,<span class="string">&#x27;offset&#x27;</span>,<span class="built_in">pi</span>/<span class="number">2</span>);</span><br><span class="line">L3 = Link(<span class="string">&#x27;d&#x27;</span>, <span class="number">0</span>, <span class="string">&#x27;a&#x27;</span>, <span class="number">0</span>, <span class="string">&#x27;alpha&#x27;</span>, <span class="built_in">pi</span>/<span class="number">2</span>,<span class="string">&#x27;offset&#x27;</span>,<span class="built_in">pi</span>/<span class="number">4</span>);</span><br><span class="line">L4 = Link(<span class="string">&#x27;d&#x27;</span>, <span class="number">1</span>, <span class="string">&#x27;a&#x27;</span>, <span class="number">0</span>, <span class="string">&#x27;alpha&#x27;</span>, -<span class="built_in">pi</span>/<span class="number">2</span>);</span><br><span class="line">robot=SerialLink([L1,L2,L3,L4]);</span><br><span class="line">robot.name=<span class="string">&#x27;testRobot&#x27;</span>;</span><br><span class="line">robot.display();</span><br><span class="line">theta=[<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]; </span><br><span class="line">robot.<span class="built_in">plot</span>(theta); <span class="comment">%显示机器人的图像</span></span><br></pre></td></tr></table></figure>
 <p>其中，Link 命令的参数除了四个基本的 D-H 参数，还可以包含 offset 关节变量偏移量、qlim 关节变量范围、m 质量、r 质心、I 惯性张量、B 粘性摩擦、Tc 静摩擦、G 减速比、Jm 转子惯量等参数，为更精细的设计仿真提供了很大的方便。</p>
 <center>
 <img src="https://s1.ax1x.com/2020/05/16/YyyW36.png">
@@ -159,16 +150,7 @@ robot.<span class="hljs-built_in">plot</span>(theta); <span class="hljs-comment"
 </center>
 <br>
 <p>相应地也可以建立一个球坐标机器人，使用<code>teach</code>命令进行示教，拖动左侧的滑块可以实时看到机械臂的运动情况。</p>
-<pre class="highlight"><code class="matlab">L1 = Link(<span class="hljs-string">'d'</span>, <span class="hljs-number">0</span>, <span class="hljs-string">'a'</span>, <span class="hljs-number">0</span>, <span class="hljs-string">'alpha'</span>, <span class="hljs-built_in">pi</span>/<span class="hljs-number">2</span>);
-L2 = Link(<span class="hljs-string">'d'</span>, <span class="hljs-number">0</span>, <span class="hljs-string">'a'</span>, <span class="hljs-number">0</span>, <span class="hljs-string">'alpha'</span>, <span class="hljs-built_in">pi</span>/<span class="hljs-number">2</span>);
-L3 = Link(<span class="hljs-string">'d'</span>, <span class="hljs-number">0</span>, <span class="hljs-string">'a'</span>, <span class="hljs-number">0</span>, <span class="hljs-string">'alpha'</span>, <span class="hljs-built_in">pi</span>/<span class="hljs-number">2</span>);
-L4 = Link(<span class="hljs-string">'d'</span>, <span class="hljs-number">0.5</span>, <span class="hljs-string">'a'</span>, <span class="hljs-number">0</span>, <span class="hljs-string">'alpha'</span>, <span class="hljs-number">0</span>);
-robot=SerialLink([L1,L2,L3,L4]);
-robot.name=<span class="hljs-string">'testRobot'</span>;
-robot.display();
-theta=[<span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span>]; 
-robot.teach(theta); <span class="hljs-comment">%显示机器人的图像</span>
-</code></pre>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">L1 = Link(<span class="string">&#x27;d&#x27;</span>, <span class="number">0</span>, <span class="string">&#x27;a&#x27;</span>, <span class="number">0</span>, <span class="string">&#x27;alpha&#x27;</span>, <span class="built_in">pi</span>/<span class="number">2</span>);</span><br><span class="line">L2 = Link(<span class="string">&#x27;d&#x27;</span>, <span class="number">0</span>, <span class="string">&#x27;a&#x27;</span>, <span class="number">0</span>, <span class="string">&#x27;alpha&#x27;</span>, <span class="built_in">pi</span>/<span class="number">2</span>);</span><br><span class="line">L3 = Link(<span class="string">&#x27;d&#x27;</span>, <span class="number">0</span>, <span class="string">&#x27;a&#x27;</span>, <span class="number">0</span>, <span class="string">&#x27;alpha&#x27;</span>, <span class="built_in">pi</span>/<span class="number">2</span>);</span><br><span class="line">L4 = Link(<span class="string">&#x27;d&#x27;</span>, <span class="number">0.5</span>, <span class="string">&#x27;a&#x27;</span>, <span class="number">0</span>, <span class="string">&#x27;alpha&#x27;</span>, <span class="number">0</span>);</span><br><span class="line">robot=SerialLink([L1,L2,L3,L4]);</span><br><span class="line">robot.name=<span class="string">&#x27;testRobot&#x27;</span>;</span><br><span class="line">robot.display();</span><br><span class="line">theta=[<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>]; </span><br><span class="line">robot.teach(theta); <span class="comment">%显示机器人的图像</span></span><br></pre></td></tr></table></figure>
 <center>
 <img src="https://s1.ax1x.com/2020/05/17/Y2V8Yt.png">
 <br>
@@ -184,16 +166,9 @@ PUMA560 示教
 <br>
 <h2><span id="正逆运动学求解"> 正逆运动学求解</span></h2>
 <p>工具箱提供了正逆运动学求解的函数：正解<code>fkine</code>，逆解<code>ikine</code>。 以 PUMA560 为例，可以用以下代码进行正运动学求解。</p>
-<pre class="highlight"><code class="matlab">target=[<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>];
-<span class="hljs-comment">%target=[0,pi/3,-pi/3,0,pi/4,0];</span>
-fkine(p560,target);
-p560.<span class="hljs-built_in">plot</span>(target);
-</code></pre>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">target=[<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>];</span><br><span class="line"><span class="comment">%target=[0,pi/3,-pi/3,0,pi/4,0];</span></span><br><span class="line">fkine(p560,target);</span><br><span class="line">p560.<span class="built_in">plot</span>(target);</span><br></pre></td></tr></table></figure>
 <p>为方便验算，选择正运动学求解得到的末端位姿作为目标，使用 fkine 命令进行逆运动学求解，代码如下。</p>
-<pre class="highlight"><code class="matlab">target=[<span class="hljs-built_in">pi</span>/<span class="hljs-number">4</span>,-<span class="hljs-built_in">pi</span>/<span class="hljs-number">3</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-built_in">pi</span>/<span class="hljs-number">6</span>];
-p1=p560.fkine(target);
-q1=p560.ikine(p1);
-</code></pre>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">target=[<span class="built_in">pi</span>/<span class="number">4</span>,-<span class="built_in">pi</span>/<span class="number">3</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="built_in">pi</span>/<span class="number">6</span>];</span><br><span class="line">p1=p560.fkine(target);</span><br><span class="line">q1=p560.ikine(p1);</span><br></pre></td></tr></table></figure>
 <p>不出意外，逆解结果应该和输入的关节变量相等。当出现多解时，意味着机器人可以以多种方式实现这一动作。特别的，当机械臂关节数为 6，腕部三个旋转关节的轴相交于一点，或者满足其他一些特殊构型时 3，可以使用<code>ikine6s</code>函数求封闭解，此时可以由一个或者多个字符来控制运动学位型：左手或者右手 ‘l’，‘r’ ，肘部在上或者肘部在下 ‘u’，‘d’ ，手腕翻转或不翻转 ‘f’，‘n’。</p>
 <h1><span id="基本轨迹规划"> 基本轨迹规划</span></h1>
 <p>有了正逆运动学，我们就可以指定任意点，让机器人对进行运动学逆解运算，再将分量分解到各关节，驱动末端达到指定位置。这是一种简单的点位运动（PTP），在此基础上我们更希望其实现指定轨迹的运动，即连续运动（CP）。由于在逆解的计算中解析解一般较为困难，一般都是以数值解近似，所以 CP 运动一般是以 PTP 运动为基础，通过在相邻两点之间采用满足精度要求的直线或圆弧轨迹进行插补，来实现轨迹的连续化。</p>

@@ -16,7 +16,7 @@
   localSearch: undefined,
   translate: undefined,
   noticeOutdate: undefined,
-  highlight: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -193,123 +193,17 @@ HTTP 请求
 <h1><span id="python-实现"> Python 实现</span></h1>
 <p>以文字识别为例，百度给出了一个很详细的 <a target="_blank" rel="noopener" href="https://ai.baidu.com/ai-doc/OCR/dk3iqnq51">QuickStart</a>，对照着修改即可，这里简单过一下主函数流程。</p>
 <p>首先导入一些模块</p>
-<pre class="highlight"><code class="python"><span class="hljs-keyword">import</span> sys
-<span class="hljs-keyword">import</span> json
-<span class="hljs-keyword">import</span> base64
-
-<span class="hljs-comment"># 保证兼容 python2 以及 python3</span>
-IS_PY3 = sys.version_info.major == <span class="hljs-number">3</span>
-<span class="hljs-keyword">if</span> IS_PY3:
-    <span class="hljs-keyword">from</span> urllib.request <span class="hljs-keyword">import</span> urlopen
-    <span class="hljs-keyword">from</span> urllib.request <span class="hljs-keyword">import</span> Request
-    <span class="hljs-keyword">from</span> urllib.error <span class="hljs-keyword">import</span> URLError
-    <span class="hljs-keyword">from</span> urllib.parse <span class="hljs-keyword">import</span> urlencode
-    <span class="hljs-keyword">from</span> urllib.parse <span class="hljs-keyword">import</span> quote_plus
-<span class="hljs-keyword">else</span>:
-    <span class="hljs-keyword">import</span> urllib2
-    <span class="hljs-keyword">from</span> urllib <span class="hljs-keyword">import</span> quote_plus
-    <span class="hljs-keyword">from</span> urllib2 <span class="hljs-keyword">import</span> urlopen
-    <span class="hljs-keyword">from</span> urllib2 <span class="hljs-keyword">import</span> Request
-    <span class="hljs-keyword">from</span> urllib2 <span class="hljs-keyword">import</span> URLError
-    <span class="hljs-keyword">from</span> urllib <span class="hljs-keyword">import</span> urlencode
-
-<span class="hljs-comment"># 防止 https 证书校验不正确</span>
-ssl._create_default_https_context = ssl._create_unverified_context
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="comment"># 保证兼容 python2 以及 python3</span></span><br><span class="line">IS_PY3 = sys.version_info.major == <span class="number">3</span></span><br><span class="line"><span class="keyword">if</span> IS_PY3:</span><br><span class="line">    <span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line">    <span class="keyword">from</span> urllib.request <span class="keyword">import</span> Request</span><br><span class="line">    <span class="keyword">from</span> urllib.error <span class="keyword">import</span> URLError</span><br><span class="line">    <span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urlencode</span><br><span class="line">    <span class="keyword">from</span> urllib.parse <span class="keyword">import</span> quote_plus</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">import</span> urllib2</span><br><span class="line">    <span class="keyword">from</span> urllib <span class="keyword">import</span> quote_plus</span><br><span class="line">    <span class="keyword">from</span> urllib2 <span class="keyword">import</span> urlopen</span><br><span class="line">    <span class="keyword">from</span> urllib2 <span class="keyword">import</span> Request</span><br><span class="line">    <span class="keyword">from</span> urllib2 <span class="keyword">import</span> URLError</span><br><span class="line">    <span class="keyword">from</span> urllib <span class="keyword">import</span> urlencode</span><br><span class="line"></span><br><span class="line"><span class="comment"># 防止 https 证书校验不正确</span></span><br><span class="line">ssl._create_default_https_context = ssl._create_unverified_context</span><br></pre></td></tr></table></figure>
 <p>然后是一些关键字符串，这里需要根据之前获取的 AK/SK、不同 API 的 URL 进行修改，示例中填充的是一个文字识别的例程。</p>
-<pre class="highlight"><code class="python">API_KEY = <span class="hljs-string">'GmhC18eVP1Fo1ECX911dtOzw'</span>
-SECRET_KEY = <span class="hljs-string">'PQ2ukO4Aec2PTsgQU9UkiEKYciavlZk8'</span>
-OCR_URL = <span class="hljs-string">"https://aip.baidubce.com/rest/2.0/ocr/v1/accurate_basic"</span>
-TOKEN_URL = <span class="hljs-string">'https://aip.baidubce.com/oauth/2.0/token'</span>
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">API_KEY = <span class="string">&#x27;GmhC18eVP1Fo1ECX911dtOzw&#x27;</span></span><br><span class="line">SECRET_KEY = <span class="string">&#x27;PQ2ukO4Aec2PTsgQU9UkiEKYciavlZk8&#x27;</span></span><br><span class="line">OCR_URL = <span class="string">&quot;https://aip.baidubce.com/rest/2.0/ocr/v1/accurate_basic&quot;</span></span><br><span class="line">TOKEN_URL = <span class="string">&#x27;https://aip.baidubce.com/oauth/2.0/token&#x27;</span></span><br></pre></td></tr></table></figure>
 <p>鉴权流程，后续使用的时候照抄即可。</p>
-<pre class="highlight"><code class="python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fetch_token</span><span class="hljs-params">()</span>:</span>
-    <span class="hljs-string">"""
-    获取 token
-    """</span>
-    params = &#123;<span class="hljs-string">'grant_type'</span>: <span class="hljs-string">'client_credentials'</span>,
-              <span class="hljs-string">'client_id'</span>: API_KEY,
-              <span class="hljs-string">'client_secret'</span>: SECRET_KEY&#125;
-    post_data = urlencode(params)
-    <span class="hljs-keyword">if</span> (IS_PY3):
-        post_data = post_data.encode(<span class="hljs-string">'utf-8'</span>)
-    req = Request(TOKEN_URL, post_data)
-    <span class="hljs-keyword">try</span>:
-        f = urlopen(req, timeout=<span class="hljs-number">5</span>)
-        result_str = f.read()
-    <span class="hljs-keyword">except</span> URLError <span class="hljs-keyword">as</span> err:
-        print(err)
-    <span class="hljs-keyword">if</span> (IS_PY3):
-        result_str = result_str.decode()
-
-    result = json.loads(result_str)
-
-    <span class="hljs-keyword">if</span> (<span class="hljs-string">'access_token'</span> <span class="hljs-keyword">in</span> result.keys() <span class="hljs-keyword">and</span> <span class="hljs-string">'scope'</span> <span class="hljs-keyword">in</span> result.keys()):
-        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-string">'brain_all_scope'</span> <span class="hljs-keyword">in</span> result[<span class="hljs-string">'scope'</span>].split(<span class="hljs-string">' '</span>):
-            <span class="hljs-keyword">print</span> (<span class="hljs-string">'please ensure has check the  ability'</span>)
-            exit()
-        <span class="hljs-keyword">return</span> result[<span class="hljs-string">'access_token'</span>]
-    <span class="hljs-keyword">else</span>:
-        <span class="hljs-keyword">print</span> (<span class="hljs-string">'please overwrite the correct API_KEY and SECRET_KEY'</span>)
-        exit()
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fetch_token</span>():</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    获取 token</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    params = &#123;<span class="string">&#x27;grant_type&#x27;</span>: <span class="string">&#x27;client_credentials&#x27;</span>,</span><br><span class="line">              <span class="string">&#x27;client_id&#x27;</span>: API_KEY,</span><br><span class="line">              <span class="string">&#x27;client_secret&#x27;</span>: SECRET_KEY&#125;</span><br><span class="line">    post_data = urlencode(params)</span><br><span class="line">    <span class="keyword">if</span> (IS_PY3):</span><br><span class="line">        post_data = post_data.encode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">    req = Request(TOKEN_URL, post_data)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        f = urlopen(req, timeout=<span class="number">5</span>)</span><br><span class="line">        result_str = f.read()</span><br><span class="line">    <span class="keyword">except</span> URLError <span class="keyword">as</span> err:</span><br><span class="line">        print(err)</span><br><span class="line">    <span class="keyword">if</span> (IS_PY3):</span><br><span class="line">        result_str = result_str.decode()</span><br><span class="line"></span><br><span class="line">    result = json.loads(result_str)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="string">&#x27;access_token&#x27;</span> <span class="keyword">in</span> result.keys() <span class="keyword">and</span> <span class="string">&#x27;scope&#x27;</span> <span class="keyword">in</span> result.keys()):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="string">&#x27;brain_all_scope&#x27;</span> <span class="keyword">in</span> result[<span class="string">&#x27;scope&#x27;</span>].split(<span class="string">&#x27; &#x27;</span>):</span><br><span class="line">            <span class="built_in">print</span> (<span class="string">&#x27;please ensure has check the  ability&#x27;</span>)</span><br><span class="line">            exit()</span><br><span class="line">        <span class="keyword">return</span> result[<span class="string">&#x27;access_token&#x27;</span>]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span> (<span class="string">&#x27;please overwrite the correct API_KEY and SECRET_KEY&#x27;</span>)</span><br><span class="line">        exit()</span><br></pre></td></tr></table></figure>
 <p>用二进制方式读取需要识别的文件，加入 HTTP 请求内容。</p>
-<pre class="highlight"><code class="python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_file</span><span class="hljs-params">(image_path)</span>:</span>
-    <span class="hljs-string">"""
-    读取文件
-    """</span>
-    f = <span class="hljs-literal">None</span>
-    <span class="hljs-keyword">try</span>:
-        f = open(image_path, <span class="hljs-string">'rb'</span>)
-        <span class="hljs-keyword">return</span> f.read()
-    <span class="hljs-keyword">except</span>:
-        print(<span class="hljs-string">'read image file fail'</span>)
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span>
-    <span class="hljs-keyword">finally</span>:
-        <span class="hljs-keyword">if</span> f:
-            f.close()
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_file</span>(<span class="params">image_path</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    读取文件</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    f = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        f = <span class="built_in">open</span>(image_path, <span class="string">&#x27;rb&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> f.read()</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        print(<span class="string">&#x27;read image file fail&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        <span class="keyword">if</span> f:</span><br><span class="line">            f.close()</span><br></pre></td></tr></table></figure>
 <p>HTTP 请求，这里用的是 Python 的 urllib 库中的 Request 函数，据说更方便的方案是使用 <a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1016959663602400/1183249464292448">requests</a>，一个 Python 第三方库，处理 URL 资源特别方便。</p>
-<pre class="highlight"><code class="python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">request</span><span class="hljs-params">(url, data)</span>:</span>
-    <span class="hljs-string">"""
-    调用远程服务
-    """</span>
-    req = Request(url, data.encode(<span class="hljs-string">'utf-8'</span>))
-    has_error = <span class="hljs-literal">False</span>
-    <span class="hljs-keyword">try</span>:
-        f = urlopen(req)
-        result_str = f.read()
-        <span class="hljs-keyword">if</span> (IS_PY3):
-            result_str = result_str.decode()
-        <span class="hljs-keyword">return</span> result_str
-    <span class="hljs-keyword">except</span>  URLError <span class="hljs-keyword">as</span> err:
-        print(err)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">request</span>(<span class="params">url, data</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    调用远程服务</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    req = Request(url, data.encode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line">    has_error = <span class="literal">False</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        f = urlopen(req)</span><br><span class="line">        result_str = f.read()</span><br><span class="line">        <span class="keyword">if</span> (IS_PY3):</span><br><span class="line">            result_str = result_str.decode()</span><br><span class="line">        <span class="keyword">return</span> result_str</span><br><span class="line">    <span class="keyword">except</span>  URLError <span class="keyword">as</span> err:</span><br><span class="line">        print(err)</span><br></pre></td></tr></table></figure>
 <p>主函数，鉴权、打包、请求、解析。</p>
-<pre class="highlight"><code class="python"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
-
-    <span class="hljs-comment"># 获取 access token</span>
-    token = fetch_token()
-
-    <span class="hljs-comment"># 拼接通用文字识别高精度 url</span>
-    image_url = OCR_URL + <span class="hljs-string">"?access_token="</span> + token
-
-    text = <span class="hljs-string">""</span>
-
-    <span class="hljs-comment"># 读取书籍页面图片</span>
-    file_content = read_file(<span class="hljs-string">'./test.jpg'</span>)
-
-    <span class="hljs-comment"># 调用文字识别服务</span>
-    result = request(image_url, urlencode(&#123;<span class="hljs-string">'image'</span>: base64.b64encode(file_content)&#125;))
-
-    <span class="hljs-comment"># 解析返回结果</span>
-    result_json = json.loads(result)
-    <span class="hljs-keyword">for</span> words_result <span class="hljs-keyword">in</span> result_json[<span class="hljs-string">"words_result"</span>]:
-        text = text + words_result[<span class="hljs-string">"words"</span>]
-
-    <span class="hljs-comment"># 打印文字</span>
-    print(text)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取 access token</span></span><br><span class="line">    token = fetch_token()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 拼接通用文字识别高精度 url</span></span><br><span class="line">    image_url = OCR_URL + <span class="string">&quot;?access_token=&quot;</span> + token</span><br><span class="line"></span><br><span class="line">    text = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 读取书籍页面图片</span></span><br><span class="line">    file_content = read_file(<span class="string">&#x27;./test.jpg&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 调用文字识别服务</span></span><br><span class="line">    result = request(image_url, urlencode(&#123;<span class="string">&#x27;image&#x27;</span>: base64.b64encode(file_content)&#125;))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 解析返回结果</span></span><br><span class="line">    result_json = json.loads(result)</span><br><span class="line">    <span class="keyword">for</span> words_result <span class="keyword">in</span> result_json[<span class="string">&quot;words_result&quot;</span>]:</span><br><span class="line">        text = text + words_result[<span class="string">&quot;words&quot;</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 打印文字</span></span><br><span class="line">    print(text)</span><br></pre></td></tr></table></figure>
 <p>百度 AI 开放平台有各种功能型 API 可以免费调用，玩得开心。</p>
 <h1><span id="参考资料"> 参考资料</span></h1>
 <ol>

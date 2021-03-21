@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>使用 MATLAB 设计简单的语音滤波器 | Henry</title><meta name="keywords" content="MATLAB,滤波器,语音"><meta name="author" content="Henry"><meta name="copyright" content="Henry"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="水文，简单记录一下最近复习《信号与系统》的时候用 MATLAB 设计语音滤波器的过程。  首先利用自带的录音机录下一段语音信号，运用 MATLAB 对语音进行频域分析。 rec_sound(3,44100,&#39;voice_rec&#39;) %时间 采样率 文件名  [x1,fs]&#x3D;audioread(&#39;voice_rec.wav&#39;); %读取语音信号的数据 % sound(x1,fs); %播放语音信号">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>使用 MATLAB 设计简单的语音滤波器 | Henry</title><meta name="keywords" content="MATLAB,滤波器,语音"><meta name="author" content="Henry"><meta name="copyright" content="Henry"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="水文，简单记录一下最近复习《信号与系统》的时候用 MATLAB 设计语音滤波器的过程。  首先利用自带的录音机录下一段语音信号，运用 MATLAB 对语音进行频域分析。 12345678910111213141516171819rec_sound(3,44100,&amp;#x27;voice_rec&amp;#x27;) %时间 采样率 文件名[x1,fs]&#x3D;audioread(&amp;#x27;voice_rec">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 MATLAB 设计简单的语音滤波器">
 <meta property="og:url" content="https://sszxc.net/about/index.html/2020.04%E4%BD%BF%E7%94%A8MATLAB%E8%AE%BE%E8%AE%A1%E7%AE%80%E5%8D%95%E7%9A%84%E8%AF%AD%E9%9F%B3%E6%BB%A4%E6%B3%A2%E5%99%A8/index.html">
 <meta property="og:site_name" content="Henry">
-<meta property="og:description" content="水文，简单记录一下最近复习《信号与系统》的时候用 MATLAB 设计语音滤波器的过程。  首先利用自带的录音机录下一段语音信号，运用 MATLAB 对语音进行频域分析。 rec_sound(3,44100,&#39;voice_rec&#39;) %时间 采样率 文件名  [x1,fs]&#x3D;audioread(&#39;voice_rec.wav&#39;); %读取语音信号的数据 % sound(x1,fs); %播放语音信号">
+<meta property="og:description" content="水文，简单记录一下最近复习《信号与系统》的时候用 MATLAB 设计语音滤波器的过程。  首先利用自带的录音机录下一段语音信号，运用 MATLAB 对语音进行频域分析。 12345678910111213141516171819rec_sound(3,44100,&amp;#x27;voice_rec&amp;#x27;) %时间 采样率 文件名[x1,fs]&#x3D;audioread(&amp;#x27;voice_rec">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s3.ax1x.com/2021/02/02/yuPIyj.jpg">
 <meta property="article:published_time" content="2020-04-07T11:41:20.000Z">
@@ -19,7 +19,7 @@
   localSearch: undefined,
   translate: undefined,
   noticeOutdate: undefined,
-  highlight: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -137,78 +137,15 @@
 <p>水文，简单记录一下最近复习《信号与系统》的时候用 MATLAB 设计语音滤波器的过程。</p>
 </blockquote>
 <p>首先利用自带的录音机录下一段语音信号，运用 MATLAB 对语音进行频域分析。</p>
-<pre class="highlight"><code class="matlab">rec_sound(<span class="hljs-number">3</span>,<span class="hljs-number">44100</span>,<span class="hljs-string">'voice_rec'</span>) <span class="hljs-comment">%时间 采样率 文件名</span>
-
-[x1,fs]=audioread(<span class="hljs-string">'voice_rec.wav'</span>); <span class="hljs-comment">%读取语音信号的数据</span>
-<span class="hljs-comment">% sound(x1,fs); %播放语音信号</span>
-y1=fft(x1,<span class="hljs-number">1024</span>);  <span class="hljs-comment">%对信号做 1024 点 FFT 变换</span>
-f=fs*(<span class="hljs-number">0</span>:<span class="hljs-number">511</span>)/<span class="hljs-number">1024</span>;
-<span class="hljs-built_in">figure</span>(<span class="hljs-number">1</span>);
-<span class="hljs-built_in">plot</span>(x1)  <span class="hljs-comment">%做原始语音信号的时域图形</span>
-title(<span class="hljs-string">'原始语音信号'</span>);xlabel(<span class="hljs-string">'time n'</span>);ylabel(<span class="hljs-string">'fuzhi n'</span>);
-<span class="hljs-built_in">figure</span>(<span class="hljs-number">2</span>);freqz(x1) <span class="hljs-comment">%绘制原始语音信号的频率响应图</span>
-title(<span class="hljs-string">'频率响应图'</span>)
-<span class="hljs-built_in">figure</span>(<span class="hljs-number">3</span>);
-subplot(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>);
-<span class="hljs-built_in">plot</span>(<span class="hljs-built_in">abs</span>(y1(<span class="hljs-number">1</span>:<span class="hljs-number">512</span>))) <span class="hljs-comment">%做原始语音信号的 FFT 频谱图</span>
-title(<span class="hljs-string">'原始语音信号 FFT 频谱'</span>);
-subplot(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);
-<span class="hljs-built_in">plot</span>(f,<span class="hljs-built_in">abs</span>(y1(<span class="hljs-number">1</span>:<span class="hljs-number">512</span>)));
-title(<span class="hljs-string">'原始语音信号频谱'</span>)
-xlabel(<span class="hljs-string">'Hz'</span>);ylabel(<span class="hljs-string">'fuzhi'</span>);
-</code></pre>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">rec_sound(<span class="number">3</span>,<span class="number">44100</span>,<span class="string">&#x27;voice_rec&#x27;</span>) <span class="comment">%时间 采样率 文件名</span></span><br><span class="line"></span><br><span class="line">[x1,fs]=audioread(<span class="string">&#x27;voice_rec.wav&#x27;</span>); <span class="comment">%读取语音信号的数据</span></span><br><span class="line"><span class="comment">% sound(x1,fs); %播放语音信号</span></span><br><span class="line">y1=fft(x1,<span class="number">1024</span>);  <span class="comment">%对信号做 1024 点 FFT 变换</span></span><br><span class="line">f=fs*(<span class="number">0</span>:<span class="number">511</span>)/<span class="number">1024</span>;</span><br><span class="line"><span class="built_in">figure</span>(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">plot</span>(x1)  <span class="comment">%做原始语音信号的时域图形</span></span><br><span class="line">title(<span class="string">&#x27;原始语音信号&#x27;</span>);xlabel(<span class="string">&#x27;time n&#x27;</span>);ylabel(<span class="string">&#x27;fuzhi n&#x27;</span>);</span><br><span class="line"><span class="built_in">figure</span>(<span class="number">2</span>);freqz(x1) <span class="comment">%绘制原始语音信号的频率响应图</span></span><br><span class="line">title(<span class="string">&#x27;频率响应图&#x27;</span>)</span><br><span class="line"><span class="built_in">figure</span>(<span class="number">3</span>);</span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line"><span class="built_in">plot</span>(<span class="built_in">abs</span>(y1(<span class="number">1</span>:<span class="number">512</span>))) <span class="comment">%做原始语音信号的 FFT 频谱图</span></span><br><span class="line">title(<span class="string">&#x27;原始语音信号 FFT 频谱&#x27;</span>);</span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line"><span class="built_in">plot</span>(f,<span class="built_in">abs</span>(y1(<span class="number">1</span>:<span class="number">512</span>)));</span><br><span class="line">title(<span class="string">&#x27;原始语音信号频谱&#x27;</span>)</span><br><span class="line">xlabel(<span class="string">&#x27;Hz&#x27;</span>);ylabel(<span class="string">&#x27;fuzhi&#x27;</span>);</span><br></pre></td></tr></table></figure>
 <p>之后利用 ellipord 函数设计 IIR 带通滤波器，所取的具体性能指标如下，其中最关键的参数就是通带阻带的截止频率。<strong>需要注意的是</strong>，滤波器的性能一定是有理论上限的，需要根据不同的采样率等进行调整，提高采样率的时候适当放松性能要求，否则会出现异常。</p>
-<pre class="highlight"><code class="matlab">Fp1=<span class="hljs-number">1000</span>; Fp2=<span class="hljs-number">2000</span>; <span class="hljs-comment">%通带截止频率上下限</span>
-Fs1=<span class="hljs-number">800</span>; Fs2=<span class="hljs-number">2200</span>; <span class="hljs-comment">%阻带截止频率上下限</span>
-Ft=<span class="hljs-number">44100</span>; <span class="hljs-comment">%采样率</span>
-As=<span class="hljs-number">30</span>; Ap=<span class="hljs-number">1</span>; <span class="hljs-comment">%通带边衰减 DB 值和阻带边衰减 DB 值</span>
-wp=[<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*Fp1/Ft,<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*Fp2/Ft];
-ws=[<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*Fs1/Ft,<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*Fs2/Ft];
-[n,wn]=ellipord(wp,ws,Ap,As,<span class="hljs-string">'s'</span>);
-[b,a]=ellip(n,Ap,As,wn,<span class="hljs-string">'s'</span>);
-[B,A]=bilinear(b,a,<span class="hljs-number">1</span>);
-[h,w]=freqz(B,A);
-<span class="hljs-built_in">plot</span>(w*Ft/<span class="hljs-built_in">pi</span>/<span class="hljs-number">2</span>,<span class="hljs-built_in">abs</span>(h));
-title(<span class="hljs-string">'IIR 带通滤波器'</span>);
-xlabel(<span class="hljs-string">'频率'</span>);
-ylabel(<span class="hljs-string">'幅度'</span>);
-grid on;
-</code></pre>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Fp1=<span class="number">1000</span>; Fp2=<span class="number">2000</span>; <span class="comment">%通带截止频率上下限</span></span><br><span class="line">Fs1=<span class="number">800</span>; Fs2=<span class="number">2200</span>; <span class="comment">%阻带截止频率上下限</span></span><br><span class="line">Ft=<span class="number">44100</span>; <span class="comment">%采样率</span></span><br><span class="line">As=<span class="number">30</span>; Ap=<span class="number">1</span>; <span class="comment">%通带边衰减 DB 值和阻带边衰减 DB 值</span></span><br><span class="line">wp=[<span class="number">2</span>*<span class="built_in">pi</span>*Fp1/Ft,<span class="number">2</span>*<span class="built_in">pi</span>*Fp2/Ft];</span><br><span class="line">ws=[<span class="number">2</span>*<span class="built_in">pi</span>*Fs1/Ft,<span class="number">2</span>*<span class="built_in">pi</span>*Fs2/Ft];</span><br><span class="line">[n,wn]=ellipord(wp,ws,Ap,As,<span class="string">&#x27;s&#x27;</span>);</span><br><span class="line">[b,a]=ellip(n,Ap,As,wn,<span class="string">&#x27;s&#x27;</span>);</span><br><span class="line">[B,A]=bilinear(b,a,<span class="number">1</span>);</span><br><span class="line">[h,w]=freqz(B,A);</span><br><span class="line"><span class="built_in">plot</span>(w*Ft/<span class="built_in">pi</span>/<span class="number">2</span>,<span class="built_in">abs</span>(h));</span><br><span class="line">title(<span class="string">&#x27;IIR 带通滤波器&#x27;</span>);</span><br><span class="line">xlabel(<span class="string">&#x27;频率&#x27;</span>);</span><br><span class="line">ylabel(<span class="string">&#x27;幅度&#x27;</span>);</span><br><span class="line">grid on;</span><br></pre></td></tr></table></figure>
 <center>
 <img src="https://s1.ax1x.com/2020/05/08/YuivZR.png">
 </center>
 <br>
 <p>将滤波器应用到语音信号后的效果如下。可以看到只有对应频率带内的信号得到了保留，阻带的信号都被大幅度衰减，实际听起来的声音少了很多高频的信号，非常沉闷。</p>
-<pre class="highlight"><code class="matlab"><span class="hljs-comment">% 滤波效果</span>
-[x1,fs]=audioread(<span class="hljs-string">'voice_rec.wav'</span>);
-
-f1=filter(B,A,x1);
-<span class="hljs-built_in">figure</span>
-subplot(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)
-<span class="hljs-built_in">plot</span>(t,x1)                <span class="hljs-comment">%画出滤波前的时域图</span>
-title(<span class="hljs-string">'滤波前的时域波形'</span>);
-subplot(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>)
-<span class="hljs-built_in">plot</span>(t,f1);               <span class="hljs-comment">%画出滤波后的时域图</span>
-title(<span class="hljs-string">'滤波后的时域波形'</span>);
-sound(f1,fs);             <span class="hljs-comment">%播放滤波后的信号</span>
-F0=fft(f1,<span class="hljs-number">1024</span>);
-f=fs*(<span class="hljs-number">0</span>:<span class="hljs-number">511</span>)/<span class="hljs-number">1024</span>;
-
-<span class="hljs-built_in">figure</span>
-y2=fft(x1,<span class="hljs-number">1024</span>);
-subplot(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>);
-<span class="hljs-built_in">plot</span>(f,<span class="hljs-built_in">abs</span>(y2(<span class="hljs-number">1</span>:<span class="hljs-number">512</span>)));          <span class="hljs-comment">%画出滤波前的频谱图</span>
-title(<span class="hljs-string">'滤波前的频谱'</span>)
-xlabel(<span class="hljs-string">'Hz'</span>);
-ylabel(<span class="hljs-string">'幅值'</span>);
-axis([<span class="hljs-number">0</span> <span class="hljs-number">10000</span> <span class="hljs-number">0</span> <span class="hljs-number">0.3</span>]);
-subplot(<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>)
-F1=<span class="hljs-built_in">plot</span>(f,<span class="hljs-built_in">abs</span>(F0(<span class="hljs-number">1</span>:<span class="hljs-number">512</span>)));     <span class="hljs-comment">%画出滤波后的频谱图</span>
-title(<span class="hljs-string">'滤波后的频谱'</span>)
-xlabel(<span class="hljs-string">'Hz'</span>);
-ylabel(<span class="hljs-string">'幅值'</span>);
-axis([<span class="hljs-number">0</span> <span class="hljs-number">10000</span> <span class="hljs-number">0</span> <span class="hljs-number">0.3</span>]);
-</code></pre>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 滤波效果</span></span><br><span class="line">[x1,fs]=audioread(<span class="string">&#x27;voice_rec.wav&#x27;</span>);</span><br><span class="line"></span><br><span class="line">f1=filter(B,A,x1);</span><br><span class="line"><span class="built_in">figure</span></span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line"><span class="built_in">plot</span>(t,x1)                <span class="comment">%画出滤波前的时域图</span></span><br><span class="line">title(<span class="string">&#x27;滤波前的时域波形&#x27;</span>);</span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="built_in">plot</span>(t,f1);               <span class="comment">%画出滤波后的时域图</span></span><br><span class="line">title(<span class="string">&#x27;滤波后的时域波形&#x27;</span>);</span><br><span class="line">sound(f1,fs);             <span class="comment">%播放滤波后的信号</span></span><br><span class="line">F0=fft(f1,<span class="number">1024</span>);</span><br><span class="line">f=fs*(<span class="number">0</span>:<span class="number">511</span>)/<span class="number">1024</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">figure</span></span><br><span class="line">y2=fft(x1,<span class="number">1024</span>);</span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line"><span class="built_in">plot</span>(f,<span class="built_in">abs</span>(y2(<span class="number">1</span>:<span class="number">512</span>)));          <span class="comment">%画出滤波前的频谱图</span></span><br><span class="line">title(<span class="string">&#x27;滤波前的频谱&#x27;</span>)</span><br><span class="line">xlabel(<span class="string">&#x27;Hz&#x27;</span>);</span><br><span class="line">ylabel(<span class="string">&#x27;幅值&#x27;</span>);</span><br><span class="line">axis([<span class="number">0</span> <span class="number">10000</span> <span class="number">0</span> <span class="number">0.3</span>]);</span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">F1=<span class="built_in">plot</span>(f,<span class="built_in">abs</span>(F0(<span class="number">1</span>:<span class="number">512</span>)));     <span class="comment">%画出滤波后的频谱图</span></span><br><span class="line">title(<span class="string">&#x27;滤波后的频谱&#x27;</span>)</span><br><span class="line">xlabel(<span class="string">&#x27;Hz&#x27;</span>);</span><br><span class="line">ylabel(<span class="string">&#x27;幅值&#x27;</span>);</span><br><span class="line">axis([<span class="number">0</span> <span class="number">10000</span> <span class="number">0</span> <span class="number">0.3</span>]);</span><br></pre></td></tr></table></figure>
 <center>
 <img src="https://s1.ax1x.com/2020/05/08/Yuixd1.png">
 </center>
@@ -218,16 +155,7 @@ axis([<span class="hljs-number">0</span> <span class="hljs-number">10000</span> 
 </center>
 <br>
 <p>还可以给原始的语音信号加上一个高频余弦噪声，之后再使用滤波器进行滤波，这样可以看到很明显的效果。</p>
-<pre class="highlight"><code class="matlab">[x1,fs]=audioread(<span class="hljs-string">'voice_zxc.wav'</span>);
-t=<span class="hljs-number">0</span>:<span class="hljs-number">1</span>/fs:(<span class="hljs-built_in">size</span>(x1)<span class="hljs-number">-1</span>)/fs; <span class="hljs-comment">% 时间轴</span>
-Au=<span class="hljs-number">0.3</span>;
-d=[Au*<span class="hljs-built_in">cos</span>(<span class="hljs-number">2</span>*<span class="hljs-built_in">pi</span>*<span class="hljs-number">10000</span>*t)]';
-x2=x1+d;                  <span class="hljs-comment">% 叠加噪声</span>
-wp=<span class="hljs-number">0.25</span>*<span class="hljs-built_in">pi</span>;
-ws=<span class="hljs-number">0.3</span>*<span class="hljs-built_in">pi</span>;
-Rp=<span class="hljs-number">1</span>;
-Rs=<span class="hljs-number">15</span>;
-</code></pre>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[x1,fs]=audioread(<span class="string">&#x27;voice_zxc.wav&#x27;</span>);</span><br><span class="line">t=<span class="number">0</span>:<span class="number">1</span>/fs:(<span class="built_in">size</span>(x1)<span class="number">-1</span>)/fs; <span class="comment">% 时间轴</span></span><br><span class="line">Au=<span class="number">0.3</span>;</span><br><span class="line">d=[Au*<span class="built_in">cos</span>(<span class="number">2</span>*<span class="built_in">pi</span>*<span class="number">10000</span>*t)]&#x27;;</span><br><span class="line">x2=x1+d;                  <span class="comment">% 叠加噪声</span></span><br><span class="line">wp=<span class="number">0.25</span>*<span class="built_in">pi</span>;</span><br><span class="line">ws=<span class="number">0.3</span>*<span class="built_in">pi</span>;</span><br><span class="line">Rp=<span class="number">1</span>;</span><br><span class="line">Rs=<span class="number">15</span>;</span><br></pre></td></tr></table></figure>
 <h1><span id="参考资料"> 参考资料</span></h1>
 <ol>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44372699/article/details/91512660">Matlab：语音信号处理与滤波</a></li>

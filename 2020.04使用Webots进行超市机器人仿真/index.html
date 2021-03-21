@@ -21,7 +21,7 @@
   localSearch: undefined,
   translate: undefined,
   noticeOutdate: undefined,
-  highlight: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -162,19 +162,7 @@
 <p>为了实现更精确的物理仿真，我们还对机械臂抓手、麦轮的摩擦力参数进行了设置，以保证机器人能够在当前环境保持正常的运动；此外，还设置了合适的车身重量，以保证车辆的运动性能更加优越、抓取稳定性更好。</p>
 <h1><span id="机器人控制器设计"> 机器人控制器设计</span></h1>
 <p>为了实现流畅的取货补货功能，机器人控制器采用了状态机的思想，初始化完毕后进入 switch 状态机切换，其中 main_state 共九个状态：</p>
-<pre class="highlight"><code class="c"><span class="hljs-keyword">switch</span> (*main_state)
-&#123;
-   <span class="hljs-keyword">case</span> Init_Pose
-   <span class="hljs-keyword">case</span> Recognize_Empty
-   <span class="hljs-keyword">case</span> Arround_Moving
-   <span class="hljs-keyword">case</span> Grab_Item
-   <span class="hljs-keyword">case</span> Back_Moving
-   <span class="hljs-keyword">case</span> TurnBack_To_LoadItem
-   <span class="hljs-keyword">case</span> Item_Loading
-   <span class="hljs-keyword">case</span> RunTo_NextShelf
-   <span class="hljs-keyword">default</span>
-&#125;
-</code></pre>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (*main_state)</span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">case</span> Init_Pose</span><br><span class="line">   <span class="keyword">case</span> Recognize_Empty</span><br><span class="line">   <span class="keyword">case</span> Arround_Moving</span><br><span class="line">   <span class="keyword">case</span> Grab_Item</span><br><span class="line">   <span class="keyword">case</span> Back_Moving</span><br><span class="line">   <span class="keyword">case</span> TurnBack_To_LoadItem</span><br><span class="line">   <span class="keyword">case</span> Item_Loading</span><br><span class="line">   <span class="keyword">case</span> RunTo_NextShelf</span><br><span class="line">   <span class="keyword">default</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>
 <p>Init_Pose 为初始默认进入工作区状态，到达上图橙色点位后跳转到 Recognize_Empty，对货架进行识别。</p>

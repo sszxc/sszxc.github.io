@@ -21,7 +21,7 @@
   localSearch: undefined,
   translate: undefined,
   noticeOutdate: undefined,
-  highlight: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -187,29 +187,9 @@
 <p>软件平台： Win10 1909、Anaconda 3、Python 3.6.8、TensorFlow 1.14、CUDA 10.0</p>
 <p>Coding 的时候，推荐查看官方的 API 手册： <a target="_blank" rel="noopener" href="https://www.tensorflow.org/versions/r1.15/api_docs/python/tf">https://www.tensorflow.org/versions/r1.15/api_docs/python/tf</a></p>
 <p>使用 TensorFlow 搭建网络的过程中，有几个关键函数及相应参数。</p>
-<pre class="highlight"><code class="python">tf.nn.conv2d(
-    input,
-    filter=<span class="hljs-literal">None</span>,
-    strides=<span class="hljs-literal">None</span>,
-    padding=<span class="hljs-literal">None</span>,
-    use_cudnn_on_gpu=<span class="hljs-literal">True</span>,
-    data_format=<span class="hljs-string">'NHWC'</span>,
-    dilations=[<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>],
-    name=<span class="hljs-literal">None</span>,
-    filters=<span class="hljs-literal">None</span>
-)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">tf.nn.conv2d(</span><br><span class="line">    <span class="built_in">input</span>,</span><br><span class="line">    <span class="built_in">filter</span>=<span class="literal">None</span>,</span><br><span class="line">    strides=<span class="literal">None</span>,</span><br><span class="line">    padding=<span class="literal">None</span>,</span><br><span class="line">    use_cudnn_on_gpu=<span class="literal">True</span>,</span><br><span class="line">    data_format=<span class="string">&#x27;NHWC&#x27;</span>,</span><br><span class="line">    dilations=[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">    name=<span class="literal">None</span>,</span><br><span class="line">    filters=<span class="literal">None</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p>第一个参数 input 是输入的图像，要求一个四维张量、[batch, height, width, channels]；第二个参数 filter 是卷积核，要求一个四维张量、[k_h, k_w, in, out]，分别是卷积核的高和宽、卷积需要作用的通道数、输出的通道数（即卷积核的个数）；第三个参数 strides 是卷积核移动的步长、[1, s_h, s_w, 1]，分别是高度方向和宽度方向；第四个参数 padding，“SAME”补零，“VALID”不补零。</p>
-<pre class="highlight"><code class="python">tf.nn.max_pool(
-    value,
-    ksize,
-    strides,
-    padding,
-    data_format=<span class="hljs-string">'NHWC'</span>,
-    name=<span class="hljs-literal">None</span>,
-    input=<span class="hljs-literal">None</span>
-)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tf.nn.max_pool(</span><br><span class="line">    value,</span><br><span class="line">    ksize,</span><br><span class="line">    strides,</span><br><span class="line">    padding,</span><br><span class="line">    data_format=<span class="string">&#x27;NHWC&#x27;</span>,</span><br><span class="line">    name=<span class="literal">None</span>,</span><br><span class="line">    <span class="built_in">input</span>=<span class="literal">None</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p>第一个参数 value 是输入的图像，一般就是上一层 feature map[batch, height, width, channels]；第二个参数 ksize 是池化窗口的大小，取一个四维向量，一般是、[1, height, width, 1]，因为我们不想在 batch 和 channels 上做池化，所以这两个维度设为了 1；第三个参数 strides 和卷积类似，窗口在每一个维度上滑动的步长，一般也是、[1, s_h, s_w, 1]；第四个参数 padding：和卷积类似，可以取“VALID” 或者“SAME”。</p>
 <h3><span id="语法习惯"> 语法习惯</span></h3>
 <p>使用 TensorFlow 编程时，为了使代码简洁高效，也有一些技巧习惯，学习后总结如下：</p>

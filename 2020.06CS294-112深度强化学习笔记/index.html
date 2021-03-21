@@ -19,7 +19,7 @@
   localSearch: undefined,
   translate: undefined,
   noticeOutdate: undefined,
-  highlight: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -275,9 +275,7 @@ Easy peasy.<br>
 初始化所有变量</p>
 </li>
 </ol>
-<pre class="highlight"><code class="python">init_op = tf.global_variables_initializer()
-sess.run(init_op)
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">init_op = tf.global_variables_initializer()</span><br><span class="line">sess.run(init_op)</span><br></pre></td></tr></table></figure>
 <ol start="5">
 <li>
 <p>How to train a neural network for a simple regression problem<br>

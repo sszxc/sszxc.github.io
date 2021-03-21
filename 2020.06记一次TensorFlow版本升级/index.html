@@ -20,7 +20,7 @@
   localSearch: undefined,
   translate: undefined,
   noticeOutdate: undefined,
-  highlight: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -159,9 +159,7 @@
 <p>来自：<a target="_blank" rel="noopener" href="http://www.zzkook.com/content/anaconda-zai-win10xia-zhuang-shi-yong-wen-ti-jie-jue-ban-fa-hui-zong-duo-tu">http://www.zzkook.com/content/anaconda-zai-win10xia-zhuang-shi-yong-wen-ti-jie-jue-ban-fa-hui-zong-duo-tu</a></p>
 <p>安装完之后记得使用<code>conda info</code>命令检查一下版本，同时升级的时候需要注意 CPU 和 GPU 版本之间的顺序。之前有次安装失败没注意看终端，结果装完了 CUDA 发现 TensorFlow 版本还没跟上。</p>
 <p>如果使用 CPU 版本的话应该就到此顺利结束了，但是为了使用 GPU 加速，任务还没完。加载环境后可以使用如下代码测试是否能调用 GPU，这一次很可惜不能。</p>
-<pre class="highlight"><code class="python"><span class="hljs-keyword">from</span> tensorflow.python.client <span class="hljs-keyword">import</span> device_lib
-print(device_lib.list_local_devices())
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow.python.client <span class="keyword">import</span> device_lib</span><br><span class="line">print(device_lib.list_local_devices())</span><br></pre></td></tr></table></figure>
 <hr>
 <h1><span id="cuda"> CUDA</span></h1>
 <p>根据 TensorFlow 官方给出的“经过测试的构建配置”，可以看到 TensorFlow1.14 对应的推荐 CUDA 版本是 10.0，和当前版本不符，显然为了稳定运行还需要降级 CUDA。</p>
