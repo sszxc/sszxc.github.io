@@ -4,40 +4,111 @@
 
 <h1>模拟结果与结论</h1>
 
-<p><img alt="gif2" src="https://z3.ax1x.com/2021/06/06/2aw49U.gif" /></p>
+<h2>流动模拟</h2>
 
-<h1>具体做法</h1>
+<p>取网格划分形式为Nx × Ny=200 ×200，细胞半径R=12，共50个物理条件均一且一致的细胞，在不同外加流场速度下迁移。细胞各物理参数取值如图：</p>
+
+<center>
+    <img src="https://z3.ax1x.com/2021/06/07/2dZeMQ.jpg" />
+    <br>
+    细胞各物理参数取值
+</center>
+<br>
 
 <ul>
-    <li>写一个Markdown给我</li>
-    <li>Markdown转HTML工具</li>
-    <li>把现在这个页面替换掉</li>
-    <li>正好挂在Hexo的静态博客页面上</li>
-    <li>老师不注意网址的话不会有什么怪问题</li>
-    <li>可能格式有点难看</li>
-    <li>但至少比较方便你</li>
+    <li>
+        <center>
+            <img src="https://z3.ax1x.com/2021/06/07/2dZ1iV.gif" />
+            <br>
+            外加流场速度v=0.2
+        </center></li>
+    <li>
+        <center>
+            <img src="https://z3.ax1x.com/2021/06/07/2dZQI0.gif" />
+            <br>
+            外加流场速度v=0.5
+        </center></li>
+    <li>
+        <center>
+            <img src="https://z3.ax1x.com/2021/06/07/2dZ8RU.gif" />
+            <br>
+            外加流场速度v=1.0
+        </center></li>
 </ul>
 
-<p>表格要另找工具转换 否则就这样了</p>
+<p>外加流场流动速度过大，细胞易分布不均，细胞团间形成空洞，不利于后续固化过程形成打印物；反之排列紧密，细胞团分布较均匀。</p>
 
-<p>| 12 | 33 | 44 |
-    | ---- | ---- | ---- |
-    | aaa | sss | fff |</p>
+<h2>固化模拟</h2>
 
-<h1>今天情绪有点坏</h1>
+<p>取网格划分形式为Nx × Ny=200 ×200，细胞半径R=14，共43个物理条件均一且一致的细胞，在高温温度为70℃的条件下固化。具体热源条件与细胞各物理参数取值如图：</p>
 
-<p>希望没有传染给你</p>
+<center>
+    <img src="https://z3.ax1x.com/2021/06/07/2dZKZn.jpg" />
+    <br>
+    热源条件与细胞各物理参数取值
+</center>
+<br>
 
-<p>只是觉得毕设的句号画得不完美，也很不想面对之后的事情</p>
 
-<p>今天其实有点想坐摩天轮，下次会大声跟你说出来</p>
+<ul>
+    <li>T=70℃        
+        <center>
+            <img src="https://z3.ax1x.com/2021/06/07/2dZBi6.gif" />
+            <br>
+            细胞固化示意
+        </center>
 
-<p>害，时间安排得不好</p>
+        <center>
+            <img src="https://z3.ax1x.com/2021/06/07/2dZwIx.gif" />
+            <br>
+            温度场演化
+        </center></li>
 
-<p>宝贝辛苦了，有机会一起睡觉</p>
+    <li>对照T=25℃ 
+        <center>
+            <img src="https://z3.ax1x.com/2021/06/07/2dZaZR.gif" />
+            <br>
+            细胞无固化
+        </center>
+        <center>
+            <img src="https://z3.ax1x.com/2021/06/07/2dZGzF.png" />
+            <br>
+            温度场演化
+        </center></li>        
+</ul>
 
-<p>偶尔也想一起严肃点，毕竟也会有一些事情要一起解决</p>
+<h2>多细胞系统模拟</h2>
 
-<p>刚lbw说这个人很像我，我咋没感觉</p>
+<p>取网格划分形式为Nx × Ny=200
+    ×200，细胞半径R=12，共69个除标记细胞外物理条件均一且一致的细胞。标记细胞弹性参数与其余细胞弹性参数不同。利用无量纲变形跟踪各细胞变形，并取标记细胞与五个正常细胞的无量纲变形进行对比。各细胞物理参数取值如图：</p>
 
-<p><img alt="pic" src="https://z3.ax1x.com/2021/06/06/2dAVxJ.png" /></p>
+<center>
+    <img src="https://z3.ax1x.com/2021/06/07/2dZYM4.jpg" />
+    <br>
+    细胞各物理参数取值
+</center>
+
+<ul>
+    <li>γtag=1
+        <center>
+            <img src="https://z3.ax1x.com/2021/06/07/2dZDJK.gif" />
+            <br>
+            多细胞系统演化规律
+        </center>
+        <center>
+            <img src="https://z3.ax1x.com/2021/06/07/2dZdd1.jpg" />
+            <br>
+            细胞无量纲变形对比
+        </center></li>
+    <li>γtag=20
+        <center>
+            <img src="https://z3.ax1x.com/2021/06/07/2dZtsJ.gif" />
+            <br>
+            多细胞系统演化规律
+        </center>
+        <center>
+            <img src="https://z3.ax1x.com/2021/06/07/2dZmrj.jpg" />
+            <br>
+            细胞无量纲变形对比
+        </center></li>
+</ul>
