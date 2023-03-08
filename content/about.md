@@ -6,14 +6,19 @@ url: "/about/"
 # comments: false
 ---
 
-1999 年出生于浙江杭州，现居上海。爱生活，爱折腾，积极体验新事物。对与机器人相关的一切都有浓厚的兴趣，非常享受设计、搭建、调试机器人的过程，目前正在学习 Reinforcement Learning 相关技术。
+1999 年出生于浙江杭州，现居上海。爱生活，爱折腾，积极体验新事物。对与机器人相关的一切都有浓厚的兴趣。🤖
+
+I am currently looking for a PhD position in the robotics field, with a specific interest in exploring opportunities in Europe.
 
 喜欢的歌手：周杰伦、棱镜乐队、黑莓果酱  
-收藏的剧集：《半泽直树》、《我们与恶的距离》、《The Big Bang Theory》  
+收藏的剧集：《半泽直树》、《Breaking Bad》、《我们与恶的距离》、《The Big Bang Theory》  
 在玩的游戏：《塞尔达传说：荒野之息》、《坎巴拉太空计划》、《神力科莎》
 
 <!-- 《切尔诺贝利》、 -->
 <!-- 、《欧洲卡车模拟 2》、《杀戮尖塔》 -->
+
+Q: Why sszxc? 🤔  
+A: "ss" stands for "sparkle/shine," while "zxc" refers to the first letters of my Chinese name. I came up with this nickname randomly while registering for Blizzard account. 🤣
 
 本博客起笔于 2019 年 11 月
 
