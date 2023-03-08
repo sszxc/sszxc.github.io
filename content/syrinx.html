@@ -1,0 +1,122 @@
+---
+title: "模拟结果与结论"
+url: "/syrinx/"
+comments: false
+---
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!-- 跳过 Hexo 模板渲染的话需要在 _config.yml 中设置 skip_render 属性 -->
+
+<!-- 邵小轩毕业设计动图展示 -->
+
+<!-- <h1>模拟结果与结论</h1> -->
+
+<h2>流动模拟</h2>
+
+<p>取网格划分形式为Nx × Ny=200 ×200，细胞半径R=12，共50个物理条件均一且一致的细胞，在不同外加流场速度下迁移。细胞各物理参数取值如图：</p>
+
+<center>
+    <img src="https://z3.ax1x.com/2021/06/07/2dZeMQ.jpg" />
+    <br>
+    细胞各物理参数取值
+</center>
+<br>
+
+<ul>
+    <li>
+        <center>
+            <img src="https://z3.ax1x.com/2021/06/07/2dZ1iV.gif" />
+            <br>
+            外加流场速度v=0.2
+        </center></li>
+    <li>
+        <center>
+            <img src="https://z3.ax1x.com/2021/06/07/2dZQI0.gif" />
+            <br>
+            外加流场速度v=0.5
+        </center></li>
+    <li>
+        <center>
+            <img src="https://z3.ax1x.com/2021/06/07/2dZ8RU.gif" />
+            <br>
+            外加流场速度v=1.0
+        </center></li>
+</ul>
+
+<p>外加流场流动速度过大，细胞易分布不均，细胞团间形成空洞，不利于后续固化过程形成打印物；反之排列紧密，细胞团分布较均匀。</p>
+
+<h2>固化模拟</h2>
+
+<p>取网格划分形式为Nx × Ny=200 ×200，细胞半径R=14，共43个物理条件均一且一致的细胞，在高温温度为70℃的条件下固化。具体热源条件与细胞各物理参数取值如图：</p>
+
+<center>
+    <img src="https://z3.ax1x.com/2021/06/07/2dZKZn.jpg" />
+    <br>
+    热源条件与细胞各物理参数取值
+</center>
+<br>
+
+
+<ul>
+    <li>T=70℃        
+        <center>
+            <img src="https://z3.ax1x.com/2021/06/07/2dZBi6.gif" />
+            <br>
+            细胞固化示意
+        </center>
+
+        <center>
+            <img src="https://z3.ax1x.com/2021/06/07/2dmcVA.gif" />
+            <br>
+            温度场演化
+        </center></li>
+
+    <li>对照T=25℃ 
+        <center>
+            <img src="https://z3.ax1x.com/2021/06/07/2dZaZR.gif" />
+            <br>
+            细胞无固化
+        </center>
+        <center>
+            <img src="https://z3.ax1x.com/2021/06/07/2dZGzF.png" />
+            <br>
+            温度场演化
+        </center></li>        
+</ul>
+
+<h2>多细胞系统模拟</h2>
+
+<p>取网格划分形式为Nx × Ny=200
+    ×200，细胞半径R=12，共69个除标记细胞外物理条件均一且一致的细胞。标记细胞弹性参数与其余细胞弹性参数不同。利用无量纲变形跟踪各细胞变形，并取标记细胞与五个正常细胞的无量纲变形进行对比。各细胞物理参数取值如图：</p>
+
+<center>
+    <img src="https://z3.ax1x.com/2021/06/07/2dZYM4.jpg" />
+    <br>
+    细胞各物理参数取值
+</center>
+
+<ul>
+    <li>γtag=1
+        <center>
+            <img src="https://z3.ax1x.com/2021/06/07/2dZDJK.gif" />
+            <br>
+            多细胞系统演化规律
+        </center>
+        <center>
+            <img src="https://z3.ax1x.com/2021/06/07/2dZdd1.jpg" />
+            <br>
+            细胞无量纲变形对比
+        </center></li>
+    <li>γtag=20
+        <center>
+            <img src="https://z3.ax1x.com/2021/06/07/2dZtsJ.gif" />
+            <br>
+            多细胞系统演化规律
+        </center>
+        <center>
+            <img src="https://z3.ax1x.com/2021/06/07/2dZmrj.jpg" />
+            <br>
+            细胞无量纲变形对比
+        </center></li>
+</ul>
