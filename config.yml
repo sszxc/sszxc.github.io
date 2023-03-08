@@ -129,21 +129,25 @@ menu:
       name: Archive
       url: /archives/
       weight: 5
-    - identifier: Categories
-      name: Categories
-      url: /categories/
-      weight: 10
+    # - identifier: Categories
+    #   name: Categories
+    #   url: /categories/
+    #   weight: 10
     - identifier: Tags
       name: Tags
       url: /tags/
+      weight: 10
+    - identifier: Gallery
+      name: Gallery
+      url: /gallery/
       weight: 20
-    - identifier: About
-      name: About
-      url: /about/
-      weight: 30
     - identifier: Search
       name: Search
       url: /search/
+      weight: 30
+    - identifier: About
+      name: About
+      url: /about/
       weight: 40
     # - identifier: example
     #   name: example.org
