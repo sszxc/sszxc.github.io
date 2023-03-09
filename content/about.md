@@ -22,6 +22,10 @@ A: "ss" stands for "sparkle/shine," while "zxc" refers to the first letters of m
 
 本博客起笔于 2019 年 11 月
 
+<!-- # Activities -->
+
+<iframe height='454' width='800' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/111054487/latest-rides/d7ba8350aaa19318b4533f9b6acbb281048a8b8e'></iframe>
+
 # Education
 
 * **2021.09 - Future** 上海交通大学，电子信息

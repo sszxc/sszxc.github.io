@@ -165,8 +165,14 @@ markup:
     # style: monokai
 
 
-outputs:
+outputs:  # for Search Page
   home:
     - HTML
     - RSS
     - JSON # is necessary
+
+
+markup:  # for html in .md
+  goldmark:
+    renderer:
+      unsafe: true
