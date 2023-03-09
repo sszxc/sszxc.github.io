@@ -40,10 +40,11 @@ A: "ss" stands for "sparkle/shine," while "zxc" refers to the first letters of m
 
 # Friends
 
-* [Jiri YU](http://www.alwaysyu.cn/ "Jiri YU")
-* [Weichuang Li](https://www.waytron.net/)
+* [Xuda Ding](https://dingxuda.com/)
 * [贝塔](https://www.cnblogs.com/beta-1999/ "贝塔")
 * [Just do it](https://kzbs.com.cn/ "Just do it")
+* [Weichuang Li](https://www.waytron.net/)
+* [Jiri YU](http://www.alwaysyu.cn/ "Jiri YU")
 * [psrobotics](https://www.psrobotics.tech/ "psrobotics")
 * [盒子先生 KingO](https://blog.csdn.net/qq_41184910 "盒子先生 KingO")
 * [MidoQ](https://midoq.github.io/ "MidoQ")
