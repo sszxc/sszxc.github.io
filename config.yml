@@ -90,10 +90,12 @@ params:
     #   url: "https://twitter.com/"
     # - name: stackoverflow
     #   url: "https://stackoverflow.com"
-    - name: "github"
-      url: "https://github.com/sszxc"
+    - name: email
+      url: "mailto:i@sszxc.net"
     - name: bilibili
       url: "https://space.bilibili.com/15273290"
+    - name: "github"
+      url: "https://github.com/sszxc"
 
   analytics:
     google:
