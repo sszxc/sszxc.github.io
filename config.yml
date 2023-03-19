@@ -52,6 +52,7 @@ params:
     favicon32x32: "<link / abs url>"
     apple_touch_icon: "<link / abs url>"
     safari_pinned_tab: "<link / abs url>"
+    disableFingerprinting: true  # for css loading issue
 
   label:
     text: "Henrik's Blog"
