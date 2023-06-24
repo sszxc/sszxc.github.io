@@ -140,9 +140,9 @@ menu:
       name: Tags
       url: /tags/
       weight: 10
-    - identifier: Gallery
-      name: Gallery
-      url: /gallery/
+    - identifier: Projects
+      name: Projects
+      url: /projects/
       weight: 20
     - identifier: Search
       name: Search
