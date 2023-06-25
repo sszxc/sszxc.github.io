@@ -4,7 +4,7 @@ url: "/gophd/"
 comments: false
 ---
 
-👋🤓 Hi, I am Xuechao Zhang.
+👋🤓 Hi, I am Xuechao Zhang (pronounced like "Sue-chow Jang").
 
 I am writing this page to express my motivation for pursuing a PhD. And I also hope to provide a more comprehensive introduction of myself to facilitate the mutual selection between potential supervisors and myself.
 
@@ -23,7 +23,7 @@ I am writing this page to express my motivation for pursuing a PhD. And I also h
 - **Q: Skills and Expertise？**  
   - I am proficient in coding and have developed good coding habits over time.  
   - I am familiar with common libraries in robotics and AI such as *PyTorch*, *ROS* and *Pybullet*, as well as EDA tools like *Altium Designer*, *AutoCAD*, and *Solidworks*. 
-  - I have gained extensive experience in debugging robot hardware and software through numerous projects.
+  - I have gained extensive experience in debugging robot hardware and software through numerous "dirty works". (To debug efficiently is, in my opinion, a skill that is often overlooked but is essential for a researcher.)
   - By gathering the right tools and reviewing regularly, I know how to make things done more efficiently (whether individual or team-oriented). And I am able to quickly grasp new concepts (now boosted by the power of ChatGPT). 
 
 - **Q: Work Habits?**  
