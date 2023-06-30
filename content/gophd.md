@@ -16,7 +16,7 @@ I am writing this page to express my motivation for pursuing a PhD. And I also h
 
 - **Q: Research Interest?**  
   - One-word answer: ROBOTS!
-  - Ever since high school, I have participated in [various robot projects](https://sszxc.net/about/) and enjoyed building robots to solve real-world problems. Therefore, I am determined to pursue research related to robotics in any way possible.
+  - Ever since high school, I have participated in [various robot projects](https://sszxc.net/projects/) and enjoyed building robots to solve real-world problems. Therefore, I am determined to pursue research related to robotics in any way possible.
   - For my specific research direction, I have been constantly searching for the intersection between "what I am passionate about" and "what I am skilled at". Presently, my research interests are focused on robotics and AI, specifically leveraging deep learning techniques to improve the perception abilities of robots.
   **Keywords**: computer vision, neural rendering, grasping, localization  
 
