@@ -32,11 +32,12 @@ I am writing this page to express my motivation for pursuing a PhD. And I also h
   - Occasionally, I also explore state-of-the-art open-source works in other areas to broaden my knowledge and skills.
   - I also like to maintain regular communication with mentors and senior colleagues, and hope to receive their ideas and advice.
 
-- **Q: Weaknesses?**  
-  - Robotics involves knowledge from a wide range of fields, and I may forget some less frequently used knowledge, requiring me to spend some time in reviewing it.
+<!-- - **Q: Weaknesses?**  
   - I tend to hold high expectations for myself and sometimes my focus on details can result in time wasted on minor aspects of a project.
-  - I also need to learn how to manage my time more effectively and balance the ratio of input and output of knowledge. Specifically, to balance reading, thinking, coding, and engineering.
-  - In addition, I can be a bit shy at times, which may hinder my ability to communicate effectively with others or to seek out collaboration opportunities.
+  - Robotics involves knowledge from a wide range of fields, and I may forget some less frequently used knowledge, requiring me to spend some time in reviewing it.
+  - I need to learn how to manage my time more effectively and balance the ratio of input and output of knowledge. Specifically, to balance reading, thinking, coding, and engineering.
+  - I have taken part in various projects so far, but I have yet to complete one that satisfies my desire for innovation and solidity. I hope that during my PhD program, I will have a dedicated period of time to focus on a single project, make many mistakes and learn from them.
+  - In addition, I can be a bit shy at times, which may hinder my ability to communicate effectively with others or to seek out collaboration opportunities. -->
 
 - **Q: Lifestyle?**  
   I am passionate about life and enjoy trying out new things. I maintain a regular exercise routine, which includes cycling, swimming, and badminton. Additionally, I am always on the lookout for opportunities to experience life in different parts of the world, which is one of the reasons I am pursuing a PhD program abroad.
