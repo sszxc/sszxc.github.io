@@ -83,8 +83,9 @@ params:
     Title: "Hi there \U0001F44B"
     Content: "- 🎓 Master's student at SJTU, seeking a PhD position in Robotics\n
       - 🤖 Passionate about autonomous robots and computer vision\n
-      - 🏃 Running, cycling, badminton, archery and rowing enthusiast\n
+      - 🚴🏻 Cycling, swimming, rowing and photography enthusiast\n
       - 📫 Feel free to contact me!"
+      # running, badminton and archery
 
   socialIcons:
     # - name: twitter
