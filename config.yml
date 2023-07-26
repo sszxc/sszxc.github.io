@@ -92,12 +92,14 @@ params:
     #   url: "https://twitter.com/"
     # - name: stackoverflow
     #   url: "https://stackoverflow.com"
-    - name: email
-      url: "mailto:i@sszxc.net"
+    - name: "linkedin"
+      url: "www.linkedin.com/in/xuechao-zhang-18a059236"
     - name: bilibili
       url: "https://space.bilibili.com/15273290"
     - name: "github"
       url: "https://github.com/sszxc"
+    - name: email
+      url: "mailto:i@sszxc.net"
 
   analytics:
     google:
