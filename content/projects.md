@@ -7,6 +7,13 @@ comments: false
 {{< figure src="https://s1.ax1x.com/2023/06/25/pCNPf6f.jpg"
 title="June 2023, 主动感知抓取机器人" >}}
 
+{{< figure src="https://s1.ax1x.com/2023/08/01/pPCcl1e.jpg"
+title="Sept.2022, Collective Robotic Construction System" >}}
+
+{{< figure src="https://s1.ax1x.com/2023/08/01/pPCsnk8.jpg"
+link="https://arxiv.org/abs/2211.15166"
+title="Mar.2022, 多机器人定位平台" >}}
+
 {{< figure src="https://z3.ax1x.com/2021/01/29/yC5XZ9.jpg"
 link="https://sszxc.net/post/2020.12spotmicro%E4%B8%80%E4%B8%AA%E5%BC%80%E6%BA%90%E6%9C%BA%E5%99%A8%E7%8B%97%E9%A1%B9%E7%9B%AE/"
 title="Dec.2020, Spot Micro 四足机器狗" >}}
