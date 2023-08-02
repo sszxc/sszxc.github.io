@@ -44,7 +44,7 @@ A: "ss" stands for "sparkle/shine," while "zxc" refers to the first letters of m
 * 使用过的技术工具：C/C++, MATLAB, Multisim, Vivado, Verilog
 * 办公工具：Word/PPT/Excel, Photoshop/Premiere
 * 语言：普通话，英语
-* 
+
 ## Interests
 * 运动：骑行、羽毛球、游泳（以及各种水上运动）
 * 音乐：周杰伦、棱镜乐队、黑莓果酱
