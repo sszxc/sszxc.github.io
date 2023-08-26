@@ -8,9 +8,9 @@ comments: false
 
 1999 年出生于浙江杭州，现居上海，曾经还在 Atlanta、南京、深圳居住过。
 
-爱生活，爱折腾，积极体验新事物。对与机器人相关的一切都有浓厚的兴趣。🤖
+保持好奇心，保持理性，回归第一性原理。爱生活，爱折腾，积极体验新事物。对与机器人相关的一切都有浓厚的兴趣。🤖
 
-做笔记是我的学习方法，也是数字化生活的一部分。目前在用的笔记软件：滴答清单（日程安排）、OneNote（work log）、Logseq（lightbulb moment）、Notion （整理归档）。📓
+做笔记融入了我的学习方法，也是我数字化生活的一部分。目前在用的笔记软件：滴答清单（日程安排）、OneNote（work log）、Logseq（lightbulb moment）、Notion （整理归档）。📓
 
 I am currently looking for a PhD position in the robotics field. Check out [this page](https://sszxc.net/gophd/) to get more information about me. 🧑‍🎓
 
@@ -19,11 +19,6 @@ A: "ss" stands for "sparkle/shine," while "zxc" refers to the first letters of m
 
 本博客起笔于 2019 年 11 月
 
-## Education
-
-* **2021.09 - Future** 上海交通大学，电子信息
-* **2017.09 - 2021.06** 东南大学，机器人工程（吴健雄学院）
-* **2014.09 - 2017.06** 浙江省杭州第二中学
 
 ## Friends
 

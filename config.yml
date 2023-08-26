@@ -99,7 +99,7 @@ params:
     - name: "github"
       url: "https://github.com/sszxc"
     - name: email
-      url: "mailto:i@sszxc.net"
+      url: https://mailhide.io/e/7wXwEsJr  # "mailto:i@sszxc.net"
 
   analytics:
     google:
