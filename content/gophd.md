@@ -16,7 +16,7 @@ I am writing this page to express my motivation for pursuing a PhD. And I also h
 - **Q: Research Interest?**  
   - One-word answer: ROBOTS!
   - Ever since high school, I have participated in [various robot projects](https://sszxc.net/projects/) and enjoyed building robots to solve real-world problems. I am determined to conduct research in the field of robotics and ultimately make a contribution to the robotics industry.
-  - While robotics has seen direct benefits from large models and emergent capabilities inherited from web-scale vision-language pretraining, there remain many problems that cannot be solved solely through "internet data", such as **understanding the dynamics of the world and embodying the ability to manipulate objects**.
+  - While robotics has seen direct benefits from large models and emergent capabilities inherited from web-scale vision-language pretraining, there remain many problems that cannot be solved solely through "internet data", such as **understanding the dynamics of the world and embodying the robot ability to manipulate objects**.
   - For my specific research direction, I have been constantly searching for the intersection between "what I am passionate about" and "what I am skilled at".
   - Presently, my research interests are focused on **active perception**, which involves utilizing the robot's ability to interact with and understand complex environments. For example, dynamically planning observation poses in unknown environments, or modeling deformable objects through manipulation.  
   **Keywords**: active perception, affordance, neural representation, manipulation  
