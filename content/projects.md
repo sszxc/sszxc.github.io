@@ -5,6 +5,7 @@ comments: false
 ---
 
 {{< figure src="https://s1.ax1x.com/2023/06/25/pCNPf6f.jpg"
+link="https://sszxc.net/ace-nbv.github.io/"
 title="June 2023, 主动感知与抓取" >}}
 
 ---
