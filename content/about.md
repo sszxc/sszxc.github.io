@@ -34,6 +34,11 @@ A: "ss" stands for "sparkle/shine," while "zxc" refers to the first letters of m
 * [Alanaab](https://Alanaab.github.io/ "Alanaab")
 * [Shaopu](https://shaopu.tech/ "Shaopu")
 
+## Talks
+
+* [「组会分享」机器人学习方向顶会投稿分享](https://b23.tv/u1xfAKi)
+* [「组会分享」去参加顶级学术会议是一种什么样的体验](https://b23.tv/s3onxey)
+
 ## Skills
 * 熟练的技术工具：Python (including PyTorch, OpenCV, ROS, PyBullet, etc.),  Linux, Docker, LaTeX, AutoCAD, SolidWorks, Altium Designer
 * 使用过的技术工具：C/C++, MATLAB, Multisim, Vivado, Verilog
@@ -43,7 +48,7 @@ A: "ss" stands for "sparkle/shine," while "zxc" refers to the first letters of m
 ## Interests
 * 运动：骑行、羽毛球、游泳（以及各种水上运动）
 * 音乐：周杰伦、棱镜乐队、黑莓果酱
-* 剧集：《Breaking Bad》、《半泽直树》、《The Big Bang Theory》、《我们与恶的距离》
+* 剧集：《Breaking Bad》、《半泽直树》、《The Big Bang Theory》、《我们与恶的距离》、《切尔诺贝利》
 * 游戏：《塞尔达传说：旷野之息》、《坎巴拉太空计划》、《欧洲卡车模拟 2》、《A Short Hike》、《杀戮尖塔》、《神力科莎》
 
 <iframe height='454' width='800' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/111054487/latest-rides/d7ba8350aaa19318b4533f9b6acbb281048a8b8e'></iframe>
