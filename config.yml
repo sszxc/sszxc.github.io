@@ -81,25 +81,11 @@ params:
   # home-info mode
   homeInfoParams:
     Title: "Hi there \U0001F44B"
-    Content: "- 🎓 Master's student at SJTU, seeking a PhD position in Robotics\n
-      - 🤖 Passionate about autonomous robots and computer vision\n
-      - 🚴🏻 Cycling, swimming, rowing and photography enthusiast\n
-      - 📫 Feel free to contact me!"
-      # running, badminton and archery
+    Content: ""
 
   socialIcons:
-    # - name: twitter
-    #   url: "https://twitter.com/"
-    # - name: stackoverflow
-    #   url: "https://stackoverflow.com"
-    - name: "linkedin"
-      url: "https://www.linkedin.com/in/xuechao-zhang-18a059236"
-    - name: bilibili
-      url: "https://space.bilibili.com/15273290"
-    - name: "github"
-      url: "https://github.com/sszxc"
     - name: email
-      url: https://mailhide.io/e/7wXwEsJr  # "mailto:i@sszxc.net"
+      url: https://mailhide.io/e/7wXwEsJr
 
   analytics:
     google:

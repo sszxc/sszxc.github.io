@@ -1,2 +1,4 @@
 /public/
 /archive/
+/*.md
+.DS_Store
