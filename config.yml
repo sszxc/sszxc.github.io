@@ -3,14 +3,15 @@ languageCode: zh  #en-us
 title: Henrik's Blog
 theme: "PaperMod"
 
-paginate: 5
+pagination:
+  pagerSize: 5
 
 enableRobotsTXT: true
 buildDrafts: false
 buildFuture: false
 buildExpired: false
 
-googleAnalytics: UA-123-45
+# googleAnalytics: UA-123-45
 
 minify:
   disableXML: true
