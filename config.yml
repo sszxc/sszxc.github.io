@@ -82,9 +82,17 @@ params:
   # home-info mode
   homeInfoParams:
     Title: "Hi there \U0001F44B"
-    Content: ""
+    Content: "
+      - 🤖 PhD candidate in Robotics\n
+      - 💼 Previously at Apple, Bosch, Tencent, and more\n
+      - 🚴🏻 Enthusiast of cycling, swimming, and photography\n
+      - 📫 Feel free to reach out!"
 
   socialIcons:
+    - name: "linkedin"
+      url: "https://www.linkedin.com/in/xuechao-zhang-18a059236"
+    - name: "github"
+      url: "https://github.com/sszxc"
     - name: email
       url: https://mailhide.io/e/7wXwEsJr
 
