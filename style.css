@@ -225,21 +225,6 @@ h2 {
 }
 
 /**************************************************/
-/* Buttons for showing more or less highlights. */
-
-.toggle-button {
-  margin-top: 2em;
-}
-
-.toggle-button a {
-  color: #a0a8b0;
-}
-
-.toggle-button a:hover {
-  color: rgb(20, 110, 190);
-}
-
-/**************************************************/
 /* Publication details (thumbnail media, title, and description). */
 
 .thumbnail {
@@ -297,6 +282,28 @@ h3 a:hover {
 
 /**************************************************/
 /* Subtle footer at the bottom of the page. */
+
+.footer-container {
+  width: 100%;
+  max-width: 800px;
+  margin: em auto;
+  padding: 30px 20px;
+  position: relative;
+  bottom: 0;
+  margin-top: 1px;
+  margin-bottom: 0px;
+}
+
+.visitor-map {
+  text-align: center;
+  margin: 1em 0;
+}
+
+.footer-text {
+  color: #666;
+  font-size: 0.9em;
+  margin-top: 1em;
+}
 
 #footer {
   color: #a0a8b0;
