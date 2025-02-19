@@ -205,6 +205,9 @@ h2 {
 
 .previews video {
   border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .previews a:hover {
@@ -278,6 +281,38 @@ h3 a:hover {
 .project-description {
   width: 80%;
   float: left;
+}
+
+/**************************************************/
+/* Project details. */
+
+.two-column-layout {
+  display: grid;
+  grid-template-columns: 3em 1fr;
+  gap: 2em;
+}
+
+.content-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.two-column-layout .project-description {
+  width: 100%;
+  float: none;
+}
+
+.two-column-layout .thumbnail {
+  width: 100%;
+  float: none;
+  margin-right: 0;
+  margin-bottom: 2em;
+}
+
+.two-column-layout .thumbnail img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
 }
 
 /**************************************************/
