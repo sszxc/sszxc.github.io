@@ -334,6 +334,27 @@ h3 a:hover {
   margin: 1em 0;
 }
 
+.logo-container {
+  display: flex;
+  align-items: center;
+  /* 上下居中 */
+  justify-content: space-around;
+  /* 图片之间均匀分布 */
+  gap: 1rem;
+  /* 图片之间的间距 */
+  height: 100%;
+  /* 根据需要调整容器高度 */
+}
+
+.logo-container img {
+  height: 3rem;
+  /* 统一高度 */
+  width: auto;
+  /* 保持图片比例 */
+  vertical-align: middle;
+  /* 确保图片与文本基线对齐 */
+}
+
 .footer-text {
   color: #666;
   font-size: 0.9em;
