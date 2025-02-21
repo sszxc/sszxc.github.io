@@ -311,7 +311,7 @@ h3 a:hover {
 
 .two-column-layout .thumbnail img {
   width: 100%;
-  max-width: 600px;
+  max-width: 60%;
   height: auto;
 }
 
