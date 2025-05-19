@@ -199,8 +199,8 @@ h2 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
-  height: 12.5em;
+  grid-auto-rows: minmax(12.5em, auto);
+  height: 25em;
 }
 
 .previews video {
