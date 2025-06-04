@@ -200,7 +200,7 @@ h2 {
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   grid-auto-rows: minmax(12.5em, auto);
-  height: auto;
+  height: 40em;
 }
 
 .previews video {
