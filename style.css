@@ -200,7 +200,7 @@ h2 {
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   grid-auto-rows: minmax(12.5em, auto);
-  height: 40em;
+  margin-bottom: 2em;
 }
 
 .previews video {
@@ -325,7 +325,7 @@ h3 a:hover {
   padding: 30px 20px;
   position: relative;
   bottom: 0;
-  margin-top: 1px;
+  margin-top: 0px;
   margin-bottom: 0px;
 }
 
