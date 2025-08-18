@@ -59,14 +59,25 @@
             <!-- <a target="_blank" href="https://mailhide.io/e/g5gmD8X7">E-mail</a> -->
             &nbsp;/&nbsp;
             <a href="https://sszxc.net/daily-arXiv-ai-enhanced/">My arXiv Daily</a>
-            <br><br><br><br>
           </p>
         </div>
         <div id="intro-image">
           <img src="images/profile.jpg">
         </div>
       </div>
+      
+      <br><br>
+      <p class="news-title">News</p>
+      <div class="list-item"><p class="date">JUN 2025</p> Attended <a href="https://roboticsconference.org/">RSS 2025</a> in Los Angeles, California! </div>
+      <div class="list-item"><p class="date">MAY 2025</p> Attended <a href="https://2025.ieee-icra.org/">ICRA 2025</a> in Atlanta, Georgia! </div>
+      <div class="list-item"><p class="date">JAN 2025</p> Started a new journey at <a href="https://www.asu.edu/">ASU</a>! 🌵</div>
+      <div class="list-item"><p class="date">APR 2024</p> Started as a robotics intern at Apple in Shanghai! 🍎</div>
+      <div class="list-item"><p class="date">MAR 2024</p> Obtained my Masters degree from <a href="https://en.sjtu.edu.cn/">SJTU</a>! Grateful for the amazing time! 🎓</div>
+       
+      <!-- UIUC <a href="https://publish.illinois.edu/csl-student-conference-2024">CSL Student Conference</a> -->
 
+
+      <br><br>
       <div id="filters" class="button-group">
         <button class="button is-checked" data-filter=".publication">Publications</button>
         <button class="button" data-filter=".project">Projects</button>
@@ -497,7 +508,7 @@
         // Retrieve cached button click.
         var defaultFilterValue = localStorage.getItem('filterValue');
         if (defaultFilterValue == null) {
-          defaultFilterValue = ".publication"
+          defaultFilterValue = ".misc"
         }
         $grid.isotope({ filter: defaultFilterValue });
         var buttons = document.getElementsByClassName("button");
