@@ -188,7 +188,7 @@ h2 {
 
 .list-item p.date {
   display: inline-block;
-  width: 5em;
+  width: 6em;
   color: #a0a8b0;
 }
 
@@ -212,19 +212,6 @@ h2 {
 
 .previews a:hover {
   border: none;
-}
-
-.preview1 {
-  grid-column: 1;
-  width: 100%;
-}
-.preview2 {
-  grid-column: 2;
-  width: 100%;
-}
-.preview3 {
-  grid-column: 3;
-  width: 100%;
 }
 
 /**************************************************/
