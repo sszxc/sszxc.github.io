@@ -203,6 +203,13 @@ h2 {
   margin-bottom: 2em;
 }
 
+/* 如果需要控制视频比例
+.previews a {
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+} */
+
 .previews video {
   border-radius: 5px;
   width: 100%;
