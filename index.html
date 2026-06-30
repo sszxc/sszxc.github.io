@@ -17,11 +17,12 @@
     <title>Xuechao Zhang</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=1000">
-
-    <!-- Isotope JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+    <script>
+      document.documentElement.setAttribute(
+        'data-filter',
+        localStorage.getItem('filterValue') || '.project'
+      );
+    </script>
 
     <!-- Custom Style -->
     <link rel="stylesheet" href="style.css">
@@ -29,10 +30,7 @@
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
   </head>
 
   <body id="body">
@@ -81,8 +79,8 @@
 
       <br><br>
       <div id="filters" class="button-group">
-        <button class="button" data-filter=".project">Projects</button>
-        <button class="button is-checked" data-filter=".publication">Publications</button>
+        <button class="button is-checked" data-filter=".project">Projects</button>
+        <button class="button" data-filter=".publication">Publications</button>
         <button class="button" data-filter=".misc">Misc</button>
       </div>
 
@@ -92,8 +90,8 @@
         <!-- Publications -->
         <div class="list-item publication" data-category="publication">
           <a href="https://irislab.tech/TwinTrack-webpage/" class="thumbnail">
-            <video autoplay loop muted playsinline>
-              <source src="https://irislab.tech/TwinTrack-webpage/videos/intro_video.mp4" type="video/mp4">
+            <video loop muted playsinline preload="none" data-autoplay>
+              <source data-src="https://irislab.tech/TwinTrack-webpage/videos/intro_video.mp4" type="video/mp4">
             </video>
           </a>
           <div class="project-description">
@@ -115,7 +113,7 @@
 
         <div class="list-item publication" data-category="publication">
           <a href="https://sszxc.net/ace-nbv/" class="thumbnail">
-            <img src="https://sszxc.net/ace-nbv/static/images/teaser.jpg" alt="" />
+            <img data-src="https://sszxc.net/ace-nbv/static/images/teaser.jpg" alt="" />
           </a>
           <div class="project-description">
             <h3><a href="https://sszxc.net/ace-nbv/">Affordance-Driven Next-Best-View Planning for Robotic Grasping</a></h3>
@@ -136,7 +134,7 @@
 
         <div class="list-item publication" data-category="publication">
           <a class="thumbnail">
-            <img src="media/iros2022_intro.jpg" alt="" />
+            <img data-src="media/iros2022_intro.jpg" alt="" />
           </a>
           <div class="project-description">
             <h3>Toward Global Sensing Quality Maximization: A Configuration Optimization Scheme for Camera Networks</h3>
@@ -425,73 +423,73 @@
 
         <div class="list-item previews misc" data-category="misc">
           <a href="media/misc/Honda_hand_retargeting.mp4">
-            <video autoplay loop muted playsinline>
-              <source src="media/misc/Honda_hand_retargeting_preview.mp4" type="video/mp4">
+            <video loop muted playsinline preload="none" data-autoplay>
+              <source data-src="media/misc/Honda_hand_retargeting_preview.mp4" type="video/mp4">
             </video>
           </a>
           <a href="media/misc/In-handReorientation.mp4">
-            <video autoplay loop muted playsinline>
-              <source src="media/misc/In-handReorientation_preview.mp4" type="video/mp4">
+            <video loop muted playsinline preload="none" data-autoplay>
+              <source data-src="media/misc/In-handReorientation_preview.mp4" type="video/mp4">
             </video>
           </a>
           <a href="media/misc/LEAP_Hand_Autoencoder.mp4">
-            <video autoplay loop muted playsinline>
-              <source src="media/misc/LEAP_Hand_Autoencoder.mp4" type="video/mp4">
+            <video loop muted playsinline preload="none" data-autoplay>
+              <source data-src="media/misc/LEAP_Hand_Autoencoder.mp4" type="video/mp4">
             </video>
           </a>
           <!-- <a href="media/misc/LEAP_sim.mp4">
-            <video autoplay loop muted playsinline>
-              <source src="media/misc/LEAP_sim_preview.mp4" type="video/mp4">
+            <video loop muted playsinline preload="none" data-autoplay>
+              <source data-src="media/misc/LEAP_sim_preview.mp4" type="video/mp4">
             </video>
           </a> -->
           <a href="media/misc/Fingertip_Mani.mp4">
-            <video autoplay loop muted playsinline>
-              <source src="media/misc/Fingertip_Mani_preview.mp4" type="video/mp4">
+            <video loop muted playsinline preload="none" data-autoplay>
+              <source data-src="media/misc/Fingertip_Mani_preview.mp4" type="video/mp4">
             </video>
           </a>
           <a href="media/misc/GSplat_Piedmont.mp4">
-            <video autoplay loop muted playsinline>
-              <source src="media/misc/GSplat_Piedmont_preview.mp4" type="video/mp4">
+            <video loop muted playsinline preload="none" data-autoplay>
+              <source data-src="media/misc/GSplat_Piedmont_preview.mp4" type="video/mp4">
             </video>
           </a>
           <a href="media/misc/Bittle_sim.mp4">
-            <video autoplay loop muted playsinline>
-              <source src="media/misc/Bittle_sim_preview.mp4" type="video/mp4">
+            <video loop muted playsinline preload="none" data-autoplay>
+              <source data-src="media/misc/Bittle_sim_preview.mp4" type="video/mp4">
             </video>
           </a>
           <a href="media/misc/Bittle_real.mp4">
-            <video autoplay loop muted playsinline>
-              <source src="media/misc/Bittle_real_preview.mp4" type="video/mp4">
+            <video loop muted playsinline preload="none" data-autoplay>
+              <source data-src="media/misc/Bittle_real_preview.mp4" type="video/mp4">
             </video>
           </a>
           <a href="media/misc/Lidar_tracking.mp4">
-            <video autoplay loop muted playsinline>
-              <source src="media/misc/Lidar_tracking_preview.mp4" type="video/mp4">
+            <video loop muted playsinline preload="none" data-autoplay>
+              <source data-src="media/misc/Lidar_tracking_preview.mp4" type="video/mp4">
             </video>
           </a>
           <a href="media/misc/Bosch.mp4">
-            <video autoplay loop muted playsinline>
-              <source src="media/misc/Bosch_preview.mp4" type="video/mp4">
+            <video loop muted playsinline preload="none" data-autoplay>
+              <source data-src="media/misc/Bosch_preview.mp4" type="video/mp4">
             </video>
           </a>
           <a href="media/misc/Panda_pick_and_place.mp4">
-            <video autoplay loop muted playsinline>
-              <source src="media/misc/Panda_pick_and_place_preview.mp4" type="video/mp4">
+            <video loop muted playsinline preload="none" data-autoplay>
+              <source data-src="media/misc/Panda_pick_and_place_preview.mp4" type="video/mp4">
             </video>
           </a>
           <a href="media/misc/TencentRoboticsX.mp4">
-            <video autoplay loop muted playsinline>
-              <source src="media/misc/TencentRoboticsX_preview.mp4" type="video/mp4">
+            <video loop muted playsinline preload="none" data-autoplay>
+              <source data-src="media/misc/TencentRoboticsX_preview.mp4" type="video/mp4">
             </video>
           </a>
           <a href="media/misc/Gomoku.mp4">
-            <video autoplay loop muted playsinline>
-              <source src="media/misc/Gomoku_preview.mp4" type="video/mp4">
+            <video loop muted playsinline preload="none" data-autoplay>
+              <source data-src="media/misc/Gomoku_preview.mp4" type="video/mp4">
             </video>
           </a>
           <a href="media/misc/ORB_SLAM2.mp4">
-            <video autoplay loop muted playsinline>
-              <source src="media/misc/ORB_SLAM2_preview.mp4" type="video/mp4">
+            <video loop muted playsinline preload="none" data-autoplay>
+              <source data-src="media/misc/ORB_SLAM2_preview.mp4" type="video/mp4">
             </video>
           </a>
         </div>
@@ -504,13 +502,13 @@
         </div>
       
         <div class="logo-container">
-          <img src="media/logos/SEU.svg" style="height: 4rem;" alt="SEU">
-          <img src="media/logos/SJTU.png" style="height: 3.8rem;" alt="SJTU">
-          <img src="media/logos/Tencent.png" style="height: 2.5rem;" alt="Tencent">
-          <img src="media/logos/PJLab.png" alt="PJLab">
-          <img src="media/logos/Bosch.svg" style="height: 1.5rem;" alt="Bosch">
-          <img src="media/logos/Apple.svg" style="height: 2.5rem;"alt="Apple">
-          <img src="media/logos/ASU.png" alt="Arizona State University">
+          <img src="media/logos/SEU.svg" loading="lazy" style="height: 4rem;" alt="SEU">
+          <img src="media/logos/SJTU.png" loading="lazy" style="height: 3.8rem;" alt="SJTU">
+          <img src="media/logos/Tencent.png" loading="lazy" style="height: 2.5rem;" alt="Tencent">
+          <img src="media/logos/PJLab.png" loading="lazy" alt="PJLab">
+          <img src="media/logos/Bosch.svg" loading="lazy" style="height: 1.5rem;" alt="Bosch">
+          <img src="media/logos/Apple.svg" loading="lazy" style="height: 2.5rem;"alt="Apple">
+          <img src="media/logos/ASU.png" loading="lazy" alt="Arizona State University">
         </div>
 
         <div id="footer" class="footer-text">
@@ -520,62 +518,110 @@
 
     </div>
 
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script defer src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
     <script>
+      var layoutTimer;
 
-      // Isotope grid.
-      var $grid = $('.grid').isotope({
-        itemSelector: '.list-item',
-        layoutMode: 'fitRows',
-        transitionDuration: 0,
-        stagger: 10,
-        initLayout: false,
-        getSortData: {
-          name: '.name',
-          symbol: '.symbol',
-          number: '.number parseInt',
-          category: '[data-category]',
-          weight: function( itemElem ) {
-            var weight = $( itemElem ).find('.weight').text();
-            return parseFloat( weight.replace( /[\(\)]/g, '') );
-          }
-        }
-      });
-
-      // Bind filter button click.
-      $('#filters').on( 'click', 'button', function() {
-        var filterValue = $( this ).attr('data-filter');
-        localStorage.setItem('filterValue', filterValue);
-        $grid.isotope({ filter: filterValue });
-      });
-
-      // Change is-checked class on buttons.
-      $('.button-group').each( function( i, buttonGroup ) {
-        var $buttonGroup = $( buttonGroup );
-        $buttonGroup.on( 'click', 'button', function() {
-          $buttonGroup.find('.is-checked').removeClass('is-checked');
-          $( this ).addClass('is-checked');
-        });
-      });
-
-      function update_isotope() {
-        // Retrieve cached button click.
-        var defaultFilterValue = localStorage.getItem('filterValue');
-        if (defaultFilterValue == null) {
-          defaultFilterValue = ".project"
-        }
-        $grid.isotope({ filter: defaultFilterValue });
-        var buttons = document.getElementsByClassName("button");
-        for (var currButton of buttons) {
-          if (currButton.getAttribute('data-filter') == defaultFilterValue) {
-            currButton.classList.add('is-checked');
-          } else {
-            currButton.classList.remove('is-checked');
-          }
-        }
+      function scheduleIsotopeLayout($grid) {
+        if (!$grid) return;
+        clearTimeout(layoutTimer);
+        layoutTimer = setTimeout(function() {
+          $grid.isotope('layout');
+        }, 50);
       }
 
-      update_isotope();
+      function loadMediaInContainer(container, $grid) {
+        container.querySelectorAll('img[data-src]').forEach(function(img) {
+          function onImageReady() {
+            scheduleIsotopeLayout($grid);
+          }
+          img.addEventListener('load', onImageReady);
+          img.addEventListener('error', onImageReady);
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+          if (img.complete) {
+            onImageReady();
+          }
+        });
+        container.querySelectorAll('video').forEach(function(video) {
+          var source = video.querySelector('source[data-src]');
+          if (!source) return;
+          function onVideoReady() {
+            scheduleIsotopeLayout($grid);
+          }
+          video.addEventListener('loadeddata', onVideoReady);
+          source.src = source.dataset.src;
+          source.removeAttribute('data-src');
+          video.load();
+          if (video.hasAttribute('data-autoplay')) {
+            video.play().catch(function() {});
+          }
+        });
+      }
 
+      function bindGridMediaLayoutListeners($grid) {
+        document.querySelectorAll('.grid img, .grid video').forEach(function(el) {
+          if (el.dataset.layoutBound) return;
+          el.dataset.layoutBound = '1';
+          function onReady() {
+            scheduleIsotopeLayout($grid);
+          }
+          el.addEventListener('load', onReady);
+          el.addEventListener('loadeddata', onReady);
+          el.addEventListener('error', onReady);
+          if (el.complete || (el.readyState && el.readyState >= 2)) {
+            onReady();
+          }
+        });
+      }
+
+      function loadMediaForFilter(filter, $grid) {
+        if (filter === '.project') return;
+        var category = filter.replace('.', '');
+        document.querySelectorAll('.grid .list-item.' + category).forEach(function(item) {
+          loadMediaInContainer(item, $grid);
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var defaultFilterValue = localStorage.getItem('filterValue') || '.project';
+
+        var $grid = $('.grid').isotope({
+          itemSelector: '.list-item',
+          layoutMode: 'fitRows',
+          transitionDuration: 0,
+          stagger: 10,
+          filter: defaultFilterValue,
+          getSortData: {
+            name: '.name',
+            symbol: '.symbol',
+            number: '.number parseInt',
+            category: '[data-category]',
+            weight: function(itemElem) {
+              var weight = $(itemElem).find('.weight').text();
+              return parseFloat(weight.replace(/[\(\)]/g, ''));
+            }
+          }
+        });
+
+        loadMediaForFilter(defaultFilterValue, $grid);
+        bindGridMediaLayoutListeners($grid);
+
+        $('#filters button').each(function() {
+          $(this).toggleClass('is-checked', $(this).attr('data-filter') === defaultFilterValue);
+        });
+
+        $('#filters').on('click', 'button', function() {
+          var filterValue = $(this).attr('data-filter');
+          localStorage.setItem('filterValue', filterValue);
+          document.documentElement.setAttribute('data-filter', filterValue);
+          loadMediaForFilter(filterValue, $grid);
+          $grid.isotope({ filter: filterValue });
+          $('#filters .is-checked').removeClass('is-checked');
+          $(this).addClass('is-checked');
+        });
+      });
     </script>
   </body>
 </html>

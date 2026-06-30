@@ -370,3 +370,8 @@ h3 a:hover {
   margin-top: 0.5em;
   margin-bottom: 1em;
 }
+
+/* Hide non-active items before Isotope initializes */
+html[data-filter=".project"] .grid .list-item:not(.project) { display: none; }
+html[data-filter=".publication"] .grid .list-item:not(.publication) { display: none; }
+html[data-filter=".misc"] .grid .list-item:not(.misc) { display: none; }
