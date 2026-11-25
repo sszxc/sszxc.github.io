@@ -366,6 +366,11 @@ h3 a:hover {
   margin-bottom: 1em;
 }
 
+.news-icon {
+  height: 1em;
+  vertical-align: -0.1em;
+}
+
 /* Hide non-active items before Isotope initializes */
 html[data-filter=".project"] .grid .list-item:not(.project) { display: none; }
 html[data-filter=".publication"] .grid .list-item:not(.publication) { display: none; }
